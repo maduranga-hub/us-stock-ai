@@ -1,0 +1,32 @@
+name: US Stock AI Daily Scanner
+
+on:
+  schedule:
+    # Run every hour at minute 30 from 11:00 UTC to 21:00 UTC (Mon-Fri)
+    # This covers 3:30 PM to 1:30 AM Dubai Time
+    - cron: '30 11-21 * * 1-5'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Scanner
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+        run: python main.py
