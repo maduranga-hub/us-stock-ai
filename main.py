@@ -81,7 +81,6 @@ def analyze_ticker(symbol, scan_type="technical"):
             if earnings_date:
                 e_date = earnings_date.date() if hasattr(earnings_date, 'date') else pd.to_datetime(earnings_date).date()
                 if e_date == tomorrow_date:
-                    # Calculate last year's report date (approximate)
                     last_year_date = (pd.to_datetime(e_date) - pd.DateOffset(years=1)).strftime('%Y-%m-%d')
                     
                     return {
@@ -133,18 +132,19 @@ def run_scanner(mode="technical"):
                 results.append(res)
                 
                 if res['type'] == "earnings":
-                    msg = (f"🔔 *EARNINGS TOMORROW: {res['symbol']}*\n\n"
+                    # EXACT FORMAT REQUESTED BY USER
+                    msg = (f"🔔 EARNINGS TOMORROW: {res['symbol']}\n\n"
                            f"🏢 Company: {res['name']}\n"
-                           f"💰 Market Cap: *{res['market_cap']}*\n"
-                           f"📊 EPS Forecast: *{res['forecast_eps']}*\n"
-                           f"📉 Last Year's EPS: *{res['last_year_eps']}*\n"
-                           f"📅 Last Year's Date: {res['last_year_date']}\n\n"
+                           f"💰 Market Cap: {res['market_cap']}\n"
+                           f"📊 EPS Forecast: {res['forecast_eps']}\n"
+                           f"📉 Last Year's EPS: {res['last_year_eps']}\n"
+                           f"📅 Last Year's Date: {res['last_year_date']}\n"
                            f"🕒 Dubai Time: {get_dubai_time().strftime('%H:%M')} GST")
                 else:
-                    msg = (f"🚀 *BUY SIGNAL: {res['symbol']}*\n\n"
-                           f"💰 Price: *${res['price']:.2f}*\n"
-                           f"📉 RSI: *{res['rsi']:.2f}*\n"
-                           f"📈 Trend: *Bullish*\n\n"
+                    msg = (f"🚀 BUY SIGNAL: {res['symbol']}\n\n"
+                           f"💰 Price: ${res['price']:.2f}\n"
+                           f"📉 RSI: {res['rsi']:.2f}\n"
+                           f"📈 Trend: Bullish\n\n"
                            f"🔗 [Dashboard]({DASHBOARD_URL})")
                 
                 send_telegram(msg)
