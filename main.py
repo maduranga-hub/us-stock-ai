@@ -48,7 +48,7 @@ def send_telegram(message):
 def log_to_google_sheet(data_row):
     """Logs a signal row to Google Sheets."""
     gs_id = os.getenv("GOOGLE_SHEET_ID")
-    gs_service_account = os.getenv("GSPREAD_SERVICE_ACCOUNT")
+    gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
     
     if not gs_id or not gs_service_account:
         return # Skip if not configured
@@ -196,6 +196,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                     if e_date == target_date: earnings_near = True
             except: pass
 
+            res_vwap_bullish = vwap_status == "Bullish (Above)"
             base_res.update({
                 "type": "technical",
                 "rsi": rsi,
@@ -204,7 +205,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                 "high_volume": high_volume,
                 "macd_bullish": macd_bullish,
                 "is_signal": is_signal,
-                "high_conviction": is_signal and high_volume
+                "high_conviction": is_signal and high_volume and res_vwap_bullish
             })
             return base_res
     except:
