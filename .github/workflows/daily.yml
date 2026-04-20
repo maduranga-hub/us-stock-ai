@@ -1,14 +1,15 @@
-name: US Stock AI Daily Scanner
+name: US Stock AI Serverless Engine
 
 on:
   schedule:
-    # Run every hour at minute 30 from 11:00 UTC to 21:00 UTC (Mon-Fri)
-    # This covers 3:30 PM to 1:30 AM Dubai Time
+    # 2:30 PM UTC = 6:30 PM Dubai Time (Earnings Scan)
+    - cron: '30 14 * * 1-5'
+    # Hourly Technical Scan (11:30 UTC to 21:30 UTC = 3:30 PM to 1:30 AM Dubai Time)
     - cron: '30 11-21 * * 1-5'
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
-  scan:
+  run-scanner:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -24,9 +25,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Scanner
+      - name: Run Scan Engine
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-        run: python main.py
+        run: |
+          # Determine scan mode based on schedule
+          # 14:30 UTC is the Earnings scan
+          current_hour=$(date -u +%H)
+          current_min=$(date -u +%M)
+          
+          if [ "$current_hour" == "14" ]; then
+            echo "🚀 Launching Earnings Scan..."
+            python main.py earnings
+          else
+            echo "🚀 Launching Technical Scan..."
+            python main.py technical
+          fi
+
+      - name: Commit and Push Results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add active_technical_signals.csv active_earnings_signals.csv || true
+          git commit -m "Update scan results [skip ci]" || true
+          git push
