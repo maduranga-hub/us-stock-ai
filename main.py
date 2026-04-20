@@ -121,10 +121,26 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             vwap = df['vwap'].iloc[-1]
             vwap_status = "Bullish (Above)" if price > vwap else "Bearish (Below)"
             
+            # Volume Filter: 1.5x of 20-period average
+            avg_vol_20 = df['volume'].rolling(window=20).mean().iloc[-1]
+            curr_vol = df['volume'].iloc[-1]
+            high_volume = curr_vol >= (1.5 * avg_vol_20)
+            
+            # MACD Calculation (12, 26, 9)
+            ema12 = df['close'].ewm(span=12, adjust=False).mean()
+            ema26 = df['close'].ewm(span=26, adjust=False).mean()
+            macd_line = ema12 - ema26
+            signal_line = macd_line.ewm(span=9, adjust=False).mean()
+            
+            macd_bullish = (macd_line.iloc[-1] > signal_line.iloc[-1]) and (macd_line.iloc[-2] <= signal_line.iloc[-2])
+            
             df['rsi'] = calculate_rsi(df['close'])
             rsi = df['rsi'].iloc[-1]
             sma100 = df['close'].rolling(window=100).mean().iloc[-1]
             
+            # Optimized Trigger: RSI <= 30 (more conservative)
+            is_signal = rsi <= 30 and price > sma100
+
             # Check for earnings near target_date
             cal = ticker.calendar
             earnings_near = False
@@ -147,7 +163,9 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                 "rsi": rsi,
                 "vwap_status": vwap_status,
                 "earnings_near": earnings_near,
-                "is_signal": rsi <= 35 and price > sma100
+                "high_volume": high_volume,
+                "macd_bullish": macd_bullish,
+                "is_signal": is_signal
             })
             return base_res
     except:
@@ -211,16 +229,27 @@ def run_scanner(mode="technical"):
                     m_status = "Bullish" if "Above" in res['vwap_status'] else "Bearish"
                     e_risk = "⚠️ Earnings report scheduled for tomorrow. High event-based volatility risk." if res.get('earnings_near') else "✅ No earnings reported for tomorrow, reducing event-based volatility risk."
                     
+                    # Extra confirmations
+                    extra_notes = []
+                    if res.get('high_volume'): extra_notes.append("🔥 *High Volume Setup (1.5x Avg)*")
+                    if res.get('macd_bullish'): extra_notes.append("⚡ *MACD Bullish Crossover*")
+                    
+                    analysis_note = (f"• *Trend:* Price is trading above SMA 100, confirming a long-term bullish structure.\n"
+                                     f"• *Opportunity:* RSI is at {res['rsi']:.2f}, indicating the stock is currently oversold and due for a mean-reversion bounce.\n")
+                    
+                    if extra_notes:
+                        analysis_note += f"• *Confirmations:* {' & '.join(extra_notes)}\n"
+                    
+                    analysis_note += (f"• *Volume/Momentum:* Current price is {v_status} VWAP, showing {m_status} intraday momentum.\n"
+                                      f"• *Risk Context:* {e_risk}")
+                    
                     msg = (f"🚀 *NEW BUY SIGNAL: {res['symbol']}*\n\n"
                            f"💰 *Price:* ${res['price']:.2f}\n"
                            f"📉 *RSI:* {res['rsi']:.2f}\n"
                            f"📈 *Trend:* Bullish\n"
                            f"⚡ *VWAP Status:* {res['vwap_status']}\n\n"
                            f"📝 *AI Analysis Note:*\n"
-                           f"• *Trend:* Price is trading above SMA 100, confirming a long-term bullish structure.\n"
-                           f"• *Opportunity:* RSI is at {res['rsi']:.2f}, indicating the stock is currently oversold and due for a mean-reversion bounce.\n"
-                           f"• *Volume/Momentum:* Current price is {v_status} VWAP, showing {m_status} intraday momentum.\n"
-                           f"• *Risk Context:* {e_risk}\n\n"
+                           f"{analysis_note}\n\n"
                            f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                 
                 send_telegram(msg)
