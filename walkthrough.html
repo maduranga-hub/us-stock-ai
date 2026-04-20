@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>US STOCK AI v4.0 | Workflow Walkthrough</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true, theme: 'dark'});</script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true, 
+            theme: 'dark',
+            flowchart: { useMaxWidth: false, htmlLabels: true }
+        });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@700&display=swap');
         
@@ -13,10 +19,16 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.8;
             color: #e0e0e0;
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px;
             background: radial-gradient(circle at top right, #0d001a 0%, #050505 100%);
+        }
+        
+        .mermaid {
+            transform: scale(1.2);
+            transform-origin: top center;
+            margin-bottom: 50px;
         }
         
         .container {
