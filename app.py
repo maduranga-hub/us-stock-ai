@@ -112,9 +112,16 @@ with st.spinner("Decoding Alpha Data..."):
         df_view.columns = [c.lower() for c in df_view.columns]
         df_view['sma100'] = df_view['close'].rolling(100).mean()
         
+        # VWAP Calculation (Session-based)
+        df_view['tp'] = (df_view['high'] + df_view['low'] + df_view['close']) / 3
+        df_view['tpv'] = df_view['tp'] * df_view['volume']
+        df_view['date'] = df_view.index.date
+        df_view['vwap'] = df_view.groupby('date', group_keys=False).apply(lambda x: x['tpv'].cumsum() / x['volume'].cumsum())
+        
         fig_v = go.Figure()
         fig_v.add_trace(go.Candlestick(x=df_view.index, open=df_view['open'], high=df_view['high'], low=df_view['low'], close=df_view['close'], name="Price"))
         fig_v.add_trace(go.Scatter(x=df_view.index, y=df_view['sma100'], line=dict(color='#00f2ff', width=2), name="SMA 100"))
+        fig_v.add_trace(go.Scatter(x=df_view.index, y=df_view['vwap'], line=dict(color='#ff9900', width=1.5, dash='dash'), name="VWAP"))
         fig_v.update_layout(template="plotly_dark", height=600, xaxis_rangeslider_visible=False)
         st.plotly_chart(fig_v, use_container_width=True)
 

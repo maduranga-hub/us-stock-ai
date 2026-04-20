@@ -113,6 +113,14 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
             df.columns = [c.lower() for c in df.columns]
             
+            # VWAP Calculation (Session-based)
+            df['tp'] = (df['high'] + df['low'] + df['close']) / 3
+            df['tpv'] = df['tp'] * df['volume']
+            df['date'] = df.index.date
+            df['vwap'] = df.groupby('date', group_keys=False).apply(lambda x: x['tpv'].cumsum() / x['volume'].cumsum())
+            vwap = df['vwap'].iloc[-1]
+            vwap_status = "Bullish (Above)" if price > vwap else "Bearish (Below)"
+            
             df['rsi'] = calculate_rsi(df['close'])
             rsi = df['rsi'].iloc[-1]
             sma100 = df['close'].rolling(window=100).mean().iloc[-1]
@@ -120,6 +128,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             base_res.update({
                 "type": "technical",
                 "rsi": rsi,
+                "vwap_status": vwap_status,
                 "is_signal": rsi <= 35 and price > sma100
             })
             return base_res
@@ -178,7 +187,8 @@ def run_scanner(mode="technical"):
                     msg = (f"🚀 BUY SIGNAL: {res['symbol']}\n\n"
                            f"💰 Price: ${res['price']:.2f}\n"
                            f"📉 RSI: {res['rsi']:.2f}\n"
-                           f"📈 Trend: Bullish\n\n"
+                           f"📈 Trend: Bullish\n"
+                           f"⚡ VWAP Status: {res['vwap_status']}\n\n"
                            f"🔗 [Dashboard]({DASHBOARD_URL})")
                 
                 send_telegram(msg)
