@@ -107,8 +107,16 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             return None
 
         else:
+            # --- MTF: Daily Trend Check ---
+            df_daily = ticker.history(period="150d", interval="1d")
+            if df_daily.empty or len(df_daily) < 100: return None
+            df_daily.columns = [c.lower() for c in df_daily.columns]
+            sma100_daily = df_daily['close'].rolling(window=100).mean().iloc[-1]
+            if price <= sma100_daily: return None # Price must be above Daily SMA 100
+
+            # --- Hourly Analysis ---
             df = ticker.history(period="15d", interval="1h")
-            if df.empty or len(df) < 100: return None
+            if df.empty or len(df) < 50: return None
             
             if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
             df.columns = [c.lower() for c in df.columns]
@@ -132,14 +140,22 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             macd_line = ema12 - ema26
             signal_line = macd_line.ewm(span=9, adjust=False).mean()
             
-            macd_bullish = (macd_line.iloc[-1] > signal_line.iloc[-1]) and (macd_line.iloc[-2] <= signal_line.iloc[-2])
+            # MACD Bullish Crossover in last 3 candles
+            macd_bullish = False
+            for i in range(-3, 0):
+                try:
+                    if (macd_line.iloc[i] > signal_line.iloc[i]) and (macd_line.iloc[i-1] <= signal_line.iloc[i-1]):
+                        macd_bullish = True
+                        break
+                except: pass
             
             df['rsi'] = calculate_rsi(df['close'])
             rsi = df['rsi'].iloc[-1]
             sma100 = df['close'].rolling(window=100).mean().iloc[-1]
             
-            # Optimized Trigger: RSI <= 30 (more conservative)
-            is_signal = rsi <= 30 and price > sma100
+            # High Conviction Signal: RSI <= 35 and Price > SMA 100 (Hourly)
+            sma100_h = df['close'].rolling(window=100).mean().iloc[-1]
+            is_signal = rsi <= 35 and price > sma100_h
 
             # Check for earnings near target_date
             cal = ticker.calendar
@@ -165,7 +181,8 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                 "earnings_near": earnings_near,
                 "high_volume": high_volume,
                 "macd_bullish": macd_bullish,
-                "is_signal": is_signal
+                "is_signal": is_signal,
+                "high_conviction": is_signal and high_volume
             })
             return base_res
     except:
@@ -227,27 +244,23 @@ def run_scanner(mode="technical"):
                 else:
                     v_status = "Above" if "Above" in res['vwap_status'] else "Below"
                     m_status = "Bullish" if "Above" in res['vwap_status'] else "Bearish"
+                    vol_status = "🔥 High Spike" if res.get('high_volume') else "Normal"
+                    macd_status = "⚡ Bullish Crossover" if res.get('macd_bullish') else "Neutral"
                     e_risk = "⚠️ Earnings report scheduled for tomorrow. High event-based volatility risk." if res.get('earnings_near') else "✅ No earnings reported for tomorrow, reducing event-based volatility risk."
                     
-                    # Extra confirmations
-                    extra_notes = []
-                    if res.get('high_volume'): extra_notes.append("🔥 *High Volume Setup (1.5x Avg)*")
-                    if res.get('macd_bullish'): extra_notes.append("⚡ *MACD Bullish Crossover*")
+                    header_icon = "🔥 HIGH CONVICTION SIGNAL" if res.get('high_conviction') else "🚀 NEW BUY SIGNAL"
                     
-                    analysis_note = (f"• *Trend:* Price is trading above SMA 100, confirming a long-term bullish structure.\n"
-                                     f"• *Opportunity:* RSI is at {res['rsi']:.2f}, indicating the stock is currently oversold and due for a mean-reversion bounce.\n")
+                    analysis_note = (f"• *Trend Check:* Price is above SMA 100 on both Daily & Hourly charts (Long-term Bullish).\n"
+                                     f"• *Opportunity:* RSI is at {res['rsi']:.2f} on 1H timeframe. Momentum is shifting from oversold levels.\n"
+                                     f"• *Volume/Momentum:* Price is {v_status} VWAP with {m_status} momentum.\n"
+                                     f"• *Risk Context:* {e_risk}")
                     
-                    if extra_notes:
-                        analysis_note += f"• *Confirmations:* {' & '.join(extra_notes)}\n"
-                    
-                    analysis_note += (f"• *Volume/Momentum:* Current price is {v_status} VWAP, showing {m_status} intraday momentum.\n"
-                                      f"• *Risk Context:* {e_risk}")
-                    
-                    msg = (f"🚀 *NEW BUY SIGNAL: {res['symbol']}*\n\n"
+                    msg = (f"{header_icon}: *{res['symbol']}*\n\n"
                            f"💰 *Price:* ${res['price']:.2f}\n"
                            f"📉 *RSI:* {res['rsi']:.2f}\n"
-                           f"📈 *Trend:* Bullish\n"
-                           f"⚡ *VWAP Status:* {res['vwap_status']}\n\n"
+                           f"📊 *Volume:* {vol_status}\n"
+                           f"📈 *MACD:* {macd_status}\n"
+                           f"⚡ *VWAP:* {res['vwap_status']}\n\n"
                            f"📝 *AI Analysis Note:*\n"
                            f"{analysis_note}\n\n"
                            f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
