@@ -58,7 +58,14 @@ st.markdown("""
     .stTabs [aria-selected="true"] {
         background-color: #00f2ff !important;
         color: #050505 !important;
-        box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+    }
+
+    /* Dataframe Visibility */
+    .stDataFrame {
+        background-color: rgba(255, 255, 255, 0.01);
+        border: 1px solid rgba(0, 242, 255, 0.1);
+        border-radius: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -80,13 +87,19 @@ with tab_signals:
         # Fixed logic: reading active_signals.csv
         df_sig = pd.read_csv("active_signals.csv")
         if df_sig.empty:
-            st.warning("⚠️ Scanning in progress... No signals detected in the last scan.")
+            st.markdown('<div style="text-align: center; padding: 40px; border: 1px dashed rgba(0, 242, 255, 0.3); border-radius: 15px;">'
+                        '<h3 style="color: #00f2ff; text-shadow: 0 0 10px #00f2ff;">📡 SCANNING IN PROGRESS...</h3>'
+                        '<p style="color: #ffffff; opacity: 0.8;">No high-probability signals detected in the most recent scan.</p>'
+                        '</div>', unsafe_allow_html=True)
         else:
             st.dataframe(df_sig[['symbol', 'name', 'price', 'rsi', 'vwap_status']], 
                          use_container_width=True, 
                          hide_index=True)
     except:
-        st.info("📡 Scanning in progress... Check Telegram for the most recent live alerts.")
+        st.markdown('<div style="text-align: center; padding: 40px; border: 1px dashed rgba(0, 242, 255, 0.3); border-radius: 15px;">'
+                    '<h3 style="color: #00f2ff; text-shadow: 0 0 10px #00f2ff;">📡 INITIALIZING ENGINE...</h3>'
+                    '<p style="color: #ffffff; opacity: 0.8;">Market data is being decoded. Signals will appear here shortly.</p>'
+                    '</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with tab_overview:

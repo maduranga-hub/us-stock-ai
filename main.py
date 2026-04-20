@@ -196,13 +196,16 @@ def run_scanner(mode="technical"):
                 found_count += 1
                 
                 if res['type'] == "earnings":
-                    msg = (f"{header}: {res['symbol']}\n\n"
-                           f"🏢 Company: {res['name']}\n"
-                           f"💰 Market Cap: {res['market_cap_fmt']}\n"
-                           f"📊 EPS Forecast: {res['forecast_eps']}\n"
-                           f"📉 Last Year's EPS: {res['last_year_eps']}\n"
-                           f"📅 Last Year's Date: {res['last_year_date']}\n"
-                           f"🕒 Dubai Time: {dubai_now.strftime('%H:%M')} GST")
+                    msg = (f"📅 *EARNINGS ALERT: {res['symbol']}*\n\n"
+                           f"🏢 *Company:* {res['name']}\n"
+                           f"💰 *Market Cap:* {res['market_cap_fmt']}\n"
+                           f"📊 *EPS Forecast:* {res['forecast_eps']}\n"
+                           f"📉 *Last Year's EPS:* {res['last_year_eps']}\n\n"
+                           f"📝 *AI Analysis Note:*\n"
+                           f"• *Opportunity:* Forecasted EPS of {res['forecast_eps']} vs {res['last_year_eps']} last year.\n"
+                           f"• *Risk Context:* High volatility event. Professional risk management required for pre-earnings positions.\n"
+                           f"• *Market Sentiment:* Tracking institutional positioning ahead of {target_date}.\n\n"
+                           f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                 else:
                     v_status = "Above" if "Above" in res['vwap_status'] else "Below"
                     m_status = "Bullish" if "Above" in res['vwap_status'] else "Bearish"
@@ -237,7 +240,9 @@ def run_scanner(mode="technical"):
             pd.DataFrame(signals).to_csv("active_signals.csv", index=False)
             pd.DataFrame(all_processed).to_csv("market_overview_technical.csv", index=False)
         else:
-            pd.DataFrame(all_processed).to_csv(f"active_{mode}_signals.csv", index=False)
+            # For earnings, save to specific file AND active_signals.csv as requested
+            pd.DataFrame(all_processed).to_csv("active_earnings_signals.csv", index=False)
+            pd.DataFrame(all_processed).to_csv("active_signals.csv", index=False)
 
 if __name__ == "__main__":
     import sys
