@@ -50,7 +50,7 @@ def get_market_universe():
         df_sp500 = pd.read_csv(io.StringIO(requests.get(url_sp500).text))
         tickers.update(df_sp500['Symbol'].tolist())
         
-        popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX"]
+        popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX", "ADC", "AERO", "AUB"]
         tickers.update(popular)
     except:
         tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX"])
@@ -64,7 +64,7 @@ def calculate_rsi(series, period=14):
     rs = gain / loss
     return 100 - (100 / (1 + rs))
 
-def analyze_ticker(symbol, scan_type="technical"):
+def analyze_ticker(symbol, scan_type="technical", target_date=None):
     try:
         ticker = yf.Ticker(symbol)
         info = ticker.info
@@ -75,7 +75,6 @@ def analyze_ticker(symbol, scan_type="technical"):
         if mkt_cap < 500_000_000 or price < 5:
             return None
 
-        # Base data for overview
         base_res = {
             "symbol": symbol,
             "name": info.get('longName', 'N/A'),
@@ -86,7 +85,6 @@ def analyze_ticker(symbol, scan_type="technical"):
 
         if scan_type == "earnings":
             cal = ticker.calendar
-            tomorrow_date = (get_dubai_time() + timedelta(days=1)).date()
             
             earnings_date = None
             if isinstance(cal, pd.DataFrame) and not cal.empty:
@@ -96,7 +94,8 @@ def analyze_ticker(symbol, scan_type="technical"):
 
             if earnings_date:
                 e_date = earnings_date.date() if hasattr(earnings_date, 'date') else pd.to_datetime(earnings_date).date()
-                if e_date == tomorrow_date:
+                # Use target_date from weekend-aware logic
+                if e_date == target_date:
                     last_year_date = (pd.to_datetime(e_date) - pd.DateOffset(years=1)).strftime('%Y-%m-%d')
                     base_res.update({
                         "type": "earnings",
@@ -130,53 +129,72 @@ def analyze_ticker(symbol, scan_type="technical"):
 
 def run_scanner(mode="technical"):
     universe = get_market_universe()
-    print(f"🚀 Starting {mode.upper()} Scan on {len(universe)} stocks...")
+    dubai_now = get_dubai_time()
+    today_weekday = dubai_now.weekday() # 0=Mon, 4=Fri, 5=Sat, 6=Sun
+
+    # --- WEEKEND-AWARE LOGIC ---
+    if mode == "earnings":
+        if today_weekday == 4: # Friday
+            target_date = (dubai_now + timedelta(days=3)).date()
+            header = "📅 MONDAY'S EARNINGS PREVIEW (Weekend Special)"
+        elif today_weekday == 5: # Saturday
+            target_date = (dubai_now + timedelta(days=2)).date()
+            header = "📅 MONDAY'S EARNINGS PREVIEW"
+        elif today_weekday == 6: # Sunday
+            target_date = (dubai_now + timedelta(days=1)).date()
+            header = "📅 MONDAY'S EARNINGS PREVIEW"
+        else:
+            target_date = (dubai_now + timedelta(days=1)).date()
+            header = "📅 TOMORROW'S EARNINGS PREVIEW"
+    else:
+        target_date = (dubai_now + timedelta(days=1)).date() # Default tomorrow
+        header = "🚀 BUY SIGNAL"
+
+    print(f"🚀 Starting {mode.upper()} Scan (Target: {target_date}) on {len(universe)} stocks...")
     
-    signals = []
-    overview_data = []
+    results = []
+    found_count = 0
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-        future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
+        future_to_ticker = {executor.submit(analyze_ticker, s, mode, target_date): s for s in universe}
         for future in concurrent.futures.as_completed(future_to_ticker):
             res = future.result()
             if res:
-                overview_data.append(res)
+                if mode == "technical" and not res.get('is_signal'):
+                    continue # Overview logic is handled by CSV but not by Alerts
+
+                results.append(res)
+                found_count += 1
                 
-                if mode == "technical" and res.get('is_signal'):
-                    signals.append(res)
-                    msg = (f"🚀 BUY SIGNAL: {res['symbol']}\n\n"
-                           f"💰 Price: ${res['price']:.2f}\n"
-                           f"📉 RSI: {res['rsi']:.2f}\n"
-                           f"📈 Trend: Bullish\n\n"
-                           f"🔗 [Dashboard]({DASHBOARD_URL})")
-                    send_telegram(msg)
-                
-                elif mode == "earnings":
-                    signals.append(res)
-                    msg = (f"🔔 EARNINGS TOMORROW: {res['symbol']}\n\n"
+                if res['type'] == "earnings":
+                    msg = (f"{header}: {res['symbol']}\n\n"
                            f"🏢 Company: {res['name']}\n"
                            f"💰 Market Cap: {res['market_cap_fmt']}\n"
                            f"📊 EPS Forecast: {res['forecast_eps']}\n"
                            f"📉 Last Year's EPS: {res['last_year_eps']}\n"
                            f"📅 Last Year's Date: {res['last_year_date']}\n"
-                           f"🕒 Dubai Time: {get_dubai_time().strftime('%H:%M')} GST")
-                    send_telegram(msg)
+                           f"🕒 Dubai Time: {dubai_now.strftime('%H:%M')} GST")
+                else:
+                    msg = (f"🚀 BUY SIGNAL: {res['symbol']}\n\n"
+                           f"💰 Price: ${res['price']:.2f}\n"
+                           f"📉 RSI: {res['rsi']:.2f}\n"
+                           f"📈 Trend: Bullish\n\n"
+                           f"🔗 [Dashboard]({DASHBOARD_URL})")
+                
+                send_telegram(msg)
 
     # Fallback for Earnings
-    if mode == "earnings" and not signals:
-        tomorrow = (get_dubai_time() + timedelta(days=1)).strftime('%Y-%m-%d')
-        msg = (f"🔔 EARNINGS REPORT: {tomorrow}\n"
+    if mode == "earnings" and found_count == 0:
+        msg = (f"🔔 EARNINGS REPORT: {target_date}\n"
                f"━━━━━━━━━━━━━━━━━━━━\n"
-               f"No major earnings reports are scheduled for tomorrow for stocks above $500M Market Cap.\n"
+               f"No major earnings reports are scheduled for {target_date} for stocks above $500M Market Cap.\n"
                f"━━━━━━━━━━━━━━━━━━━━\n"
                f"Status: System Active")
         send_telegram(msg)
 
-    # Save Results
-    if overview_data:
-        pd.DataFrame(overview_data).to_csv(f"market_overview_{mode}.csv", index=False)
-    if signals:
-        pd.DataFrame(signals).to_csv(f"active_{mode}_signals.csv", index=False)
+    # Save results to CSV (for Dashboard)
+    if results:
+        pd.DataFrame(results).to_csv(f"active_{mode}_signals.csv", index=False)
 
 if __name__ == "__main__":
     import sys
