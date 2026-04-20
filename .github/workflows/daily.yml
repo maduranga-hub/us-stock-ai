@@ -31,11 +31,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
         run: |
-          # Determine scan mode based on schedule
-          # 14:30 UTC is the Earnings scan
           current_hour=$(date -u +%H)
-          current_min=$(date -u +%M)
-          
           if [ "$current_hour" == "14" ]; then
             echo "🚀 Launching Earnings Scan..."
             python main.py earnings
@@ -48,6 +44,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add active_technical_signals.csv active_earnings_signals.csv || true
-          git commit -m "Update scan results [skip ci]" || true
+          git add *.csv || true
+          git commit -m "Update scan results and market overview [skip ci]" || true
           git push

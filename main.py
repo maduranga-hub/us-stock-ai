@@ -43,37 +43,19 @@ def send_telegram(message):
         print(f"❌ Telegram Error: {e}")
 
 def get_market_universe():
-    """
-    Fetches a high-quality pre-filtered list (S&P 500 + NASDAQ 100).
-    Focuses on stocks above $500M Market Cap to ensure high speed.
-    """
-    print("🌐 Fetching Pre-Filtered High-Cap Universe...")
+    """Fetches high-quality S&P 500 and NASDAQ tickers."""
     tickers = set()
     try:
-        # 1. S&P 500 (The Core Large-Caps)
         url_sp500 = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
-        r1 = requests.get(url_sp500)
-        df_sp500 = pd.read_csv(io.StringIO(r1.text))
+        df_sp500 = pd.read_csv(io.StringIO(requests.get(url_sp500).text))
         tickers.update(df_sp500['Symbol'].tolist())
         
-        # 2. NASDAQ 100 (Tech Growth)
-        url_nasdaq100 = "https://raw.githubusercontent.com/jamesonquave/stock-ticker-symbol-list/master/utils/nasdaqlisted.txt"
-        r2 = requests.get(url_nasdaq100)
-        # Filter for top 100/200 if possible, or just add popular ones
-        popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "SE", "BABA", "PDD", "LI", "NIO"]
+        popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX"]
         tickers.update(popular)
-        
-        # 3. Add User's Missing Tickers specifically to ensure coverage
-        target_list = ["GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX", "ADC", "AERO", "AUB"]
-        tickers.update(target_list)
-        
-    except Exception as e:
-        print(f"⚠️ Error fetching pre-filtered universe: {e}")
+    except:
         tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX"])
     
-    # Cleanup: Remove potential errors and sort
-    final_list = [t.replace('.', '-') for t in tickers if t] # Handle tickers like BRK.B -> BRK-B
-    return sorted(list(set(final_list)))
+    return sorted(list(set([t.replace('.', '-') for t in tickers if t])))
 
 def calculate_rsi(series, period=14):
     delta = series.diff()
@@ -90,9 +72,17 @@ def analyze_ticker(symbol, scan_type="technical"):
         mkt_cap = info.get('marketCap', 0)
         price = info.get('currentPrice', info.get('regularMarketPrice', 0))
 
-        # Basic filtering to reduce noise
         if mkt_cap < 500_000_000 or price < 5:
             return None
+
+        # Base data for overview
+        base_res = {
+            "symbol": symbol,
+            "name": info.get('longName', 'N/A'),
+            "price": price,
+            "market_cap": mkt_cap,
+            "market_cap_fmt": format_market_cap(mkt_cap)
+        }
 
         if scan_type == "earnings":
             cal = ticker.calendar
@@ -108,20 +98,16 @@ def analyze_ticker(symbol, scan_type="technical"):
                 e_date = earnings_date.date() if hasattr(earnings_date, 'date') else pd.to_datetime(earnings_date).date()
                 if e_date == tomorrow_date:
                     last_year_date = (pd.to_datetime(e_date) - pd.DateOffset(years=1)).strftime('%Y-%m-%d')
-                    
-                    return {
+                    base_res.update({
                         "type": "earnings",
-                        "symbol": symbol,
-                        "name": info.get('longName', 'N/A'),
                         "forecast_eps": info.get('forwardEps', 'N/A'),
                         "last_year_eps": info.get('trailingEps', 'N/A'),
-                        "last_year_date": last_year_date,
-                        "market_cap": format_market_cap(mkt_cap)
-                    }
+                        "last_year_date": last_year_date
+                    })
+                    return base_res
             return None
 
         else:
-            # Technical Scan Logic
             df = ticker.history(period="15d", interval="1h")
             if df.empty or len(df) < 100: return None
             
@@ -132,54 +118,52 @@ def analyze_ticker(symbol, scan_type="technical"):
             rsi = df['rsi'].iloc[-1]
             sma100 = df['close'].rolling(window=100).mean().iloc[-1]
             
-            if rsi <= 35 and price > sma100:
-                return {
-                    "type": "technical",
-                    "symbol": symbol,
-                    "price": price,
-                    "rsi": rsi,
-                    "name": info.get('longName', 'N/A')
-                }
+            base_res.update({
+                "type": "technical",
+                "rsi": rsi,
+                "is_signal": rsi <= 35 and price > sma100
+            })
+            return base_res
     except:
         pass
     return None
 
 def run_scanner(mode="technical"):
     universe = get_market_universe()
-    # Scans the entire pre-filtered universe (around 600-800 stocks)
-    # This will be MUCH faster and more reliable
-    print(f"🚀 Starting {mode.upper()} Scan on {len(universe)} high-cap stocks...")
+    print(f"🚀 Starting {mode.upper()} Scan on {len(universe)} stocks...")
     
-    results = []
-    found_count = 0
+    signals = []
+    overview_data = []
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
         future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
         for future in concurrent.futures.as_completed(future_to_ticker):
             res = future.result()
             if res:
-                results.append(res)
-                found_count += 1
+                overview_data.append(res)
                 
-                if res['type'] == "earnings":
-                    msg = (f"🔔 EARNINGS TOMORROW: {res['symbol']}\n\n"
-                           f"🏢 Company: {res['name']}\n"
-                           f"💰 Market Cap: {res['market_cap']}\n"
-                           f"📊 EPS Forecast: {res['forecast_eps']}\n"
-                           f"📉 Last Year's EPS: {res['last_year_eps']}\n"
-                           f"📅 Last Year's Date: {res['last_year_date']}\n"
-                           f"🕒 Dubai Time: {get_dubai_time().strftime('%H:%M')} GST")
-                else:
+                if mode == "technical" and res.get('is_signal'):
+                    signals.append(res)
                     msg = (f"🚀 BUY SIGNAL: {res['symbol']}\n\n"
                            f"💰 Price: ${res['price']:.2f}\n"
                            f"📉 RSI: {res['rsi']:.2f}\n"
                            f"📈 Trend: Bullish\n\n"
                            f"🔗 [Dashboard]({DASHBOARD_URL})")
+                    send_telegram(msg)
                 
-                send_telegram(msg)
+                elif mode == "earnings":
+                    signals.append(res)
+                    msg = (f"🔔 EARNINGS TOMORROW: {res['symbol']}\n\n"
+                           f"🏢 Company: {res['name']}\n"
+                           f"💰 Market Cap: {res['market_cap_fmt']}\n"
+                           f"📊 EPS Forecast: {res['forecast_eps']}\n"
+                           f"📉 Last Year's EPS: {res['last_year_eps']}\n"
+                           f"📅 Last Year's Date: {res['last_year_date']}\n"
+                           f"🕒 Dubai Time: {get_dubai_time().strftime('%H:%M')} GST")
+                    send_telegram(msg)
 
-    # 🕵️ FALLBACK LOGIC FOR EARNINGS
-    if mode == "earnings" and found_count == 0:
+    # Fallback for Earnings
+    if mode == "earnings" and not signals:
         tomorrow = (get_dubai_time() + timedelta(days=1)).strftime('%Y-%m-%d')
         msg = (f"🔔 EARNINGS REPORT: {tomorrow}\n"
                f"━━━━━━━━━━━━━━━━━━━━\n"
@@ -188,8 +172,11 @@ def run_scanner(mode="technical"):
                f"Status: System Active")
         send_telegram(msg)
 
-    if results:
-        pd.DataFrame(results).to_csv(f"active_{mode}_signals.csv", index=False)
+    # Save Results
+    if overview_data:
+        pd.DataFrame(overview_data).to_csv(f"market_overview_{mode}.csv", index=False)
+    if signals:
+        pd.DataFrame(signals).to_csv(f"active_{mode}_signals.csv", index=False)
 
 if __name__ == "__main__":
     import sys
