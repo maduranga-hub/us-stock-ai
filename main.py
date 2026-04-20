@@ -124,15 +124,17 @@ def run_scanner(mode="technical"):
     print(f"🚀 Starting {mode.upper()} Scan...")
     
     results = []
+    found_count = 0
+    
     with concurrent.futures.ThreadPoolExecutor(max_workers=40) as executor:
         future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
         for future in concurrent.futures.as_completed(future_to_ticker):
             res = future.result()
             if res:
                 results.append(res)
+                found_count += 1
                 
                 if res['type'] == "earnings":
-                    # EXACT FORMAT REQUESTED BY USER
                     msg = (f"🔔 EARNINGS TOMORROW: {res['symbol']}\n\n"
                            f"🏢 Company: {res['name']}\n"
                            f"💰 Market Cap: {res['market_cap']}\n"
@@ -148,6 +150,17 @@ def run_scanner(mode="technical"):
                            f"🔗 [Dashboard]({DASHBOARD_URL})")
                 
                 send_telegram(msg)
+
+    # 🕵️ FALLBACK LOGIC FOR EARNINGS
+    if mode == "earnings" and found_count == 0:
+        tomorrow = (get_dubai_time() + timedelta(days=1)).strftime('%Y-%m-%d')
+        msg = (f"🔔 EARNINGS REPORT: {tomorrow}\n"
+               f"━━━━━━━━━━━━━━━━━━━━\n"
+               f"No major earnings reports are scheduled for tomorrow for stocks above $500M Market Cap.\n"
+               f"━━━━━━━━━━━━━━━━━━━━\n"
+               f"Status: System Active")
+        send_telegram(msg)
+        print("ℹ️ No earnings found. Fallback message sent.")
 
     if results:
         pd.DataFrame(results).to_csv(f"active_{mode}_signals.csv", index=False)
