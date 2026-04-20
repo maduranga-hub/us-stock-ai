@@ -96,23 +96,15 @@ else:
     st.markdown('<h1 class="cyber-header">SYSTEM DOCUMENTATION</h1>', unsafe_allow_html=True)
     st.markdown('<div class="glass-card">', unsafe_allow_html=True)
     
-    # Architecture Flowchart
-    st.markdown('<h3 style="color: #00f2ff; font-family: \'Orbitron\';">📊 SYSTEM ARCHITECTURE</h3>', unsafe_allow_html=True)
+    # Architecture Overview with CSS-based styling
     st.markdown("""
-    ```mermaid
-    graph TD
-        A[GitHub Actions Scheduler] -->|Trigger :25 past| B(main.py Engine)
-        B --> C{MTF Check}
-        C -->|Price < Daily SMA 100| D[Discard]
-        C -->|Price > Daily SMA 100| E[1-Hour Analysis]
-        E --> F{Technical Logic}
-        F -->|Match: RSI <= 35 & MACD Cross| G[Generate Alert]
-        G --> H[Telegram Broadcast]
-        G --> I[Google Sheets Sync]
-        G --> J[CSV Data Push]
-        J --> K[Streamlit Dashboard]
-    ```
-    """)
+    <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 15px; border: 1px solid #00f2ff; margin-bottom: 30px;">
+        <h3 style="color: #00f2ff; font-family: 'Orbitron'; text-align: center;">📊 OPERATIONAL WORKFLOW</h3>
+        <p style="text-align: center; color: #fff;">
+            GitHub Actions Scheduler ➔ <b>main.py Engine</b> ➔ MTF Check (SMA 100) ➔ 1-Hour Analysis (RSI/MACD) ➔ <b>Signal Delivery</b>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
     ### 🔍 PHASE 1: THE MULTI-TIMEFRAME (MTF) BRAIN
@@ -137,10 +129,9 @@ else:
     - **Earnings Scans**: Daily at 3:30 PM Dubai Time.
     """)
     
-    # Button to open the printable HTML
     st.markdown("---")
-    st.markdown("#### 📄 Export Report")
-    st.info("To download this as a professional PDF, open the [walkthrough.html](file:///c:/Users/Nirmal%20Maduranga/Desktop/RSA/us-stock-ai/walkthrough.html) file and print as PDF.")
+    st.markdown("#### 📄 Printable Version")
+    st.info("To download the full visual report with diagrams, open the `walkthrough.html` file from your repository.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown('<p style="text-align: center; color: rgba(0,242,255,0.2); font-size: 0.8rem;">NIRMAL RSA QUANT • DUBAI GST SYNCED</p>', unsafe_allow_html=True)
