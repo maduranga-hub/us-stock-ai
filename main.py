@@ -312,6 +312,16 @@ def run_scanner(mode="technical"):
                f"Status: System Active")
         send_telegram(msg)
 
+    # Send Completion Status to Telegram (Technical Only)
+    if mode == "technical":
+        status_msg = (f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n"
+                      f"━━━━━━━━━━━━━━━━━━━━\n"
+                      f"✅ Total Stocks Analyzed: {len(universe)}\n"
+                      f"🎯 New Signals Found: {found_count}\n"
+                      f"━━━━━━━━━━━━━━━━━━━━\n"
+                      f"Status: System Active")
+        send_telegram(status_msg)
+
     # Save results to CSV (for Dashboard)
     if all_processed:
         if mode == "technical":
