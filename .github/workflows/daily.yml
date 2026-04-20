@@ -2,10 +2,10 @@ name: US Stock AI Serverless Engine
 
 on:
   schedule:
-    # 2:30 PM UTC = 6:30 PM Dubai Time (Earnings Scan)
-    - cron: '30 14 * * 1-5'
-    # Hourly Technical Scan (11:30 UTC to 21:30 UTC = 3:30 PM to 1:30 AM Dubai Time)
-    - cron: '30 11-21 * * 1-5'
+    # 2:25 PM UTC = 6:25 PM Dubai Time (Earnings Scan)
+    - cron: '25 14 * * 1-5'
+    # Hourly Technical Scan (11:25 UTC to 21:25 UTC = 3:25 PM to 1:25 AM Dubai Time)
+    - cron: '25 11-21 * * 1-5'
   workflow_dispatch:
 
 jobs:

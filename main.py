@@ -179,7 +179,8 @@ def run_scanner(mode="technical"):
 
     print(f"🚀 Starting {mode.upper()} Scan (Target: {target_date}) on {len(universe)} stocks...")
     
-    results = []
+    signals = []
+    all_processed = []
     found_count = 0
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
@@ -187,10 +188,11 @@ def run_scanner(mode="technical"):
         for future in concurrent.futures.as_completed(future_to_ticker):
             res = future.result()
             if res:
+                all_processed.append(res)
                 if mode == "technical" and not res.get('is_signal'):
-                    continue # Overview logic is handled by CSV but not by Alerts
+                    continue # Heatmap uses all, but alerts/signals CSV only use signals
 
-                results.append(res)
+                signals.append(res)
                 found_count += 1
                 
                 if res['type'] == "earnings":
@@ -230,9 +232,12 @@ def run_scanner(mode="technical"):
         send_telegram(msg)
 
     # Save results to CSV (for Dashboard)
-    if results:
-        csv_name = "active_signals.csv" if mode == "technical" else f"active_{mode}_signals.csv"
-        pd.DataFrame(results).to_csv(csv_name, index=False)
+    if all_processed:
+        if mode == "technical":
+            pd.DataFrame(signals).to_csv("active_signals.csv", index=False)
+            pd.DataFrame(all_processed).to_csv("market_overview_technical.csv", index=False)
+        else:
+            pd.DataFrame(all_processed).to_csv(f"active_{mode}_signals.csv", index=False)
 
 if __name__ == "__main__":
     import sys
