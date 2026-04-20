@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import pytz
 import requests
+import io
 import os
 import concurrent.futures
 from datetime import datetime, timedelta
@@ -42,13 +43,27 @@ def send_telegram(message):
         print(f"❌ Telegram Error: {e}")
 
 def get_market_universe():
-    """Fetches a large list of US tickers."""
+    """Fetches a high-coverage ticker list including major exchanges."""
+    print("🌐 Fetching Stock Universe...")
+    tickers = set()
     try:
-        url = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
-        response = requests.get(url)
-        return [t.strip() for t in response.text.split("\n") if t.strip()]
-    except:
-        return ["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GOOGL", "META", "AMD", "NFLX"]
+        # Source 1: Large curated list
+        url1 = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
+        r1 = requests.get(url1)
+        tickers.update([t.strip() for t in r1.text.split("\n") if t.strip()])
+        
+        # Source 2: Specifically ensure S&P 500 for high-cap coverage
+        url2 = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
+        r2 = requests.get(url2)
+        sp500_df = pd.read_csv(io.StringIO(r2.text))
+        tickers.update(sp500_df['Symbol'].tolist())
+        
+    except Exception as e:
+        print(f"⚠️ Error fetching universe: {e}")
+        # Fallback to a core list if all else fails
+        tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM"])
+    
+    return sorted(list(tickers))
 
 def calculate_rsi(series, period=14):
     delta = series.diff()
@@ -65,6 +80,7 @@ def analyze_ticker(symbol, scan_type="technical"):
         mkt_cap = info.get('marketCap', 0)
         price = info.get('currentPrice', info.get('regularMarketPrice', 0))
 
+        # Basic filtering to reduce noise
         if mkt_cap < 500_000_000 or price < 5:
             return None
 
@@ -95,6 +111,7 @@ def analyze_ticker(symbol, scan_type="technical"):
             return None
 
         else:
+            # Technical Scan Logic
             df = ticker.history(period="15d", interval="1h")
             if df.empty or len(df) < 100: return None
             
@@ -119,14 +136,15 @@ def analyze_ticker(symbol, scan_type="technical"):
 
 def run_scanner(mode="technical"):
     universe = get_market_universe()
-    universe = universe[:2500] 
+    # Increase coverage to 6000 stocks for full market scan
+    universe = universe[:6000] 
     
-    print(f"🚀 Starting {mode.upper()} Scan...")
+    print(f"🚀 Starting {mode.upper()} Scan on {len(universe)} stocks...")
     
     results = []
     found_count = 0
     
-    with concurrent.futures.ThreadPoolExecutor(max_workers=40) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
         future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
         for future in concurrent.futures.as_completed(future_to_ticker):
             res = future.result()
@@ -151,7 +169,6 @@ def run_scanner(mode="technical"):
                 
                 send_telegram(msg)
 
-    # 🕵️ FALLBACK LOGIC FOR EARNINGS
     if mode == "earnings" and found_count == 0:
         tomorrow = (get_dubai_time() + timedelta(days=1)).strftime('%Y-%m-%d')
         msg = (f"🔔 EARNINGS REPORT: {tomorrow}\n"
@@ -160,7 +177,6 @@ def run_scanner(mode="technical"):
                f"━━━━━━━━━━━━━━━━━━━━\n"
                f"Status: System Active")
         send_telegram(msg)
-        print("ℹ️ No earnings found. Fallback message sent.")
 
     if results:
         pd.DataFrame(results).to_csv(f"active_{mode}_signals.csv", index=False)
