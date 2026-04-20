@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US STOCK AI v4.0 | Workflow Walkthrough</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme: 'dark'});</script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: #e0e0e0;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 40px;
+            background: radial-gradient(circle at top right, #0d001a 0%, #050505 100%);
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00f2ff;
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+            padding-bottom: 30px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00f2ff;
+            margin-top: 50px;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chart-container {
+            background: rgba(0,0,0,0.4);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .section-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-left: 5px solid #00f2ff;
+        }
+
+        .sub-header {
+            color: #00f2ff;
+            font-weight: bold;
+            margin-top: 25px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        ul { padding-left: 20px; list-style-type: none; }
+        li { margin-bottom: 12px; color: #bbb; position: relative; padding-left: 20px; }
+        li::before { content: "•"; color: #00f2ff; position: absolute; left: 0; }
+        
+        code {
+            background: rgba(0, 242, 255, 0.1);
+            color: #00f2ff;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        strong { color: #fff; }
+
+        .footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 4px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 40px;
+            text-transform: uppercase;
+        }
+        
+        @media print {
+            body { background: white; color: black; padding: 0; }
+            .container { background: white; border: 1px solid #ddd; color: black; box-shadow: none; padding: 40px; }
+            h1, h2, .sub-header, code, li::before { color: #008080 !important; text-shadow: none !important; border-color: #008080 !important; }
+            .section-box { border-color: #008080 !important; background: #fafafa !important; }
+            li { color: #333 !important; }
+            strong { color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>US STOCK AI v4.0</h1>
+        <p style="text-align: center; color: rgba(255,255,255,0.5); font-weight: bold; letter-spacing: 2px;">WORKFLOW WALKTHROUGH</p>
+
+        <h2>📊 System Architecture Overview</h2>
+        <p>The system operates as a serverless pipeline, leveraging GitHub Actions for orchestration, YFinance for data, and Telegram/Google Sheets for delivery.</p>
+        
+        <div class="chart-container">
+            <div class="mermaid">
+                graph TD
+                A[GitHub Actions Scheduler] -->|Trigger :25 past| B(main.py Engine)
+                B --> C{MTF Check}
+                C -->|Price < Daily SMA 100| D[Discard]
+                C -->|Price > Daily SMA 100| E[1-Hour Analysis]
+                E --> F{Technical Logic}
+                F -->|Match: RSI <= 35 & MACD Cross| G[Generate Alert]
+                G --> H[Telegram Broadcast]
+                G --> I[Google Sheets Sync]
+                G --> J[CSV Data Push]
+                J --> K[Streamlit Dashboard]
+                style A fill:#0d001a,stroke:#00f2ff,color:#fff
+                style B fill:#0d001a,stroke:#00f2ff,color:#fff
+                style G fill:#0d001a,stroke:#00f2ff,color:#fff
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>🔍 Phase 1: The Multi-Timeframe (MTF) Brain</h2>
+            <p>The core of v4.0's accuracy is its two-stage filtering process:</p>
+            
+            <span class="sub-header">1. Daily Trend Filter (Long-Term)</span>
+            <p>Before any technical indicators are checked, the engine analyzes the <strong>Daily Timeframe</strong>.</p>
+            <ul>
+                <li><strong>Metric:</strong> Simple Moving Average (SMA) 100.</li>
+                <li><strong>Logic:</strong> The stock must be trading <strong>above</strong> its Daily SMA 100.</li>
+                <li><strong>Purpose:</strong> This ensures we only trade stocks in a structural uptrend, preventing "catching a falling knife."</li>
+            </ul>
+
+            <span class="sub-header">2. Hourly Execution (Immediate Momentum)</span>
+            <p>If the daily trend is bullish, the engine switches to the <strong>1-Hour Timeframe</strong>:</p>
+            <ul>
+                <li><strong>RSI Check:</strong> Verifies if RSI is <strong>&le; 35</strong> (Oversold condition).</li>
+                <li><strong>MACD Confirmation:</strong> Looks for a <strong>Bullish Crossover</strong> (MACD line crossing above Signal line) within the last 3 candles.</li>
+                <li><strong>VWAP Alignment:</strong> Confirms if the price is <strong>Above VWAP</strong> to ensure intraday buyer dominance.</li>
+            </ul>
+        </div>
+
+        <div class="section-box">
+            <h2>⚡ Phase 2: High Conviction Filtering</h2>
+            <p>A signal is upgraded to <strong>🔥 HIGH CONVICTION</strong> if it meets the technical criteria AND features:</p>
+            <ul>
+                <li><strong>Volume Spike:</strong> Volume is <strong>> 1.5x</strong> higher than the 20-day average.</li>
+                <li><strong>VWAP Confirmation:</strong> Price is definitively trading above the session's Volume Weighted Average Price.</li>
+            </ul>
+        </div>
+
+        <div class="section-box">
+            <h2>📲 Phase 3: Real-Time Synchronization</h2>
+            <p>Once a signal is detected, v4.0 executes a triple-sync operation:</p>
+            <ul>
+                <li><strong>1. Telegram Alert:</strong> Sends a structured message with an <strong>AI Analysis Note</strong> explaining the setup to your subscribers.</li>
+                <li><strong>2. Google Sheets Sync:</strong> Appends a new row to your "US STOCK AI" spreadsheet using the <code>GCP_SERVICE_ACCOUNT_KEY</code> for secure, mobile-friendly tracking.</li>
+                <li><strong>3. CSV Repository Update:</strong> Overwrites <code>active_signals.csv</code> and <code>market_overview_technical.csv</code> in your GitHub repository to feed the dashboard.</li>
+            </ul>
+        </div>
+
+        <div class="section-box">
+            <h2>🖥️ Phase 4: The Quant Dashboard (Streamlit)</h2>
+            <p>The final layer is the visual terminal:</p>
+            <ul>
+                <li><strong>RSI Heatmap:</strong> Visualizes the entire market universe by RSI levels and Market Cap.</li>
+                <li><strong>Live Signal Feed:</strong> Displays the most recent high-probability setups in a high-contrast Neon Cyan table.</li>
+                <li><strong>Deep Analysis:</strong> Allows you to pull interactive candlestick charts with SMA 100 and VWAP overlays for any specific ticker.</li>
+            </ul>
+        </div>
+
+        <div class="section-box">
+            <h2>🕒 Timing Logic (Dubai GST)</h2>
+            <ul>
+                <li><strong>Technical Scans:</strong> Run at <strong>:25 past the hour</strong> (4:25 PM to 12:25 AM Dubai Time).</li>
+                <li><strong>Earnings Scans:</strong> Run at <strong>3:30 PM Dubai Time</strong> to provide a pre-market volatility roadmap.</li>
+                <li><strong>Weekend Logic:</strong> On Fridays, the engine automatically scans for the following Monday's earnings reports to keep you ahead of the weekly gap.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            NIRMAL RSA QUANT • DUBAI GST SYNCED • PRODUCTION READY v4.0
+        </div>
+    </div>
+</body>
+</html>
