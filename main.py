@@ -239,10 +239,12 @@ def run_scanner(mode="technical"):
         if mode == "technical":
             pd.DataFrame(signals).to_csv("active_signals.csv", index=False)
             pd.DataFrame(all_processed).to_csv("market_overview_technical.csv", index=False)
+            print(f"✅ Technical signals and market overview saved (Dubai Time: {dubai_now.strftime('%H:%M')})")
         else:
             # For earnings, save to specific file AND active_signals.csv as requested
             pd.DataFrame(all_processed).to_csv("active_earnings_signals.csv", index=False)
             pd.DataFrame(all_processed).to_csv("active_signals.csv", index=False)
+            print(f"✅ Earnings signals and sync feed saved (Dubai Time: {dubai_now.strftime('%H:%M')})")
 
 if __name__ == "__main__":
     import sys

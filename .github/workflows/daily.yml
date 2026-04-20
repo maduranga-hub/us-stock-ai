@@ -4,8 +4,8 @@ on:
   schedule:
     # 11:30 AM UTC = 3:30 PM Dubai Time (Earnings Scan)
     - cron: '30 11 * * 1-5'
-    # Hourly Technical Scan (11:25 UTC to 21:25 UTC = 3:25 PM to 1:25 AM Dubai Time)
-    - cron: '25 11-21 * * 1-5'
+    # Technical Scan (12:25 PM to 8:25 PM UTC = 4:25 PM to 12:25 AM Dubai Time)
+    - cron: '25 12-20 * * 1-5'
   workflow_dispatch:
 
 jobs:
