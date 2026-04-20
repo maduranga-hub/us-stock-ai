@@ -8,6 +8,9 @@ import os
 import concurrent.futures
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+import gspread
+import json
+from google.oauth2.service_account import Credentials
 
 # Load environment variables
 load_dotenv()
@@ -41,6 +44,25 @@ def send_telegram(message):
         response.raise_for_status()
     except Exception as e:
         print(f"❌ Telegram Error: {e}")
+
+def log_to_google_sheet(data_row):
+    """Logs a signal row to Google Sheets."""
+    gs_id = os.getenv("GOOGLE_SHEET_ID")
+    gs_service_account = os.getenv("GSPREAD_SERVICE_ACCOUNT")
+    
+    if not gs_id or not gs_service_account:
+        return # Skip if not configured
+        
+    try:
+        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+        service_account_info = json.loads(gs_service_account)
+        creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
+        client = gspread.authorize(creds)
+        sheet = client.open_by_key(gs_id).sheet1
+        sheet.append_row(data_row)
+        print(f"✅ Google Sheets Sync: {data_row[1]}")
+    except Exception as e:
+        print(f"⚠️ Google Sheets Sync Failed: {e}")
 
 def get_market_universe():
     """Fetches high-quality S&P 500 and NASDAQ tickers."""
@@ -266,6 +288,19 @@ def run_scanner(mode="technical"):
                            f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                 
                 send_telegram(msg)
+                
+                # --- Google Sheets Sync ---
+                gs_row = [
+                    dubai_now.strftime('%Y-%m-%d %H:%M'),
+                    res['symbol'],
+                    f"{res['price']:.2f}",
+                    f"{res['rsi']:.2f}",
+                    res['vwap_status'],
+                    macd_status,
+                    vol_status,
+                    analysis_note.replace('\n', ' ')
+                ]
+                log_to_google_sheet(gs_row)
 
     # Fallback for Earnings
     if mode == "earnings" and found_count == 0:

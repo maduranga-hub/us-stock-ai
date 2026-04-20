@@ -7,3 +7,5 @@ pytz
 requests
 python-dotenv
 lxml
+gspread
+google-auth
