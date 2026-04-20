@@ -20,6 +20,7 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
     }
     
+    /* Neon Headers */
     .cyber-header {
         font-family: 'Orbitron', sans-serif;
         color: #00f2ff;
@@ -36,6 +37,28 @@ st.markdown("""
         border-radius: 20px;
         padding: 25px;
         margin-bottom: 20px;
+    }
+
+    /* High Contrast Tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 10px;
+        background-color: rgba(255, 255, 255, 0.02);
+        padding: 5px;
+        border-radius: 12px;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        font-family: 'Inter', sans-serif;
+        border-radius: 8px;
+        padding: 10px 20px;
+    }
+
+    .stTabs [aria-selected="true"] {
+        background-color: #00f2ff !important;
+        color: #050505 !important;
+        box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -54,10 +77,16 @@ with tab_signals:
     st.markdown('<div class="glass-card">', unsafe_allow_html=True)
     st.subheader("📡 Live Technical Signal Feed")
     try:
-        df_sig = pd.read_csv("active_technical_signals.csv")
-        st.dataframe(df_sig[['symbol', 'name', 'price', 'rsi']], use_container_width=True, hide_index=True)
+        # Fixed logic: reading active_signals.csv
+        df_sig = pd.read_csv("active_signals.csv")
+        if df_sig.empty:
+            st.warning("⚠️ Scanning in progress... No signals detected in the last scan.")
+        else:
+            st.dataframe(df_sig[['symbol', 'name', 'price', 'rsi', 'vwap_status']], 
+                         use_container_width=True, 
+                         hide_index=True)
     except:
-        st.info("Scanner is currently looking for signals... Check Telegram for live alerts.")
+        st.info("📡 Scanning in progress... Check Telegram for the most recent live alerts.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 with tab_overview:
@@ -102,7 +131,8 @@ with tab_heatmap:
 
 # Selection for Analysis
 st.markdown("---")
-selected_stock = st.selectbox("🔍 SELECT STOCK FOR DEEP ANALYSIS", ["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "AMD", "GE", "UNH", "RTX"])
+st.markdown('<h3 style="color: #00f2ff; text-shadow: 0 0 10px #00f2ff; font-family: \'Orbitron\', sans-serif; letter-spacing: 2px;">🔍 SELECT STOCK FOR DEEP ANALYSIS</h3>', unsafe_allow_html=True)
+selected_stock = st.selectbox("Select Ticker", ["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "AMD", "GE", "UNH", "RTX"], label_visibility="collapsed")
 
 with st.spinner("Decoding Alpha Data..."):
     t = yf.Ticker(selected_stock)

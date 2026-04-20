@@ -231,7 +231,8 @@ def run_scanner(mode="technical"):
 
     # Save results to CSV (for Dashboard)
     if results:
-        pd.DataFrame(results).to_csv(f"active_{mode}_signals.csv", index=False)
+        csv_name = "active_signals.csv" if mode == "technical" else f"active_{mode}_signals.csv"
+        pd.DataFrame(results).to_csv(csv_name, index=False)
 
 if __name__ == "__main__":
     import sys
