@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -9,7 +10,7 @@ from datetime import datetime
 # Page Configuration
 st.set_page_config(page_title="US Stock AI | Quant Terminal", layout="wide")
 
-# Custom CSS for Dashboard
+# Custom CSS
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;700&display=swap');
@@ -64,11 +65,11 @@ if page == "📊 QUANT DASHBOARD":
         except: st.info("Generating...")
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # Deep Analysis
+    # Deep Analysis Section
     st.markdown("---")
     st.markdown('<h3 style="color: #00f2ff; font-family: \'Orbitron\';">🔍 DEEP ANALYSIS</h3>', unsafe_allow_html=True)
     selected_stock = st.selectbox("Select Ticker", ["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "AMD", "GE", "UNH", "RTX"], label_visibility="collapsed")
-    with st.spinner("Decoding Data..."):
+    with st.spinner("Decoding Alpha Data..."):
         t = yf.Ticker(selected_stock)
         df_view = t.history(period="60d", interval="1h")
         if not df_view.empty:
@@ -87,71 +88,15 @@ if page == "📊 QUANT DASHBOARD":
             st.plotly_chart(fig_v, use_container_width=True)
 
 else:
-    # PREMIUM DOCUMENTATION (FULL HTML REPLICA)
-    st.markdown("""
-        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-        <script>mermaid.initialize({startOnLoad:true, theme: 'dark'});</script>
-        <style>
-            .doc-container { background: rgba(255, 255, 255, 0.02); padding: 40px; border-radius: 30px; border: 1px solid rgba(0, 242, 255, 0.15); }
-            .doc-header { font-family: 'Orbitron'; color: #00f2ff; text-align: center; border-bottom: 2px solid rgba(0, 242, 255, 0.2); padding-bottom: 20px; letter-spacing: 5px; }
-            .section-box { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; margin: 25px 0; border-left: 5px solid #00f2ff; }
-            .mermaid-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; border: 1px solid rgba(0, 242, 255, 0.1); margin: 20px 0; display: flex; justify-content: center; }
-            h3 { color: #00f2ff; font-family: 'Orbitron'; font-size: 1.1rem; }
-            p, li { color: #ccc; line-height: 1.6; }
-        </style>
-        <div class="doc-container">
-            <h1 class="doc-header">US STOCK AI v4.0</h1>
-            <p style="text-align: center; color: #00f2ff; font-weight: bold; opacity: 0.7;">WORKFLOW WALKTHROUGH</p>
-            
-            <div class="section-box">
-                <h3>📊 System Architecture Overview</h3>
-                <p>The system operates as a serverless pipeline, leveraging GitHub Actions for orchestration, YFinance for data, and Telegram/Google Sheets for delivery.</p>
-                <div class="mermaid-box">
-                    <pre class="mermaid" style="background: transparent; border: none;">
-                        graph TD
-                        A[GitHub Actions Scheduler] -->|Trigger :25 past| B(main.py Engine)
-                        B --> C{MTF Check}
-                        C -->|Price < Daily SMA 100| D[Discard]
-                        C -->|Price > Daily SMA 100| E[1-Hour Analysis]
-                        E --> F{Technical Logic}
-                        F -->|Match: RSI <= 35 & MACD Cross| G[Generate Alert]
-                        G --> H[Telegram Broadcast]
-                        G --> I[Google Sheets Sync]
-                        G --> J[CSV Data Push]
-                        J --> K[Streamlit Dashboard]
-                    </pre>
-                </div>
-            </div>
-
-            <div class="section-box">
-                <h3>🔍 Phase 1: The Multi-Timeframe (MTF) Brain</h3>
-                <p><b>1. Daily Trend Filter:</b> Price must be above SMA 100 on the Daily chart.</p>
-                <p><b>2. Hourly Execution:</b> RSI &le; 35 and Bullish MACD Crossover on the 1-Hour chart.</p>
-            </div>
-
-            <div class="section-box">
-                <h3>⚡ Phase 2: High Conviction Filtering</h3>
-                <p>Signals are flagged as <b>🔥 HIGH CONVICTION</b> if Volume is > 1.5x average and price is Above VWAP.</p>
-            </div>
-
-            <div class="section-box">
-                <h3>📲 Phase 3: Real-Time Synchronization</h3>
-                <ul>
-                    <li><b>Telegram Alert:</b> Structured message with AI Analysis Note.</li>
-                    <li><b>Google Sheets Sync:</b> Live logging for mobile tracking.</li>
-                </ul>
-            </div>
-
-            <div class="section-box">
-                <h3>🕒 Timing Logic (Dubai GST)</h3>
-                <ul>
-                    <li><b>Technical Scans:</b> Hourly at :25 past (4:25 PM - 12:25 AM).</li>
-                    <li><b>Earnings Scans:</b> Daily at 3:30 PM Dubai Time.</li>
-                </ul>
-            </div>
-            
-            <p style="text-align: center; color: rgba(0,242,255,0.3); font-size: 0.8rem; margin-top: 40px;">NIRMAL RSA QUANT • PRODUCTION READY v4.0</p>
-        </div>
-    """, unsafe_allow_html=True)
+    # SYSTEM DOCUMENTATION PAGE (IFRAME COMPONENT)
+    st.markdown('<h1 class="cyber-header">SYSTEM DOCUMENTATION</h1>', unsafe_allow_html=True)
+    
+    html_file_path = "walkthrough.html"
+    try:
+        with open(html_file_path, "r", encoding="utf-8") as f:
+            html_content = f.read()
+        components.html(html_content, height=2000, scrolling=True)
+    except Exception as e:
+        st.error(f"Error loading documentation: {e}")
 
 st.markdown('<p style="text-align: center; color: rgba(0,242,255,0.2); font-size: 0.8rem;">NIRMAL RSA QUANT • DUBAI GST SYNCED</p>', unsafe_allow_html=True)
