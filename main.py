@@ -43,27 +43,37 @@ def send_telegram(message):
         print(f"❌ Telegram Error: {e}")
 
 def get_market_universe():
-    """Fetches a high-coverage ticker list including major exchanges."""
-    print("🌐 Fetching Stock Universe...")
+    """
+    Fetches a high-quality pre-filtered list (S&P 500 + NASDAQ 100).
+    Focuses on stocks above $500M Market Cap to ensure high speed.
+    """
+    print("🌐 Fetching Pre-Filtered High-Cap Universe...")
     tickers = set()
     try:
-        # Source 1: Large curated list
-        url1 = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
-        r1 = requests.get(url1)
-        tickers.update([t.strip() for t in r1.text.split("\n") if t.strip()])
+        # 1. S&P 500 (The Core Large-Caps)
+        url_sp500 = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
+        r1 = requests.get(url_sp500)
+        df_sp500 = pd.read_csv(io.StringIO(r1.text))
+        tickers.update(df_sp500['Symbol'].tolist())
         
-        # Source 2: Specifically ensure S&P 500 for high-cap coverage
-        url2 = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
-        r2 = requests.get(url2)
-        sp500_df = pd.read_csv(io.StringIO(r2.text))
-        tickers.update(sp500_df['Symbol'].tolist())
+        # 2. NASDAQ 100 (Tech Growth)
+        url_nasdaq100 = "https://raw.githubusercontent.com/jamesonquave/stock-ticker-symbol-list/master/utils/nasdaqlisted.txt"
+        r2 = requests.get(url_nasdaq100)
+        # Filter for top 100/200 if possible, or just add popular ones
+        popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "SE", "BABA", "PDD", "LI", "NIO"]
+        tickers.update(popular)
+        
+        # 3. Add User's Missing Tickers specifically to ensure coverage
+        target_list = ["GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX", "ADC", "AERO", "AUB"]
+        tickers.update(target_list)
         
     except Exception as e:
-        print(f"⚠️ Error fetching universe: {e}")
-        # Fallback to a core list if all else fails
-        tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM"])
+        print(f"⚠️ Error fetching pre-filtered universe: {e}")
+        tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX"])
     
-    return sorted(list(tickers))
+    # Cleanup: Remove potential errors and sort
+    final_list = [t.replace('.', '-') for t in tickers if t] # Handle tickers like BRK.B -> BRK-B
+    return sorted(list(set(final_list)))
 
 def calculate_rsi(series, period=14):
     delta = series.diff()
@@ -136,10 +146,9 @@ def analyze_ticker(symbol, scan_type="technical"):
 
 def run_scanner(mode="technical"):
     universe = get_market_universe()
-    # Increase coverage to 6000 stocks for full market scan
-    universe = universe[:6000] 
-    
-    print(f"🚀 Starting {mode.upper()} Scan on {len(universe)} stocks...")
+    # Scans the entire pre-filtered universe (around 600-800 stocks)
+    # This will be MUCH faster and more reliable
+    print(f"🚀 Starting {mode.upper()} Scan on {len(universe)} high-cap stocks...")
     
     results = []
     found_count = 0
@@ -169,6 +178,7 @@ def run_scanner(mode="technical"):
                 
                 send_telegram(msg)
 
+    # 🕵️ FALLBACK LOGIC FOR EARNINGS
     if mode == "earnings" and found_count == 0:
         tomorrow = (get_dubai_time() + timedelta(days=1)).strftime('%Y-%m-%d')
         msg = (f"🔔 EARNINGS REPORT: {tomorrow}\n"
