@@ -135,9 +135,9 @@
             <div class="mermaid">
                 graph TD
                 A[GitHub Actions Scheduler] -->|Trigger :25 past| B(main.py Engine)
-                B --> C{MTF Check}
-                C -->|Price < Daily SMA 100| D[Discard]
-                C -->|Price > Daily SMA 100| E[1-Hour Analysis]
+                B --> C{MTF Brain}
+                C -->|Trend: Neutral/Bearish| D[Discard]
+                C -->|Trend: Golden Cross + Price > SMA 100| E[1-Hour Analysis]
                 E --> F{Technical Logic}
                 F -->|Match: RSI <= 35 & MACD Cross| G[Generate Alert]
                 G --> H[Telegram Broadcast]
@@ -154,12 +154,12 @@
             <h2>🔍 Phase 1: The Multi-Timeframe (MTF) Brain</h2>
             <p>The core of v4.0's accuracy is its two-stage filtering process:</p>
             
-            <span class="sub-header">1. Daily Trend Filter (Long-Term)</span>
-            <p>Before any technical indicators are checked, the engine analyzes the <strong>Daily Timeframe</strong>.</p>
+            <span class="sub-header">1. Daily Trend Filter (Golden Cross Logic)</span>
+            <p>Before any technical indicators are checked, the engine analyzes the <strong>Daily Timeframe</strong> for structural strength.</p>
             <ul>
-                <li><strong>Metric:</strong> Simple Moving Average (SMA) 100.</li>
-                <li><strong>Logic:</strong> The stock must be trading <strong>above</strong> its Daily SMA 100.</li>
-                <li><strong>Purpose:</strong> This ensures we only trade stocks in a structural uptrend, preventing "catching a falling knife."</li>
+                <li><strong>Metric:</strong> Dual SMA Filter (SMA 50 and SMA 100).</li>
+                <li><strong>Logic:</strong> 📈 <strong>Trend: Golden Cross</strong> (SMA 50 > SMA 100) AND <strong>Price > SMA 100</strong>.</li>
+                <li><strong>Purpose:</strong> This ensures we only trade stocks with accelerating bullish momentum, significantly increasing the probability of a successful reversal from oversold levels.</li>
             </ul>
 
             <span class="sub-header">2. Hourly Execution (Immediate Momentum)</span>

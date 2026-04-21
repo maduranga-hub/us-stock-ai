@@ -130,11 +130,19 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
 
         else:
             # --- MTF: Daily Trend Check ---
-            df_daily = ticker.history(period="150d", interval="1d")
+            df_daily = ticker.history(period="200d", interval="1d")
             if df_daily.empty or len(df_daily) < 100: return None
             df_daily.columns = [c.lower() for c in df_daily.columns]
+            
+            sma50_daily = df_daily['close'].rolling(window=50).mean().iloc[-1]
             sma100_daily = df_daily['close'].rolling(window=100).mean().iloc[-1]
-            if price <= sma100_daily: return None # Price must be above Daily SMA 100
+            
+            # Trend Check: SMA 50 > 100 (Golden Cross) AND Price > SMA 100
+            golden_cross = sma50_daily > sma100_daily
+            price_above_sma100 = price > sma100_daily
+            
+            if not (golden_cross and price_above_sma100):
+                return None
 
             # --- Hourly Analysis ---
             df = ticker.history(period="15d", interval="1h")
@@ -201,6 +209,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                 "type": "technical",
                 "rsi": rsi,
                 "vwap_status": vwap_status,
+                "trend_status": "📈 Trend: Golden Cross (SMA 50 > 100)",
                 "earnings_near": earnings_near,
                 "high_volume": high_volume,
                 "macd_bullish": macd_bullish,
@@ -273,7 +282,7 @@ def run_scanner(mode="technical"):
                     
                     header_icon = "🔥 HIGH CONVICTION SIGNAL" if res.get('high_conviction') else "🚀 NEW BUY SIGNAL"
                     
-                    analysis_note = (f"• *Trend Check:* Price is above SMA 100 on both Daily & Hourly charts (Long-term Bullish).\n"
+                    analysis_note = (f"• *Trend Check:* 📈 Trend: Golden Cross (SMA 50 > 100) and Price > Daily SMA 100.\n"
                                      f"• *Opportunity:* RSI is at {res['rsi']:.2f} on 1H timeframe. Momentum is shifting from oversold levels.\n"
                                      f"• *Volume/Momentum:* Price is {v_status} VWAP with {m_status} momentum.\n"
                                      f"• *Risk Context:* {e_risk}")
@@ -283,7 +292,8 @@ def run_scanner(mode="technical"):
                            f"📉 *RSI:* {res['rsi']:.2f}\n"
                            f"📊 *Volume:* {vol_status}\n"
                            f"📈 *MACD:* {macd_status}\n"
-                           f"⚡ *VWAP:* {res['vwap_status']}\n\n"
+                           f"⚡ *VWAP:* {res['vwap_status']}\n"
+                           f"📈 *Trend:* Golden Cross (SMA 50 > 100)\n\n"
                            f"📝 *AI Analysis Note:*\n"
                            f"{analysis_note}\n\n"
                            f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
