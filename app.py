@@ -18,6 +18,17 @@ st.markdown("""
     .cyber-header { font-family: 'Orbitron'; color: #00f2ff; text-shadow: 0 0 15px #00f2ff; text-align: center; letter-spacing: 5px; margin-bottom: 30px; }
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 20px; padding: 25px; margin-bottom: 20px; }
     .stSidebar { background-color: rgba(0,0,0,0.5) !important; border-right: 1px solid rgba(0,242,255,0.1); }
+    /* Sidebar Label Fixes */
+    .stSidebar [data-testid="stWidgetLabel"] p { color: rgba(255, 255, 255, 0.8) !important; font-family: 'Inter' !important; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem !important; }
+    .stSidebar [data-testid="stRadio"] label p { color: #ffffff !important; font-weight: bold !important; font-size: 1rem !important; }
+    
+    /* Tab Visibility Fixes */
+    button[data-baseweb="tab"] p { color: rgba(255, 255, 255, 0.6) !important; font-family: 'Orbitron' !important; font-size: 0.8rem !important; }
+    button[aria-selected="true"] p { color: #00f2ff !important; text-shadow: 0 0 10px rgba(0, 242, 255, 0.5) !important; }
+    
+    /* Info/Status Message Fixes */
+    .stAlert { background-color: rgba(0, 242, 255, 0.05) !important; border: 1px solid rgba(0, 242, 255, 0.2) !important; color: #00f2ff !important; }
+    .stAlert p { color: #00f2ff !important; font-weight: bold !important; }
     </style>
 """, unsafe_allow_html=True)
 
