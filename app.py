@@ -7,6 +7,10 @@ import plotly.graph_objects as go
 import yfinance as yf
 from datetime import datetime, timedelta
 import pytz
+import gspread
+import json
+import os
+from google.oauth2.service_account import Credentials
 
 # Page Configuration
 st.set_page_config(page_title="US Stock AI | Quant Terminal", layout="wide")
@@ -67,7 +71,7 @@ def get_signal_status(row):
 
 if page == "📊 QUANT DASHBOARD":
     st.markdown('<h1 class="cyber-header">US STOCK AI : QUANT TERMINAL</h1>', unsafe_allow_html=True)
-    tab_signals, tab_overview, tab_earnings, tab_heatmap = st.tabs(["🚀 BUY SIGNALS", "🌍 MARKET WATCH", "📅 EARNINGS CENTER", "📊 RSI HEATMAP"])
+    tab_signals, tab_overview, tab_earnings, tab_heatmap, tab_history = st.tabs(["🚀 BUY SIGNALS", "🌍 MARKET WATCH", "📅 EARNINGS CENTER", "📊 RSI HEATMAP", "📈 PERFORMANCE"])
 
     with tab_signals:
         st.markdown('<div class="glass-card">', unsafe_allow_html=True)
@@ -109,6 +113,82 @@ if page == "📊 QUANT DASHBOARD":
             fig = px.treemap(df_h, path=['symbol'], values='market_cap', color='rsi', color_continuous_scale='RdYlGn_r')
             st.plotly_chart(fig, use_container_width=True)
         except: st.info("Generating...")
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with tab_history:
+        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.markdown('<h3 style="color: #00f2ff; font-family: \'Orbitron\';">7-DAY HISTORICAL PERFORMANCE</h3>', unsafe_allow_html=True)
+        
+        gs_id = os.getenv("GOOGLE_SHEET_ID")
+        gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
+        
+        if not gs_id or not gs_service_account:
+            st.warning("⚠️ Google Sheets credentials not found. Please set GOOGLE_SHEET_ID and GCP_SERVICE_ACCOUNT_KEY in Streamlit Secrets.")
+        else:
+            try:
+                # Fetch Data from Google Sheets
+                scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+                service_account_info = json.loads(gs_service_account)
+                creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
+                client = gspread.authorize(creds)
+                sheet = client.open_by_key(gs_id).sheet1
+                data = sheet.get_all_values()
+                
+                if len(data) > 1:
+                    df_hist = pd.DataFrame(data[1:], columns=data[0])
+                    df_hist['Timestamp'] = pd.to_datetime(df_hist.iloc[:, 0])
+                    
+                    # Filter for last 7 days
+                    seven_days_ago = datetime.now() - timedelta(days=7)
+                    df_hist = df_hist[df_hist['Timestamp'] >= seven_days_ago]
+                    
+                    if not df_hist.empty:
+                        # Performance Calculation
+                        with st.spinner("Calculating Success Rate..."):
+                            success_count = 0
+                            total_count = len(df_hist)
+                            
+                            # Fetch current prices for performance
+                            tickers = df_hist.iloc[:, 1].unique().tolist()
+                            prices = yf.download(tickers, period="1d")['Close'].iloc[-1]
+                            
+                            perf_data = []
+                            for _, row in df_hist.iterrows():
+                                sym = row.iloc[1]
+                                entry_price = float(row.iloc[2])
+                                curr_price = float(prices[sym]) if sym in prices else entry_price
+                                change = ((curr_price - entry_price) / entry_price) * 100
+                                is_profit = curr_price > entry_price
+                                if is_profit: success_count += 1
+                                
+                                perf_data.append({
+                                    "DATE": row.iloc[0],
+                                    "TICKER": sym,
+                                    "ENTRY": f"${entry_price:.2f}",
+                                    "CURRENT": f"${curr_price:.2f}",
+                                    "CHG %": f"{change:+.2f}%",
+                                    "OUTCOME": "✅ PROFIT" if is_profit else "❌ LOSS"
+                                })
+                        
+                        success_rate = (success_count / total_count) * 100
+                        
+                        col1, col2 = st.columns(2)
+                        col1.metric("WIN RATE (7D)", f"{success_rate:.1f}%", delta=f"{success_rate-50:.1f}% vs Avg")
+                        col2.metric("TOTAL SIGNALS", total_count)
+                        
+                        # Volume Chart
+                        df_hist['Date'] = df_hist['Timestamp'].dt.date
+                        vol_df = df_hist.groupby('Date').size().reset_index(name='Signals')
+                        fig_vol = px.bar(vol_df, x='Date', y='Signals', title="Signal Volume (Last 7 Days)", color_discrete_sequence=['#00f2ff'])
+                        fig_vol.update_layout(template="plotly_dark", plot_bgcolor='rgba(0,0,0,0)')
+                        st.plotly_chart(fig_vol, use_container_width=True)
+                        
+                        # Detailed Table
+                        st.dataframe(pd.DataFrame(perf_data), use_container_width=True, hide_index=True)
+                    else: st.info("No signals found in the last 7 days.")
+                else: st.info("Google Sheet is empty.")
+            except Exception as e:
+                st.error(f"Error fetching historical data: {e}")
         st.markdown('</div>', unsafe_allow_html=True)
 
     # Deep Analysis Section
