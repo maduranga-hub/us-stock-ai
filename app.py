@@ -117,7 +117,7 @@ if page == "📊 QUANT DASHBOARD":
 
     with tab_history:
         st.markdown('<div class="glass-card">', unsafe_allow_html=True)
-        st.markdown('<h3 style="color: #00f2ff; font-family: \'Orbitron\';">7-DAY HISTORICAL PERFORMANCE</h3>', unsafe_allow_html=True)
+        st.markdown('<h3 style="color: #00f2ff; font-family: \'Orbitron\';">30-DAY PERFORMANCE OVERVIEW</h3>', unsafe_allow_html=True)
         
         gs_id = os.getenv("GOOGLE_SHEET_ID", "1oMO1Kii2dV336Ufe10u5If_REcaFMnhnTRgaSI-4gmA")
         gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
@@ -138,20 +138,19 @@ if page == "📊 QUANT DASHBOARD":
                     df_hist = pd.DataFrame(data[1:], columns=data[0])
                     df_hist['Timestamp'] = pd.to_datetime(df_hist.iloc[:, 0])
                     
-                    # Filter for last 7 days
-                    seven_days_ago = datetime.now() - timedelta(days=7)
-                    df_hist = df_hist[df_hist['Timestamp'] >= seven_days_ago]
+                    # Filter for last 30 days (Monthly Overview)
+                    thirty_days_ago = datetime.now() - timedelta(days=30)
+                    df_hist = df_hist[df_hist['Timestamp'] >= thirty_days_ago]
                     
                     if not df_hist.empty:
                         # Performance Calculation
-                        with st.spinner("Calculating Success Rate..."):
+                        with st.spinner("Calculating Monthly Success Rate..."):
                             success_count = 0
                             total_count = len(df_hist)
                             
                             # Fetch current prices for performance
                             tickers = df_hist.iloc[:, 1].unique().tolist()
                             prices = yf.download(tickers, period="1d")['Close'].iloc[-1]
-                            
                             perf_data = []
                             for _, row in df_hist.iterrows():
                                 sym = row.iloc[1]
@@ -173,19 +172,19 @@ if page == "📊 QUANT DASHBOARD":
                         success_rate = (success_count / total_count) * 100
                         
                         col1, col2 = st.columns(2)
-                        col1.metric("WIN RATE (7D)", f"{success_rate:.1f}%", delta=f"{success_rate-50:.1f}% vs Avg")
-                        col2.metric("TOTAL SIGNALS", total_count)
+                        col1.metric("WIN RATE (30D)", f"{success_rate:.1f}%", delta=f"{success_rate-50:.1f}% vs Avg")
+                        col2.metric("TOTAL SIGNALS (30D)", total_count)
                         
                         # Volume Chart
                         df_hist['Date'] = df_hist['Timestamp'].dt.date
                         vol_df = df_hist.groupby('Date').size().reset_index(name='Signals')
-                        fig_vol = px.bar(vol_df, x='Date', y='Signals', title="Signal Volume (Last 7 Days)", color_discrete_sequence=['#00f2ff'])
+                        fig_vol = px.bar(vol_df, x='Date', y='Signals', title="Signal Volume (Last 30 Days)", color_discrete_sequence=['#00f2ff'])
                         fig_vol.update_layout(template="plotly_dark", plot_bgcolor='rgba(0,0,0,0)')
                         st.plotly_chart(fig_vol, use_container_width=True)
                         
                         # Detailed Table
                         st.dataframe(pd.DataFrame(perf_data), use_container_width=True, hide_index=True)
-                    else: st.info("No signals found in the last 7 days.")
+                    else: st.info("No signals found in the last 30 days.")
                 else: st.info("Google Sheet is empty.")
             except Exception as e:
                 st.error(f"Error fetching historical data: {e}")
