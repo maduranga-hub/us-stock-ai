@@ -26,7 +26,7 @@ with st.sidebar:
     st.markdown('<h2 style="color: #00f2ff; font-family: \'Orbitron\'; text-align: center;">MENU</h2>', unsafe_allow_html=True)
     page = st.radio("Go to:", ["📊 QUANT DASHBOARD", "📖 SYSTEM DOCUMENTATION"])
     st.markdown("---")
-    st.markdown('<p style="text-align: center; color: #00f2ff; opacity: 0.5;">v4.0 PRO RELEASE</p>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align: center; color: #00f2ff; opacity: 0.8; font-size: 0.8rem; font-family: \'Orbitron\'; letter-spacing: 2px;">v4.0 PRO RELEASE</p>', unsafe_allow_html=True)
 
 if page == "📊 QUANT DASHBOARD":
     st.markdown('<h1 class="cyber-header">US STOCK AI : QUANT TERMINAL</h1>', unsafe_allow_html=True)
@@ -99,4 +99,4 @@ else:
     except Exception as e:
         st.error(f"Error loading documentation: {e}")
 
-st.markdown('<p style="text-align: center; color: rgba(0,242,255,0.2); font-size: 0.8rem;">NIRMAL RSA QUANT • DUBAI GST SYNCED</p>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: rgba(0,242,255,0.6); font-size: 0.8rem; font-family: \'Orbitron\'; letter-spacing: 3px;">NIRMAL RSA QUANT • DUBAI GST SYNCED</p>', unsafe_allow_html=True)
