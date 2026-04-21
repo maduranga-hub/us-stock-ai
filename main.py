@@ -326,10 +326,13 @@ def run_scanner(mode="technical"):
 
     # Send Completion Status to Telegram (Technical Only)
     if mode == "technical":
+        icon = "🎯" if found_count > 0 else "ℹ️"
+        summary = f"New Signals Found: {found_count}" if found_count > 0 else "No high-conviction signals matched criteria."
+        
         status_msg = (f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n"
                       f"━━━━━━━━━━━━━━━━━━━━\n"
                       f"✅ Total Stocks Analyzed: {len(universe)}\n"
-                      f"🎯 New Signals Found: {found_count}\n"
+                      f"{icon} {summary}\n"
                       f"━━━━━━━━━━━━━━━━━━━━\n"
                       f"Status: System Active")
         send_telegram(status_msg)
