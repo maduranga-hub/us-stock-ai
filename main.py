@@ -210,6 +210,8 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                 "rsi": rsi,
                 "vwap_status": vwap_status,
                 "trend_status": "📈 Trend: Golden Cross (SMA 50 > 100)",
+                "sma100_daily": sma100_daily,
+                "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'),
                 "earnings_near": earnings_near,
                 "high_volume": high_volume,
                 "macd_bullish": macd_bullish,

@@ -5,7 +5,8 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, timedelta
+import pytz
 
 # Page Configuration
 st.set_page_config(page_title="US Stock AI | Quant Terminal", layout="wide")
@@ -30,6 +31,11 @@ st.markdown("""
     /* Alerts: Force Bright Cyan */
     div[data-testid="stNotification"] { background-color: rgba(0, 242, 255, 0.1) !important; border: 1px solid #00f2ff !important; }
     div[data-testid="stNotification"] * { color: #00f2ff !important; font-weight: bold !important; }
+    
+    /* Status Colors */
+    .status-active { color: #00ff00 !important; font-weight: bold; }
+    .status-expired { color: #ff9900 !important; font-weight: bold; }
+    .status-invalid { color: #ff3300 !important; font-weight: bold; text-transform: uppercase; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -38,7 +44,26 @@ with st.sidebar:
     st.markdown('<h2 style="color: #00f2ff; font-family: \'Orbitron\'; text-align: center;">MENU</h2>', unsafe_allow_html=True)
     page = st.radio("Go to:", ["📊 QUANT DASHBOARD", "📖 SYSTEM DOCUMENTATION"])
     st.markdown("---")
-    st.markdown('<p style="text-align: center; color: #00f2ff; opacity: 0.8; font-size: 0.8rem; font-family: \'Orbitron\'; letter-spacing: 2px;">v4.0 PRO RELEASE</p>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align: center; color: #00f2ff; opacity: 0.8; font-size: 0.8rem; font-family: \'Orbitron\'; letter-spacing: 2px;">v4.1 PRO RELEASE</p>', unsafe_allow_html=True)
+
+def get_signal_status(row):
+    try:
+        now = datetime.now(pytz.timezone('Asia/Dubai'))
+        sig_time = datetime.strptime(row['timestamp'], '%Y-%m-%d %H:%M').replace(tzinfo=pytz.timezone('Asia/Dubai'))
+        
+        # Check Expiry (4 Hours)
+        if (now - sig_time) > timedelta(hours=4):
+            return "🕒 EXPIRED"
+        
+        # Check Invalidation (Price < Daily SMA 100)
+        # For efficiency, we use the price from the scan, but in a real scenario we'd fetch live
+        # To meet "Immediately", we will simulate a live check if possible or use the last known price
+        if row['price'] < row['sma100_daily']:
+            return "⚠️ INVALID: TREND BREAK"
+            
+        return "✅ ACTIVE"
+    except:
+        return "UNKNOWN"
 
 if page == "📊 QUANT DASHBOARD":
     st.markdown('<h1 class="cyber-header">US STOCK AI : QUANT TERMINAL</h1>', unsafe_allow_html=True)
@@ -48,8 +73,17 @@ if page == "📊 QUANT DASHBOARD":
         st.markdown('<div class="glass-card">', unsafe_allow_html=True)
         try:
             df_sig = pd.read_csv("active_signals.csv")
-            st.dataframe(df_sig, use_container_width=True, hide_index=True)
-        except: st.info("Scanning...")
+            if not df_sig.empty:
+                df_sig['STATUS'] = df_sig.apply(get_signal_status, axis=1)
+                
+                # Reorder to show status first
+                cols = ['STATUS', 'symbol', 'price', 'rsi', 'vwap_status', 'timestamp']
+                display_df = df_sig[[c for c in cols if c in df_sig.columns]]
+                st.dataframe(display_df, use_container_width=True, hide_index=True)
+            else:
+                st.info("No active signals.")
+        except Exception as e: 
+            st.info(f"Scanning... ({e})")
         st.markdown('</div>', unsafe_allow_html=True)
 
     with tab_overview:

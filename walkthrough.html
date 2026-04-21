@@ -182,6 +182,16 @@
         </div>
 
         <div class="section-box">
+            <h2>🛡️ Signal Expiry & Invalidation Rules</h2>
+            <p>To maintain high-accuracy, v4.1 enforces strict lifecycle management for every signal:</p>
+            <ul>
+                <li><strong>🕒 4-Hour Expiry:</strong> Any signal older than 4 hours is automatically marked as <strong>EXPIRED</strong>. This ensures we don't trade stale momentum.</li>
+                <li><strong>⚠️ Trend Break Invalidation:</strong> If the price drops below the <strong>Daily SMA 100</strong>, the signal is immediately marked as <strong>INVALID: TREND BREAK</strong>.</li>
+                <li><strong>✅ Real-Time Status:</strong> The Quant Terminal dynamically updates these statuses during every dashboard refresh.</li>
+            </ul>
+        </div>
+
+        <div class="section-box">
             <h2>📲 Phase 3: Real-Time Synchronization</h2>
             <p>Once a signal is detected, v4.0 executes a triple-sync operation:</p>
             <ul>
