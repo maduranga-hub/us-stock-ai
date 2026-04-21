@@ -126,7 +126,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>US STOCK AI v4.0</h1>
+        <h1>US STOCK AI v4.1</h1>
         <p style="text-align: center; color: rgba(255,255,255,0.5); font-weight: bold; letter-spacing: 2px;">WORKFLOW WALKTHROUGH</p>
 
         <h2>📊 System Architecture Overview</h2>
@@ -155,12 +155,12 @@
             <h2>🔍 Phase 1: The Multi-Timeframe (MTF) Brain</h2>
             <p>The core of v4.0's accuracy is its two-stage filtering process:</p>
             
-            <span class="sub-header">1. Daily Trend Filter (Golden Cross Logic)</span>
+            <span class="sub-header">1. Daily Trend Filter (v4.1 Golden Cross Gateway)</span>
             <p>Before any technical indicators are checked, the engine analyzes the <strong>Daily Timeframe</strong> for structural strength.</p>
             <ul>
-                <li><strong>Metric:</strong> Dual SMA Filter (SMA 50 and SMA 100).</li>
+                <li><strong>Metric:</strong> Dual SMA Gateway (SMA 50 and SMA 100).</li>
                 <li><strong>Logic:</strong> 📈 <strong>Trend: Golden Cross</strong> (SMA 50 > SMA 100) AND <strong>Price > SMA 100</strong>.</li>
-                <li><strong>Purpose:</strong> This ensures we only trade stocks with accelerating bullish momentum, significantly increasing the probability of a successful reversal from oversold levels.</li>
+                <li><strong>Gateway:</strong> This is the primary filter. If a stock does not meet this criteria, it is discarded immediately to ensure only high-momentum stocks are analyzed.</li>
             </ul>
 
             <span class="sub-header">2. Hourly Execution (Immediate Momentum)</span>
@@ -202,11 +202,12 @@
         </div>
 
         <div class="section-box">
-            <h2>🕒 Timing Logic (Dubai GST)</h2>
+            <h2>🕒 Optimized Timing & Auto-Wakeup (Dubai GST)</h2>
             <ul>
-                <li><strong>Technical Scans:</strong> Run at <strong>:25 past the hour</strong> (4:25 PM to 12:25 AM Dubai Time).</li>
+                <li><strong>Auto-Wakeup:</strong> The system automatically pings the Streamlit Dashboard (Auto-Wakeup) before every scan to ensure the terminal is active and data is fresh.</li>
+                <li><strong>Market-Only Scans:</strong> Technical scans run ONLY during active US Market hours: <strong>4:25 PM to 12:25 AM Dubai Time</strong>.</li>
+                <li><strong>Weekend Pause:</strong> Scans are automatically paused on Saturdays and Sundays to prevent "empty" signals and reduce server overhead.</li>
                 <li><strong>Earnings Scans:</strong> Run at <strong>3:30 PM Dubai Time</strong> to provide a pre-market volatility roadmap.</li>
-                <li><strong>Weekend Logic:</strong> On Fridays, the engine automatically scans for the following Monday's earnings reports to keep you ahead of the weekly gap.</li>
             </ul>
         </div>
 

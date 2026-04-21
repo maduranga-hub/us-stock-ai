@@ -25,6 +25,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Auto-Wakeup Dashboard
+        run: |
+          curl -sL ${{ secrets.DASHBOARD_URL }} > /dev/null
+          echo "✅ Dashboard Pinged (Wake-up Sequence Complete)"
+
       - name: Run Scan Engine
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
@@ -39,8 +44,7 @@ jobs:
             python main.py earnings
           fi
           
-          # Only run technical if it's NOT the earnings-only slot, 
-          # OR if you want it to run always. The cron ensures the timing.
+          # Only run technical if it's NOT the earnings-only slot
           if [ "$current_hour" != "11" ]; then
             echo "🚀 Launching Technical Scan..."
             python main.py technical
