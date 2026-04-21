@@ -337,6 +337,34 @@ def run_scanner(mode="technical"):
                       f"Status: System Active")
         send_telegram(status_msg)
 
+    # --- Market Close Alert (12:25 AM GST) ---
+    if mode == "technical" and dubai_now.hour == 0:
+        try:
+            gs_id = os.getenv("GOOGLE_SHEET_ID", "1oMO1Kii2dV336Ufe10u5If_REcaFMnhnTRgaSI-4gmA")
+            gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
+            if gs_id and gs_service_account:
+                scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+                service_account_info = json.loads(gs_service_account)
+                creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
+                client = gspread.authorize(creds)
+                sheet = client.open_by_key(gs_id).sheet1
+                all_data = sheet.get_all_values()
+                
+                # Filter for today's signals (GST)
+                today_str = dubai_now.strftime('%Y-%m-%d')
+                today_signals = [r for r in all_data if len(r) > 0 and today_str in r[0]]
+                total_today = len(today_signals)
+                
+                close_msg = (f"🌙 *MARKET IS NOW CLOSED*\n"
+                             f"━━━━━━━━━━━━━━━━━━━━\n"
+                             f"Final scan for the day is complete.\n"
+                             f"🎯 *Daily Summary:* {total_today} v4.1 Golden Cross signals identified today.\n"
+                             f"━━━━━━━━━━━━━━━━━━━━\n"
+                             f"Status: Hibernation Mode Active")
+                send_telegram(close_msg)
+        except Exception as e:
+            print(f"⚠️ Market Close Alert Error: {e}")
+
     # Save results to CSV (for Dashboard)
     if all_processed:
         if mode == "technical":
