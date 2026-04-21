@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>US STOCK AI v4.0 | Workflow Walkthrough</title>
+    <title>US STOCK AI v4.1 PRO | Workflow Walkthrough</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
         mermaid.initialize({
@@ -126,7 +126,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>US STOCK AI v4.1</h1>
+        <h1>US STOCK AI v4.1 PRO</h1>
         <p style="text-align: center; color: rgba(255,255,255,0.5); font-weight: bold; letter-spacing: 2px;">WORKFLOW WALKTHROUGH</p>
 
         <h2>📊 System Architecture Overview</h2>
@@ -142,12 +142,14 @@
                 E --> F{Technical Logic}
                 F -->|Match: RSI <= 35 & MACD Cross| G[Generate Alert]
                 G --> H[Telegram Broadcast]
-                G --> I[Google Sheets Sync]
+                G --> I[Google Sheets Cumulative Sync]
+                I --> L[Monthly Performance Dashboard]
                 G --> J[CSV Data Push]
                 J --> K[Streamlit Dashboard]
                 style A fill:#0d001a,stroke:#00f2ff,color:#fff
                 style B fill:#0d001a,stroke:#00f2ff,color:#fff
                 style G fill:#0d001a,stroke:#00f2ff,color:#fff
+                style L fill:#0d001a,stroke:#00f2ff,color:#fff
             </div>
         </div>
 
@@ -202,11 +204,12 @@
         </div>
 
         <div class="section-box">
-            <h2>🖥️ Phase 4: The Quant Dashboard (Streamlit)</h2>
+            <h2>🖥️ Phase 4: The Quant Terminal (v4.1 PRO)</h2>
             <p>The final layer is the visual terminal:</p>
             <ul>
+                <li><strong>Monthly Performance:</strong> A dedicated tab pulling the last 30 days of signal history from Google Sheets to track real-time Win Rates.</li>
                 <li><strong>RSI Heatmap:</strong> Visualizes the entire market universe by RSI levels and Market Cap.</li>
-                <li><strong>Live Signal Feed:</strong> Displays the most recent high-probability setups in a high-contrast Neon Cyan table.</li>
+                <li><strong>Live Signal Feed:</strong> Displays the most recent high-probability setups in a high-contrast Neon Cyan table with real-time **Status (Active/Expired/Invalid)**.</li>
                 <li><strong>Deep Analysis:</strong> Allows you to pull interactive candlestick charts with SMA 100 and VWAP overlays for any specific ticker.</li>
             </ul>
         </div>
@@ -222,7 +225,7 @@
         </div>
 
         <div class="footer">
-            NIRMAL RSA QUANT • DUBAI GST SYNCED • PRODUCTION READY v4.0
+            NIRMAL RSA QUANT • DUBAI GST SYNCED • PRODUCTION READY v4.1 PRO
         </div>
     </div>
 </body>
