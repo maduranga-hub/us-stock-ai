@@ -119,7 +119,7 @@ if page == "📊 QUANT DASHBOARD":
         st.markdown('<div class="glass-card">', unsafe_allow_html=True)
         st.markdown('<h3 style="color: #00f2ff; font-family: \'Orbitron\';">7-DAY HISTORICAL PERFORMANCE</h3>', unsafe_allow_html=True)
         
-        gs_id = os.getenv("GOOGLE_SHEET_ID")
+        gs_id = os.getenv("GOOGLE_SHEET_ID", "1oMO1Kii2dV336Ufe10u5If_REcaFMnhnTRgaSI-4gmA")
         gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
         
         if not gs_id or not gs_service_account:
