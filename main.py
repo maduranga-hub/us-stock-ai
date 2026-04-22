@@ -24,21 +24,6 @@ DUBAI_TZ = pytz.timezone('Asia/Dubai')
 def get_dubai_time():
     return datetime.now(DUBAI_TZ)
 
-def format_market_cap(cap):
-    if cap >= 1_000_000_000_000: return f"${cap/1_000_000_000_000:.2f}T"
-    if cap >= 1_000_000_000: return f"${cap/1_000_000_000:.2f}B"
-    if cap >= 1_000_000: return f"${cap/1_000_000:.2f}M"
-    return f"${cap}"
-
-def send_telegram(message):
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
-    try:
-        response = requests.post(url, json=payload, timeout=10)
-        response.raise_for_status()
-    except Exception as e:
-        print(f"Telegram Error: {e}")
-
 def get_gs_client():
     gs_id = os.getenv("GOOGLE_SHEET_ID")
     gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
@@ -52,36 +37,87 @@ def get_gs_client():
         return client, spreadsheet
     except: return None, None
 
-def get_or_create_monthly_sheet(spreadsheet, dubai_now):
-    sheet_name = dubai_now.strftime('%B %Y')
+def get_or_create_sheet(spreadsheet, title, headers=None):
     try:
-        return spreadsheet.worksheet(sheet_name)
+        return spreadsheet.worksheet(title)
     except gspread.exceptions.WorksheetNotFound:
-        headers = ["S/N", "Date", "Time", "Symbol", "Price", "RSI", "VWAP Status", "FVG Status", "Golden Cross", "Volume", "Signal Status", "Price 7D", "Profit 7D %", "Price 30D", "Profit 30D %", "AI Analysis Note"]
-        new_sheet = spreadsheet.add_worksheet(title=sheet_name, rows="1000", cols=str(len(headers)))
-        new_sheet.append_row(headers)
+        new_sheet = spreadsheet.add_worksheet(title=title, rows="5000", cols="20")
+        if headers: new_sheet.append_row(headers)
         return new_sheet
+
+def refresh_stock_list():
+    """Scans thousands of stocks and saves those > 500M Market Cap to 'Stock List' tab."""
+    client, spreadsheet = get_gs_client()
+    if not spreadsheet: return
+    
+    print("Refreshing Master Stock List (> 500M Market Cap)...")
+    send_telegram("🔄 *Refreshing Master Stock List...* This may take 10-15 minutes.")
+    
+    # Get a huge list of tickers
+    tickers = set()
+    try:
+        url = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
+        tickers.update(requests.get(url).text.splitlines())
+    except: tickers.update(["AAPL", "TSLA", "NVDA", "MSFT", "AMD"])
+    
+    universe = sorted(list(set([t.strip().replace('.', '-') for t in tickers if t.strip()])))
+    qualified = []
+    
+    def check_cap(symbol):
+        try:
+            t = yf.Ticker(symbol)
+            info = t.info
+            cap = info.get('marketCap', 0)
+            if cap >= 500_000_000:
+                return [symbol, info.get('longName', 'N/A'), f"${cap/1_000_000_000:.2f}B"]
+        except: pass
+        return None
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+        futures = {executor.submit(check_cap, s): s for s in universe}
+        for future in concurrent.futures.as_completed(futures):
+            res = future.result()
+            if res: qualified.append(res)
+    
+    if qualified:
+        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap"])
+        sheet.clear()
+        sheet.append_row(["Symbol", "Company Name", "Market Cap"])
+        sheet.append_rows(sorted(qualified))
+        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} stocks with Market Cap > $500M."
+        send_telegram(msg)
+        print(msg)
+
+def get_market_universe():
+    """Reads the market universe from the 'Stock List' tab in Google Sheets."""
+    client, spreadsheet = get_gs_client()
+    if not spreadsheet: return ["AAPL", "NVDA", "TSLA"]
+    
+    try:
+        sheet = spreadsheet.worksheet("Stock List")
+        records = sheet.get_all_records()
+        if not records: return ["AAPL", "NVDA", "TSLA"]
+        return [r['Symbol'] for r in records]
+    except:
+        # Fallback to S&P 500 if tab not found
+        try:
+            url = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
+            df = pd.read_csv(io.StringIO(requests.get(url).text))
+            return df['Symbol'].tolist()
+        except: return ["AAPL", "NVDA", "TSLA"]
 
 def log_to_google_sheet(data_row):
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     dubai_now = get_dubai_time()
-    sheet = get_or_create_monthly_sheet(spreadsheet, dubai_now)
-    
-    # Prepend S/N
+    sheet_name = dubai_now.strftime('%B %Y')
+    headers = ["S/N", "Date", "Time", "Symbol", "Price", "RSI", "VWAP Status", "FVG Status", "Golden Cross", "Volume", "Signal Status", "Price 7D", "Profit 7D %", "Price 30D", "Profit 30D %", "AI Analysis Note"]
+    sheet = get_or_create_sheet(spreadsheet, sheet_name, headers)
     try:
         all_rows = sheet.get_all_values()
-        sn = len(all_rows) # If headers exist, row 2 will be S/N 1
-        data_row.insert(0, sn)
-    except:
-        data_row.insert(0, "-")
-
-    print(f"Syncing {data_row[3]} to {sheet.title} (S/N: {data_row[0]})...")
-    try:
+        data_row.insert(0, len(all_rows))
         sheet.append_row(data_row)
-        print(f"Google Sheets Sync Success: {data_row[3]}")
-    except Exception as e:
-        print(f"Google Sheets Sync Failed: {e}")
+    except Exception as e: print(f"Sync error: {e}")
 
 def update_sheet_lifecycle(sheet):
     try:
@@ -89,29 +125,19 @@ def update_sheet_lifecycle(sheet):
         if len(all_rows) < 2: return 0
         dubai_now = get_dubai_time()
         updated_count = 0
-        
-        # New Indexes (0-based):
-        # 0:S/N, 1:Date, 2:Time, 3:Symbol, 4:Price, 5:RSI, 6:VWAP, 7:FVG, 8:GC, 9:Volume, 10:Status, 11:P7D, 12:Pr7D, 13:P30D, 14:Pr30D, 15:Analysis
-        
         for i in range(len(all_rows) - 1, max(0, len(all_rows) - 100), -1):
             row = all_rows[i]
             if len(row) < 11: continue
-            symbol = row[3]
-            entry_price = float(row[4])
-            status = row[10]
+            symbol, entry_p, status = row[3], float(row[4]), row[10]
             timestamp_str = f"{row[1]} {row[2]}"
-            try:
-                signal_time = DUBAI_TZ.localize(datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M'))
+            try: signal_time = DUBAI_TZ.localize(datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M'))
             except: continue
-            
             if status == "ACTIVE":
                 if dubai_now > signal_time + timedelta(hours=4):
-                    sheet.update_cell(i + 1, 11, "EXPIRED") # Col 11 is Status (1-based)
-                    updated_count += 1
+                    sheet.update_cell(i + 1, 11, "EXPIRED"); updated_count += 1
                 else:
                     try:
-                        ticker = yf.Ticker(symbol)
-                        hist = ticker.history(period="1d", interval="1h")
+                        ticker = yf.Ticker(symbol); hist = ticker.history(period="1d", interval="1h")
                         if not hist.empty:
                             hist.columns = [c.lower() for c in hist.columns]
                             curr_p = hist['close'].iloc[-1]
@@ -123,58 +149,38 @@ def update_sheet_lifecycle(sheet):
                             loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean().iloc[-1]
                             rsi = 100 - (100 / (1 + (gain/loss))) if loss != 0 else 50
                             if curr_p < sma100 or rsi > 55:
-                                sheet.update_cell(i + 1, 11, "DEACTIVATED")
-                                updated_count += 1
+                                sheet.update_cell(i + 1, 11, "DEACTIVATED"); updated_count += 1
                     except: pass
-            
             if len(row) > 12 and row[11] == "" and dubai_now > signal_time + timedelta(days=7):
                 try:
-                    ticker = yf.Ticker(symbol)
-                    hist = ticker.history(start=(signal_time + timedelta(days=7)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=8)).strftime('%Y-%m-%d'))
+                    ticker = yf.Ticker(symbol); hist = ticker.history(start=(signal_time + timedelta(days=7)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=8)).strftime('%Y-%m-%d'))
                     if not hist.empty:
                         p7d = hist['Close'].iloc[0]
-                        sheet.update_cell(i + 1, 12, f"{p7d:.2f}")
-                        sheet.update_cell(i + 1, 13, f"{((p7d - entry_price) / entry_price * 100):.2f}%")
+                        sheet.update_cell(i + 1, 12, f"{p7d:.2f}"); sheet.update_cell(i + 1, 13, f"{((p7d - entry_p) / entry_p * 100):.2f}%")
                         updated_count += 1
                 except: pass
-
             if len(row) > 14 and row[13] == "" and dubai_now > signal_time + timedelta(days=30):
                 try:
-                    ticker = yf.Ticker(symbol)
-                    hist = ticker.history(start=(signal_time + timedelta(days=30)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=31)).strftime('%Y-%m-%d'))
+                    ticker = yf.Ticker(symbol); hist = ticker.history(start=(signal_time + timedelta(days=30)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=31)).strftime('%Y-%m-%d'))
                     if not hist.empty:
                         p30d = hist['Close'].iloc[0]
-                        sheet.update_cell(i + 1, 14, f"{p30d:.2f}")
-                        sheet.update_cell(i + 1, 15, f"{((p30d - entry_price) / entry_price * 100):.2f}%")
+                        sheet.update_cell(i + 1, 14, f"{p30d:.2f}"); sheet.update_cell(i + 1, 15, f"{((p30d - entry_p) / entry_p * 100):.2f}%")
                         updated_count += 1
                 except: pass
         return updated_count
-    except Exception as e: print(f"Update error: {e}"); return 0
+    except: return 0
 
 def update_signal_lifecycle():
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     dubai_now = get_dubai_time()
-    curr_sheet = get_or_create_monthly_sheet(spreadsheet, dubai_now)
+    curr_sheet = get_or_create_sheet(spreadsheet, dubai_now.strftime('%B %Y'))
     updates = update_sheet_lifecycle(curr_sheet)
     prev_month_time = dubai_now.replace(day=1) - timedelta(days=1)
-    prev_sheet_name = prev_month_time.strftime('%B %Y')
     try:
-        prev_sheet = spreadsheet.worksheet(prev_sheet_name)
+        prev_sheet = spreadsheet.worksheet(prev_month_time.strftime('%B %Y'))
         updates += update_sheet_lifecycle(prev_sheet)
     except: pass
-    if updates > 0: print(f"Total Updates: {updates}")
-
-def get_market_universe():
-    tickers = set()
-    try:
-        url_sp500 = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
-        df_sp500 = pd.read_csv(io.StringIO(requests.get(url_sp500).text))
-        tickers.update(df_sp500['Symbol'].tolist())
-        popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX", "ADC", "AERO", "AUB"]
-        tickers.update(popular)
-    except: tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX"])
-    return sorted(list(set([t.replace('.', '-') for t in tickers if t])))
 
 def calculate_rsi(series, period=14):
     delta = series.diff()
@@ -191,22 +197,10 @@ def detect_fvg(df):
 
 def analyze_ticker(symbol, scan_type="technical", target_date=None):
     try:
-        ticker = yf.Ticker(symbol)
-        info = ticker.info
-        mkt_cap = info.get('marketCap', 0); price = info.get('currentPrice', info.get('regularMarketPrice', 0))
-        if mkt_cap < 500_000_000 or price < 5: return None
-        base_res = {"symbol": symbol, "name": info.get('longName', 'N/A'), "price": price, "market_cap": mkt_cap, "market_cap_fmt": format_market_cap(mkt_cap)}
-        if scan_type == "earnings":
-            cal = ticker.calendar; e_date = None
-            if isinstance(cal, pd.DataFrame) and not cal.empty:
-                if 'Earnings Date' in cal.index: e_date = cal.loc['Earnings Date'].iloc[0]
-            elif isinstance(cal, dict) and 'Earnings Date' in cal: e_date = cal['Earnings Date'][0]
-            if e_date:
-                e_date = e_date.date() if hasattr(e_date, 'date') else pd.to_datetime(e_date).date()
-                if e_date == target_date:
-                    base_res.update({"type": "earnings", "forecast_eps": info.get('forwardEps', 'N/A'), "last_year_eps": info.get('trailingEps', 'N/A')})
-                    return base_res
-            return None
+        ticker = yf.Ticker(symbol); info = ticker.info
+        price = info.get('currentPrice', info.get('regularMarketPrice', 0))
+        if price < 5: return None
+        base_res = {"symbol": symbol, "name": info.get('longName', 'N/A'), "price": price}
         df_daily = ticker.history(period="200d", interval="1d")
         if df_daily.empty or len(df_daily) < 100: return None
         df_daily.columns = [c.lower() for c in df_daily.columns]
@@ -229,13 +223,14 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
     except: return None
 
 def run_scanner(mode="technical", force_ticker=None):
+    if mode == "refresh": refresh_stock_list(); return
     universe = [force_ticker] if force_ticker else get_market_universe()
-    dubai_now = get_dubai_time(); target_date = (dubai_now + timedelta(days=1)).date()
-    print(f"Starting {mode.upper()} Scan on {len(universe)} stocks...")
+    dubai_now = get_dubai_time()
+    print(f"Starting {mode.upper()} Scan on {len(universe)} Master Stocks...")
     found_count = 0
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-            future_to_ticker = {executor.submit(analyze_ticker, s, mode, target_date): s for s in universe}
+            future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
             for future in concurrent.futures.as_completed(future_to_ticker):
                 res = future.result()
                 if res:
@@ -243,19 +238,15 @@ def run_scanner(mode="technical", force_ticker=None):
                         if force_ticker: res['is_signal'] = True
                         if not res.get('is_signal'): continue
                     found_count += 1
-                    if res['type'] == "earnings":
-                        msg = (f"📅 *EARNINGS ALERT: {res['symbol']}*\n\n🏢 *Company:* {res['name']}\n📊 *Forecast:* {res['forecast_eps']}\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                    else:
-                        v_s = "Above" if "Above" in res['vwap_status'] else "Below"
-                        fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
-                        analysis_note = (f"• *Trend Check:* Price is above Daily SMA 100 (${res['sma100_daily']:.2f}).\n• *SMA 50:* ${res['sma50_daily']:.2f}\n• *SMA 100:* ${res['sma100_daily']:.2f}\n• *Opportunity:* RSI is at {res['rsi']:.2f}.\n• *Momentum:* Price is {v_s} VWAP.\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
-                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                    fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
+                    analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
+                    msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                     send_telegram(msg)
                     gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
                     log_to_google_sheet(gs_row)
         if mode == "technical": update_signal_lifecycle()
     finally:
-        if mode == "technical": send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n✅ Found: {found_count}")
+        send_telegram(f"🔔 SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n✅ Found: {found_count} Signals from Master List ({len(universe)} stocks).")
 
 if __name__ == "__main__":
     import sys
