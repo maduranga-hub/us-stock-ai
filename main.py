@@ -24,6 +24,15 @@ DUBAI_TZ = pytz.timezone('Asia/Dubai')
 def get_dubai_time():
     return datetime.now(DUBAI_TZ)
 
+def send_telegram(message):
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+        response.raise_for_status()
+    except Exception as e:
+        print(f"Telegram Error: {e}")
+
 def get_gs_client():
     gs_id = os.getenv("GOOGLE_SHEET_ID")
     gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
@@ -53,12 +62,23 @@ def refresh_stock_list():
     print("Refreshing Master Stock List (> 500M Market Cap)...")
     send_telegram("🔄 *Refreshing Master Stock List...* This may take 10-15 minutes.")
     
-    # Get a huge list of tickers
+    # Get a huge list of tickers from multiple sources
     tickers = set()
-    try:
-        url = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
-        tickers.update(requests.get(url).text.splitlines())
-    except: tickers.update(["AAPL", "TSLA", "NVDA", "MSFT", "AMD"])
+    sources = [
+        "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt",
+        "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv",
+        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nyse.csv",
+        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nasdaq.csv"
+    ]
+    for url in sources:
+        try:
+            resp = requests.get(url, timeout=10)
+            if "Symbol" in resp.text: # CSV format
+                df = pd.read_csv(io.StringIO(resp.text))
+                tickers.update(df['Symbol'].tolist())
+            else: # Plain text format
+                tickers.update(resp.text.splitlines())
+        except: pass
     
     universe = sorted(list(set([t.strip().replace('.', '-') for t in tickers if t.strip()])))
     qualified = []
