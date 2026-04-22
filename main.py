@@ -43,7 +43,7 @@ def send_telegram(message):
         response = requests.post(url, json=payload, timeout=10)
         response.raise_for_status()
     except Exception as e:
-        print(f"❌ Telegram Error: {e}")
+        print(f"Telegram Error: {e}")
 
 def log_to_google_sheet(data_row):
     """Logs a signal row to Google Sheets."""
@@ -51,8 +51,9 @@ def log_to_google_sheet(data_row):
     gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
     
     if not gs_id or not gs_service_account:
-        return # Skip if not configured
-        
+        return 
+    
+    print(f"Syncing {data_row[1]} to Google Sheets...")
     try:
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         service_account_info = json.loads(gs_service_account)
@@ -62,7 +63,7 @@ def log_to_google_sheet(data_row):
         sheet.append_row(data_row)
         print(f"✅ Google Sheets Sync: {data_row[1]}")
     except Exception as e:
-        print(f"⚠️ Google Sheets Sync Failed: {e}")
+        print(f"Google Sheets Sync Failed: {e}")
 
 def get_market_universe():
     """Fetches high-quality S&P 500 and NASDAQ tickers."""
@@ -71,12 +72,10 @@ def get_market_universe():
         url_sp500 = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
         df_sp500 = pd.read_csv(io.StringIO(requests.get(url_sp500).text))
         tickers.update(df_sp500['Symbol'].tolist())
-        
         popular = ["TSLA", "NVDA", "AMD", "NFLX", "COIN", "PLTR", "SQ", "SHOP", "U", "RIVN", "GE", "UNH", "RTX", "ISRG", "DHR", "CB", "COF", "NOC", "MMM", "AMX", "ADC", "AERO", "AUB"]
         tickers.update(popular)
     except:
         tickers.update(["AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "GE", "UNH", "RTX"])
-    
     return sorted(list(set([t.replace('.', '-') for t in tickers if t])))
 
 def calculate_rsi(series, period=14):
@@ -85,6 +84,23 @@ def calculate_rsi(series, period=14):
     loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
     rs = gain / loss
     return 100 - (100 / (1 + rs))
+
+def detect_fvg(df):
+    """Detects Bullish Fair Value Gaps (FVG)."""
+    # Look at the last 3 candles
+    # Bullish FVG: Low of Candle 3 > High of Candle 1
+    if len(df) < 3: return None
+    
+    c1_high = df['high'].iloc[-3]
+    c3_low = df['low'].iloc[-1]
+    
+    if c3_low > c1_high:
+        return {
+            "top": c3_low,
+            "bottom": c1_high,
+            "gap_size": c3_low - c1_high
+        }
+    return None
 
 def analyze_ticker(symbol, scan_type="technical", target_date=None):
     try:
@@ -107,7 +123,6 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
 
         if scan_type == "earnings":
             cal = ticker.calendar
-            
             earnings_date = None
             if isinstance(cal, pd.DataFrame) and not cal.empty:
                 if 'Earnings Date' in cal.index: earnings_date = cal.loc['Earnings Date'].iloc[0]
@@ -116,7 +131,6 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
 
             if earnings_date:
                 e_date = earnings_date.date() if hasattr(earnings_date, 'date') else pd.to_datetime(earnings_date).date()
-                # Use target_date from weekend-aware logic
                 if e_date == target_date:
                     last_year_date = (pd.to_datetime(e_date) - pd.DateOffset(years=1)).strftime('%Y-%m-%d')
                     base_res.update({
@@ -137,11 +151,11 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             sma50_daily = df_daily['close'].rolling(window=50).mean().iloc[-1]
             sma100_daily = df_daily['close'].rolling(window=100).mean().iloc[-1]
             
-            # Trend Check: SMA 50 > 100 (Golden Cross) AND Price > SMA 100
             golden_cross = sma50_daily > sma100_daily
             price_above_sma100 = price > sma100_daily
             
-            if not (golden_cross and price_above_sma100):
+            # Primary Trend Filter: Price must be above Daily SMA 100
+            if not price_above_sma100:
                 return None
 
             # --- Hourly Analysis ---
@@ -151,7 +165,14 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
             df.columns = [c.lower() for c in df.columns]
             
-            # VWAP Calculation (Session-based)
+            # Indicators
+            df['rsi'] = calculate_rsi(df['close'])
+            rsi = df['rsi'].iloc[-1]
+            
+            # FVG Detection
+            fvg = detect_fvg(df)
+            
+            # VWAP
             df['tp'] = (df['high'] + df['low'] + df['close']) / 3
             df['tpv'] = df['tp'] * df['volume']
             df['date'] = df.index.date
@@ -159,223 +180,143 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             vwap = df['vwap'].iloc[-1]
             vwap_status = "Bullish (Above)" if price > vwap else "Bearish (Below)"
             
-            # Volume Filter: 1.5x of 20-period average
+            # Volume
             avg_vol_20 = df['volume'].rolling(window=20).mean().iloc[-1]
             curr_vol = df['volume'].iloc[-1]
             high_volume = curr_vol >= (1.5 * avg_vol_20)
             
-            # MACD Calculation (12, 26, 9)
-            ema12 = df['close'].ewm(span=12, adjust=False).mean()
-            ema26 = df['close'].ewm(span=26, adjust=False).mean()
-            macd_line = ema12 - ema26
-            signal_line = macd_line.ewm(span=9, adjust=False).mean()
+            # Signal Logic: RSI <= 35 (Oversold) OR FVG Presence
+            # While keeping Price > SMA 100 (Daily)
+            is_signal = rsi <= 35 or fvg is not None
             
-            # MACD Bullish Crossover in last 3 candles
-            macd_bullish = False
-            for i in range(-3, 0):
-                try:
-                    if (macd_line.iloc[i] > signal_line.iloc[i]) and (macd_line.iloc[i-1] <= signal_line.iloc[i-1]):
-                        macd_bullish = True
-                        break
-                except: pass
-            
-            df['rsi'] = calculate_rsi(df['close'])
-            rsi = df['rsi'].iloc[-1]
-            sma100 = df['close'].rolling(window=100).mean().iloc[-1]
-            
-            # High Conviction Signal: RSI <= 35 and Price > SMA 100 (Hourly)
-            sma100_h = df['close'].rolling(window=100).mean().iloc[-1]
-            is_signal = rsi <= 35 and price > sma100_h
+            # High Conviction: RSI Oversold AND FVG AND Price > VWAP
+            high_conviction = rsi <= 40 and fvg is not None and price > vwap
 
-            # Check for earnings near target_date
-            cal = ticker.calendar
-            earnings_near = False
-            try:
-                if isinstance(cal, pd.DataFrame) and not cal.empty:
-                    if 'Earnings Date' in cal.index:
-                        e_date = cal.loc['Earnings Date'].iloc[0]
-                        if hasattr(e_date, 'date'): e_date = e_date.date()
-                        elif not isinstance(e_date, datetime): e_date = pd.to_datetime(e_date).date()
-                        if e_date == target_date: earnings_near = True
-                elif isinstance(cal, dict) and 'Earnings Date' in cal:
-                    e_date = cal['Earnings Date'][0]
-                    if hasattr(e_date, 'date'): e_date = e_date.date()
-                    elif not isinstance(e_date, datetime): e_date = pd.to_datetime(e_date).date()
-                    if e_date == target_date: earnings_near = True
-            except: pass
-
-            res_vwap_bullish = vwap_status == "Bullish (Above)"
             base_res.update({
                 "type": "technical",
                 "rsi": rsi,
+                "fvg": fvg,
                 "vwap_status": vwap_status,
-                "trend_status": "📈 Trend: Golden Cross (SMA 50 > 100)",
+                "golden_cross": golden_cross,
+                "trend_status": "📈 Trend: Price > SMA 100",
                 "sma100_daily": sma100_daily,
                 "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'),
-                "earnings_near": earnings_near,
                 "high_volume": high_volume,
-                "macd_bullish": macd_bullish,
                 "is_signal": is_signal,
-                "high_conviction": is_signal and high_volume and res_vwap_bullish
+                "high_conviction": high_conviction
             })
             return base_res
-    except:
-        pass
+    except Exception as e:
+        print(f"Error analyzing {symbol}: {e}")
     return None
 
 def run_scanner(mode="technical"):
     universe = get_market_universe()
     dubai_now = get_dubai_time()
-    today_weekday = dubai_now.weekday() # 0=Mon, 4=Fri, 5=Sat, 6=Sun
+    today_weekday = dubai_now.weekday()
 
-    # --- WEEKEND-AWARE LOGIC ---
     if mode == "earnings":
-        if today_weekday == 4: # Friday
-            target_date = (dubai_now + timedelta(days=3)).date()
-            header = "📅 MONDAY'S EARNINGS PREVIEW (Weekend Special)"
-        elif today_weekday == 5: # Saturday
-            target_date = (dubai_now + timedelta(days=2)).date()
-            header = "📅 MONDAY'S EARNINGS PREVIEW"
-        elif today_weekday == 6: # Sunday
-            target_date = (dubai_now + timedelta(days=1)).date()
-            header = "📅 MONDAY'S EARNINGS PREVIEW"
-        else:
-            target_date = (dubai_now + timedelta(days=1)).date()
-            header = "📅 TOMORROW'S EARNINGS PREVIEW"
+        if today_weekday == 4: target_date = (dubai_now + timedelta(days=3)).date()
+        elif today_weekday == 5: target_date = (dubai_now + timedelta(days=2)).date()
+        elif today_weekday == 6: target_date = (dubai_now + timedelta(days=1)).date()
+        else: target_date = (dubai_now + timedelta(days=1)).date()
     else:
-        target_date = (dubai_now + timedelta(days=1)).date() # Default tomorrow
-        header = "🚀 BUY SIGNAL"
+        target_date = (dubai_now + timedelta(days=1)).date()
 
-    print(f"🚀 Starting {mode.upper()} Scan (Target: {target_date}) on {len(universe)} stocks...")
+    print(f"Starting {mode.upper()} Scan (Target: {target_date}) on {len(universe)} stocks...")
     
     signals = []
     all_processed = []
     found_count = 0
     
-    with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-        future_to_ticker = {executor.submit(analyze_ticker, s, mode, target_date): s for s in universe}
-        for future in concurrent.futures.as_completed(future_to_ticker):
-            res = future.result()
-            if res:
-                all_processed.append(res)
-                if mode == "technical" and not res.get('is_signal'):
-                    continue # Heatmap uses all, but alerts/signals CSV only use signals
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+            future_to_ticker = {executor.submit(analyze_ticker, s, mode, target_date): s for s in universe}
+            for future in concurrent.futures.as_completed(future_to_ticker):
+                res = future.result()
+                if res:
+                    all_processed.append(res)
+                    if mode == "technical" and not res.get('is_signal'):
+                        continue
 
-                signals.append(res)
-                found_count += 1
-                
-                if res['type'] == "earnings":
-                    msg = (f"📅 *EARNINGS ALERT: {res['symbol']}*\n\n"
-                           f"🏢 *Company:* {res['name']}\n"
-                           f"💰 *Market Cap:* {res['market_cap_fmt']}\n"
-                           f"📊 *EPS Forecast:* {res['forecast_eps']}\n"
-                           f"📉 *Last Year's EPS:* {res['last_year_eps']}\n\n"
-                           f"📝 *AI Analysis Note:*\n"
-                           f"• *Opportunity:* Forecasted EPS of {res['forecast_eps']} vs {res['last_year_eps']} last year.\n"
-                           f"• *Risk Context:* High volatility event. Professional risk management required for pre-earnings positions.\n"
-                           f"• *Market Sentiment:* Tracking institutional positioning ahead of {target_date}.\n\n"
-                           f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                else:
-                    v_status = "Above" if "Above" in res['vwap_status'] else "Below"
-                    m_status = "Bullish" if "Above" in res['vwap_status'] else "Bearish"
-                    vol_status = "🔥 High Spike" if res.get('high_volume') else "Normal"
-                    macd_status = "⚡ Bullish Crossover" if res.get('macd_bullish') else "Neutral"
-                    e_risk = "⚠️ Earnings report scheduled for tomorrow. High event-based volatility risk." if res.get('earnings_near') else "✅ No earnings reported for tomorrow, reducing event-based volatility risk."
+                    signals.append(res)
+                    found_count += 1
                     
-                    header_icon = "🔥 HIGH CONVICTION SIGNAL" if res.get('high_conviction') else "🚀 NEW BUY SIGNAL"
+                    if res['type'] == "earnings":
+                        msg = (f"📅 *EARNINGS ALERT: {res['symbol']}*\n\n"
+                               f"🏢 *Company:* {res['name']}\n"
+                               f"💰 *Market Cap:* {res['market_cap_fmt']}\n"
+                               f"📊 *EPS Forecast:* {res['forecast_eps']}\n"
+                               f"📉 *Last Year's EPS:* {res['last_year_eps']}\n\n"
+                               f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                    else:
+                        v_status = "Above" if "Above" in res['vwap_status'] else "Below"
+                        vol_status = "🔥 High Spike" if res.get('high_volume') else "Normal"
+                        gc_status = "✅ ACTIVE" if res.get('golden_cross') else "❌ INACTIVE"
+                        fvg_status = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
+                        
+                        header_icon = "🔥 HIGH CONVICTION SIGNAL" if res.get('high_conviction') else "🚀 NEW BUY SIGNAL"
+                        
+                        analysis_note = (f"• *Trend:* Price > Daily SMA 100 ({res['sma100_daily']:.2f}).\n"
+                                         f"• *Momentum:* RSI is {res['rsi']:.2f}.\n"
+                                         f"• *FVG:* {fvg_status}\n"
+                                         f"• *VWAP:* Price is {v_status} VWAP.\n"
+                                         f"• *Golden Cross:* {gc_status}")
+                        
+                        msg = (f"{header_icon}: *{res['symbol']}*\n\n"
+                               f"💰 *Price:* ${res['price']:.2f}\n"
+                               f"📉 *RSI:* {res['rsi']:.2f}\n"
+                               f"📊 *Volume:* {vol_status}\n"
+                               f"⚡ *VWAP:* {res['vwap_status']}\n"
+                               f"🕳️ *FVG:* {fvg_status}\n"
+                               f"🧬 *Golden Cross:* {gc_status}\n\n"
+                               f"📝 *AI Analysis Note:*\n"
+                               f"{analysis_note}\n\n"
+                               f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                     
-                    analysis_note = (f"• *Trend Check:* 📈 Trend: Golden Cross (SMA 50 > 100) and Price > Daily SMA 100.\n"
-                                     f"• *Opportunity:* RSI is at {res['rsi']:.2f} on 1H timeframe. Momentum is shifting from oversold levels.\n"
-                                     f"• *Volume/Momentum:* Price is {v_status} VWAP with {m_status} momentum.\n"
-                                     f"• *Risk Context:* {e_risk}")
+                    send_telegram(msg)
                     
-                    msg = (f"{header_icon}: *{res['symbol']}*\n\n"
-                           f"💰 *Price:* ${res['price']:.2f}\n"
-                           f"📉 *RSI:* {res['rsi']:.2f}\n"
-                           f"📊 *Volume:* {vol_status}\n"
-                           f"📈 *MACD:* {macd_status}\n"
-                           f"⚡ *VWAP:* {res['vwap_status']}\n"
-                           f"📈 *Trend:* Golden Cross (SMA 50 > 100)\n\n"
-                           f"📝 *AI Analysis Note:*\n"
-                           f"{analysis_note}\n\n"
-                           f"🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                
-                send_telegram(msg)
-                
-                # --- Google Sheets Sync ---
-                gs_row = [
-                    dubai_now.strftime('%Y-%m-%d %H:%M'),
-                    res['symbol'],
-                    f"{res['price']:.2f}",
-                    f"{res['rsi']:.2f}",
-                    res['vwap_status'],
-                    macd_status,
-                    vol_status,
-                    analysis_note.replace('\n', ' ')
-                ]
-                log_to_google_sheet(gs_row)
+                    gs_row = [
+                        dubai_now.strftime('%Y-%m-%d %H:%M'),
+                        res['symbol'],
+                        f"{res['price']:.2f}",
+                        f"{res['rsi']:.2f}",
+                        res['vwap_status'],
+                        f"FVG: {fvg_status}",
+                        vol_status,
+                        analysis_note.replace('\n', ' ')
+                    ]
+                    log_to_google_sheet(gs_row)
 
-    # Fallback for Earnings
-    if mode == "earnings" and found_count == 0:
-        msg = (f"🔔 EARNINGS REPORT: {target_date}\n"
-               f"━━━━━━━━━━━━━━━━━━━━\n"
-               f"No major earnings reports are scheduled for {target_date} for stocks above $500M Market Cap.\n"
-               f"━━━━━━━━━━━━━━━━━━━━\n"
-               f"Status: System Active")
-        send_telegram(msg)
+        if mode == "earnings" and found_count == 0:
+            msg = (f"🔔 EARNINGS REPORT: {target_date}\n"
+                   f"━━━━━━━━━━━━━━━━━━━━\n"
+                   f"No major earnings reports are scheduled for {target_date}.\n"
+                   f"━━━━━━━━━━━━━━━━━━━━\n"
+                   f"Status: System Active")
+            send_telegram(msg)
 
-    # Send Completion Status to Telegram (Technical Only)
-    if mode == "technical":
-        icon = "🎯" if found_count > 0 else "ℹ️"
-        summary = f"New Signals Found: {found_count}" if found_count > 0 else "No high-conviction signals matched criteria."
-        
-        status_msg = (f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n"
-                      f"━━━━━━━━━━━━━━━━━━━━\n"
-                      f"✅ Total Stocks Analyzed: {len(universe)}\n"
-                      f"{icon} {summary}\n"
-                      f"━━━━━━━━━━━━━━━━━━━━\n"
-                      f"Status: System Active")
-        send_telegram(status_msg)
-
-    # --- Market Close Alert (12:25 AM GST) ---
-    if mode == "technical" and dubai_now.hour == 0:
-        try:
-            gs_id = os.getenv("GOOGLE_SHEET_ID", "1oMO1Kii2dV336Ufe10u5If_REcaFMnhnTRgaSI-4gmA")
-            gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
-            if gs_id and gs_service_account:
-                scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-                service_account_info = json.loads(gs_service_account)
-                creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
-                client = gspread.authorize(creds)
-                sheet = client.open_by_key(gs_id).sheet1
-                all_data = sheet.get_all_values()
-                
-                # Filter for today's signals (GST)
-                today_str = dubai_now.strftime('%Y-%m-%d')
-                today_signals = [r for r in all_data if len(r) > 0 and today_str in r[0]]
-                total_today = len(today_signals)
-                
-                close_msg = (f"🌙 *MARKET IS NOW CLOSED*\n"
-                             f"━━━━━━━━━━━━━━━━━━━━\n"
-                             f"Final scan for the day is complete.\n"
-                             f"🎯 *Daily Summary:* {total_today} v4.1 Golden Cross signals identified today.\n"
-                             f"━━━━━━━━━━━━━━━━━━━━\n"
-                             f"Status: Hibernation Mode Active")
-                send_telegram(close_msg)
-        except Exception as e:
-            print(f"⚠️ Market Close Alert Error: {e}")
-
-    # Save results to CSV (for Dashboard)
-    if all_processed:
+        if all_processed:
+            if mode == "technical":
+                pd.DataFrame(signals).to_csv("active_signals.csv", index=False)
+                pd.DataFrame(all_processed).to_csv("market_overview_technical.csv", index=False)
+                print(f"Technical signals saved (Dubai Time: {dubai_now.strftime('%H:%M')})")
+            else:
+                pd.DataFrame(all_processed).to_csv("active_earnings_signals.csv", index=False)
+                pd.DataFrame(all_processed).to_csv("active_signals.csv", index=False)
+                print(f"Earnings signals saved (Dubai Time: {dubai_now.strftime('%H:%M')})")
+    
+    finally:
         if mode == "technical":
-            pd.DataFrame(signals).to_csv("active_signals.csv", index=False)
-            pd.DataFrame(all_processed).to_csv("market_overview_technical.csv", index=False)
-            print(f"✅ Technical signals and market overview saved (Dubai Time: {dubai_now.strftime('%H:%M')})")
-        else:
-            # For earnings, save to specific file AND active_signals.csv as requested
-            pd.DataFrame(all_processed).to_csv("active_earnings_signals.csv", index=False)
-            pd.DataFrame(all_processed).to_csv("active_signals.csv", index=False)
-            print(f"✅ Earnings signals and sync feed saved (Dubai Time: {dubai_now.strftime('%H:%M')})")
+            icon = "🎯" if found_count > 0 else "ℹ️"
+            summary = f"New Signals Found: {found_count}" if found_count > 0 else "No signals matched criteria."
+            status_msg = (f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n"
+                          f"━━━━━━━━━━━━━━━━━━━━\n"
+                          f"✅ Total Stocks Analyzed: {len(universe)}\n"
+                          f"{icon} {summary}\n"
+                          f"━━━━━━━━━━━━━━━━━━━━\n"
+                          f"Status: System Active")
+            send_telegram(status_msg)
 
 if __name__ == "__main__":
     import sys
