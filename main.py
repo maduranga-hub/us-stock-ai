@@ -247,7 +247,7 @@ def run_scanner(mode="technical", force_ticker=None):
     # Send Start Notification
     dubai_time_str = dubai_now.strftime('%H:%M')
     source = "MANUAL" if len(sys.argv) > 1 and sys.argv[1] in ["technical", "earnings", "refresh"] else "AUTOMATED"
-    send_telegram(f"🚀 *{source} SCAN STARTED:* {dubai_time_str} GST\n🔍 Analyzing Full Market (~6,700 stocks)...")
+    send_telegram(f"[{source}] SCAN STARTED: {dubai_time_str} GST\nAnalyzing Full Market (~6,700 stocks)...")
 
     print(f"Starting {mode.upper()} Scan on {len(universe)} Master Stocks...")
     found_count = 0
@@ -270,10 +270,10 @@ def run_scanner(mode="technical", force_ticker=None):
         if mode == "technical": update_signal_lifecycle()
     finally:
         dubai_time_str = dubai_now.strftime('%H:%M')
-        # Determine if it was triggered manually (check sys.argv or environment)
-        source = "Manual" if len(sys.argv) > 1 and sys.argv[1] in ["technical", "earnings", "refresh"] else "Automated"
+        # Determine if it was triggered manually
+        source = "MANUAL" if len(sys.argv) > 1 and sys.argv[1] in ["technical", "earnings", "refresh"] else "AUTOMATED"
         print(f"Scan Completed: {dubai_time_str} GST")
-        send_telegram(f"🔔 {source.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} Signals across Full Market ({len(universe)} stocks).")
+        send_telegram(f"[{source}] SCAN COMPLETED: {dubai_time_str} GST\nFound: {found_count} Signals across Full Market ({len(universe)} stocks).")
 
 if __name__ == "__main__":
     import sys
