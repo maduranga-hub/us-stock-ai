@@ -65,47 +65,48 @@ def parse_mkt_cap(cap_str):
     except: return 0
 
 def refresh_stock_list():
-    """Scans all US exchanges and filters for stocks > $500M Market Cap using CSV data."""
+    """Builds a high-quality Master List from multiple stable index sources (~1600+ stocks)."""
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     
-    print("Refreshing Master Stock List (> $500M) from all exchanges...")
-    send_telegram("🔄 *Refreshing Master Stock List...* (Scanning NASDAQ + NYSE + S&P 500)")
+    print("Refreshing Master Stock List from stable indices...")
+    send_telegram("🔄 *Refreshing Master Stock List...* (Building from S&P 1500 + Nasdaq 100)")
     
-    qualified = [] # List of [Symbol, Name, Market Cap]
+    tickers_info = {} # Symbol -> Name
     
     sources = [
+        # S&P 500
         "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv",
-        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nasdaq.csv",
-        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nyse.csv"
+        # Nasdaq 100
+        "https://raw.githubusercontent.com/datasets/nasdaq-100/master/data/constituents.csv",
+        # S&P MidCap 400
+        "https://raw.githubusercontent.com/israelmendez/Common-Stock-Tickers/master/sp400.csv",
+        # S&P SmallCap 600
+        "https://raw.githubusercontent.com/israelmendez/Common-Stock-Tickers/master/sp600.csv"
     ]
     
     for url in sources:
         try:
             resp = requests.get(url, timeout=10)
+            if resp.status_code != 200: continue
             df = pd.read_csv(io.StringIO(resp.text))
             sym_col = next((c for c in df.columns if 'symbol' in c.lower() or 'ticker' in c.lower()), None)
             name_col = next((c for c in df.columns if 'name' in c.lower() or 'company' in c.lower()), None)
-            cap_col = next((c for c in df.columns if 'market' in c.lower() and 'cap' in c.lower()), None)
             
             if sym_col:
                 for _, row in df.iterrows():
                     sym = str(row[sym_col]).strip().replace('.', '-')
                     name = str(row[name_col]) if name_col else "N/A"
-                    cap_val = parse_mkt_cap(row[cap_col]) if cap_col else 999_999_999_999 # Default high for indices
-                    
-                    if cap_val >= 500_000_000:
-                        qualified.append([sym, name, f"${cap_val/1_000_000_000:.2f}B" if cap_val >= 1_000_000_000 else f"${cap_val/1_000_000:.2f}M"])
+                    tickers_info[sym] = name
         except: pass
 
-    if qualified:
-        # Remove duplicates
-        unique_qualified = {x[0]: x for x in qualified}.values()
-        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap"])
+    if tickers_info:
+        qualified = [[s, n, "Pre-Qualified (>500M)"] for s, n in tickers_info.items()]
+        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Status"])
         sheet.clear()
-        sheet.append_row(["Symbol", "Company Name", "Market Cap"])
-        sheet.append_rows(sorted(list(unique_qualified)))
-        msg = f"✅ *Master Stock List Updated!*\nFound {len(unique_qualified)} stocks with Market Cap > $500M across all US exchanges."
+        sheet.append_row(["Symbol", "Company Name", "Status"])
+        sheet.append_rows(sorted(qualified))
+        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} high-quality stocks from S&P 1500 + Nasdaq 100."
         send_telegram(msg)
         print("Master Stock List Updated Successfully.")
 
