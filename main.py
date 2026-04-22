@@ -65,12 +65,12 @@ def parse_mkt_cap(cap_str):
     except: return 0
 
 def refresh_stock_list():
-    """Builds a high-quality Master List from multiple stable index sources (~1600+ stocks)."""
+    """Builds a comprehensive Master List from S&P 1500 + Nasdaq 100 + Russell 3000 (~3500 stocks)."""
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     
-    print("Refreshing Master Stock List from stable indices...")
-    send_telegram("🔄 *Refreshing Master Stock List...* (Building from S&P 1500 + Nasdaq 100)")
+    print("Refreshing Master Stock List from major indices...")
+    send_telegram("🔄 *Refreshing Master Stock List...* (Building from S&P 1500 + Russell 3000)")
     
     tickers_info = {} # Symbol -> Name
     
@@ -79,6 +79,8 @@ def refresh_stock_list():
         "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv",
         # Nasdaq 100
         "https://raw.githubusercontent.com/datasets/nasdaq-100/master/data/constituents.csv",
+        # Russell 3000 (Very comprehensive)
+        "https://raw.githubusercontent.com/n8henrie/russell-3000/master/russell3000.csv",
         # S&P MidCap 400
         "https://raw.githubusercontent.com/israelmendez/Common-Stock-Tickers/master/sp400.csv",
         # S&P SmallCap 600
@@ -91,7 +93,7 @@ def refresh_stock_list():
             if resp.status_code != 200: continue
             df = pd.read_csv(io.StringIO(resp.text))
             sym_col = next((c for c in df.columns if 'symbol' in c.lower() or 'ticker' in c.lower()), None)
-            name_col = next((c for c in df.columns if 'name' in c.lower() or 'company' in c.lower()), None)
+            name_col = next((c for c in df.columns if 'name' in c.lower() or 'company' in c.lower() or 'description' in c.lower()), None)
             
             if sym_col:
                 for _, row in df.iterrows():
@@ -101,12 +103,12 @@ def refresh_stock_list():
         except: pass
 
     if tickers_info:
-        qualified = [[s, n, "Pre-Qualified (>500M)"] for s, n in tickers_info.items()]
-        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Status"])
+        qualified = [[s, n, "Master List"] for s, n in tickers_info.items()]
+        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Source"])
         sheet.clear()
-        sheet.append_row(["Symbol", "Company Name", "Status"])
+        sheet.append_row(["Symbol", "Company Name", "Source"])
         sheet.append_rows(sorted(qualified))
-        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} high-quality stocks from S&P 1500 + Nasdaq 100."
+        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} stocks from S&P 1500 + Russell 3000."
         send_telegram(msg)
         print("Master Stock List Updated Successfully.")
 
