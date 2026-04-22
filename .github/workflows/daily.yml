@@ -2,10 +2,15 @@ name: US Stock AI Serverless Engine
 
 on:
   schedule:
-    # 11:30 AM UTC = 3:30 PM Dubai Time (Earnings Scan)
+    # 1. Master List Refresh - Every Monday at 10:00 AM UTC (2:00 PM Dubai)
+    - cron: '0 10 * * 1'
+    
+    # 2. Earnings Scan - Daily Mon-Fri at 11:30 AM UTC (3:30 PM Dubai)
     - cron: '30 11 * * 1-5'
-    # Technical Scan (12:25 PM to 8:25 PM UTC = 4:25 PM to 12:25 AM Dubai Time)
+    
+    # 3. Technical Scan - Hourly Mon-Fri (12:25 PM to 8:25 PM UTC = 4:25 PM to 12:25 AM Dubai)
     - cron: '25 12-20 * * 1-5'
+    
   workflow_dispatch:
     inputs:
       scan_mode:
@@ -55,10 +60,22 @@ jobs:
           else
             # Scheduled logic
             current_hour=$(date -u +%H)
+            current_day=$(date +%u) # 1 is Monday
+            
+            # If it's 10 AM UTC on Monday, run Master Refresh
+            if [ "$current_hour" == "10" ] && [ "$current_day" == "1" ]; then
+              echo "🔄 Launching Weekly Master List Refresh (Monday 2:00 PM Dubai)..."
+              python main.py refresh
+            fi
+            
+            # Daily Earnings Scan at 11 AM UTC
             if [ "$current_hour" == "11" ]; then
               echo "🚀 Launching Earnings Scan (Dubai 3:30 PM)..."
               python main.py earnings
-            else
+            fi
+            
+            # Hourly Technical Scan
+            if [ "$current_hour" != "11" ] && [ "$current_hour" != "10" ]; then
               echo "🚀 Launching Technical Scan..."
               python main.py technical
             fi
