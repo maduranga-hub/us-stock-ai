@@ -65,70 +65,63 @@ def parse_mkt_cap(cap_str):
     except: return 0
 
 def refresh_stock_list():
-    """Builds a comprehensive Master List from S&P 1500 + Nasdaq 100 + Russell 3000 (~3500 stocks)."""
+    """Scans all 6700+ US stocks and filters for > $500M Market Cap using a robust method."""
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     
-    print("Refreshing Master Stock List from major indices...")
-    send_telegram("🔄 *Refreshing Master Stock List...* (Building from S&P 1500 + Russell 3000)")
+    print("Refreshing Master Stock List from full market data...")
+    send_telegram("🔄 *Refreshing Master Stock List...* (Filtering 6,700+ stocks by >$500M Cap)")
     
-    tickers_info = {} # Symbol -> Name
+    # Get the huge list that we verified is working
+    resp = requests.get("https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt")
+    universe = sorted(list(set([t.strip().replace('.', '-') for t in resp.text.splitlines() if t.strip()])))
     
-    sources = [
-        # S&P 500
-        "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv",
-        # Nasdaq 100
-        "https://raw.githubusercontent.com/datasets/nasdaq-100/master/data/constituents.csv",
-        # Russell 3000 (Very comprehensive)
-        "https://raw.githubusercontent.com/n8henrie/russell-3000/master/russell3000.csv",
-        # S&P MidCap 400
-        "https://raw.githubusercontent.com/israelmendez/Common-Stock-Tickers/master/sp400.csv",
-        # S&P SmallCap 600
-        "https://raw.githubusercontent.com/israelmendez/Common-Stock-Tickers/master/sp600.csv"
-    ]
+    qualified = []
     
-    for url in sources:
+    def check_cap_robust(symbol):
         try:
-            resp = requests.get(url, timeout=10)
-            if resp.status_code != 200: continue
-            df = pd.read_csv(io.StringIO(resp.text))
-            sym_col = next((c for c in df.columns if 'symbol' in c.lower() or 'ticker' in c.lower()), None)
-            name_col = next((c for c in df.columns if 'name' in c.lower() or 'company' in c.lower() or 'description' in c.lower()), None)
-            
-            if sym_col:
-                for _, row in df.iterrows():
-                    sym = str(row[sym_col]).strip().replace('.', '-')
-                    name = str(row[name_col]) if name_col else "N/A"
-                    tickers_info[sym] = name
+            # Using a simplified check to avoid crumb errors
+            ticker = yf.Ticker(symbol)
+            cap = ticker.fast_info.get('market_cap', 0)
+            if cap >= 500_000_000:
+                name = ticker.info.get('longName', 'N/A')
+                return [symbol, name, f"${cap/1_000_000_000:.2f}B"]
         except: pass
+        return None
 
-    if tickers_info:
-        qualified = [[s, n, "Master List"] for s, n in tickers_info.items()]
-        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Source"])
+    # Using 100 workers for speed
+    with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
+        futures = {executor.submit(check_cap_robust, s): s for s in universe}
+        for future in concurrent.futures.as_completed(futures):
+            res = future.result()
+            if res: qualified.append(res)
+
+    if qualified:
+        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap"])
         sheet.clear()
-        sheet.append_row(["Symbol", "Company Name", "Source"])
+        sheet.append_row(["Symbol", "Company Name", "Market Cap"])
         sheet.append_rows(sorted(qualified))
-        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} stocks from S&P 1500 + Russell 3000."
+        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} stocks with Market Cap > $500M across all US exchanges."
         send_telegram(msg)
         print("Master Stock List Updated Successfully.")
 
 def get_market_universe():
-    """Reads the market universe from the 'Stock List' tab in Google Sheets."""
-    client, spreadsheet = get_gs_client()
-    if not spreadsheet: return ["AAPL", "NVDA", "TSLA"]
-    
+    """Fetches the entire US market universe (~6700+ tickers) for scanning."""
     try:
-        sheet = spreadsheet.worksheet("Stock List")
-        records = sheet.get_all_records()
-        if not records: return ["AAPL", "NVDA", "TSLA"]
-        return [r['Symbol'] for r in records]
+        url = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
+        resp = requests.get(url, timeout=10)
+        if resp.status_code == 200:
+            tickers = [t.strip().replace('.', '-') for t in resp.text.splitlines() if t.strip()]
+            return sorted(list(set(tickers)))
+    except: pass
+    
+    # Fallback to S&P 500
+    try:
+        url = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
+        df = pd.read_csv(io.StringIO(requests.get(url).text))
+        return sorted(df['Symbol'].str.replace('.', '-').tolist())
     except:
-        # Fallback to S&P 500 if tab not found
-        try:
-            url = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
-            df = pd.read_csv(io.StringIO(requests.get(url).text))
-            return df['Symbol'].tolist()
-        except: return ["AAPL", "NVDA", "TSLA"]
+        return ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 
 def log_to_google_sheet(data_row):
     client, spreadsheet = get_gs_client()
