@@ -61,7 +61,7 @@ def log_to_google_sheet(data_row):
         client = gspread.authorize(creds)
         sheet = client.open_by_key(gs_id).sheet1
         sheet.append_row(data_row)
-        print(f"✅ Google Sheets Sync: {data_row[1]}")
+        print(f"Google Sheets Sync: {data_row[1]}")
     except Exception as e:
         print(f"Google Sheets Sync Failed: {e}")
 
@@ -198,6 +198,8 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                 "fvg": fvg,
                 "vwap_status": vwap_status,
                 "golden_cross": golden_cross,
+                "sma50_daily": sma50_daily,
+                "sma100_daily": sma100_daily,
                 "trend_status": "📈 Trend: Price > SMA 100",
                 "sma100_daily": sma100_daily,
                 "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'),
@@ -257,18 +259,21 @@ def run_scanner(mode="technical"):
                         
                         header_icon = "🔥 HIGH CONVICTION SIGNAL" if res.get('high_conviction') else "🚀 NEW BUY SIGNAL"
                         
-                        analysis_note = (f"• *Trend:* Price > Daily SMA 100 ({res['sma100_daily']:.2f}).\n"
-                                         f"• *Momentum:* RSI is {res['rsi']:.2f}.\n"
-                                         f"• *FVG:* {fvg_status}\n"
-                                         f"• *VWAP:* Price is {v_status} VWAP.\n"
-                                         f"• *Golden Cross:* {gc_status}")
+                        analysis_note = (f"• *Trend Check:* Price is above Daily SMA 100 (${res['sma100_daily']:.2f}).\n"
+                                         f"• *SMA 50:* ${res['sma50_daily']:.2f}\n"
+                                         f"• *SMA 100:* ${res['sma100_daily']:.2f}\n"
+                                         f"• *Opportunity:* RSI is at {res['rsi']:.2f} on 1H timeframe.\n"
+                                         f"• *Volume/Momentum:* Price is {v_status} VWAP with {m_status} momentum.\n"
+                                         f"• *Golden Cross:* {gc_status}\n"
+                                         f"• *Risk Context:* {e_risk}")
                         
                         msg = (f"{header_icon}: *{res['symbol']}*\n\n"
                                f"💰 *Price:* ${res['price']:.2f}\n"
-                               f"📉 *RSI:* {res['rsi']:.2f}\n"
+                               f"📈 *SMA 50:* ${res['sma50_daily']:.2f}\n"
+                               f"📉 *SMA 100:* ${res['sma100_daily']:.2f}\n"
+                               f"📊 *RSI:* {res['rsi']:.2f}\n"
                                f"📊 *Volume:* {vol_status}\n"
                                f"⚡ *VWAP:* {res['vwap_status']}\n"
-                               f"🕳️ *FVG:* {fvg_status}\n"
                                f"🧬 *Golden Cross:* {gc_status}\n\n"
                                f"📝 *AI Analysis Note:*\n"
                                f"{analysis_note}\n\n"
