@@ -16,8 +16,8 @@ from google.oauth2.service_account import Credentials
 load_dotenv()
 
 # --- CONFIGURATION ---
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "8688237504:AAGgArGWUZmyiLRCnRkYa4B_Wj9gDvS0yL4")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "-1002340578833")
 DASHBOARD_URL = os.getenv("DASHBOARD_URL", "https://us-stock-ai-maduranga.streamlit.app")
 DUBAI_TZ = pytz.timezone('Asia/Dubai')
 
