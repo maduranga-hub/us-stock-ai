@@ -55,56 +55,44 @@ def get_or_create_sheet(spreadsheet, title, headers=None):
         return new_sheet
 
 def refresh_stock_list():
-    """Scans thousands of stocks and saves those > 500M Market Cap to 'Stock List' tab."""
+    """Scans major indices (S&P 500, Nasdaq 100, Russell 1000) to build a high-quality Master List."""
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     
-    print("Refreshing Master Stock List (> 500M Market Cap)...")
-    send_telegram("🔄 *Refreshing Master Stock List...* This may take 10-15 minutes.")
+    print("Refreshing Master Stock List using High-Quality Indices...")
+    send_telegram("🔄 *Refreshing Master Stock List...* (Building from S&P 500 + Nasdaq 100 + Russell 1000)")
     
-    # Get a huge list of tickers from multiple sources
-    tickers = set()
+    tickers_info = {} # Symbol -> Company Name
+    
     sources = [
-        "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt",
+        # S&P 500
         "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv",
-        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nyse.csv",
-        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nasdaq.csv"
+        # Nasdaq 100
+        "https://raw.githubusercontent.com/datasets/nasdaq-100/master/data/constituents.csv",
+        # Russell 1000 (Top 1000 US Companies)
+        "https://raw.githubusercontent.com/ucl-investment-society/russell-1000/master/russell1000.csv"
     ]
+    
     for url in sources:
         try:
             resp = requests.get(url, timeout=10)
-            if "Symbol" in resp.text: # CSV format
-                df = pd.read_csv(io.StringIO(resp.text))
-                tickers.update(df['Symbol'].tolist())
-            else: # Plain text format
-                tickers.update(resp.text.splitlines())
+            df = pd.read_csv(io.StringIO(resp.text))
+            symbol_col = next((c for c in df.columns if 'Symbol' in c or 'Ticker' in c), None)
+            name_col = next((c for c in df.columns if 'Name' in c or 'Company' in c), None)
+            if symbol_col:
+                for _, row in df.iterrows():
+                    sym = str(row[symbol_col]).strip().replace('.', '-')
+                    name = str(row[name_col]) if name_col else "N/A"
+                    tickers_info[sym] = name
         except: pass
-    
-    universe = sorted(list(set([t.strip().replace('.', '-') for t in tickers if t.strip()])))
-    qualified = []
-    
-    def check_cap(symbol):
-        try:
-            t = yf.Ticker(symbol)
-            info = t.info
-            cap = info.get('marketCap', 0)
-            if cap >= 500_000_000:
-                return [symbol, info.get('longName', 'N/A'), f"${cap/1_000_000_000:.2f}B"]
-        except: pass
-        return None
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-        futures = {executor.submit(check_cap, s): s for s in universe}
-        for future in concurrent.futures.as_completed(futures):
-            res = future.result()
-            if res: qualified.append(res)
-    
-    if qualified:
-        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap"])
+    if tickers_info:
+        qualified = [[s, n, "Pre-Qualified (>500M)"] for s, n in tickers_info.items()]
+        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap Status"])
         sheet.clear()
-        sheet.append_row(["Symbol", "Company Name", "Market Cap"])
+        sheet.append_row(["Symbol", "Company Name", "Market Cap Status"])
         sheet.append_rows(sorted(qualified))
-        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} stocks with Market Cap > $500M."
+        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} high-quality stocks from major indices."
         send_telegram(msg)
         print(msg)
 
