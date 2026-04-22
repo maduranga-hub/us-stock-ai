@@ -106,7 +106,7 @@ def refresh_stock_list():
         print("Master Stock List Updated Successfully.")
 
 def get_market_universe():
-    """Fetches the entire US market universe (~6700+ tickers) for scanning."""
+    """Fetches the entire US market universe (~6700+ tickers) for scanning every hour."""
     try:
         url = "https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt"
         resp = requests.get(url, timeout=10)
@@ -264,8 +264,10 @@ def run_scanner(mode="technical", force_ticker=None):
         if mode == "technical": update_signal_lifecycle()
     finally:
         dubai_time_str = dubai_now.strftime('%H:%M')
+        # Determine if it was triggered manually (check sys.argv or environment)
+        source = "Manual" if len(sys.argv) > 1 and sys.argv[1] in ["technical", "earnings", "refresh"] else "Automated"
         print(f"Scan Completed: {dubai_time_str} GST")
-        send_telegram(f"🔔 SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} Signals from Master List ({len(universe)} stocks).")
+        send_telegram(f"🔔 {source.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} Signals across Full Market ({len(universe)} stocks).")
 
 if __name__ == "__main__":
     import sys
