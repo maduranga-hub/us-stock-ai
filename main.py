@@ -243,6 +243,12 @@ def run_scanner(mode="technical", force_ticker=None):
     if mode == "refresh": refresh_stock_list(); return
     universe = [force_ticker] if force_ticker else get_market_universe()
     dubai_now = get_dubai_time()
+    
+    # Send Start Notification
+    dubai_time_str = dubai_now.strftime('%H:%M')
+    source = "MANUAL" if len(sys.argv) > 1 and sys.argv[1] in ["technical", "earnings", "refresh"] else "AUTOMATED"
+    send_telegram(f"🚀 *{source} SCAN STARTED:* {dubai_time_str} GST\n🔍 Analyzing Full Market (~6,700 stocks)...")
+
     print(f"Starting {mode.upper()} Scan on {len(universe)} Master Stocks...")
     found_count = 0
     try:
