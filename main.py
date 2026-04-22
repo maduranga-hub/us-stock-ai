@@ -54,47 +54,60 @@ def get_or_create_sheet(spreadsheet, title, headers=None):
         if headers: new_sheet.append_row(headers)
         return new_sheet
 
+def parse_mkt_cap(cap_str):
+    """Converts market cap string like '$1.23B' or '$500.5M' to a number."""
+    try:
+        cap_str = str(cap_str).replace('$', '').replace(',', '').strip()
+        if 'T' in cap_str: return float(cap_str.replace('T', '')) * 1_000_000_000_000
+        if 'B' in cap_str: return float(cap_str.replace('B', '')) * 1_000_000_000
+        if 'M' in cap_str: return float(cap_str.replace('M', '')) * 1_000_000
+        return float(cap_str)
+    except: return 0
+
 def refresh_stock_list():
-    """Scans major indices (S&P 500, Nasdaq 100, Russell 1000) to build a high-quality Master List."""
+    """Scans all US exchanges and filters for stocks > $500M Market Cap using CSV data."""
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     
-    print("Refreshing Master Stock List using High-Quality Indices...")
-    send_telegram("🔄 *Refreshing Master Stock List...* (Building from S&P 500 + Nasdaq 100 + Russell 1000)")
+    print("Refreshing Master Stock List (> $500M) from all exchanges...")
+    send_telegram("🔄 *Refreshing Master Stock List...* (Scanning NASDAQ + NYSE + S&P 500)")
     
-    tickers_info = {} # Symbol -> Company Name
+    qualified = [] # List of [Symbol, Name, Market Cap]
     
     sources = [
-        # S&P 500
         "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv",
-        # Nasdaq 100
-        "https://raw.githubusercontent.com/datasets/nasdaq-100/master/data/constituents.csv",
-        # Russell 1000 (Top 1000 US Companies)
-        "https://raw.githubusercontent.com/ucl-investment-society/russell-1000/master/russell1000.csv"
+        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nasdaq.csv",
+        "https://raw.githubusercontent.com/annalyzin/r-investing-crash-course/master/data/nyse.csv"
     ]
     
     for url in sources:
         try:
             resp = requests.get(url, timeout=10)
             df = pd.read_csv(io.StringIO(resp.text))
-            symbol_col = next((c for c in df.columns if 'Symbol' in c or 'Ticker' in c), None)
-            name_col = next((c for c in df.columns if 'Name' in c or 'Company' in c), None)
-            if symbol_col:
+            sym_col = next((c for c in df.columns if 'symbol' in c.lower() or 'ticker' in c.lower()), None)
+            name_col = next((c for c in df.columns if 'name' in c.lower() or 'company' in c.lower()), None)
+            cap_col = next((c for c in df.columns if 'market' in c.lower() and 'cap' in c.lower()), None)
+            
+            if sym_col:
                 for _, row in df.iterrows():
-                    sym = str(row[symbol_col]).strip().replace('.', '-')
+                    sym = str(row[sym_col]).strip().replace('.', '-')
                     name = str(row[name_col]) if name_col else "N/A"
-                    tickers_info[sym] = name
+                    cap_val = parse_mkt_cap(row[cap_col]) if cap_col else 999_999_999_999 # Default high for indices
+                    
+                    if cap_val >= 500_000_000:
+                        qualified.append([sym, name, f"${cap_val/1_000_000_000:.2f}B" if cap_val >= 1_000_000_000 else f"${cap_val/1_000_000:.2f}M"])
         except: pass
 
-    if tickers_info:
-        qualified = [[s, n, "Pre-Qualified (>500M)"] for s, n in tickers_info.items()]
-        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap Status"])
+    if qualified:
+        # Remove duplicates
+        unique_qualified = {x[0]: x for x in qualified}.values()
+        sheet = get_or_create_sheet(spreadsheet, "Stock List", ["Symbol", "Company Name", "Market Cap"])
         sheet.clear()
-        sheet.append_row(["Symbol", "Company Name", "Market Cap Status"])
-        sheet.append_rows(sorted(qualified))
-        msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} high-quality stocks from major indices."
+        sheet.append_row(["Symbol", "Company Name", "Market Cap"])
+        sheet.append_rows(sorted(list(unique_qualified)))
+        msg = f"✅ *Master Stock List Updated!*\nFound {len(unique_qualified)} stocks with Market Cap > $500M across all US exchanges."
         send_telegram(msg)
-        print(msg)
+        print("Master Stock List Updated Successfully.")
 
 def get_market_universe():
     """Reads the market universe from the 'Stock List' tab in Google Sheets."""
@@ -254,7 +267,9 @@ def run_scanner(mode="technical", force_ticker=None):
                     log_to_google_sheet(gs_row)
         if mode == "technical": update_signal_lifecycle()
     finally:
-        send_telegram(f"🔔 SCAN COMPLETED: {dubai_now.strftime('%H:%M')} GST\n✅ Found: {found_count} Signals from Master List ({len(universe)} stocks).")
+        dubai_time_str = dubai_now.strftime('%H:%M')
+        print(f"Scan Completed: {dubai_time_str} GST")
+        send_telegram(f"🔔 SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} Signals from Master List ({len(universe)} stocks).")
 
 if __name__ == "__main__":
     import sys
