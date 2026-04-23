@@ -41,6 +41,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Auto-Wakeup Dashboard
+        continue-on-error: true
         run: |
           curl -sL ${{ secrets.DASHBOARD_URL }} > /dev/null
           echo "✅ Dashboard Pinged (Wake-up Sequence Complete)"
