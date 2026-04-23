@@ -123,16 +123,23 @@ def get_market_universe():
     except:
         return ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 
-def log_to_google_sheet(data_row):
+def log_to_google_sheet(data_row, mode="technical"):
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     dubai_now = get_dubai_time()
-    sheet_name = dubai_now.strftime('%B %Y')
-    headers = ["S/N", "Date", "Time", "Symbol", "Price", "RSI", "VWAP Status", "FVG Status", "Golden Cross", "Volume", "Signal Status", "Price 7D", "Profit 7D %", "Price 30D", "Profit 30D %", "AI Analysis Note"]
+    
+    if mode == "earnings":
+        sheet_name = "Earnings Logs"
+        headers = ["Date", "Symbol", "Price", "Earnings Date", "Market Cap", "RSI", "Note"]
+    else:
+        sheet_name = dubai_now.strftime('%B %Y')
+        headers = ["S/N", "Date", "Time", "Symbol", "Price", "RSI", "VWAP Status", "FVG Status", "Golden Cross", "Volume", "Signal Status", "Price 7D", "Profit 7D %", "Price 30D", "Profit 30D %", "AI Analysis Note"]
+    
     sheet = get_or_create_sheet(spreadsheet, sheet_name, headers)
     try:
-        all_rows = sheet.get_all_values()
-        data_row.insert(0, len(all_rows))
+        if mode == "technical":
+            all_rows = sheet.get_all_values()
+            data_row.insert(0, len(all_rows))
         sheet.append_row(data_row)
     except Exception as e: print(f"Sync error: {e}")
 
@@ -214,28 +221,102 @@ def detect_fvg(df):
 
 def analyze_ticker(symbol, scan_type="technical", target_date=None):
     try:
-        ticker = yf.Ticker(symbol); info = ticker.info
-        price = info.get('currentPrice', info.get('regularMarketPrice', 0))
+        ticker = yf.Ticker(symbol)
+        # Use fast_info for basic metrics to avoid slow .info call
+        fast = ticker.fast_info
+        price = fast.get('last_price', 0)
+        if price == 0: # Fallback
+            price = ticker.info.get('currentPrice', 0)
+        
         if price < 5: return None
-        base_res = {"symbol": symbol, "name": info.get('longName', 'N/A'), "price": price}
-        df_daily = ticker.history(period="200d", interval="1d")
+        
+        base_res = {"symbol": symbol, "price": price}
+        
+        if scan_type == "earnings":
+            # For earnings, we try multiple methods as Yahoo is often unstable
+            e_dates = []
+            try:
+                cal = ticker.calendar
+                if cal is not None and not cal.empty and 'Earnings Date' in cal.index:
+                    e_dates = list(cal.loc['Earnings Date'].values)
+            except: pass
+            
+            if not e_dates:
+                try:
+                    # Fallback to earnings_dates property (sometimes more stable)
+                    edf = ticker.earnings_dates
+                    if edf is not None and not edf.empty:
+                        e_dates = list(edf.index)
+                except: pass
+
+            if e_dates:
+                today = get_dubai_time().date()
+                tomorrow = today + timedelta(days=1)
+                found_date = None
+                for ed in e_dates:
+                    try:
+                        # Convert to date object regardless of format
+                        if hasattr(ed, 'date'): ed_date = ed.date()
+                        elif isinstance(ed, str): ed_date = datetime.strptime(ed[:10], '%Y-%m-%d').date()
+                        else: ed_date = pd.to_datetime(ed).date()
+                        
+                        if ed_date == today or ed_date == tomorrow:
+                            found_date = ed_date
+                            break
+                    except: continue
+                
+                if found_date:
+                    # Try to get name but don't fail if rate limited
+                    name = symbol
+                    try: name = ticker.info.get('longName', symbol)
+                    except: pass
+                    
+                    base_res.update({
+                        "type": "earnings",
+                        "earnings_date": found_date.strftime('%Y-%m-%d'),
+                        "mkt_cap": fast.get('market_cap', 0),
+                        "name": name
+                    })
+                    return base_res
+            return None
+
+        # Technical Scan Logic
+        df_daily = ticker.history(period="150d", interval="1d")
         if df_daily.empty or len(df_daily) < 100: return None
         df_daily.columns = [c.lower() for c in df_daily.columns]
-        sma50, sma100 = df_daily['close'].rolling(window=50).mean().iloc[-1], df_daily['close'].rolling(window=100).mean().iloc[-1]
+        
+        # SMAs
+        sma50 = df_daily['close'].rolling(window=50).mean().iloc[-1]
+        sma100 = df_daily['close'].rolling(window=100).mean().iloc[-1]
+        
         if price < sma100: return None
+        
         df = ticker.history(period="15d", interval="1h")
         if df.empty or len(df) < 50: return None
         if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
         df.columns = [c.lower() for c in df.columns]
+        
         df['rsi'] = calculate_rsi(df['close']); rsi = df['rsi'].iloc[-1]
         fvg = detect_fvg(df)
+        
         df['tp'] = (df['high'] + df['low'] + df['close']) / 3
         df['tpv'] = df['tp'] * df['volume']; df['date'] = df.index.date
         df['vwap'] = df.groupby('date', group_keys=False).apply(lambda x: x['tpv'].cumsum() / x['volume'].cumsum())
+        
         vwap = df['vwap'].iloc[-1]; vwap_status = "Bullish (Above)" if price > vwap else "Bearish (Below)"
         avg_vol_20 = df['volume'].rolling(window=20).mean().iloc[-1]; high_volume = df['volume'].iloc[-1] >= (1.5 * avg_vol_20)
-        is_signal = rsi <= 35 or fvg is not None; high_conviction = rsi <= 40 and fvg is not None and price > vwap and sma50 > sma100
-        base_res.update({"type": "technical", "rsi": rsi, "fvg": fvg, "vwap_status": vwap_status, "golden_cross": sma50 > sma100, "sma50_daily": sma50, "sma100_daily": sma100, "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'), "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction})
+        
+        is_signal = rsi <= 35 or fvg is not None
+        high_conviction = rsi <= 40 and fvg is not None and price > vwap and sma50 > sma100
+        
+        base_res.update({
+            "type": "technical", 
+            "name": ticker.info.get('longName', symbol),
+            "rsi": rsi, "fvg": fvg, "vwap_status": vwap_status, 
+            "golden_cross": sma50 > sma100, "sma50_daily": sma50, "sma100_daily": sma100, 
+            "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'), 
+            "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction
+        })
         return base_res
     except: return None
 
@@ -245,27 +326,52 @@ def run_scanner(mode="technical", force_ticker=None):
     dubai_now = get_dubai_time()
     print(f"Starting {mode.upper()} Scan on {len(universe)} Master Stocks...")
     found_count = 0
+    results_for_csv = []
+    
+    # Use fewer workers for earnings to avoid rate limiting on .calendar
+    max_workers = 30 if mode == "earnings" else 50
+    
     try:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
             for future in concurrent.futures.as_completed(future_to_ticker):
                 res = future.result()
                 if res:
+                    found_count += 1
                     if mode == "technical":
                         if force_ticker: res['is_signal'] = True
-                        if not res.get('is_signal'): continue
-                    found_count += 1
-                    fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
-                    analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
-                    msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                    send_telegram(msg)
-                    gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
-                    log_to_google_sheet(gs_row)
+                        if not res.get('is_signal'): 
+                            found_count -= 1
+                            continue
+                            
+                        fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
+                        analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
+                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                        send_telegram(msg)
+                        
+                        gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
+                        log_to_google_sheet(gs_row, mode="technical")
+                        results_for_csv.append(res)
+                    
+                    elif mode == "earnings":
+                        msg = (f"📅 *UPCOMING EARNINGS:* *{res['symbol']}*\n\n🏢 *Company:* {res['name']}\n💰 *Price:* ${res['price']:.2f}\n📆 *Earnings Date:* {res['earnings_date']}\n💎 *Market Cap:* ${res['mkt_cap']/1e9:.2f}B\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                        send_telegram(msg)
+                        
+                        gs_row = [dubai_now.strftime('%Y-%m-%d'), res['symbol'], f"{res['price']:.2f}", res['earnings_date'], f"${res['mkt_cap']/1e9:.2f}B", "N/A", "Upcoming Report"]
+                        log_to_google_sheet(gs_row, mode="earnings")
+                        results_for_csv.append(res)
+
+        # Update local CSVs
+        if results_for_csv:
+            df = pd.DataFrame(results_for_csv)
+            csv_name = "active_signals.csv" if mode == "technical" else "active_earnings_signals.csv"
+            df.to_csv(csv_name, index=False)
+            
         if mode == "technical": update_signal_lifecycle()
     finally:
         dubai_time_str = dubai_now.strftime('%H:%M')
         print(f"Scan Completed: {dubai_time_str} GST")
-        send_telegram(f"🔔 SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} Signals from Master List ({len(universe)} stocks).")
+        send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} {'Signals' if mode=='technical' else 'Reports'} from Master List ({len(universe)} stocks).")
 
 if __name__ == "__main__":
     import sys

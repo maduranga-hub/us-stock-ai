@@ -57,28 +57,15 @@ jobs:
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "🚀 Launching Manual Scan Mode: ${{ github.event.inputs.scan_mode }}..."
             python main.py ${{ github.event.inputs.scan_mode }}
+          elif [ "${{ github.event.schedule }}" == "0 10 * * 1" ]; then
+            echo "🔄 Launching Weekly Master List Refresh..."
+            python main.py refresh
+          elif [ "${{ github.event.schedule }}" == "30 11 * * 1-5" ]; then
+            echo "🚀 Launching Earnings Scan..."
+            python main.py earnings
           else
-            # Scheduled logic
-            current_hour=$(date -u +%H)
-            current_day=$(date +%u) # 1 is Monday
-            
-            # If it's 10 AM UTC on Monday, run Master Refresh
-            if [ "$current_hour" == "10" ] && [ "$current_day" == "1" ]; then
-              echo "🔄 Launching Weekly Master List Refresh (Monday 2:00 PM Dubai)..."
-              python main.py refresh
-            fi
-            
-            # Daily Earnings Scan at 11 AM UTC
-            if [ "$current_hour" == "11" ]; then
-              echo "🚀 Launching Earnings Scan (Dubai 3:30 PM)..."
-              python main.py earnings
-            fi
-            
-            # Hourly Technical Scan
-            if [ "$current_hour" != "11" ] && [ "$current_hour" != "10" ]; then
-              echo "🚀 Launching Technical Scan..."
-              python main.py technical
-            fi
+            echo "🚀 Launching Technical Scan..."
+            python main.py technical
           fi
 
       - name: Commit and Push Results

@@ -102,8 +102,20 @@ if page == "📊 QUANT DASHBOARD":
         st.markdown('<div class="glass-card">', unsafe_allow_html=True)
         try:
             df_earn = pd.read_csv("active_earnings_signals.csv")
-            st.dataframe(df_earn, use_container_width=True, hide_index=True)
-        except: st.info("No reports.")
+            if not df_earn.empty:
+                # Clean up and format
+                if 'mkt_cap' in df_earn.columns:
+                    df_earn['Market Cap'] = df_earn['mkt_cap'].apply(lambda x: f"${x/1e9:.2f}B")
+                
+                cols_to_show = ['symbol', 'name', 'price', 'earnings_date', 'Market Cap']
+                display_earn = df_earn[[c for c in cols_to_show if c in df_earn.columns]]
+                display_earn.columns = [c.upper().replace('_', ' ') for c in display_earn.columns]
+                
+                st.dataframe(display_earn, use_container_width=True, hide_index=True)
+            else:
+                st.info("No upcoming earnings reports found in the latest scan.")
+        except: 
+            st.info("No earnings reports found. Run an Earnings Scan to populate this data.")
         st.markdown('</div>', unsafe_allow_html=True)
 
     with tab_heatmap:
