@@ -418,8 +418,8 @@ def run_scanner(mode="technical", force_ticker=None):
         dubai_time_str = dubai_now.strftime('%H:%M')
         print(f"Scan Completed: {dubai_time_str} GST")
         
-        # Always route completion summary to the main signal channel
-        send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} {'Signals' if mode=='technical' else ('Reports' if mode=='earnings' else 'News Items')} from Master List ({len(universe)} stocks).", channel="signal")
+        channel_type = "news" if mode == "news" else "signal"
+        send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} {'Signals' if mode=='technical' else ('Reports' if mode=='earnings' else 'News Items')} from Master List ({len(universe)} stocks).", channel=channel_type)
 
 if __name__ == "__main__":
     import sys
