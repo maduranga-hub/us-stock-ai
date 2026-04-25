@@ -1,0 +1,49 @@
+name: US Stock AI News Engine
+
+on:
+  schedule:
+    # Runs every 2 hours, 24/7 including weekends
+    - cron: '0 */2 * * *'
+    
+  workflow_dispatch:
+
+jobs:
+  run-news-scanner:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run News Scan Engine
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NEWS_CHANNEL_ID: ${{ secrets.NEWS_CHANNEL_ID }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        run: |
+          echo "📰 Launching Independent News Scan..."
+          python main.py news
+
+      - name: Commit and Push News Results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -f active_news.csv || true
+          git add -f sent_news.txt || true
+          git commit -m "Update news cache and sent list [skip ci]" || true
+          git pull --rebase origin master || true
+          git push origin master

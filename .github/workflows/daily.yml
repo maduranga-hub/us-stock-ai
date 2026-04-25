@@ -72,4 +72,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -f *.csv || true
           git commit -m "Update scan results and market overview [skip ci]" || true
+          git pull --rebase origin master || true
           git push origin master

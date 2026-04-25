@@ -18,15 +18,17 @@ load_dotenv()
 # --- CONFIGURATION ---
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+NEWS_CHANNEL_ID = os.getenv("NEWS_CHANNEL_ID", "-1003889088299")
 DASHBOARD_URL = os.getenv("DASHBOARD_URL", "https://us-stock-ai-maduranga.streamlit.app")
 DUBAI_TZ = pytz.timezone('Asia/Dubai')
 
 def get_dubai_time():
     return datetime.now(DUBAI_TZ)
 
-def send_telegram(message):
+def send_telegram(message, channel="signal"):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
+    chat_id = TELEGRAM_CHAT_ID if channel == "signal" else NEWS_CHANNEL_ID
+    payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
     try:
         response = requests.post(url, json=payload, timeout=10)
         response.raise_for_status()
@@ -70,7 +72,7 @@ def refresh_stock_list():
     if not spreadsheet: return
     
     print("Refreshing Master Stock List from full market data...")
-    send_telegram("🔄 *Refreshing Master Stock List...* (Filtering 6,700+ stocks by >$500M Cap)")
+    send_telegram("🔄 *Refreshing Master Stock List...* (Filtering 6,700+ stocks by >$500M Cap)", channel="signal")
     
     # Get the huge list that we verified is working
     resp = requests.get("https://raw.githubusercontent.com/rreichel3/US-Stock-Symbols/main/all/all_tickers.txt")
@@ -102,7 +104,7 @@ def refresh_stock_list():
         sheet.append_row(["Symbol", "Company Name", "Market Cap"])
         sheet.append_rows(sorted(qualified))
         msg = f"✅ *Master Stock List Updated!*\nFound {len(qualified)} stocks with Market Cap > $500M across all US exchanges."
-        send_telegram(msg)
+        send_telegram(msg, channel="signal")
         print("Master Stock List Updated Successfully.")
 
 def get_market_universe():
@@ -280,6 +282,24 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                     return base_res
             return None
 
+        if scan_type == "news":
+            cap = fast.get('market_cap', 0)
+            if cap < 10_000_000_000:
+                return None
+            try:
+                news_list = ticker.news
+                if news_list and len(news_list) > 0:
+                    latest = news_list[0]
+                    base_res.update({
+                        "type": "news",
+                        "title": latest.get("title", ""),
+                        "publisher": latest.get("publisher", ""),
+                        "link": latest.get("link", "")
+                    })
+                    return base_res
+            except: pass
+            return None
+
         # Technical Scan Logic
         df_daily = ticker.history(period="150d", interval="1d")
         if df_daily.empty or len(df_daily) < 100: return None
@@ -320,6 +340,16 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         return base_res
     except: return None
 
+def load_sent_news():
+    if os.path.exists("sent_news.txt"):
+        with open("sent_news.txt", "r") as f:
+            return set(f.read().splitlines())
+    return set()
+
+def save_sent_news(link):
+    with open("sent_news.txt", "a") as f:
+        f.write(f"{link}\n")
+
 def run_scanner(mode="technical", force_ticker=None):
     if mode == "refresh": refresh_stock_list(); return
     universe = [force_ticker] if force_ticker else get_market_universe()
@@ -330,6 +360,7 @@ def run_scanner(mode="technical", force_ticker=None):
     
     # Use fewer workers for earnings to avoid rate limiting on .calendar
     max_workers = 30 if mode == "earnings" else 50
+    sent_news_links = load_sent_news() if mode == "news" else set()
     
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -347,7 +378,7 @@ def run_scanner(mode="technical", force_ticker=None):
                         fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
                         analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
                         msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                        send_telegram(msg)
+                        send_telegram(msg, channel="signal")
                         
                         gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
                         log_to_google_sheet(gs_row, mode="technical")
@@ -355,23 +386,40 @@ def run_scanner(mode="technical", force_ticker=None):
                     
                     elif mode == "earnings":
                         msg = (f"📅 *UPCOMING EARNINGS:* *{res['symbol']}*\n\n🏢 *Company:* {res['name']}\n💰 *Price:* ${res['price']:.2f}\n📆 *Earnings Date:* {res['earnings_date']}\n💎 *Market Cap:* ${res['mkt_cap']/1e9:.2f}B\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                        send_telegram(msg)
+                        send_telegram(msg, channel="signal")
                         
                         gs_row = [dubai_now.strftime('%Y-%m-%d'), res['symbol'], f"{res['price']:.2f}", res['earnings_date'], f"${res['mkt_cap']/1e9:.2f}B", "N/A", "Upcoming Report"]
                         log_to_google_sheet(gs_row, mode="earnings")
                         results_for_csv.append(res)
 
+                    elif mode == "news":
+                        link = res.get('link', '')
+                        if link and link not in sent_news_links:
+                            msg = f"📰 *{res['symbol']} News*\n\n*{res['title']}*\n_{res['publisher']}_\n\n🔗 [Read More]({link})"
+                            send_telegram(msg, channel="news")
+                            sent_news_links.add(link)
+                            save_sent_news(link)
+                            results_for_csv.append(res)
+                        else:
+                            found_count -= 1
+
         # Update local CSVs
         if results_for_csv:
             df = pd.DataFrame(results_for_csv)
-            csv_name = "active_signals.csv" if mode == "technical" else "active_earnings_signals.csv"
+            if mode == "technical": csv_name = "active_signals.csv"
+            elif mode == "earnings": csv_name = "active_earnings_signals.csv"
+            else: csv_name = "active_news.csv"
+            
+            # For news, we might append or just save latest, let's just save latest
             df.to_csv(csv_name, index=False)
             
         if mode == "technical": update_signal_lifecycle()
     finally:
         dubai_time_str = dubai_now.strftime('%H:%M')
         print(f"Scan Completed: {dubai_time_str} GST")
-        send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} {'Signals' if mode=='technical' else 'Reports'} from Master List ({len(universe)} stocks).")
+        
+        channel_type = "news" if mode == "news" else "signal"
+        send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} {'Signals' if mode=='technical' else ('Reports' if mode=='earnings' else 'News Items')} from Master List ({len(universe)} stocks).", channel=channel_type)
 
 if __name__ == "__main__":
     import sys
