@@ -2,8 +2,8 @@ name: US Stock AI News Engine
 
 on:
   schedule:
-    # Runs every 2 hours, 24/7 including weekends
-    - cron: '0 */2 * * *'
+    # Runs every 1 hour, 24/7 including weekends
+    - cron: '0 * * * *'
     
   workflow_dispatch:
 
