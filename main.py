@@ -19,6 +19,7 @@ load_dotenv()
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 NEWS_CHANNEL_ID = os.getenv("NEWS_CHANNEL_ID", "-1003889088299")
+EARNINGS_CHANNEL_ID = os.getenv("EARNINGS_CHANNEL_ID", "-1003737032970")
 DASHBOARD_URL = os.getenv("DASHBOARD_URL", "https://us-stock-ai-maduranga.streamlit.app")
 DUBAI_TZ = pytz.timezone('Asia/Dubai')
 
@@ -27,7 +28,15 @@ def get_dubai_time():
 
 def send_telegram(message, channel="signal"):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    chat_id = TELEGRAM_CHAT_ID if channel == "signal" else NEWS_CHANNEL_ID
+    if channel == "signal":
+        chat_id = TELEGRAM_CHAT_ID
+    elif channel == "news":
+        chat_id = NEWS_CHANNEL_ID
+    elif channel == "earnings":
+        chat_id = EARNINGS_CHANNEL_ID
+    else:
+        chat_id = TELEGRAM_CHAT_ID
+        
     payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
     try:
         response = requests.post(url, json=payload, timeout=10)
@@ -124,6 +133,17 @@ def get_market_universe():
         return sorted(df['Symbol'].str.replace('.', '-').tolist())
     except:
         return ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
+
+def get_master_list():
+    """Fetches the pre-filtered master list from Google Sheets (Market Cap > 500M) to save time."""
+    client, spreadsheet = get_gs_client()
+    if spreadsheet:
+        try:
+            sheet = spreadsheet.worksheet("Stock List")
+            symbols = sheet.col_values(1)[1:] # Skip header
+            if symbols: return symbols
+        except: pass
+    return get_market_universe()
 
 def log_to_google_sheet(data_row, mode="technical"):
     client, spreadsheet = get_gs_client()
@@ -340,27 +360,38 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         return base_res
     except: return None
 
-def load_sent_news():
-    if os.path.exists("sent_news.txt"):
-        with open("sent_news.txt", "r") as f:
+def load_sent_items(filename="sent_news.txt"):
+    if os.path.exists(filename):
+        with open(filename, "r") as f:
             return set(f.read().splitlines())
     return set()
 
-def save_sent_news(link):
-    with open("sent_news.txt", "a") as f:
-        f.write(f"{link}\n")
+def save_sent_item(item, filename="sent_news.txt"):
+    with open(filename, "a") as f:
+        f.write(f"{item}\n")
 
 def run_scanner(mode="technical", force_ticker=None):
     if mode == "refresh": refresh_stock_list(); return
-    universe = [force_ticker] if force_ticker else get_market_universe()
+    if force_ticker:
+        universe = [force_ticker]
+    elif mode in ["news", "earnings"]:
+        universe = get_master_list()
+    else:
+        universe = get_market_universe()
+        
     dubai_now = get_dubai_time()
-    print(f"Starting {mode.upper()} Scan on {len(universe)} Master Stocks...")
+    print(f"Starting {mode.upper()} Scan on {len(universe)} Stocks...")
     found_count = 0
     results_for_csv = []
     
     # Use fewer workers for earnings to avoid rate limiting on .calendar
     max_workers = 30 if mode == "earnings" else 50
-    sent_news_links = load_sent_news() if mode == "news" else set()
+    if mode == "news":
+        sent_items = load_sent_items("sent_news.txt")
+    elif mode == "earnings":
+        sent_items = load_sent_items("sent_earnings.txt")
+    else:
+        sent_items = set()
     
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -385,20 +416,27 @@ def run_scanner(mode="technical", force_ticker=None):
                         results_for_csv.append(res)
                     
                     elif mode == "earnings":
-                        msg = (f"📅 *UPCOMING EARNINGS:* *{res['symbol']}*\n\n🏢 *Company:* {res['name']}\n💰 *Price:* ${res['price']:.2f}\n📆 *Earnings Date:* {res['earnings_date']}\n💎 *Market Cap:* ${res['mkt_cap']/1e9:.2f}B\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
-                        send_telegram(msg, channel="signal")
-                        
-                        gs_row = [dubai_now.strftime('%Y-%m-%d'), res['symbol'], f"{res['price']:.2f}", res['earnings_date'], f"${res['mkt_cap']/1e9:.2f}B", "N/A", "Upcoming Report"]
-                        log_to_google_sheet(gs_row, mode="earnings")
-                        results_for_csv.append(res)
+                        identifier = f"{res['symbol']}_{res['earnings_date']}"
+                        if identifier not in sent_items:
+                            msg = (f"📅 *UPCOMING EARNINGS:* *{res['symbol']}*\n\n🏢 *Company:* {res['name']}\n💰 *Price:* ${res['price']:.2f}\n📆 *Earnings Date:* {res['earnings_date']}\n💎 *Market Cap:* ${res['mkt_cap']/1e9:.2f}B\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                            send_telegram(msg, channel="earnings")
+                            
+                            gs_row = [dubai_now.strftime('%Y-%m-%d'), res['symbol'], f"{res['price']:.2f}", res['earnings_date'], f"${res['mkt_cap']/1e9:.2f}B", "N/A", "Upcoming Report"]
+                            log_to_google_sheet(gs_row, mode="earnings")
+                            results_for_csv.append(res)
+                            
+                            sent_items.add(identifier)
+                            save_sent_item(identifier, "sent_earnings.txt")
+                        else:
+                            found_count -= 1
 
                     elif mode == "news":
                         link = res.get('link', '')
-                        if link and link not in sent_news_links:
+                        if link and link not in sent_items:
                             msg = f"📰 *{res['symbol']} News*\n\n*{res['title']}*\n_{res['publisher']}_\n\n🔗 [Read More]({link})"
                             send_telegram(msg, channel="news")
-                            sent_news_links.add(link)
-                            save_sent_news(link)
+                            sent_items.add(link)
+                            save_sent_item(link, "sent_news.txt")
                             results_for_csv.append(res)
                         else:
                             found_count -= 1
@@ -418,7 +456,7 @@ def run_scanner(mode="technical", force_ticker=None):
         dubai_time_str = dubai_now.strftime('%H:%M')
         print(f"Scan Completed: {dubai_time_str} GST")
         
-        channel_type = "news" if mode == "news" else "signal"
+        channel_type = mode if mode in ["news", "earnings"] else "signal"
         send_telegram(f"🔔 {mode.upper()} SCAN COMPLETED: {dubai_time_str} GST\n✅ Found: {found_count} {'Signals' if mode=='technical' else ('Reports' if mode=='earnings' else 'News Items')} from Master List ({len(universe)} stocks).", channel=channel_type)
 
 if __name__ == "__main__":
