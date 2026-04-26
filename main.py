@@ -18,9 +18,9 @@ load_dotenv()
 # --- CONFIGURATION ---
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-NEWS_CHANNEL_ID = os.getenv("NEWS_CHANNEL_ID", "-1003889088299")
-EARNINGS_CHANNEL_ID = os.getenv("EARNINGS_CHANNEL_ID", "-1003737032970")
-DASHBOARD_URL = os.getenv("DASHBOARD_URL", "https://us-stock-ai-maduranga.streamlit.app")
+NEWS_CHANNEL_ID = os.getenv("NEWS_CHANNEL_ID") or "-1003889088299"
+EARNINGS_CHANNEL_ID = os.getenv("EARNINGS_CHANNEL_ID") or "-1003737032970"
+DASHBOARD_URL = os.getenv("DASHBOARD_URL") or "https://us-stock-ai-maduranga.streamlit.app"
 DUBAI_TZ = pytz.timezone('Asia/Dubai')
 
 def get_dubai_time():
