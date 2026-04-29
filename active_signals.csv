@@ -1,63 +1,67 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-ABNB,139.07,technical,"Airbnb, Inc.",28.182361210292058,,Bullish (Above),True,132.21169952392577,131.3947996520996,2026-04-29 20:56,False,True,False
-AAP,55.96,technical,"Advance Auto Parts, Inc.",23.838346006622942,,Bullish (Above),True,53.538284912109376,49.92031421661377,2026-04-29 20:56,False,True,False
-AAMI,65.685,technical,Acadian Asset Management Inc.,28.684902689883018,,Bearish (Below),True,56.99095458984375,53.80297847747803,2026-04-29 20:56,False,True,False
-AA,61.85,technical,Alcoa Corporation,20.000009876231076,,Bearish (Below),True,64.60038795471192,60.47994247436523,2026-04-29 20:56,False,True,False
-ACA,117.0,technical,"Arcosa, Inc.",34.98688786683135,,Bearish (Below),False,111.89080001831054,112.80194831848145,2026-04-29 20:56,False,True,False
-ABR,7.875,technical,"Arbor Realty Trust, Inc.",25.97398576177477,,Bearish (Below),False,7.707954092025757,7.719360589981079,2026-04-29 20:56,False,True,False
-ACEL,12.21,technical,"Accel Entertainment, Inc.",25.000054185857493,,Bearish (Below),True,11.45419994354248,11.340899972915649,2026-04-29 20:56,False,True,False
-ACGLN,17.125,technical,Arch Capital Group Ltd.,30.280665975728,,Bearish (Below),True,17.020416259765625,16.990501136779784,2026-04-29 20:56,False,True,False
-ACHC,28.14,technical,"Acadia Healthcare Company, Inc.",61.991877483043204,"{'top': np.float64(28.110000610351562), 'bottom': np.float64(28.06999969482422), 'gap_size': np.float64(0.04000091552734375)}",Bullish (Above),True,24.10659996032715,19.106099948883056,2026-04-29 20:56,False,True,False
-ACGLO,20.37,technical,Arch Capital Group Ltd.,30.000296696915626,,Bearish (Below),False,20.254942207336427,20.33610607147217,2026-04-29 20:56,False,True,False
-ACRE,5.18,technical,Ares Commercial Real Estate Corporation,24.242406727740374,,Bearish (Below),True,4.940098991394043,4.910217528343201,2026-04-29 20:56,False,True,False
-ADAML,24.24,technical,"Adamas Trust, Inc.",56.0844022880014,"{'top': np.float64(24.239999771118164), 'bottom': np.float64(24.104999542236328), 'gap_size': np.float64(0.13500022888183594)}",Bearish (Below),True,23.353324432373046,22.887293529510497,2026-04-29 20:56,False,True,False
-ADAMN,22.74,technical,"Adamas Trust, Inc.",34.66661410854863,,Bearish (Below),True,22.285869979858397,21.946568031311035,2026-04-29 20:56,False,True,False
-ADC,76.71,technical,Agree Realty Corporation,58.38061962746058,"{'top': np.float64(76.57499694824219), 'bottom': np.float64(76.4749984741211), 'gap_size': np.float64(0.09999847412109375)}",Bullish (Above),True,77.87779754638672,74.94975509643555,2026-04-29 20:56,False,True,False
-ADAMG,25.0,technical,"Adamas Trust, Inc.",34.99973773681174,,Bearish (Below),True,24.697445678710938,24.584119606018067,2026-04-29 20:56,False,True,False
-ADX,23.87,technical,"Adams Diversified Equity Fund, Inc.",27.078270862653326,,Bearish (Below),True,22.62542999267578,22.508797149658204,2026-04-29 20:56,False,True,False
-AEIS,358.58,technical,"Advanced Energy Industries, Inc.",26.68818010503928,,Bearish (Below),True,340.34012512207033,291.5494079589844,2026-04-29 20:56,False,True,False
-AEE,112.27,technical,Ameren Corporation,52.83479000949295,"{'top': np.float64(112.12999725341797), 'bottom': np.float64(111.94000244140625), 'gap_size': np.float64(0.18999481201171875)}",Bullish (Above),True,110.73814071655273,105.93354568481445,2026-04-29 20:56,False,True,False
-AEHR,80.6659,technical,"Aehr Test Systems, Inc.",33.69581799603968,,Bearish (Below),True,52.3595182800293,38.829959106445315,2026-04-29 20:56,False,True,False
-AFJK,46.18,technical,"Aimei Health Technology Co., Ltd",53.30257114695335,"{'top': np.float64(46.16999816894531), 'bottom': np.float64(46.0), 'gap_size': np.float64(0.1699981689453125)}",Bearish (Below),False,34.689500160217285,42.21978009223938,2026-04-29 20:56,False,True,False
-AEP,135.885,technical,"American Electric Power Company, Inc.",53.04555946276703,"{'top': np.float64(135.75), 'bottom': np.float64(135.51010131835938), 'gap_size': np.float64(0.239898681640625)}",Bullish (Above),True,132.29029983520508,124.67359886169433,2026-04-29 20:56,False,True,False
-AGCC,18.59,technical,Agencia Comercial Spirits Ltd,50.72202675659131,"{'top': np.float64(18.59000015258789), 'bottom': np.float64(18.450000762939453), 'gap_size': np.float64(0.1399993896484375)}",Bullish (Above),True,15.770100078582765,13.098760051727295,2026-04-29 20:57,False,True,False
-AFRM,62.045,technical,"Affirm Holdings, Inc.",26.899318197047208,,Bearish (Below),False,51.41389991760254,60.42360004425049,2026-04-29 20:57,False,True,False
-AGNC,10.955,technical,AGNC Investment Corp.,28.48645472694649,,Bearish (Below),False,10.529431476593018,10.647962455749513,2026-04-29 20:57,False,True,False
-AGNCN,25.74,technical,AGNC Investment Corp.,42.302881538073066,"{'top': np.float64(25.719999313354492), 'bottom': np.float64(25.709999084472656), 'gap_size': np.float64(0.010000228881835938)}",Bullish (Above),True,25.137658615112304,24.96182165145874,2026-04-29 20:57,False,True,False
-AGPU,5.58,technical,Axe Compute Inc.,24.23572125725326,,Bearish (Below),False,3.0428000044822694,4.107650002241135,2026-04-29 20:57,False,True,False
-AGX,627.26,technical,"Argan, Inc.",33.840593929397116,,Bearish (Below),True,519.3382104492188,431.86896057128905,2026-04-29 20:57,False,True,False
-AGM,171.37,technical,Federal Agricultural Mortgage Corporation,30.836987822551805,,Bearish (Below),False,157.21023651123048,165.2038717651367,2026-04-29 20:57,False,True,False
-AIR,105.33,technical,AAR Corp.,32.59970699722528,,Bearish (Below),True,113.16339996337891,104.68179977416992,2026-04-29 20:57,False,True,False
-AIRG,6.55,technical,"Airgain, Inc.",28.476861972351372,,Bearish (Below),True,5.227800002098084,4.766350018978119,2026-04-29 20:57,False,True,False
-AIO,24.23,technical,Virtus Artificial Intelligence & Technology Opportunities Fund,28.731357092631654,,Bearish (Below),True,22.567358436584474,22.20250427246094,2026-04-29 20:57,False,True,False
-AKAN,27.8333,technical,Akanda Corp.,78.27647576731826,"{'top': np.float64(25.040000915527344), 'bottom': np.float64(22.59000015258789), 'gap_size': np.float64(2.450000762939453)}",Bullish (Above),False,4.949278607368469,7.650179817676544,2026-04-29 20:57,False,True,False
-ALGN,179.565,technical,"Align Technology, Inc.",31.889837643703387,"{'top': np.float64(178.9499969482422), 'bottom': np.float64(178.4250030517578), 'gap_size': np.float64(0.524993896484375)}",Bullish (Above),True,179.71609985351563,173.57754943847655,2026-04-29 20:57,False,True,True
-ALMS,23.29,technical,Alumis Inc.,27.625924789546744,,Bearish (Below),True,25.438299865722655,22.100999965667725,2026-04-29 20:57,False,True,False
-ALLY,43.625,technical,Ally Financial Inc.,33.26043405676127,,Bearish (Below),False,40.620500030517576,42.09531440734863,2026-04-29 20:57,False,True,False
-ALSN,129.84,technical,"Allison Transmission Holdings, Inc.",22.955806848898774,,Bearish (Below),True,121.48188629150391,113.25429100036621,2026-04-29 20:57,False,True,False
-ALX,251.23,technical,"Alexander's, Inc.",75.0771104839572,"{'top': np.float64(251.22999572753906), 'bottom': np.float64(249.5399932861328), 'gap_size': np.float64(1.69000244140625)}",Bullish (Above),True,241.0863995361328,232.95175231933592,2026-04-29 20:57,False,True,False
-AMAT,379.19,technical,"Applied Materials, Inc.",29.302113755228135,,Bearish (Below),True,368.48075622558594,332.1766763305664,2026-04-29 20:57,False,True,False
-ALOT,13.59,technical,"AstroNova, Inc.",31.33649835555447,,Bearish (Below),True,10.28439998626709,9.527500004768372,2026-04-29 20:57,False,True,False
-AMKR,70.895,technical,"Amkor Technology, Inc.",27.143564501672557,,Bearish (Below),True,52.4803433227539,49.620269508361815,2026-04-29 20:57,False,True,False
-AMCX,8.305,technical,AMC Global Media Inc.,33.67876466954911,,Bearish (Below),False,7.686700010299683,8.189349999427796,2026-04-29 20:57,False,True,False
-AMLX,15.68,technical,"Amylyx Pharmaceuticals, Inc.",12.113430188601342,,Bearish (Below),True,15.201200065612793,14.341150045394897,2026-04-29 20:57,False,True,False
-AMAL,40.18,technical,Amalgamated Financial Corp.,31.39929252253343,,Bearish (Below),True,39.6860001373291,37.490989665985104,2026-04-29 20:57,False,True,False
-AMSC,46.704,technical,American Superconductor Corporation,33.26163384134486,,Bearish (Below),True,35.07828014373779,33.16463996887207,2026-04-29 20:57,False,True,False
-AMT,178.92,technical,American Tower Corporation,57.69229016054189,"{'top': np.float64(178.61000061035156), 'bottom': np.float64(178.00999450683594), 'gap_size': np.float64(0.600006103515625)}",Bullish (Above),True,179.02705841064454,177.15163146972657,2026-04-29 20:57,False,True,False
-AME,227.42,technical,"AMETEK, Inc.",24.428878419704105,,Bearish (Below),True,225.70582244873046,219.90325317382812,2026-04-29 20:57,False,True,False
-AMPY,6.335,technical,Amplify Energy Corp.,84.64180387614444,"{'top': np.float64(6.289999961853027), 'bottom': np.float64(6.195000171661377), 'gap_size': np.float64(0.09499979019165039)}",Bullish (Above),True,5.937099990844726,5.411250009536743,2026-04-29 20:57,False,True,False
-ANIK,12.44,technical,"Anika Therapeutics, Inc.",4.558010140034696,,Bearish (Below),True,14.189400005340577,11.914400033950805,2026-04-29 20:57,False,True,False
-ANET,165.0,technical,"Arista Networks, Inc.",27.190190828507824,,Bullish (Above),True,141.34880004882814,137.25909980773926,2026-04-29 20:57,False,True,False
-ANL,13.56,technical,Adlai Nortye Ltd.,47.83783960261159,"{'top': np.float64(13.5600004196167), 'bottom': np.float64(13.34000015258789), 'gap_size': np.float64(0.2200002670288086)}",Bullish (Above),True,10.122999982833862,6.9267999923229215,2026-04-29 20:57,False,True,False
-ANRO,24.31,technical,ANRO,44.83946319281972,"{'top': np.float64(24.219999313354492), 'bottom': np.float64(23.8799991607666), 'gap_size': np.float64(0.3400001525878906)}",Bullish (Above),True,22.24259998321533,19.426800031661987,2026-04-29 20:57,False,True,False
-AOMR,9.07,technical,"Angel Oak Mortgage REIT, Inc.",26.785829845062892,,Bearish (Below),True,8.567950248718262,8.564083147048951,2026-04-29 20:57,False,True,False
-APA,40.115,technical,APA Corporation,77.15091541823864,"{'top': np.float64(39.97999954223633), 'bottom': np.float64(39.77000045776367), 'gap_size': np.float64(0.20999908447265625)}",Bullish (Above),True,36.049017639160155,30.725286712646483,2026-04-29 20:57,False,True,False
-APGE,82.1,technical,"Apogee Therapeutics, Inc.",19.77776421440973,,Bearish (Below),True,78.327099609375,76.23324962615966,2026-04-29 20:57,False,True,False
-APG,48.27,technical,APi Group Corporation,30.46889262326161,,Bearish (Below),True,43.700999908447265,42.45040019989014,2026-04-29 20:57,False,True,False
-APLD,31.975,technical,Applied Digital Corporation,29.536731110415957,,Bullish (Above),False,28.356237983703615,30.198868980407713,2026-04-29 20:57,False,True,False
-APD,304.0,technical,"Air Products and Chemicals, Inc.",60.1285181997359,"{'top': np.float64(303.29998779296875), 'bottom': np.float64(302.3699951171875), 'gap_size': np.float64(0.92999267578125)}",Bullish (Above),True,287.07157348632813,272.5302827453613,2026-04-29 20:57,False,True,False
-ARKO,6.435,technical,Arko Corp.,28.323693686343603,,Bullish (Above),True,5.874404735565186,5.526446785926819,2026-04-29 20:57,False,True,False
-ARTV,9.01,technical,"Artiva Biotherapeutics, Inc.",21.583862888933126,,Bullish (Above),True,7.011199989318848,5.630199990272522,2026-04-29 20:57,False,True,False
-ARI,10.72,technical,"Apollo Commercial Real Estate Finance, Inc.",21.874958090381725,,Bullish (Above),True,10.525693302154542,10.20005558013916,2026-04-29 20:57,False,True,False
-ARR,17.265,technical,"ARMOUR Residential REIT, Inc.",26.126104453555385,,Bearish (Below),True,17.017320976257324,16.981793518066407,2026-04-29 20:57,False,True,False
-ARM,199.65,technical,Arm Holdings plc,20.254628902311325,,Bullish (Above),True,146.4501010131836,131.9262503814697,2026-04-29 20:57,False,True,False
+AAP,55.67,technical,"Advance Auto Parts, Inc.",26.76654596307337,,Bearish (Below),True,53.53248489379883,49.9174142074585,2026-04-29 22:52,False,True,False
+ACA,116.84,technical,"Arcosa, Inc.",32.3285867594939,,Bearish (Below),False,111.88759994506836,112.80034828186035,2026-04-29 22:52,False,True,False
+AA,62.45,technical,Alcoa Corporation,14.356473840200408,"{'top': np.float64(62.34000015258789), 'bottom': np.float64(62.15999984741211), 'gap_size': np.float64(0.18000030517578125)}",Bearish (Below),True,64.61238800048828,60.48594249725342,2026-04-29 22:52,False,True,False
+AAMI,65.75,technical,Acadian Asset Management Inc.,24.729183708881777,,Bearish (Below),True,56.992254638671874,53.80362846374512,2026-04-29 22:52,False,True,False
+AAOI,151.99,technical,"Applied Optoelectronics, Inc.",57.9068648008776,"{'top': np.float64(148.63999938964844), 'bottom': np.float64(147.0), 'gap_size': np.float64(1.6399993896484375)}",Bullish (Above),True,108.89900032043457,73.08150022506715,2026-04-29 22:52,False,True,False
+ABR,7.755,technical,"Arbor Realty Trust, Inc.",17.347018215152502,,Bearish (Below),False,7.705554094314575,7.718160591125488,2026-04-29 22:52,False,True,False
+AAT,20.51,technical,"American Assets Trust, Inc.",29.357800305642726,,Bearish (Below),True,19.352599220275877,18.834606094360353,2026-04-29 22:52,False,True,False
+ACGLO,20.41,technical,Arch Capital Group Ltd.,33.8708784278498,"{'top': np.float64(20.40999984741211), 'bottom': np.float64(20.370100021362305), 'gap_size': np.float64(0.03989982604980469)}",Bearish (Below),False,20.2557421875,20.336506061553955,2026-04-29 22:52,False,True,False
+ACGLN,17.09,technical,Arch Capital Group Ltd.,23.041060764995848,,Bearish (Below),True,17.019716262817383,16.990151138305663,2026-04-29 22:52,False,True,False
+ACT,44.055,technical,"Enact Holdings, Inc.",53.62319161075458,"{'top': np.float64(44.04999923706055), 'bottom': np.float64(43.97999954223633), 'gap_size': np.float64(0.06999969482421875)}",Bullish (Above),True,41.731471939086916,40.87763580322266,2026-04-29 22:52,False,True,False
+ACLS,133.119,technical,"Axcelis Technologies, Inc.",32.96069723518522,,Bearish (Below),True,99.35198059082032,94.01139045715333,2026-04-29 22:52,False,True,False
+ACOG,5.98,technical,Alpha Cognition Inc. Common Stock,42.60447517022346,"{'top': np.float64(5.980000019073486), 'bottom': np.float64(5.909999847412109), 'gap_size': np.float64(0.07000017166137695)}",Bullish (Above),True,6.054900007247925,5.890149993896484,2026-04-29 22:52,False,True,False
+ACRE,5.135,technical,Ares Commercial Real Estate Corporation,18.57144998044967,,Bearish (Below),True,4.9391989994049075,4.909767532348633,2026-04-29 22:52,False,True,False
+ADAMH,25.46,technical,"Adamas Trust, Inc.",27.769336772552208,"{'top': np.float64(25.459999084472656), 'bottom': np.float64(25.450000762939453), 'gap_size': np.float64(0.009998321533203125)}",Bearish (Below),True,25.17000778198242,25.053519592285156,2026-04-29 22:52,False,True,False
+ADAM,7.775,technical,"Adamas Trust, Inc.",27.586243750765618,,Bearish (Below),True,7.684735870361328,7.56879994392395,2026-04-29 22:52,False,True,False
+ADAMG,24.95,technical,"Adamas Trust, Inc.",29.487166947063656,,Bearish (Below),True,24.696445693969725,24.583619537353517,2026-04-29 22:52,False,True,False
+ADTN,16.92,technical,"ADTRAN Holdings, Inc.",56.54319603874226,"{'top': np.float64(16.885000228881836), 'bottom': np.float64(16.860000610351562), 'gap_size': np.float64(0.024999618530273438)}",Bullish (Above),True,12.717999935150146,10.935499963760376,2026-04-29 22:52,False,True,False
+ADEA,30.76,technical,Adeia Inc.,70.50146961519937,"{'top': np.float64(30.625), 'bottom': np.float64(30.524999618530273), 'gap_size': np.float64(0.10000038146972656)}",Bullish (Above),True,24.385849990844726,20.69887258529663,2026-04-29 22:52,False,True,False
+AEHR,80.51,technical,"Aehr Test Systems, Inc.",29.3610575918661,,Bearish (Below),True,52.35640029907226,38.828400115966794,2026-04-29 22:52,False,True,False
+ADX,23.8,technical,"Adams Diversified Equity Fund, Inc.",25.862006596796306,,Bearish (Below),True,22.624029960632324,22.508097133636475,2026-04-29 22:52,False,True,False
+AEIS,358.44,technical,"Advanced Energy Industries, Inc.",21.92631244269721,,Bearish (Below),True,340.33732543945314,291.5480081176758,2026-04-29 22:52,False,True,False
+AEVA,14.785,technical,"Aeva Technologies, Inc.",30.73171125052839,,Bearish (Below),False,14.385400047302246,14.705700035095214,2026-04-29 22:52,False,True,False
+AFRM,62.36,technical,"Affirm Holdings, Inc.",16.554118194184866,,Bearish (Below),False,51.420199966430665,60.42675006866455,2026-04-29 22:52,False,True,False
+AGM,170.135,technical,Federal Agricultural Mortgage Corporation,27.42296678238516,,Bearish (Below),False,157.18553649902344,165.1915217590332,2026-04-29 22:52,False,True,False
+AGNC,10.9495,technical,AGNC Investment Corp.,23.370435035646736,,Bearish (Below),False,10.529331455230713,10.64791241645813,2026-04-29 22:52,False,True,False
+AGRO,14.33,technical,Adecoagro S.A.,83.67633053877258,"{'top': np.float64(14.279999732971191), 'bottom': np.float64(14.260000228881836), 'gap_size': np.float64(0.01999950408935547)}",Bullish (Above),True,12.28040002822876,10.280700011253357,2026-04-29 22:52,False,True,False
+AGPU,5.8,technical,Axe Compute Inc.,24.102561594544014,,Bullish (Above),False,3.0472000098228453,4.109850004911423,2026-04-29 22:52,False,True,False
+AGX,635.645,technical,"Argan, Inc.",34.09039466111987,"{'top': np.float64(635.010009765625), 'bottom': np.float64(632.7000122070312), 'gap_size': np.float64(2.30999755859375)}",Bullish (Above),True,519.5059106445312,431.9528106689453,2026-04-29 22:52,False,True,True
+AIO,24.15,technical,Virtus Artificial Intelligence & Technology Opportunities Fund,27.777769928608663,,Bearish (Below),True,22.56575843811035,22.201704616546632,2026-04-29 22:52,False,True,False
+AIP,26.625,technical,"Arteris, Inc.",54.82295897455007,"{'top': np.float64(26.354999542236328), 'bottom': np.float64(26.06999969482422), 'gap_size': np.float64(0.2849998474121094)}",Bullish (Above),True,18.135899982452393,17.173850021362306,2026-04-29 22:52,False,True,False
+AIR,105.195,technical,AAR Corp.,25.927679904932162,,Bearish (Below),True,113.1606999206543,104.68044975280762,2026-04-29 22:52,False,True,False
+ALB,190.005,technical,Albemarle Corporation,30.308412559494542,,Bullish (Above),True,177.71072723388673,167.36135375976562,2026-04-29 22:52,False,True,False
+ALGN,177.625,technical,"Align Technology, Inc.",29.86690441867644,,Bearish (Below),True,179.6772998046875,173.5581494140625,2026-04-29 22:52,False,True,False
+ALH,24.85,technical,Alliance Laundry Holdings Inc.,58.24742065325754,"{'top': np.float64(24.75), 'bottom': np.float64(24.665000915527344), 'gap_size': np.float64(0.08499908447265625)}",Bullish (Above),True,22.347799949645996,22.189399967193605,2026-04-29 22:52,False,True,False
+ALLY,43.6,technical,Ally Financial Inc.,23.749923706054688,,Bearish (Below),False,40.62,42.095064392089846,2026-04-29 22:52,False,True,False
+ALMS,23.15,technical,Alumis Inc.,19.8067588336976,,Bearish (Below),True,25.435499839782715,22.099599952697755,2026-04-29 22:52,False,True,False
+ALM,19.59,technical,Almonty Industries Inc.,27.63079478840669,,Bearish (Below),True,18.50280002593994,14.257100038528442,2026-04-29 22:52,False,True,False
+ALOT,13.53,technical,"AstroNova, Inc.",32.216399371953386,"{'top': np.float64(13.529999732971191), 'bottom': np.float64(13.527600288391113), 'gap_size': np.float64(0.002399444580078125)}",Bearish (Below),True,10.283199977874755,9.526900000572205,2026-04-29 22:52,False,True,False
+ALSN,129.59,technical,"Allison Transmission Holdings, Inc.",23.137550699632342,,Bearish (Below),True,121.4768862915039,113.25179100036621,2026-04-29 22:52,False,True,False
+ALTG,7.27,technical,Alta Equipment Group Inc.,32.217553604312684,,Bearish (Below),True,6.376800003051758,6.123399996757508,2026-04-29 22:52,False,True,False
+ALRS,25.56,technical,Alerus Financial Corporation,32.407325645055906,,Bearish (Below),True,24.3899568939209,23.92342010498047,2026-04-29 22:52,False,True,False
+ALTO,5.2102,technical,"Alto Ingredients, Inc.",33.12549399524772,,Bullish (Above),True,4.213003988265991,3.4443019938468935,2026-04-29 22:52,False,True,False
+AMAL,40.135,technical,Amalgamated Financial Corp.,22.05878846782258,,Bearish (Below),True,39.68510009765625,37.49053964614868,2026-04-29 22:52,False,True,False
+AMD,337.755,technical,"Advanced Micro Devices, Inc.",51.075208219633154,"{'top': np.float64(334.9100036621094), 'bottom': np.float64(333.3399963378906), 'gap_size': np.float64(1.57000732421875)}",Bullish (Above),True,229.15889953613282,225.0049496459961,2026-04-29 22:52,False,True,False
+AMBA,65.345,technical,"Ambarella, Inc.",54.50612000624872,"{'top': np.float64(65.01000213623047), 'bottom': np.float64(64.76000213623047), 'gap_size': np.float64(0.25)}",Bullish (Above),False,57.459300155639646,63.43535018920898,2026-04-29 22:52,False,True,False
+AMCX,8.25,technical,AMC Global Media Inc.,33.68984720833927,,Bearish (Below),False,7.685600004196167,8.188799996376037,2026-04-29 22:52,False,True,False
+AMLX,15.505,technical,"Amylyx Pharmaceuticals, Inc.",13.793126127789435,,Bearish (Below),True,15.197700061798095,14.339400043487549,2026-04-29 22:52,False,True,False
+AME,227.38,technical,"AMETEK, Inc.",21.031511239761727,,Bearish (Below),True,225.7050225830078,219.9028532409668,2026-04-29 22:52,False,True,False
+AMKR,71.04,technical,"Amkor Technology, Inc.",27.584619257850648,,Bullish (Above),True,52.482743377685544,49.621469535827636,2026-04-29 22:52,False,True,False
+AMAT,379.5675,technical,"Applied Materials, Inc.",26.542702299766503,,Bearish (Below),True,368.4891485595703,332.1808724975586,2026-04-29 22:52,False,True,False
+ANAB,62.02,technical,"AnaptysBio, Inc.",28.447544285052118,,Bearish (Below),True,43.477866668701175,37.67199989318848,2026-04-29 22:52,False,True,False
+AMZN,263.475,technical,"Amazon.com, Inc.",56.71707650385689,"{'top': np.float64(262.9100036621094), 'bottom': np.float64(262.6650085449219), 'gap_size': np.float64(0.2449951171875)}",Bearish (Below),False,222.33680023193358,226.08479995727538,2026-04-29 22:52,False,True,False
+ANIK,12.4424,technical,"Anika Therapeutics, Inc.",9.281233815359798,,Bearish (Below),True,14.189448013305665,11.91442403793335,2026-04-29 22:52,False,True,False
+ANET,167.0,technical,"Arista Networks, Inc.",34.21283364855894,"{'top': np.float64(165.97000122070312), 'bottom': np.float64(165.6999969482422), 'gap_size': np.float64(0.2700042724609375)}",Bullish (Above),True,141.38989990234376,137.27964973449707,2026-04-29 22:52,False,True,True
+AOMR,9.02,technical,"Angel Oak Mortgage REIT, Inc.",27.586422351424588,,Bearish (Below),True,8.56695026397705,8.563583154678344,2026-04-29 22:52,False,True,False
+AOSL,39.31,technical,Alpha and Omega Semiconductor Limited,30.9815442463714,,Bearish (Below),True,25.833399963378906,23.654899940490722,2026-04-29 22:52,False,True,False
+APGE,81.75,technical,"Apogee Therapeutics, Inc.",20.782572694520056,,Bearish (Below),True,78.32009963989258,76.22974964141845,2026-04-29 22:52,False,True,False
+APG,48.765,technical,APi Group Corporation,33.467206492770856,"{'top': np.float64(48.66999816894531), 'bottom': np.float64(48.529998779296875), 'gap_size': np.float64(0.1399993896484375)}",Bullish (Above),True,43.71089988708496,42.455350189208986,2026-04-29 22:52,False,True,True
+ARI,10.655,technical,"Apollo Commercial Real Estate Finance, Inc.",18.115839870852895,,Bearish (Below),True,10.52439329147339,10.199405574798584,2026-04-29 22:52,False,True,False
+ARMP,9.21,technical,"Armata Pharmaceuticals, Inc.",34.48276016702158,,Bearish (Below),True,10.642999992370605,8.626799974441528,2026-04-29 22:52,False,True,False
+ARR,17.195,technical,"ARMOUR Residential REIT, Inc.",16.35267955987254,,Bearish (Below),True,17.015920944213867,16.981093444824218,2026-04-29 22:52,False,True,False
+ARM,201.19,technical,Arm Holdings plc,23.303118551019708,,Bullish (Above),True,146.48090118408203,131.94165046691896,2026-04-29 22:52,False,True,False
+ARMK,44.72,technical,Aramark,30.39451533931293,,Bearish (Below),True,41.97220001220703,40.11646327972412,2026-04-29 22:52,False,True,False
+AROW,35.97,technical,Arrow Financial Corporation,33.492796767169395,,Bearish (Below),True,34.389800224304196,33.5077445602417,2026-04-29 22:52,False,True,False
+ARTV,8.581,technical,"Artiva Biotherapeutics, Inc.",17.60075253831451,,Bearish (Below),True,7.00261999130249,5.6259099912643435,2026-04-29 22:52,False,True,False
+ARKO,6.275,technical,Arko Corp.,33.08822962239397,,Bearish (Below),True,5.871204738616943,5.524846787452698,2026-04-29 22:52,False,True,False
