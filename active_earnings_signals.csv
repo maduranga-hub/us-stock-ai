@@ -1,28 +1,32 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AAT,21.19,earnings,2026-04-28,0,"American Assets Trust, Inc."
-AB,38.07,earnings,2026-04-28,0,AllianceBernstein Holding L.P.
-ABG,200.03,earnings,2026-04-28,0,"Asbury Automotive Group, Inc."
-ABBV,197.38,earnings,2026-04-29,0,AbbVie Inc.
-ACGL,96.35,earnings,2026-04-28,0,Arch Capital Group Ltd.
-ACHC,28.15,earnings,2026-04-29,0,"Acadia Healthcare Company, Inc."
-ACR,20.39,earnings,2026-04-29,0,ACRES Commercial Realty Corp.
-ADAM,8.06,earnings,2026-04-29,0,"Adamas Trust, Inc."
-ADP,197.23,earnings,2026-04-29,0,"Automatic Data Processing, Inc."
-AER,138.65,earnings,2026-04-29,0,AerCap Holdings N.V.
-AFL,114.68,earnings,2026-04-29,0,Aflac Incorporated
-AFG,129.55,earnings,2026-04-29,0,"American Financial Group, Inc."
-AGI,43.56,earnings,2026-04-29,0,Alamos Gold Inc.
-AGIO,24.43,earnings,2026-04-29,0,"Agios Pharmaceuticals, Inc."
-AKR,21.24,earnings,2026-04-28,0,AKR
-ALKT,15.78,earnings,2026-04-29,0,"Alkami Technology, Inc."
-ALL,214.2,earnings,2026-04-29,0,The Allstate Corporation
-ALLE,148.4,earnings,2026-04-28,0,Allegion plc
-ALGN,184.7,earnings,2026-04-29,0,"Align Technology, Inc."
-ALRS,25.94,earnings,2026-04-29,0,Alerus Financial Corporation
-AM,21.58,earnings,2026-04-29,0,Antero Midstream Corporation
-AMRZ,58.16,earnings,2026-04-29,0,AMRZ
-AMT,175.3,earnings,2026-04-28,0,American Tower Corporation
-AMRN,13.93,earnings,2026-04-29,0,Amarin Corporation plc
-AMZN,261.12,earnings,2026-04-29,0,"Amazon.com, Inc."
-AWI,177.76,earnings,2026-04-28,0,"Armstrong World Industries, Inc."
-AVT,78.6,earnings,2026-04-29,0,"Avnet, Inc."
+ABBV,197.69,earnings,2026-04-29,0,AbbVie Inc.
+AAMI,66.91,earnings,2026-04-30,0,Acadian Asset Management Inc.
+AAPL,270.71,earnings,2026-04-30,0,Apple Inc.
+ACA,117.9,earnings,2026-04-30,0,"Arcosa, Inc."
+ACHC,27.58,earnings,2026-04-29,0,"Acadia Healthcare Company, Inc."
+ADSE,12.14,earnings,2026-04-30,0,ADS-TEC Energy PLC
+ADAM,8.13,earnings,2026-04-29,0,"Adamas Trust, Inc."
+ACR,20.49,earnings,2026-04-29,0,ACRES Commercial Realty Corp.
+ADT,7.19,earnings,2026-04-30,0,ADT Inc.
+ADPT,14.04,earnings,2026-04-30,0,Adaptive Biotechnologies Corporation
+ADP,199.17,earnings,2026-04-29,0,"Automatic Data Processing, Inc."
+AEM,189.23,earnings,2026-04-30,0,Agnico Eagle Mines Limited
+AES,14.48,earnings,2026-04-30,0,The AES Corporation
+AFL,116.29,earnings,2026-04-29,0,Aflac Incorporated
+AFG,131.37,earnings,2026-04-29,0,"American Financial Group, Inc."
+AER,137.13,earnings,2026-04-29,0,AerCap Holdings N.V.
+AGIO,24.8,earnings,2026-04-29,0,"Agios Pharmaceuticals, Inc."
+AGI,41.71,earnings,2026-04-29,0,Alamos Gold Inc.
+AIG,74.16,earnings,2026-04-30,0,"American International Group, Inc."
+AJG,213.42,earnings,2026-04-30,0,Arthur J. Gallagher & Co.
+AIN,55.1,earnings,2026-04-30,0,Albany International Corp.
+ALHC,21.9,earnings,2026-04-30,0,"Alignment Healthcare, Inc."
+ALKT,16.27,earnings,2026-04-29,0,"Alkami Technology, Inc."
+ALGT,77.81,earnings,2026-04-30,0,Allegiant Travel Company
+ALGN,177.28,earnings,2026-04-29,0,"Align Technology, Inc."
+ALRS,26.03,earnings,2026-04-29,0,Alerus Financial Corporation
+ALL,216.4,earnings,2026-04-29,0,The Allstate Corporation
+ALNY,302.11,earnings,2026-04-30,0,"Alnylam Pharmaceuticals, Inc."
+AM,21.86,earnings,2026-04-29,0,Antero Midstream Corporation
+AME,228.95,earnings,2026-04-30,0,"AMETEK, Inc."
+AMGN,339.57,earnings,2026-04-30,0,Amgen Inc.
