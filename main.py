@@ -49,6 +49,10 @@ def get_gs_client():
     gs_id = os.getenv("GOOGLE_SHEET_ID")
     gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
     if not gs_id or not gs_service_account: return None, None
+    
+    # Strip any accidental single or double quotes wrapped around the JSON
+    gs_service_account = gs_service_account.strip().strip("'").strip('"')
+    
     try:
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         service_account_info = json.loads(gs_service_account)
