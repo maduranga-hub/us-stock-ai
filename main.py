@@ -46,9 +46,15 @@ def send_telegram(message, channel="signal"):
         print(f"Telegram Error: {e}")
 
 def get_gs_client():
+    global google_sheet_error
     gs_id = os.getenv("GOOGLE_SHEET_ID")
     gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
-    if not gs_id or not gs_service_account: return None, None
+    if not gs_id:
+        google_sheet_error = "GOOGLE_SHEET_ID is missing."
+        return None, None
+    if not gs_service_account:
+        google_sheet_error = "GCP_SERVICE_ACCOUNT_KEY is missing."
+        return None, None
     
     # Strip any accidental single or double quotes wrapped around the JSON
     gs_service_account = gs_service_account.strip().strip("'").strip('"')
@@ -60,7 +66,9 @@ def get_gs_client():
         client = gspread.authorize(creds)
         spreadsheet = client.open_by_key(gs_id)
         return client, spreadsheet
-    except: return None, None
+    except Exception as e: 
+        google_sheet_error = f"Auth/JSON Error: {e}"
+        return None, None
 
 def get_or_create_sheet(spreadsheet, title, headers=None):
     try:
@@ -152,11 +160,11 @@ def get_master_list():
             symbols = [s.strip() for s in sheet.col_values(1)[1:] if s.strip()] # Skip header
             if symbols: return symbols
         except Exception as e:
-            google_sheet_error = str(e)
-            print(f"Failed to read from Google Sheet: {e}")
+            google_sheet_error = f"Failed to read from Google Sheet: {e}"
+            print(google_sheet_error)
             pass
-    else:
-        google_sheet_error = "Spreadsheet object is None. (Check credentials or ID)"
+    elif not google_sheet_error:
+        google_sheet_error = "Spreadsheet object is None for unknown reason."
     return []
 
 def log_to_google_sheet(data_row, mode="technical"):
