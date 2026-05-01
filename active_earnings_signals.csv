@@ -1,23 +1,8 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AAPL,270.17,earnings,2026-04-30,0,Apple Inc.
-ACA,116.45,earnings,2026-04-30,0,"Arcosa, Inc."
-AD,47.89,earnings,2026-05-01,0,"Array Digital Infrastructure, Inc."
-ADSE,11.81,earnings,2026-04-30,0,ADS-TEC Energy PLC
-ADPT,13.53,earnings,2026-04-30,0,Adaptive Biotechnologies Corporation
-AES,14.45,earnings,2026-04-30,0,The AES Corporation
-AEM,183.56,earnings,2026-04-30,0,Agnico Eagle Mines Limited
-AIG,73.79,earnings,2026-04-30,0,"American International Group, Inc."
-AIN,58.02,earnings,2026-04-30,0,Albany International Corp.
-AJG,211.81,earnings,2026-04-30,0,Arthur J. Gallagher & Co.
-ALHC,21.72,earnings,2026-04-30,0,"Alignment Healthcare, Inc."
-ALGT,74.51,earnings,2026-04-30,0,Allegiant Travel Company
-AMGN,338.02,earnings,2026-04-30,0,Amgen Inc.
-AMG,289.1,earnings,2026-05-01,0,"Affiliated Managers Group, Inc."
-AMRX,12.8,earnings,2026-05-01,0,"Amneal Pharmaceuticals, Inc."
-AN,205.69,earnings,2026-05-01,0,"AutoNation, Inc."
-AON,322.49,earnings,2026-05-01,0,Aon plc
-AOS,63.68,earnings,2026-04-30,0,A. O. Smith Corporation
-ARDX,6.01,earnings,2026-04-30,0,"Ardelyx, Inc."
-APD,302.5,earnings,2026-04-30,0,"Air Products and Chemicals, Inc."
-ARES,110.86,earnings,2026-05-01,0,Ares Management Corporation
-ARVN,9.82,earnings,2026-04-30,0,"Arvinas, Inc."
+ADSE,11.9,earnings,2026-05-01,0,ADS-TEC Energy PLC
+AD,49.69,earnings,2026-05-01,0,"Array Digital Infrastructure, Inc."
+AMG,294.67,earnings,2026-05-01,0,"Affiliated Managers Group, Inc."
+AMRX,12.87,earnings,2026-05-01,0,"Amneal Pharmaceuticals, Inc."
+AN,212.38,earnings,2026-05-01,0,"AutoNation, Inc."
+AON,311.65,earnings,2026-05-01,0,Aon plc
+ARES,117.4,earnings,2026-05-01,0,Ares Management Corporation
