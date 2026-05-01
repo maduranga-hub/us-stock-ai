@@ -135,7 +135,11 @@ def get_market_universe():
     except:
         return ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 
+global google_sheet_error
+google_sheet_error = ""
+
 def get_master_list():
+    global google_sheet_error
     """Fetches the stock list from Google Sheets (Stock List tab) provided by the user."""
     client, spreadsheet = get_gs_client()
     if spreadsheet:
@@ -144,8 +148,11 @@ def get_master_list():
             symbols = [s.strip() for s in sheet.col_values(1)[1:] if s.strip()] # Skip header
             if symbols: return symbols
         except Exception as e:
+            google_sheet_error = str(e)
             print(f"Failed to read from Google Sheet: {e}")
             pass
+    else:
+        google_sheet_error = "Spreadsheet object is None. (Check credentials or ID)"
     return []
 
 def log_to_google_sheet(data_row, mode="technical"):
@@ -396,8 +403,9 @@ def run_scanner(mode="technical", force_ticker=None):
     dubai_now = get_dubai_time()
     print(f"Starting {mode.upper()} Scan on {len(universe)} Stocks...")
     if not universe:
+        global google_sheet_error
         print("No stocks found to scan. Please add stocks to the 'Stock List' Google Sheet.")
-        send_telegram("⚠️ *Scan Aborted:* No stocks found in the Google Sheet 'Stock List'.", channel="signal")
+        send_telegram(f"⚠️ *Scan Aborted:* No stocks found in the Google Sheet 'Stock List'.\n*Error details:* {google_sheet_error}", channel="signal")
         return
     found_count = 0
     results_for_csv = []
