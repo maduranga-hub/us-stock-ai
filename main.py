@@ -199,22 +199,33 @@ def update_sheet_lifecycle(sheet):
                             if curr_p < sma100 or rsi > 55:
                                 sheet.update_cell(i + 1, 11, "DEACTIVATED"); updated_count += 1
                     except: pass
-            if len(row) > 12 and row[11] == "" and dubai_now > signal_time + timedelta(days=7):
+            price_7d = row[11] if len(row) > 11 else ""
+            if price_7d == "" and dubai_now > signal_time + timedelta(days=7):
                 try:
-                    ticker = yf.Ticker(symbol); hist = ticker.history(start=(signal_time + timedelta(days=7)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=8)).strftime('%Y-%m-%d'))
+                    ticker = yf.Ticker(symbol)
+                    hist = ticker.history(start=(signal_time + timedelta(days=7)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=12)).strftime('%Y-%m-%d'))
                     if not hist.empty:
-                        p7d = hist['Close'].iloc[0]
-                        sheet.update_cell(i + 1, 12, f"{p7d:.2f}"); sheet.update_cell(i + 1, 13, f"{((p7d - entry_p) / entry_p * 100):.2f}%")
+                        hist.columns = [c.lower() for c in hist.columns]
+                        p7d = hist['close'].iloc[0]
+                        sheet.update_cell(i + 1, 12, f"{p7d:.2f}")
+                        sheet.update_cell(i + 1, 13, f"{((p7d - entry_p) / entry_p * 100):.2f}%")
                         updated_count += 1
-                except: pass
-            if len(row) > 14 and row[13] == "" and dubai_now > signal_time + timedelta(days=30):
+                except Exception as e: 
+                    print(f"Error 7D profit for {symbol}: {e}")
+            
+            price_30d = row[13] if len(row) > 13 else ""
+            if price_30d == "" and dubai_now > signal_time + timedelta(days=30):
                 try:
-                    ticker = yf.Ticker(symbol); hist = ticker.history(start=(signal_time + timedelta(days=30)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=31)).strftime('%Y-%m-%d'))
+                    ticker = yf.Ticker(symbol)
+                    hist = ticker.history(start=(signal_time + timedelta(days=30)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=35)).strftime('%Y-%m-%d'))
                     if not hist.empty:
-                        p30d = hist['Close'].iloc[0]
-                        sheet.update_cell(i + 1, 14, f"{p30d:.2f}"); sheet.update_cell(i + 1, 15, f"{((p30d - entry_p) / entry_p * 100):.2f}%")
+                        hist.columns = [c.lower() for c in hist.columns]
+                        p30d = hist['close'].iloc[0]
+                        sheet.update_cell(i + 1, 14, f"{p30d:.2f}")
+                        sheet.update_cell(i + 1, 15, f"{((p30d - entry_p) / entry_p * 100):.2f}%")
                         updated_count += 1
-                except: pass
+                except Exception as e:
+                    print(f"Error 30D profit for {symbol}: {e}")
         return updated_count
     except: return 0
 
