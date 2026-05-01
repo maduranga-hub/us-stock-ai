@@ -48,6 +48,7 @@ def send_telegram(message, channel="signal"):
 def get_gs_client():
     global google_sheet_error
     gs_id = os.getenv("GOOGLE_SHEET_ID")
+    if gs_id: gs_id = gs_id.strip()
     gs_service_account = os.getenv("GCP_SERVICE_ACCOUNT_KEY")
     if not gs_id:
         google_sheet_error = "GOOGLE_SHEET_ID is missing."
