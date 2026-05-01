@@ -5,6 +5,7 @@ import pytz
 import requests
 import io
 import os
+import time
 import concurrent.futures
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -202,6 +203,7 @@ def update_sheet_lifecycle(sheet):
             price_7d = row[11] if len(row) > 11 else ""
             if price_7d == "" and dubai_now > signal_time + timedelta(days=7):
                 try:
+                    time.sleep(1)
                     ticker = yf.Ticker(symbol)
                     hist = ticker.history(start=(signal_time + timedelta(days=7)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=12)).strftime('%Y-%m-%d'))
                     if not hist.empty:
@@ -216,6 +218,7 @@ def update_sheet_lifecycle(sheet):
             price_30d = row[13] if len(row) > 13 else ""
             if price_30d == "" and dubai_now > signal_time + timedelta(days=30):
                 try:
+                    time.sleep(1)
                     ticker = yf.Ticker(symbol)
                     hist = ticker.history(start=(signal_time + timedelta(days=30)).strftime('%Y-%m-%d'), end=(signal_time + timedelta(days=35)).strftime('%Y-%m-%d'))
                     if not hist.empty:
