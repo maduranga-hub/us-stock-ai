@@ -12,6 +12,9 @@ from dotenv import load_dotenv
 import gspread
 import json
 from google.oauth2.service_account import Credentials
+import urllib.request
+import urllib.parse
+import xml.etree.ElementTree as ET
 
 # Load environment variables
 load_dotenv()
@@ -339,18 +342,18 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             return None
 
         if scan_type == "news":
-            cap = fast.get('market_cap', 0)
-            if cap < 10_000_000_000:
-                return None
             try:
                 news_list = ticker.news
                 if news_list and len(news_list) > 0:
                     latest = news_list[0]
+                    info = ticker.info
                     base_res.update({
                         "type": "news",
                         "title": latest.get("title", ""),
                         "publisher": latest.get("publisher", ""),
-                        "link": latest.get("link", "")
+                        "link": latest.get("link", ""),
+                        "sector": info.get("sector", "N/A"),
+                        "industry": info.get("industry", "N/A")
                     })
                     return base_res
             except: pass
@@ -406,6 +409,33 @@ def save_sent_item(item, filename="sent_news.txt"):
     with open(filename, "a") as f:
         f.write(f"{item}\n")
 
+def get_google_news(keyword):
+    try:
+        query = urllib.parse.quote(f"{keyword} Finance Stock Market")
+        url = f"https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        response = urllib.request.urlopen(req, timeout=10)
+        xml_data = response.read()
+        root = ET.fromstring(xml_data)
+        
+        for item in root.findall('.//item'):
+            title = item.find('title').text if item.find('title') is not None else ""
+            link = item.find('link').text if item.find('link') is not None else ""
+            pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
+            source = item.find('source').text if item.find('source') is not None else "Google News"
+            
+            if title and link:
+                return {
+                    "type": "sector_news",
+                    "title": title,
+                    "publisher": source,
+                    "link": link,
+                    "pubDate": pub_date
+                }
+    except Exception as e:
+        print(f"Error fetching Google News for {keyword}: {e}")
+    return None
+
 def run_scanner(mode="technical", force_ticker=None):
     if mode == "refresh": refresh_stock_list(); return
     if force_ticker:
@@ -431,6 +461,8 @@ def run_scanner(mode="technical", force_ticker=None):
         sent_items = load_sent_items("sent_earnings.txt")
     else:
         sent_items = set()
+    
+    collected_sectors = set()
     
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -471,14 +503,35 @@ def run_scanner(mode="technical", force_ticker=None):
 
                     elif mode == "news":
                         link = res.get('link', '')
+                        sector = res.get('sector', 'N/A')
+                        if sector and sector != 'N/A':
+                            collected_sectors.add(sector)
+                            
                         if link and link not in sent_items:
-                            msg = f"📰 *{res['symbol']} News*\n\n*{res['title']}*\n_{res['publisher']}_\n\n🔗 [Read More]({link})"
+                            msg = f"📰 *{res['symbol']} News*\n🏢 *Sector:* {sector}\n🏭 *Industry:* {res.get('industry', 'N/A')}\n\n*{res['title']}*\n_{res['publisher']}_\n\n🔗 [Read More]({link})"
                             send_telegram(msg, channel="news")
                             sent_items.add(link)
                             save_sent_item(link, "sent_news.txt")
                             results_for_csv.append(res)
                         else:
                             found_count -= 1
+
+        # Fetch Sector News via Google News
+        if mode == "news" and collected_sectors:
+            print(f"Fetching Google News for sectors: {collected_sectors}")
+            for sector in collected_sectors:
+                s_news = get_google_news(f"{sector} Sector")
+                if s_news:
+                    link = s_news.get('link', '')
+                    if link and link not in sent_items:
+                        msg = f"🌐 *{sector} Sector News*\n\n*{s_news['title']}*\n_{s_news['publisher']}_\n\n🔗 [Read More]({link})"
+                        send_telegram(msg, channel="news")
+                        sent_items.add(link)
+                        save_sent_item(link, "sent_news.txt")
+                        s_news['sector'] = sector
+                        s_news['symbol'] = f"{sector} Sector"
+                        results_for_csv.append(s_news)
+                        found_count += 1
 
         # Update local CSVs
         if results_for_csv:
