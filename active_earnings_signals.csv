@@ -1,8 +1,30 @@
 symbol,price,type,earnings_date,mkt_cap,name
-ADSE,11.9,earnings,2026-05-01,0,ADS-TEC Energy PLC
-AD,49.69,earnings,2026-05-01,0,"Array Digital Infrastructure, Inc."
-AMG,294.67,earnings,2026-05-01,0,"Affiliated Managers Group, Inc."
-AMRX,12.87,earnings,2026-05-01,0,"Amneal Pharmaceuticals, Inc."
-AN,212.38,earnings,2026-05-01,0,"AutoNation, Inc."
-AON,311.65,earnings,2026-05-01,0,Aon plc
-ARES,117.4,earnings,2026-05-01,0,Ares Management Corporation
+AMD,360.54,earnings,2026-05-05,0,"Advanced Micro Devices, Inc."
+HSBC,91.95,earnings,2026-05-05,0,HSBC Holdings plc
+PLTR,144.07,earnings,2026-05-04,0,Palantir Technologies Inc.
+ANET,172.7,earnings,2026-05-05,0,"Arista Networks, Inc."
+ETN,425.55,earnings,2026-05-05,0,Eaton Corporation plc
+SHOP,127.67,earnings,2026-05-05,0,Shopify Inc.
+PFE,26.33,earnings,2026-05-05,0,Pfizer Inc.
+BUD,75.56,earnings,2026-05-05,0,Anheuser-Busch InBev SA/NV
+VRTX,423.92,earnings,2026-05-04,0,Vertex Pharmaceuticals Incorporated
+DUK,128.6,earnings,2026-05-05,0,Duke Energy Corporation
+KKR,103.68,earnings,2026-05-05,0,KKR & Co. Inc.
+WMB,75.54,earnings,2026-05-04,0,"The Williams Companies, Inc."
+CMI,657.44,earnings,2026-05-05,0,Cummins Inc.
+ITUB,8.62,earnings,2026-05-05,0,Itaú Unibanco Holding S.A.
+EMR,137.45,earnings,2026-05-05,0,Emerson Electric Co.
+SU,67.55,earnings,2026-05-05,0,Suncor Energy Inc.
+RACE,341.26,earnings,2026-05-05,0,Ferrari N.V.
+ET,19.94,earnings,2026-05-05,0,Energy Transfer LP
+EOG,138.95,earnings,2026-05-05,0,"EOG Resources, Inc."
+MPC,246.15,earnings,2026-05-05,0,Marathon Petroleum Corporation
+AEP,136.91,earnings,2026-05-05,0,"American Electric Power Company, Inc."
+OXY,58.71,earnings,2026-05-05,0,Occidental Petroleum Corporation
+LITE,949.93,earnings,2026-05-05,0,Lumentum Holdings Inc.
+TDG,1154.45,earnings,2026-05-05,0,TransDigm Group Incorporated
+FANG,207.65,earnings,2026-05-04,0,"Diamondback Energy, Inc."
+MPLX,56.61,earnings,2026-05-05,0,MPLX LP
+CCJ,120.6,earnings,2026-05-05,0,Cameco Corporation
+MSTR,177.17,earnings,2026-05-05,0,Strategy Inc
+JOBY,9.25,earnings,2026-05-05,0,"Joby Aviation, Inc."
