@@ -368,7 +368,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         sma50 = df_daily['close'].rolling(window=50).mean().iloc[-1]
         sma100 = df_daily['close'].rolling(window=100).mean().iloc[-1]
         
-        if price < sma100: return None
+        if price < sma100 or price < sma50: return None
         
         df = ticker.history(period="15d", interval="1h")
         if df.empty or len(df) < 50: return None
@@ -385,8 +385,9 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         vwap = df['vwap'].iloc[-1]; vwap_status = "Bullish (Above)" if price > vwap else "Bearish (Below)"
         avg_vol_20 = df['volume'].rolling(window=20).mean().iloc[-1]; high_volume = df['volume'].iloc[-1] >= (1.5 * avg_vol_20)
         
-        is_signal = rsi <= 35 or fvg is not None
-        high_conviction = rsi <= 40 and fvg is not None and price > vwap and sma50 > sma100
+        is_signal = rsi < 35
+        # High Conviction requires all conditions to be met, but still obeys the is_signal filter
+        high_conviction = rsi < 35 and fvg is not None and price > vwap and sma50 > sma100
         
         base_res.update({
             "type": "technical", 
