@@ -1,32 +1,23 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-UNH,362.13,technical,UnitedHealth Group Incorporated,29.35014914609762,,Bearish (Below),False,304.06488525390625,309.3061505126953,2026-05-05 22:50,False,True,False
-JPM,309.68,technical,JPMorgan Chase & Co.,32.705429440727826,,Bullish (Above),False,298.87888916015623,305.68993682861327,2026-05-05 22:50,False,True,False
-HSBC,87.4963,technical,HSBC Holdings plc,24.114499072414148,"{'top': np.float64(87.3499984741211), 'bottom': np.float64(87.29000091552734), 'gap_size': np.float64(0.05999755859375)}",Bullish (Above),True,85.91956253051758,83.29760215759278,2026-05-05 22:50,True,True,True
-LIN,501.82,technical,Linde plc,33.65855827289367,,Bullish (Above),True,496.6866662597656,470.14431732177735,2026-05-05 22:50,False,True,False
-ETN,409.295,technical,Eaton Corporation plc,31.734760623323893,,Bearish (Below),True,380.7440502929687,361.99846221923826,2026-05-05 22:50,False,True,False
-BA,224.1005,technical,The Boeing Company,33.46184298606708,,Bearish (Below),False,217.12400085449218,223.9231005859375,2026-05-05 22:50,False,True,False
-TD,106.27,technical,The Toronto-Dominion Bank,26.62176657815604,,Bearish (Below),True,98.38313262939454,96.06248008728028,2026-05-05 22:50,False,True,False
-UNP,263.405,technical,Union Pacific Corporation,31.95693945068473,,Bearish (Below),True,252.45190032958985,245.39976211547852,2026-05-05 22:50,False,True,False
-TT,473.77,technical,Trane Technologies plc,32.87467592915199,,Bearish (Below),True,448.9865838623047,429.50917236328127,2026-05-05 22:50,False,True,False
-BMO,150.99,technical,Bank of Montreal,29.433983992629706,,Bearish (Below),True,142.47104461669923,138.640220413208,2026-05-05 22:50,False,True,False
-CVS,80.94,technical,CVS Health Corporation,29.51183017330223,,Bearish (Below),False,76.15107147216797,76.82732292175292,2026-05-05 22:50,False,True,False
-CM,110.4415,technical,Canadian Imperial Bank of Commerce,27.484807550673494,,Bearish (Below),True,101.37122817993163,97.05723403930664,2026-05-05 22:50,False,True,False
-BNS,76.79,technical,The Bank of Nova Scotia,19.532905265749633,,Bearish (Below),False,72.83079971313477,73.5874998474121,2026-05-05 22:50,False,True,False
-USB,55.715,technical,U.S. Bancorp,33.83620477034533,,Bullish (Above),False,53.83100234985351,54.501618461608885,2026-05-05 22:50,False,True,False
-ABNB,139.41,technical,"Airbnb, Inc.",28.782055154499048,,Bearish (Below),True,133.4243997192383,132.0850496673584,2026-05-05 22:50,False,True,False
-SLB,56.165,technical,SLB N.V.,33.84621805121196,,Bullish (Above),True,51.01830001831055,48.064380226135256,2026-05-05 22:50,False,True,False
-ELV,368.57,technical,"Elevance Health, Inc.",25.569605153286403,,Bearish (Below),False,313.02728149414065,331.45980072021484,2026-05-05 22:50,False,True,False
-CP,83.725,technical,Canadian Pacific Kansas City Limited,20.51558383796913,,Bullish (Above),True,82.4836180114746,79.09376472473144,2026-05-05 22:50,True,True,False
-HLT,313.95,technical,Hilton Worldwide Holdings Inc.,32.10889183684908,,Bullish (Above),True,312.24989135742186,305.6965222167969,2026-05-05 22:50,False,True,False
-DLR,196.62,technical,"Digital Realty Trust, Inc.",33.345957516877974,"{'top': np.float64(196.32000732421875), 'bottom': np.float64(196.30499267578125), 'gap_size': np.float64(0.0150146484375)}",Bullish (Above),True,185.65068786621094,173.21302154541016,2026-05-05 22:50,False,True,True
-BKR,68.41,technical,Baker Hughes Company,33.221452454466785,,Bullish (Above),True,62.324600067138675,57.37510398864746,2026-05-05 22:50,False,True,False
-NSC,312.415,technical,Norfolk Southern Corporation,33.1971959630208,,Bearish (Below),True,300.0082995605469,297.62757080078126,2026-05-05 22:50,False,True,False
-CNI,110.11,technical,Canadian National Railway Company,27.348076001691666,,Bearish (Below),True,107.45658432006836,103.68823013305663,2026-05-05 22:50,False,True,False
-TFC,50.085,technical,Truist Financial Corporation,29.95782899819727,,Bullish (Above),False,48.11500015258789,49.39646755218506,2026-05-05 22:50,False,True,False
-CARR,65.295,technical,Carrier Global Corporation,19.5201376455162,,Bearish (Below),True,59.82914222717285,58.5740584564209,2026-05-05 22:50,False,True,False
-FERG,251.6,technical,Ferguson Enterprises Inc.,15.913639687201794,,Bearish (Below),True,244.4141815185547,243.2143132019043,2026-05-05 22:50,False,True,False
-GWW,1137.9,technical,"W.W. Grainger, Inc.",33.01528449064368,,Bearish (Below),True,1119.37419921875,1094.5179388427734,2026-05-05 22:50,True,True,False
-EW,82.687,technical,Edwards Lifesciences Corporation,31.992215497494698,,Bearish (Below),False,82.20733993530274,82.53246994018555,2026-05-05 22:50,False,True,False
-MSCI,578.79,technical,MSCI Inc.,32.66204683540326,"{'top': np.float64(577.2200927734375), 'bottom': np.float64(575.9099731445312), 'gap_size': np.float64(1.31011962890625)}",Bullish (Above),False,561.2780029296875,564.9454937744141,2026-05-05 22:50,False,True,False
-STT,149.0,technical,State Street Corporation,30.537252208775712,,Bullish (Above),True,133.6988819885254,131.30082122802733,2026-05-05 22:50,False,True,False
-VOD,15.785,technical,Vodafone Group Public Limited Company,27.48689321842639,,Bullish (Above),True,15.148699951171874,14.58604995727539,2026-05-05 22:50,False,True,False
+HSBC,87.4,technical,HSBC Holdings plc,25.21932411281128,,Bullish (Above),True,85.91763656616212,83.29663917541504,2026-05-06 00:36,False,True,False
+TD,105.94,technical,The Toronto-Dominion Bank,26.756275370723216,,Bearish (Below),True,98.37653274536133,96.05918014526367,2026-05-06 00:36,False,True,False
+MO,72.79,technical,"Altria Group, Inc.",27.34365686765372,,Bearish (Below),True,66.61624420166015,63.32347721099853,2026-05-06 00:36,False,True,False
+CVS,80.69,technical,CVS Health Corporation,29.605712850638213,,Bearish (Below),False,76.14607147216798,76.82482292175293,2026-05-06 00:36,True,True,False
+CM,110.11,technical,Canadian Imperial Bank of Commerce,27.548850379731334,,Bearish (Below),True,101.36459823608398,97.05391906738281,2026-05-06 00:36,False,True,False
+BNS,76.67,technical,The Bank of Nova Scotia,19.90934449093446,,Bearish (Below),False,72.82839965820312,73.58629981994629,2026-05-06 00:36,True,True,False
+USB,55.6,technical,U.S. Bancorp,34.51324595532074,,Bearish (Below),False,53.82870231628418,54.50046844482422,2026-05-06 00:36,True,True,False
+SLB,56.0,technical,SLB N.V.,34.74723513144171,,Bearish (Below),True,51.015,48.06273021697998,2026-05-06 00:36,False,True,False
+ELV,369.07,technical,"Elevance Health, Inc.",32.3988885087893,,Bearish (Below),False,313.03728149414064,331.46480072021484,2026-05-06 00:36,True,True,False
+CP,83.5,technical,Canadian Pacific Kansas City Limited,20.659282063664534,,Bearish (Below),True,82.4791180419922,79.09151473999023,2026-05-06 00:36,False,True,False
+CI,275.66,technical,The Cigna Group,19.287601197421964,,Bearish (Below),False,274.2574578857422,275.61830963134764,2026-05-06 00:36,True,True,False
+HLT,312.77,technical,Hilton Worldwide Holdings Inc.,32.3104494274739,,Bearish (Below),True,312.2262908935547,305.6847219848633,2026-05-06 00:36,False,True,False
+DLR,196.69,technical,"Digital Realty Trust, Inc.",33.9671405283772,,Bullish (Above),True,185.65208801269532,173.21372161865236,2026-05-06 00:36,False,True,False
+BKR,67.78,technical,Baker Hughes Company,26.418340899621782,,Bearish (Below),True,62.31199996948242,57.36880393981934,2026-05-06 00:36,True,True,False
+CNI,109.99,technical,Canadian National Railway Company,30.263090834678252,,Bearish (Below),True,107.45418426513672,103.68703010559082,2026-05-06 00:36,False,True,False
+TFC,49.95,technical,Truist Financial Corporation,30.52669234164979,,Bearish (Below),False,48.112400131225584,49.39516754150391,2026-05-06 00:36,False,True,False
+STRF,100.61,technical,Strategy Inc,27.18014924493633,,Bearish (Below),False,98.46595016479492,99.17188316345215,2026-05-06 00:36,False,True,False
+CARR,64.18,technical,Carrier Global Corporation,15.568831271671812,,Bearish (Below),True,59.80684226989746,58.56290855407715,2026-05-06 00:36,True,True,False
+D,62.99,technical,"Dominion Energy, Inc.",33.038896407447155,,Bearish (Below),True,62.44659156799317,61.25524620056152,2026-05-06 00:36,False,True,False
+FERG,252.81,technical,Ferguson Enterprises Inc.,22.93067809242676,,Bearish (Below),True,244.43838134765625,243.2264131164551,2026-05-06 00:36,False,True,False
+STT,148.68,technical,State Street Corporation,33.98645236921132,,Bearish (Below),True,133.69248184204102,131.2976212310791,2026-05-06 00:37,False,True,False
+VOD,15.74,technical,Vodafone Group Public Limited Company,28.684191505679877,,Bearish (Below),True,15.147799949645997,14.585599956512452,2026-05-06 00:37,False,True,False
