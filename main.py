@@ -197,7 +197,7 @@ def update_sheet_lifecycle(sheet):
         if len(all_rows) < 2: return 0
         dubai_now = get_dubai_time()
         updated_count = 0
-        for i in range(len(all_rows) - 1, max(0, len(all_rows) - 100), -1):
+        for i in range(len(all_rows) - 1, max(0, len(all_rows) - 500), -1):
             row = all_rows[i]
             if len(row) < 11: continue
             symbol, entry_p, status = row[3], float(row[4]), row[10]
@@ -259,13 +259,15 @@ def update_signal_lifecycle():
     client, spreadsheet = get_gs_client()
     if not spreadsheet: return
     dubai_now = get_dubai_time()
-    curr_sheet = get_or_create_sheet(spreadsheet, dubai_now.strftime('%B %Y'))
-    updates = update_sheet_lifecycle(curr_sheet)
-    prev_month_time = dubai_now.replace(day=1) - timedelta(days=1)
-    try:
-        prev_sheet = spreadsheet.worksheet(prev_month_time.strftime('%B %Y'))
-        updates += update_sheet_lifecycle(prev_sheet)
-    except: pass
+    # Check current month, previous month, and the month before that
+    for m in range(3):
+        target_month = dubai_now - timedelta(days=30 * m)
+        sheet_title = target_month.strftime('%B %Y')
+        try:
+            target_sheet = spreadsheet.worksheet(sheet_title)
+            print(f"Updating lifecycle for: {sheet_title}")
+            update_sheet_lifecycle(target_sheet)
+        except: pass
 
 def calculate_rsi(series, period=14):
     delta = series.diff()
@@ -544,7 +546,8 @@ def run_scanner(mode="technical", force_ticker=None):
             # For news, we might append or just save latest, let's just save latest
             df.to_csv(csv_name, index=False)
             
-        if mode == "technical": update_signal_lifecycle()
+        if mode == "technical": 
+            update_signal_lifecycle()
     finally:
         dubai_time_str = dubai_now.strftime('%H:%M')
         print(f"Scan Completed: {dubai_time_str} GST")
