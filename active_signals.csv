@@ -1,22 +1,21 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-TTE,89.44,technical,TotalEnergies SE,32.39889489520337,,Bearish (Below),True,86.89833038330079,77.84677295684814,2026-05-06 23:04,False,True,False
-PBR,20.84,technical,Petróleo Brasileiro S.A. - Petrobras,15.819115341020222,,Bearish (Below),True,19.791034317016603,16.605867710113525,2026-05-06 23:04,False,True,False
-BP,44.705,technical,BP p.l.c.,22.62504327293084,,Bearish (Below),True,44.40089981079102,40.091318893432614,2026-05-06 23:04,False,True,False
-MO,70.44,technical,"Altria Group, Inc.",24.40419391626132,,Bearish (Below),True,66.66286911010742,63.46102344512939,2026-05-06 23:04,False,True,False
-EQNR,37.87,technical,Equinor ASA,14.947292845543856,,Bullish (Above),True,37.4601997756958,31.22998306274414,2026-05-06 23:05,False,True,False
-E,53.87,technical,Eni S.p.A.,21.09001609989238,,Bearish (Below),True,52.74559371948242,46.06310546875,2026-05-06 23:05,False,True,False
-SU,64.37,technical,Suncor Energy Inc.,21.353480547551868,,Bearish (Below),True,62.70436294555664,55.819943771362304,2026-05-06 23:05,False,True,False
-EPD,37.605,technical,Enterprise Products Partners L.P.,18.61277381500858,,Bearish (Below),True,37.145528411865236,34.87609872817993,2026-05-06 23:05,False,True,False
-VLO,235.505,technical,Valero Energy Corporation,23.958118276687642,,Bearish (Below),True,235.19150177001953,208.5209002685547,2026-05-06 23:05,False,True,False
-PSX,171.31,technical,Phillips 66,31.236966712825748,,Bearish (Below),True,169.01119995117188,155.3142931365967,2026-05-06 23:05,False,True,False
-BKR,66.545,technical,Baker Hughes Company,21.776974650836806,,Bearish (Below),True,62.149155349731444,57.36806159973145,2026-05-06 23:05,False,True,False
-IMO,127.26,technical,Imperial Oil Limited,34.784406258205934,,Bearish (Below),True,125.4311360168457,112.25688591003419,2026-05-06 23:05,True,True,False
-FANG,193.125,technical,"Diamondback Energy, Inc.",13.40825494285771,,Bearish (Below),True,189.38626525878905,172.68454376220703,2026-05-06 23:05,False,True,False
-TRGP,248.365,technical,Targa Resources Corp.,25.783534975458153,,Bearish (Below),True,241.2802328491211,217.65270523071288,2026-05-06 23:05,False,True,False
-FERG,251.23,technical,Ferguson Enterprises Inc.,30.007888119865726,,Bearish (Below),True,244.24541473388672,243.44330993652343,2026-05-06 23:05,False,True,False
-CVE,28.92,technical,Cenovus Energy Inc.,31.780372393263022,,Bullish (Above),True,25.38796463012695,22.031754608154298,2026-05-06 23:05,True,True,False
-ETR,112.8,technical,Entergy Corporation,26.53065249434283,,Bearish (Below),True,109.49456756591798,102.23281814575195,2026-05-06 23:05,False,True,False
-DDOG,141.23,technical,"Datadog, Inc.",24.187188341393664,,Bearish (Below),False,123.9215998840332,126.44365005493164,2026-05-06 23:05,False,True,False
-XYZ,70.655,technical,"Block, Inc.",33.182587081851764,,Bullish (Above),True,64.26929977416992,63.105050048828126,2026-05-06 23:05,False,True,False
-QSR,76.915,technical,Restaurant Brands International Inc.,30.38779451750493,,Bearish (Below),True,75.40978622436523,71.76041725158692,2026-05-06 23:05,False,True,False
-HAL,40.15,technical,Halliburton Company,22.29509754996316,,Bearish (Below),True,37.69781600952148,34.74957479476929,2026-05-06 23:05,True,True,False
+ANET,147.06,technical,"Arista Networks, Inc.",17.550112496255935,"{'top': np.float64(143.00999450683594), 'bottom': np.float64(142.22999572753906), 'gap_size': np.float64(0.779998779296875)}",Bullish (Above),True,144.8134001159668,139.16249977111818,2026-05-07 00:49,False,True,True
+TTE,89.96,technical,TotalEnergies SE,34.156878176201204,,Bullish (Above),True,86.9087303161621,77.85197292327881,2026-05-07 00:49,False,True,False
+PBR,20.91,technical,Petróleo Brasileiro S.A. - Petrobras,15.900727969887441,,Bearish (Below),True,19.792434310913087,16.606567707061767,2026-05-07 00:49,False,True,False
+BP,44.63,technical,BP p.l.c.,21.551716848083956,,Bearish (Below),True,44.399399795532226,40.09056888580322,2026-05-07 00:49,False,True,False
+MO,70.17,technical,"Altria Group, Inc.",18.869739080614337,,Bearish (Below),True,66.6574690246582,63.45832340240479,2026-05-07 00:49,False,True,False
+EQNR,38.03,technical,Equinor ASA,15.392622725558738,,Bullish (Above),True,37.463399772644046,31.231583061218263,2026-05-07 00:49,False,True,False
+WMB,73.76,technical,"The Williams Companies, Inc.",34.38016111801207,,Bearish (Below),True,73.20073135375976,68.41802345275879,2026-05-07 00:49,False,True,False
+EPD,37.56,technical,Enterprise Products Partners L.P.,21.27916827258872,,Bearish (Below),True,37.14462844848633,34.875648708343505,2026-05-07 00:49,False,True,False
+SU,64.32,technical,Suncor Energy Inc.,21.710085070035504,,Bearish (Below),True,62.70336288452148,55.819443740844726,2026-05-07 00:49,False,True,False
+E,53.91,technical,Eni S.p.A.,23.313260870331646,,Bearish (Below),True,52.74639373779297,46.063505477905274,2026-05-07 00:49,False,True,False
+VLO,236.69,technical,Valero Energy Corporation,20.900680361606547,,Bearish (Below),True,235.21520172119142,208.53275024414063,2026-05-07 00:49,False,True,False
+PSX,171.72,technical,Phillips 66,30.141176639593752,,Bearish (Below),True,169.01940002441407,155.31839317321777,2026-05-07 00:49,False,True,False
+BKR,66.67,technical,Baker Hughes Company,26.330661009413063,,Bearish (Below),True,62.15215538024902,57.36956161499023,2026-05-07 00:49,True,True,False
+FANG,195.08,technical,"Diamondback Energy, Inc.",18.348640501553888,,Bearish (Below),True,189.42536529541016,172.70409378051758,2026-05-07 00:49,False,True,False
+CVE,29.02,technical,Cenovus Energy Inc.,34.03909381671062,,Bullish (Above),True,25.389964637756346,22.032754611968993,2026-05-07 00:49,False,True,False
+ETR,112.96,technical,Entergy Corporation,26.125517560093172,,Bullish (Above),True,109.49776748657227,102.2344181060791,2026-05-07 00:49,False,True,False
+TRGP,249.5,technical,Targa Resources Corp.,26.72458084356842,,Bullish (Above),True,241.3029327392578,217.66405517578124,2026-05-07 00:49,False,True,False
+FERG,252.21,technical,Ferguson Enterprises Inc.,32.735004804150094,,Bearish (Below),True,244.26501495361327,243.4531100463867,2026-05-07 00:49,True,True,False
+XYZ,70.83,technical,"Block, Inc.",33.68259472201855,"{'top': np.float64(70.66000366210938), 'bottom': np.float64(70.56500244140625), 'gap_size': np.float64(0.095001220703125)}",Bullish (Above),True,64.27279983520508,63.1068000793457,2026-05-07 00:50,False,True,True
+QSR,77.2,technical,Restaurant Brands International Inc.,32.24006926890897,,Bullish (Above),True,75.41548614501953,71.76326721191407,2026-05-07 00:50,True,True,False
