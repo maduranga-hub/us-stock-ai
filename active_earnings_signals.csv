@@ -1,35 +1,25 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMD,341.54,earnings,2026-05-05,0,"Advanced Micro Devices, Inc."
-HSBC,90.13,earnings,2026-05-05,0,HSBC Holdings plc
-ARM,203.26,earnings,2026-05-06,0,Arm Holdings plc
-ANET,172.62,earnings,2026-05-05,0,"Arista Networks, Inc."
-ETN,422.44,earnings,2026-05-05,0,Eaton Corporation plc
-SHOP,127.55,earnings,2026-05-05,0,Shopify Inc.
-DIS,101.31,earnings,2026-05-06,0,The Walt Disney Company
-NVO,44.39,earnings,2026-05-06,0,Novo Nordisk A/S
-APP,475.0,earnings,2026-05-06,0,AppLovin Corporation
-UBER,73.93,earnings,2026-05-06,0,"Uber Technologies, Inc."
-PFE,26.3,earnings,2026-05-05,0,Pfizer Inc.
-BUD,73.91,earnings,2026-05-05,0,Anheuser-Busch InBev SA/NV
-CVS,82.01,earnings,2026-05-06,0,CVS Health Corporation
-DUK,127.45,earnings,2026-05-05,0,Duke Energy Corporation
-EQNR,41.32,earnings,2026-05-06,0,Equinor ASA
-JCI,144.4,earnings,2026-05-06,0,Johnson Controls International plc
-CMI,656.73,earnings,2026-05-05,0,Cummins Inc.
-MAR,347.24,earnings,2026-05-06,0,"Marriott International, Inc."
-KKR,103.33,earnings,2026-05-05,0,KKR & Co. Inc.
-ITUB,8.47,earnings,2026-05-05,0,Itaú Unibanco Holding S.A.
-RACE,338.91,earnings,2026-05-05,0,Ferrari N.V.
-EMR,135.46,earnings,2026-05-05,0,Emerson Electric Co.
-SU,68.56,earnings,2026-05-05,0,Suncor Energy Inc.
-EOG,141.61,earnings,2026-05-05,0,"EOG Resources, Inc."
-AEP,134.66,earnings,2026-05-05,0,"American Electric Power Company, Inc."
-APO,129.19,earnings,2026-05-06,0,"Apollo Global Management, Inc."
-WBD,26.96,earnings,2026-05-06,0,"Warner Bros. Discovery, Inc."
-ET,20.08,earnings,2026-05-05,0,Energy Transfer LP
-MPC,252.54,earnings,2026-05-05,0,Marathon Petroleum Corporation
-DASH,172.57,earnings,2026-05-06,0,"DoorDash, Inc."
-OXY,60.27,earnings,2026-05-05,0,Occidental Petroleum Corporation
-PRU,97.65,earnings,2026-05-05,0,"Prudential Financial, Inc."
-PR,22.52,earnings,2026-05-06,0,Permian Resources Corporation
-DD,45.41,earnings,2026-05-05,0,"DuPont de Nemours, Inc."
+ARM,208.84,earnings,2026-05-06,0,Arm Holdings plc
+SHEL,89.71,earnings,2026-05-07,0,Shell plc
+MCD,285.17,earnings,2026-05-07,0,McDonald's Corporation
+DIS,100.48,earnings,2026-05-06,0,The Walt Disney Company
+GILD,133.48,earnings,2026-05-07,0,"Gilead Sciences, Inc."
+APP,478.11,earnings,2026-05-06,0,AppLovin Corporation
+UBER,72.95,earnings,2026-05-06,0,"Uber Technologies, Inc."
+CVS,80.69,earnings,2026-05-06,0,CVS Health Corporation
+MCK,801.01,earnings,2026-05-07,0,McKesson Corporation
+HWM,242.69,earnings,2026-05-07,0,Howmet Aerospace Inc.
+JCI,144.82,earnings,2026-05-06,0,Johnson Controls International plc
+MELI,1817.31,earnings,2026-05-07,0,"MercadoLibre, Inc."
+CNQ,47.85,earnings,2026-05-07,0,Canadian Natural Resources Limited
+MAR,354.52,earnings,2026-05-06,0,"Marriott International, Inc."
+ABNB,139.73,earnings,2026-05-07,0,"Airbnb, Inc."
+MNST,75.8,earnings,2026-05-07,0,Monster Beverage Corporation
+NET,244.43,earnings,2026-05-07,0,"Cloudflare, Inc."
+MSI,438.0,earnings,2026-05-07,0,"Motorola Solutions, Inc."
+DASH,166.14,earnings,2026-05-06,0,"DoorDash, Inc."
+TRGP,259.72,earnings,2026-05-07,0,Targa Resources Corp.
+COIN,197.75,earnings,2026-05-07,0,"Coinbase Global, Inc."
+TPL,430.44,earnings,2026-05-06,0,Texas Pacific Land Corporation
+INSM,139.44,earnings,2026-05-07,0,Insmed Incorporated
+CDE,17.13,earnings,2026-05-06,0,"Coeur Mining, Inc."
