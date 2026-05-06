@@ -1,23 +1,21 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-HSBC,87.4,technical,HSBC Holdings plc,25.21932411281128,,Bullish (Above),True,85.91763656616212,83.29663917541504,2026-05-06 00:36,False,True,False
-TD,105.94,technical,The Toronto-Dominion Bank,26.756275370723216,,Bearish (Below),True,98.37653274536133,96.05918014526367,2026-05-06 00:36,False,True,False
-MO,72.79,technical,"Altria Group, Inc.",27.34365686765372,,Bearish (Below),True,66.61624420166015,63.32347721099853,2026-05-06 00:36,False,True,False
-CVS,80.69,technical,CVS Health Corporation,29.605712850638213,,Bearish (Below),False,76.14607147216798,76.82482292175293,2026-05-06 00:36,True,True,False
-CM,110.11,technical,Canadian Imperial Bank of Commerce,27.548850379731334,,Bearish (Below),True,101.36459823608398,97.05391906738281,2026-05-06 00:36,False,True,False
-BNS,76.67,technical,The Bank of Nova Scotia,19.90934449093446,,Bearish (Below),False,72.82839965820312,73.58629981994629,2026-05-06 00:36,True,True,False
-USB,55.6,technical,U.S. Bancorp,34.51324595532074,,Bearish (Below),False,53.82870231628418,54.50046844482422,2026-05-06 00:36,True,True,False
-SLB,56.0,technical,SLB N.V.,34.74723513144171,,Bearish (Below),True,51.015,48.06273021697998,2026-05-06 00:36,False,True,False
-ELV,369.07,technical,"Elevance Health, Inc.",32.3988885087893,,Bearish (Below),False,313.03728149414064,331.46480072021484,2026-05-06 00:36,True,True,False
-CP,83.5,technical,Canadian Pacific Kansas City Limited,20.659282063664534,,Bearish (Below),True,82.4791180419922,79.09151473999023,2026-05-06 00:36,False,True,False
-CI,275.66,technical,The Cigna Group,19.287601197421964,,Bearish (Below),False,274.2574578857422,275.61830963134764,2026-05-06 00:36,True,True,False
-HLT,312.77,technical,Hilton Worldwide Holdings Inc.,32.3104494274739,,Bearish (Below),True,312.2262908935547,305.6847219848633,2026-05-06 00:36,False,True,False
-DLR,196.69,technical,"Digital Realty Trust, Inc.",33.9671405283772,,Bullish (Above),True,185.65208801269532,173.21372161865236,2026-05-06 00:36,False,True,False
-BKR,67.78,technical,Baker Hughes Company,26.418340899621782,,Bearish (Below),True,62.31199996948242,57.36880393981934,2026-05-06 00:36,True,True,False
-CNI,109.99,technical,Canadian National Railway Company,30.263090834678252,,Bearish (Below),True,107.45418426513672,103.68703010559082,2026-05-06 00:36,False,True,False
-TFC,49.95,technical,Truist Financial Corporation,30.52669234164979,,Bearish (Below),False,48.112400131225584,49.39516754150391,2026-05-06 00:36,False,True,False
-STRF,100.61,technical,Strategy Inc,27.18014924493633,,Bearish (Below),False,98.46595016479492,99.17188316345215,2026-05-06 00:36,False,True,False
-CARR,64.18,technical,Carrier Global Corporation,15.568831271671812,,Bearish (Below),True,59.80684226989746,58.56290855407715,2026-05-06 00:36,True,True,False
-D,62.99,technical,"Dominion Energy, Inc.",33.038896407447155,,Bearish (Below),True,62.44659156799317,61.25524620056152,2026-05-06 00:36,False,True,False
-FERG,252.81,technical,Ferguson Enterprises Inc.,22.93067809242676,,Bearish (Below),True,244.43838134765625,243.2264131164551,2026-05-06 00:36,False,True,False
-STT,148.68,technical,State Street Corporation,33.98645236921132,,Bearish (Below),True,133.69248184204102,131.2976212310791,2026-05-06 00:37,False,True,False
-VOD,15.74,technical,Vodafone Group Public Limited Company,28.684191505679877,,Bearish (Below),True,15.147799949645997,14.585599956512452,2026-05-06 00:37,False,True,False
+COST,999.56,technical,Costco Wholesale Corporation,25.555930906345765,,Bearish (Below),True,996.7279711914063,964.913119506836,2026-05-06 19:06,False,True,False
+ANET,145.56,technical,"Arista Networks, Inc.",11.134360401857577,,Bearish (Below),True,144.78290023803712,139.1472498321533,2026-05-06 19:06,True,True,False
+TTE,90.04,technical,TotalEnergies SE,34.12698492791944,,Bullish (Above),True,86.9103303527832,77.85277294158935,2026-05-06 19:06,False,True,False
+ENB,54.43,technical,Enbridge Inc.,32.57919801705046,,Bearish (Below),True,53.71240020751953,50.80335132598877,2026-05-06 19:06,False,True,False
+MO,70.8,technical,"Altria Group, Inc.",18.37521637563252,,Bearish (Below),True,66.67006912231446,63.46462345123291,2026-05-06 19:06,False,True,False
+BP,44.84,technical,BP p.l.c.,24.869182098518863,,Bullish (Above),True,44.403699798583986,40.0927188873291,2026-05-06 19:06,True,True,False
+PBR,20.935,technical,Petróleo Brasileiro S.A. - Petrobras,15.498274462392828,,Bearish (Below),True,19.79293430328369,16.60681770324707,2026-05-06 19:06,False,True,False
+EQNR,37.81,technical,Equinor ASA,16.46580746471591,,Bullish (Above),True,37.45899982452393,31.229383087158205,2026-05-06 19:06,False,True,False
+EPD,37.675,technical,Enterprise Products Partners L.P.,24.704498602026604,,Bearish (Below),True,37.14692840576172,34.876798725128175,2026-05-06 19:06,True,True,False
+E,54.05,technical,Eni S.p.A.,23.968230288308845,,Bullish (Above),True,52.74919372558594,46.06490547180176,2026-05-06 19:06,False,True,False
+VLO,239.172,technical,Valero Energy Corporation,28.134305774459804,,Bullish (Above),True,235.26484161376953,208.5575701904297,2026-05-06 19:06,False,True,False
+EOG,135.7,technical,"EOG Resources, Inc.",23.890381070089546,,Bearish (Below),True,135.0772283935547,121.79907447814941,2026-05-06 19:06,False,True,False
+BKR,67.18,technical,Baker Hughes Company,30.741585748704097,,Bullish (Above),True,62.16235542297363,57.37466163635254,2026-05-06 19:06,False,True,False
+PSX,172.24,technical,Phillips 66,31.4091059970322,,Bullish (Above),True,169.0298001098633,155.3235932159424,2026-05-06 19:06,False,True,False
+FANG,196.83,technical,"Diamondback Energy, Inc.",16.722200367456637,,Bearish (Below),True,189.46036529541016,172.72159378051757,2026-05-06 19:06,False,True,False
+D,62.53,technical,"Dominion Energy, Inc.",31.647649202461324,,Bearish (Below),True,62.43583374023437,61.306068382263184,2026-05-06 19:06,False,True,False
+TRGP,250.25,technical,Targa Resources Corp.,30.8302522581551,,Bearish (Below),True,241.3179327392578,217.67155517578124,2026-05-06 19:06,False,True,False
+ETR,112.79,technical,Entergy Corporation,25.821067683919935,,Bearish (Below),True,109.49436752319336,102.23271812438965,2026-05-06 19:06,True,True,False
+XYZ,70.845,technical,"Block, Inc.",29.556049379254276,,Bearish (Below),True,64.27309982299805,63.10695007324219,2026-05-06 19:06,False,True,False
+QSR,77.855,technical,Restaurant Brands International Inc.,31.77712054674268,,Bearish (Below),True,75.42888626098633,71.76996726989746,2026-05-06 19:06,True,True,False
