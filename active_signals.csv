@@ -1,42 +1,34 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-AVGO,411.785,technical,Broadcom Inc.,27.268697468872674,,Bearish (Below),True,356.44976135253904,346.23393981933594,2026-05-07 23:07,False,True,False
-CSCO,92.145,technical,"Cisco Systems, Inc.",27.835111758250108,,Bullish (Above),True,82.63718078613282,79.96494743347168,2026-05-07 23:07,False,True,False
-GEV,1042.7551,technical,GE Vernova Inc.,32.51428112561092,,Bearish (Below),True,941.1331518554688,827.3827667236328,2026-05-07 23:07,False,True,False
-NEE,93.15,technical,"NextEra Energy, Inc.",8.123260530369095,,Bearish (Below),True,92.84454025268555,88.79325798034668,2026-05-07 23:07,False,True,False
-TTE,88.5,technical,TotalEnergies SE,22.06290931176295,,Bullish (Above),True,87.10584426879883,78.0898318862915,2026-05-07 23:07,False,True,False
-MRVL,158.95,technical,"Marvell Technology, Inc.",27.768855866523694,,Bearish (Below),True,116.7454931640625,99.40602104187012,2026-05-07 23:07,False,True,False
-PBR,20.31,technical,Petróleo Brasileiro S.A. - Petrobras,17.802216044186736,,Bullish (Above),True,19.866382637023925,16.688876028060914,2026-05-07 23:07,False,True,False
-MO,69.31,technical,"Altria Group, Inc.",12.045722470813416,,Bearish (Below),True,66.67264221191407,63.58427978515625,2026-05-07 23:07,False,True,False
-ENB,54.035,technical,Enbridge Inc.,27.565260774456007,,Bullish (Above),True,53.740300216674804,50.87356632232666,2026-05-07 23:07,False,True,False
-PNC,218.93,technical,"The PNC Financial Services Group, Inc.",33.27336846149623,,Bearish (Below),False,212.8677557373047,215.87005645751952,2026-05-07 23:07,False,True,False
-JCI,138.33,technical,Johnson Controls International plc,34.10283752669888,,Bearish (Below),True,137.59366485595703,130.57070663452149,2026-05-07 23:07,False,True,False
-BK,130.805,technical,The Bank of New York Mellon Corporation,34.27835456976561,,Bearish (Below),True,123.91277038574219,121.22135848999024,2026-05-07 23:07,False,True,False
-SLB,53.14,technical,SLB N.V.,22.182777748442646,,Bearish (Below),True,51.11080001831055,48.347736015319825,2026-05-07 23:07,False,True,False
-EPD,37.49,technical,Enterprise Products Partners L.P.,23.59319569492763,,Bullish (Above),True,37.18621467590332,34.93813575744629,2026-05-07 23:07,False,True,False
-BE,256.81,technical,Bloom Energy Corporation,22.04682475475748,,Bearish (Below),True,185.0508006286621,157.25910064697266,2026-05-07 23:07,False,True,False
-APO,126.98,technical,"Apollo Global Management, Inc.",31.06726134800259,,Bearish (Below),False,114.44880020141602,125.6403490447998,2026-05-07 23:07,False,True,False
-MPC,240.54,technical,Marathon Petroleum Corporation,18.991128783599223,"{'top': np.float64(239.84649658203125), 'bottom': np.float64(239.27000427246094), 'gap_size': np.float64(0.5764923095703125)}",Bullish (Above),True,230.45239990234376,205.41468826293945,2026-05-07 23:07,False,True,True
-ET,19.83,technical,Energy Transfer LP,29.2882293194899,,Bullish (Above),True,19.10559997558594,18.193966779708862,2026-05-07 23:07,False,True,False
-SU,63.93,technical,Suncor Energy Inc.,14.874579904892386,,Bullish (Above),True,62.875529251098634,56.01904800415039,2026-05-07 23:07,False,True,False
-ROST,224.705,technical,"Ross Stores, Inc.",34.92698215419533,,Bearish (Below),True,217.62107696533204,203.29953216552735,2026-05-07 23:07,False,True,False
-TRP,65.13,technical,TC Energy Corporation,26.705611854883557,"{'top': np.float64(64.9800033569336), 'bottom': np.float64(64.93000030517578), 'gap_size': np.float64(0.0500030517578125)}",Bullish (Above),True,63.085130767822264,59.894077949523925,2026-05-07 23:07,False,True,True
-BKR,63.32,technical,Baker Hughes Company,21.663545696022013,,Bearish (Below),True,62.12667549133301,57.531521263122556,2026-05-07 23:07,False,True,False
-APD,293.735,technical,"Air Products and Chemicals, Inc.",17.473815607263376,,Bearish (Below),True,289.4525396728516,275.99052459716796,2026-05-07 23:07,False,True,False
-NOK,12.19,technical,Nokia Oyj,20.113634590275637,,Bearish (Below),True,9.459799995422363,8.104699997901916,2026-05-07 23:07,False,True,False
-LITE,871.3,technical,Lumentum Holdings Inc.,25.373242671611308,,Bearish (Below),True,783.2347985839843,608.7345999145508,2026-05-07 23:07,False,True,False
-COHR,309.36,technical,Coherent Corp.,33.03959668499917,,Bearish (Below),True,284.6096011352539,244.6381002807617,2026-05-07 23:07,False,True,False
-IMO,125.865,technical,Imperial Oil Limited,22.52255451545666,,Bullish (Above),True,125.64821975708008,112.60345275878906,2026-05-07 23:07,False,True,False
-UI,943.96,technical,Ubiquiti Inc.,31.731641960981165,,Bearish (Below),True,879.7005981445312,739.9467724609375,2026-05-07 23:07,False,True,False
-FANG,190.23,technical,"Diamondback Energy, Inc.",19.78092042327397,,Bullish (Above),True,189.89450256347655,173.04532501220703,2026-05-07 23:07,False,True,False
-TRGP,252.7275,technical,Targa Resources Corp.,32.8818085772979,,Bullish (Above),True,241.7776837158203,218.35248184204102,2026-05-07 23:07,False,True,False
-MSTR,178.335,technical,Strategy Inc,32.6198291487312,,Bearish (Below),False,146.29190032958985,148.5015505218506,2026-05-07 23:07,False,True,False
-ALL,213.66,technical,The Allstate Corporation,32.71028664565611,,Bullish (Above),True,211.25337707519532,207.28002502441407,2026-05-07 23:07,False,True,False
-CVE,28.615,technical,Cenovus Energy Inc.,26.46397518729809,,Bullish (Above),True,25.525999069213867,22.14280836105347,2026-05-07 23:07,False,True,False
-ETR,111.69,technical,Entergy Corporation,6.205390862568478,,Bearish (Below),True,109.61790283203125,102.42924758911133,2026-05-07 23:07,False,True,False
-MET,78.3,technical,"MetLife, Inc.",29.467667096485968,,Bearish (Below),False,73.59539962768555,75.92433395385743,2026-05-07 23:07,False,True,False
-NUE,226.205,technical,Nucor Corporation,31.497375452161094,,Bearish (Below),True,185.91576721191407,179.8468295288086,2026-05-07 23:07,False,True,False
-CLS,377.94,technical,Celestica Inc.,24.62277592280546,,Bearish (Below),True,325.43180084228516,312.6790000915527,2026-05-07 23:07,False,True,False
-SLF,69.495,technical,Sun Life Financial Inc.,26.897753131797728,,Bearish (Below),True,66.32069999694824,64.61762886047363,2026-05-07 23:07,False,True,False
-ERIC,11.755,technical,Telefonaktiebolaget LM Ericsson (publ),32.09696456026927,,Bearish (Below),True,11.458989963531494,10.77575888633728,2026-05-07 23:07,False,True,False
-IRM,125.8575,technical,Iron Mountain Incorporated,29.30933147274925,,Bearish (Below),True,110.43705108642578,100.91294799804687,2026-05-07 23:07,False,True,False
-HAL,39.2,technical,Halliburton Company,17.913853579630725,,Bearish (Below),True,37.7848169708252,34.85427875518799,2026-05-07 23:07,False,True,False
+AVGO,412.56,technical,Broadcom Inc.,30.768631248302498,,Bearish (Below),True,356.46526123046874,346.24169036865237,2026-05-08 00:42,False,True,False
+GEV,1045.63,technical,GE Vernova Inc.,33.629636373094726,,Bearish (Below),True,941.1906494140625,827.411517944336,2026-05-08 00:42,False,True,False
+CSCO,92.16,technical,"Cisco Systems, Inc.",30.17418814921203,,Bullish (Above),True,82.63748092651367,79.96509750366211,2026-05-08 00:42,True,True,False
+NEE,93.32,technical,"NextEra Energy, Inc.",16.473521112130598,,Bearish (Below),True,92.84794021606446,88.79495796203614,2026-05-08 00:42,False,True,False
+TTE,88.73,technical,TotalEnergies SE,21.686728818085115,,Bullish (Above),True,87.1104443359375,78.09213191986083,2026-05-08 00:42,False,True,False
+MRVL,160.01,technical,"Marvell Technology, Inc.",31.570070157277343,,Bearish (Below),True,116.76848693847656,99.41751792907715,2026-05-08 00:42,False,True,False
+PBR,20.37,technical,Petróleo Brasileiro S.A. - Petrobras,19.95663992519559,,Bullish (Above),True,19.867582664489746,16.689476041793824,2026-05-08 00:42,True,True,False
+ENB,53.99,technical,Enbridge Inc.,30.947222003601084,,Bullish (Above),True,53.7394002532959,50.87311634063721,2026-05-08 00:42,True,True,False
+MO,69.04,technical,"Altria Group, Inc.",11.396321594184727,,Bearish (Below),True,66.66724227905273,63.58157981872559,2026-05-08 00:42,False,True,False
+SLB,53.0,technical,SLB N.V.,22.81022088352016,,Bearish (Below),True,51.10800003051758,48.34633602142334,2026-05-08 00:42,True,True,False
+EPD,37.73,technical,Enterprise Products Partners L.P.,32.96799043078144,,Bullish (Above),True,37.19101463317871,34.94053573608399,2026-05-08 00:42,True,True,False
+SU,63.74,technical,Suncor Energy Inc.,15.217379610586846,,Bullish (Above),True,62.87172927856445,56.0171480178833,2026-05-08 00:42,False,True,False
+BE,258.64,technical,Bloom Energy Corporation,18.58126873031931,,Bearish (Below),True,185.087400970459,157.2774008178711,2026-05-08 00:42,False,True,False
+VLO,236.35,technical,Valero Energy Corporation,27.11353458132615,,Bullish (Above),True,235.94940185546875,209.18760025024415,2026-05-08 00:42,False,True,False
+MPC,242.26,technical,Marathon Petroleum Corporation,23.44297960269418,"{'top': np.float64(241.07000732421875), 'bottom': np.float64(240.5399932861328), 'gap_size': np.float64(0.5300140380859375)}",Bullish (Above),True,230.4867999267578,205.4318882751465,2026-05-08 00:42,False,True,True
+BKR,63.53,technical,Baker Hughes Company,23.199484308710154,,Bullish (Above),True,62.13087547302246,57.53362125396728,2026-05-08 00:42,False,True,False
+TRP,65.1,technical,TC Energy Corporation,26.21938549235975,,Bullish (Above),True,63.08453079223633,59.893777961730954,2026-05-08 00:42,True,True,False
+LITE,892.58,technical,Lumentum Holdings Inc.,32.474546621304995,,Bullish (Above),True,783.6693994140625,608.9519003295899,2026-05-08 00:43,False,True,False
+APD,294.99,technical,"Air Products and Chemicals, Inc.",25.646930116251227,,Bullish (Above),True,289.47763977050784,276.0030746459961,2026-05-08 00:43,True,True,False
+IMO,125.84,technical,Imperial Oil Limited,23.272597509354256,,Bullish (Above),True,125.6477197265625,112.60320274353028,2026-05-08 00:43,True,True,False
+NOK,12.35,technical,Nokia Oyj,27.825163253163694,,Bearish (Below),True,9.463000011444091,8.10630000591278,2026-05-08 00:43,False,True,False
+UI,926.69,technical,Ubiquiti Inc.,32.319022547154205,,Bearish (Below),True,879.3551977539063,739.774072265625,2026-05-08 00:43,True,True,False
+FANG,190.45,technical,"Diamondback Energy, Inc.",22.36704060265467,,Bullish (Above),True,189.89890258789063,173.04752502441406,2026-05-08 00:43,False,True,False
+CVE,28.46,technical,Cenovus Energy Inc.,27.13626166157674,,Bullish (Above),True,25.522899055480956,22.141258354187013,2026-05-08 00:43,False,True,False
+FERG,246.53,technical,Ferguson Enterprises Inc.,28.85713123139881,,Bearish (Below),True,244.00175994873047,243.65396697998048,2026-05-08 00:43,False,True,False
+NUE,226.7,technical,Nucor Corporation,34.68977807421149,,Bearish (Below),True,185.92376708984375,179.85082946777345,2026-05-08 00:43,True,True,False
+ETR,112.02,technical,Entergy Corporation,10.72983888033751,,Bearish (Below),True,109.62450271606446,102.4325471496582,2026-05-08 00:43,False,True,False
+XEL,80.43,technical,Xcel Energy Inc.,32.0282697408969,,Bullish (Above),True,80.42842269897461,77.9892886352539,2026-05-08 00:43,True,True,False
+CLS,385.21,technical,Celestica Inc.,30.99620015319711,,Bearish (Below),True,325.5670004272461,312.74659988403323,2026-05-08 00:43,True,True,False
+IRM,126.81,technical,Iron Mountain Incorporated,29.7574773124949,,Bearish (Below),True,110.45610107421875,100.92247299194337,2026-05-08 00:43,True,True,False
+SLF,69.51,technical,Sun Life Financial Inc.,27.388086689225844,,Bearish (Below),True,66.3209999847412,64.61777885437012,2026-05-08 00:43,True,True,False
+HAL,39.12,technical,Halliburton Company,18.54543974905303,,Bearish (Below),True,37.7832169342041,34.85347873687744,2026-05-08 00:43,False,True,False
+TS,58.96,technical,Tenaris S.A.,22.922467889620847,,Bullish (Above),True,58.036399841308594,50.888199996948245,2026-05-08 00:43,False,True,False
