@@ -1,25 +1,16 @@
 symbol,price,type,earnings_date,mkt_cap,name
-ARM,208.84,earnings,2026-05-06,0,Arm Holdings plc
-SHEL,89.71,earnings,2026-05-07,0,Shell plc
-MCD,285.17,earnings,2026-05-07,0,McDonald's Corporation
-DIS,100.48,earnings,2026-05-06,0,The Walt Disney Company
-GILD,133.48,earnings,2026-05-07,0,"Gilead Sciences, Inc."
-APP,478.11,earnings,2026-05-06,0,AppLovin Corporation
-UBER,72.95,earnings,2026-05-06,0,"Uber Technologies, Inc."
-CVS,80.69,earnings,2026-05-06,0,CVS Health Corporation
-MCK,801.01,earnings,2026-05-07,0,McKesson Corporation
-HWM,242.69,earnings,2026-05-07,0,Howmet Aerospace Inc.
-JCI,144.82,earnings,2026-05-06,0,Johnson Controls International plc
-MELI,1817.31,earnings,2026-05-07,0,"MercadoLibre, Inc."
-CNQ,47.85,earnings,2026-05-07,0,Canadian Natural Resources Limited
-MAR,354.52,earnings,2026-05-06,0,"Marriott International, Inc."
-ABNB,139.73,earnings,2026-05-07,0,"Airbnb, Inc."
-MNST,75.8,earnings,2026-05-07,0,Monster Beverage Corporation
-NET,244.43,earnings,2026-05-07,0,"Cloudflare, Inc."
-MSI,438.0,earnings,2026-05-07,0,"Motorola Solutions, Inc."
-DASH,166.14,earnings,2026-05-06,0,"DoorDash, Inc."
-TRGP,259.72,earnings,2026-05-07,0,Targa Resources Corp.
-COIN,197.75,earnings,2026-05-07,0,"Coinbase Global, Inc."
-TPL,430.44,earnings,2026-05-06,0,Texas Pacific Land Corporation
-INSM,139.44,earnings,2026-05-07,0,Insmed Incorporated
-CDE,17.13,earnings,2026-05-06,0,"Coeur Mining, Inc."
+SHEL,87.2,earnings,2026-05-07,0,Shell plc
+TM,195.05,earnings,2026-05-08,0,Toyota Motor Corporation
+MCD,284.1,earnings,2026-05-07,0,McDonald's Corporation
+GILD,136.3,earnings,2026-05-07,0,"Gilead Sciences, Inc."
+ENB,54.2,earnings,2026-05-08,0,Enbridge Inc.
+SONY,20.73,earnings,2026-05-08,0,Sony Group Corporation
+HWM,256.43,earnings,2026-05-07,0,Howmet Aerospace Inc.
+CNQ,45.63,earnings,2026-05-07,0,Canadian Natural Resources Limited
+MCK,743.67,earnings,2026-05-07,0,McKesson Corporation
+MELI,1841.14,earnings,2026-05-07,0,"MercadoLibre, Inc."
+ABNB,139.88,earnings,2026-05-07,0,"Airbnb, Inc."
+BAM,48.63,earnings,2026-05-08,0,Brookfield Asset Management Ltd.
+MNST,77.2,earnings,2026-05-07,0,Monster Beverage Corporation
+MSI,433.66,earnings,2026-05-07,0,"Motorola Solutions, Inc."
+NET,248.59,earnings,2026-05-07,0,"Cloudflare, Inc."
