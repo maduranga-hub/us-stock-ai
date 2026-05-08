@@ -1,88 +1,60 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-CAT,901.98,technical,Caterpillar Inc.,31.438346109777655,,Bearish (Below),True,763.3751965332032,710.2953173828125,2026-05-08 21:47,False,True,False
-AMZN,272.435,technical,"Amazon.com, Inc.",30.27068456275471,,Bearish (Below),True,231.23509979248047,229.03844970703125,2026-05-08 21:47,True,True,False
-GEV,1040.485,technical,GE Vernova Inc.,13.28655277568285,,Bearish (Below),True,944.4817419433593,831.1082659912109,2026-05-08 21:47,False,True,False
-NEE,93.54,technical,"NextEra Energy, Inc.",30.24277690293134,,Bullish (Above),True,92.89180023193359,88.91958763122558,2026-05-08 21:47,False,True,False
-ARM,215.835,technical,Arm Holdings plc,21.36766062692223,,Bullish (Above),True,158.63840118408203,137.22650047302247,2026-05-08 21:47,False,True,False
-TD,107.05,technical,The Toronto-Dominion Bank,22.993872947248946,,Bearish (Below),True,99.0682568359375,96.56914283752441,2026-05-08 21:47,False,True,False
-MUFG,17.945,technical,"Mitsubishi UFJ Financial Group, Inc.",12.419305361464268,,Bearish (Below),False,17.461299972534178,17.583349962234497,2026-05-08 21:47,False,True,False
-ETN,401.54,technical,Eaton Corporation plc,26.89584971579042,,Bearish (Below),True,382.8331475830078,363.9092092895508,2026-05-08 21:47,False,True,False
-BUD,80.12,technical,Anheuser-Busch InBev SA/NV,19.556204564934447,,Bullish (Above),True,73.51680038452149,71.98370018005372,2026-05-08 21:47,False,True,False
-SMFG,21.425,technical,"Sumitomo Mitsui Financial Group, Inc.",18.920716437936278,,Bearish (Below),False,20.519900093078615,20.808550052642822,2026-05-08 21:47,False,True,False
-PWR,751.92,technical,"Quanta Services, Inc.",28.874392096369647,,Bearish (Below),True,602.8739978027344,537.7112554931641,2026-05-08 21:47,False,True,False
-MO,69.12,technical,"Altria Group, Inc.",22.780435938330683,,Bullish (Above),True,66.68313980102539,63.70534660339356,2026-05-08 21:47,False,True,False
-TT,468.43,technical,Trane Technologies plc,16.965254358448192,,Bearish (Below),True,450.03723999023435,431.90179626464845,2026-05-08 21:47,False,True,False
-MFG,8.675,technical,"Mizuho Financial Group, Inc.",26.87100206303279,,Bullish (Above),False,8.24850004196167,8.342350053787232,2026-05-08 21:47,False,True,False
-IBKR,84.03,technical,"Interactive Brokers Group, Inc.",25.100185626375833,,Bearish (Below),True,72.80519996643066,72.08657199859618,2026-05-08 21:47,False,True,False
-BMO,151.91,technical,Bank of Montreal,21.919975390564915,,Bearish (Below),True,142.94506958007813,139.33302894592285,2026-05-08 21:47,False,True,False
-BTI,58.45,technical,British American Tobacco p.l.c.,23.882329044957743,,Bullish (Above),True,58.19902778625488,57.92545585632324,2026-05-08 21:47,False,True,False
-CM,109.655,technical,Canadian Imperial Bank of Commerce,11.713894904392674,,Bearish (Below),True,102.00884155273438,97.6275650024414,2026-05-08 21:47,False,True,False
-BNS,77.36,technical,The Bank of Nova Scotia,16.111134658585186,,Bearish (Below),False,72.94499969482422,73.74189979553222,2026-05-08 21:47,False,True,False
-MAR,355.765,technical,"Marriott International, Inc.",34.16695507103623,,Bearish (Below),True,342.6202996826172,334.06556213378906,2026-05-08 21:47,False,True,False
-CMI,684.05,technical,Cummins Inc.,23.770992799999007,"{'top': np.float64(682.3956298828125), 'bottom': np.float64(681.75), 'gap_size': np.float64(0.6456298828125)}",Bullish (Above),True,592.3800036621094,576.0658282470703,2026-05-08 21:48,False,True,True
-PNC,217.425,technical,"The PNC Financial Services Group, Inc.",26.917054193512072,,Bearish (Below),False,212.80102813720703,215.97397888183593,2026-05-08 21:48,False,True,False
-USB,55.115,technical,U.S. Bancorp,26.3345664347531,,Bearish (Below),False,53.82801155090332,54.59234378814697,2026-05-08 21:48,False,True,False
-CSX,44.915,technical,CSX Corporation,34.126964339141466,,Bullish (Above),True,42.08949966430664,40.01836296081543,2026-05-08 21:48,False,True,False
-SLB,53.685,technical,SLB N.V.,33.88704936468119,,Bullish (Above),True,51.15190002441406,48.49099876403809,2026-05-08 21:48,False,True,False
-BK,130.725,technical,The Bank of New York Mellon Corporation,25.978150558175628,,Bearish (Below),True,124.10288696289062,121.36717582702637,2026-05-08 21:48,False,True,False
-MPWR,1601.57,technical,"Monolithic Power Systems, Inc.",34.16647432837047,,Bullish (Above),True,1276.3167346191406,1168.4338024902345,2026-05-08 21:48,False,True,False
-ROST,225.5,technical,"Ross Stores, Inc.",31.564222474925288,,Bearish (Below),True,218.06520812988282,203.73524368286132,2026-05-08 21:48,False,True,False
-BKR,64.11,technical,Baker Hughes Company,34.47193234503192,,Bearish (Below),True,62.11940147399903,57.709438247680666,2026-05-08 21:48,False,True,False
-CNI,111.165,technical,Canadian National Railway Company,31.14977489193386,,Bullish (Above),True,107.56795959472656,104.10584403991699,2026-05-08 21:48,False,True,False
-URI,932.86,technical,"United Rentals, Inc.",29.91732758450189,,Bearish (Below),False,812.5005969238281,839.1613708496094,2026-05-08 21:48,True,True,False
-CRWV,113.32,technical,"CoreWeave, Inc.",14.117114734965739,,Bearish (Below),True,95.78379974365234,91.62480003356933,2026-05-08 21:48,False,True,False
-TGT,125.61,technical,Target Corporation,33.45433250943054,,Bullish (Above),True,122.00020004272461,114.04038925170899,2026-05-08 21:48,False,True,False
-ALL,213.32,technical,The Allstate Corporation,34.83467146233646,,Bullish (Above),True,211.28619995117188,207.35195556640625,2026-05-08 21:48,False,True,False
-CCJ,117.52,technical,Cameco Corporation,23.828353100596516,,Bullish (Above),True,115.00839981079102,112.54829978942871,2026-05-08 21:48,False,True,False
-AME,233.78,technical,"AMETEK, Inc.",14.330347164750734,,Bearish (Below),True,225.80677795410156,222.33654754638673,2026-05-08 21:48,False,True,False
-ETR,111.675,technical,Entergy Corporation,33.28103328917773,,Bullish (Above),True,109.75488052368163,102.63681098937988,2026-05-08 21:48,False,True,False
-MCHP,97.73,technical,Microchip Technology Incorporated,33.784782978098036,,Bearish (Below),True,74.68800010681153,73.74162796020508,2026-05-08 21:48,False,True,False
-MET,78.06,technical,"MetLife, Inc.",26.497666051335116,,Bearish (Below),False,73.64819946289063,75.89437965393067,2026-05-08 21:48,False,True,False
-CLS,378.6182,technical,Celestica Inc.,24.54912915155036,,Bullish (Above),True,327.5561642456055,313.467781829834,2026-05-08 21:48,False,True,False
-WAB,264.83,technical,Westinghouse Air Brake Technologies Corporation,17.43788620905171,,Bearish (Below),True,255.49259979248046,244.49543395996093,2026-05-08 21:48,False,True,False
-FITB,49.4,technical,Fifth Third Bancorp,21.11562322373561,,Bearish (Below),False,47.82361846923828,48.859201164245604,2026-05-08 21:48,False,True,False
-MT,61.6,technical,ArcelorMittal S.A.,31.847108996264026,"{'top': np.float64(61.54499816894531), 'bottom': np.float64(61.435001373291016), 'gap_size': np.float64(0.10999679565429688)}",Bullish (Above),True,56.789199905395506,55.13911331176758,2026-05-08 21:48,False,True,True
-TEVA,35.605,technical,Teva Pharmaceutical Industries Limited,32.237985872190905,,Bearish (Below),False,31.449299964904785,32.07734991073608,2026-05-08 21:48,False,True,False
-NUE,228.58,technical,Nucor Corporation,34.481636863141816,,Bullish (Above),True,186.99510528564454,180.49673309326172,2026-05-08 21:48,False,True,False
-EME,926.725,technical,"EMCOR Group, Inc.",28.31209296534071,,Bullish (Above),True,790.0741052246094,745.1556652832031,2026-05-08 21:48,False,True,False
-SLF,69.69,technical,Sun Life Financial Inc.,19.144457926984543,,Bearish (Below),True,66.40720008850097,64.7168330001831,2026-05-08 21:48,False,True,False
-PUK,31.22,technical,Prudential plc,9.473692664142277,,Bearish (Below),False,29.668822593688965,30.428193130493163,2026-05-08 21:48,False,True,False
-VIK,82.36,technical,Viking Holdings Ltd,22.43285102177333,,Bearish (Below),True,76.32340042114258,74.82530036926269,2026-05-08 21:48,False,True,False
-NBIS,180.63,technical,NBIS,28.676351279248863,,Bullish (Above),True,129.65920074462892,111.66660049438477,2026-05-08 21:48,False,True,False
-TS,59.4,technical,Tenaris S.A.,32.61994259642948,,Bearish (Below),True,58.13619987487793,51.07819999694824,2026-05-08 21:48,False,True,False
-STLD,236.505,technical,"Steel Dynamics, Inc.",33.84572983831447,"{'top': np.float64(236.01499938964844), 'bottom': np.float64(235.82000732421875), 'gap_size': np.float64(0.1949920654296875)}",Bullish (Above),True,195.63402709960937,188.2439924621582,2026-05-08 21:48,False,True,True
-HBANL,25.425,technical,Huntington Bancshares Incorporated,34.22911130176401,,Bearish (Below),True,25.05929527282715,25.028882122039796,2026-05-08 21:48,False,True,False
-MTZ,412.27,technical,"MasTec, Inc.",30.865016739630775,,Bearish (Below),True,343.7009991455078,293.325699005127,2026-05-08 21:48,False,True,False
-RVMD,142.63,technical,"Revolution Medicines, Inc.",27.283789000218192,,Bearish (Below),True,115.9179997253418,106.61179962158204,2026-05-08 21:48,False,True,False
-NTRS,160.08,technical,Northern Trust Corporation,25.829254289078534,,Bearish (Below),True,149.3294186401367,146.76579788208008,2026-05-08 21:48,False,True,False
-FTI,71.28,technical,TechnipFMC plc,32.78324975765047,,Bearish (Below),True,69.9408423614502,61.74729316711426,2026-05-08 21:48,False,True,False
-DOV,219.565,technical,Dover Corporation,15.796514391692384,,Bearish (Below),True,215.93169921875,213.07456665039064,2026-05-08 21:48,False,True,False
-CFG,63.505,technical,"Citizens Financial Group, Inc.",18.947467448954896,,Bearish (Below),False,61.07615837097168,61.33286003112793,2026-05-08 21:48,False,True,False
-AXIA,12.005,technical,AXIA Energia SA,30.518643144789166,,Bearish (Below),True,11.913300018310547,11.174150028228759,2026-05-08 21:48,False,True,False
-FTAI,267.775,technical,FTAI Aviation Ltd.,23.65702379127775,,Bearish (Below),True,250.92552520751954,249.30772094726564,2026-05-08 21:48,False,True,False
-CW,725.485,technical,Curtiss-Wright Corporation,30.068198536287355,,Bearish (Below),True,704.33322265625,666.5204351806641,2026-05-08 21:48,False,True,False
-UTHR,564.475,technical,United Therapeutics Corporation,31.511232876712327,,Bearish (Below),True,552.4186987304688,519.3208483886718,2026-05-08 21:48,False,True,False
-FN,613.505,technical,Fabrinet,33.361313554005804,,Bearish (Below),True,599.7171020507812,542.5882510375976,2026-05-08 21:48,False,True,False
-KEY,21.56,technical,KeyCorp,18.45483092499272,,Bearish (Below),False,20.74643321990967,21.011288776397706,2026-05-08 21:48,False,True,False
-EQR,65.8,technical,Equity Residential,34.69006345995753,,Bullish (Above),False,61.400163345336914,61.43260852813721,2026-05-08 21:48,False,True,False
-JBHT,245.2,technical,"J.B. Hunt Transport Services, Inc.",34.33962738225355,"{'top': np.float64(244.71009826660156), 'bottom': np.float64(244.5), 'gap_size': np.float64(0.2100982666015625)}",Bullish (Above),True,225.64239990234375,217.66736587524414,2026-05-08 21:48,False,True,True
-SBS,6.37,technical,Companhia de Saneamento Básico do Estado de São Paulo - SABESP,25.19373827543825,,Bearish (Below),True,6.205750246047973,5.713786153793335,2026-05-08 21:48,False,True,False
-NI,47.035,technical,NiSource Inc.,30.12367464103106,,Bullish (Above),True,46.92973281860352,45.00305534362793,2026-05-08 21:48,False,True,False
-CRCL,112.31,technical,Circle Internet Group,27.624438011281157,,Bullish (Above),True,104.80039978027344,88.70429981231689,2026-05-08 21:48,False,True,False
-TROW,104.715,technical,"T. Rowe Price Group, Inc.",31.741746603526664,,Bullish (Above),False,93.7725553894043,97.06841918945312,2026-05-08 21:48,False,True,False
-CRS,433.33,technical,Carpenter Technology Corporation,9.168063907120995,,Bearish (Below),True,409.91959411621093,376.61610137939454,2026-05-08 21:48,False,True,False
-APG,43.94,technical,APi Group Corporation,8.347500363923714,,Bearish (Below),True,43.80099983215332,42.8759001159668,2026-05-08 21:48,False,True,False
-ITT,207.46,technical,ITT Inc.,14.430959866445974,,Bearish (Below),True,201.5562356567383,194.19873962402343,2026-05-08 21:48,False,True,False
-ZTO,24.88,technical,ZTO Express (Cayman) Inc.,20.042076504923415,,Bearish (Below),True,24.43535957336426,23.35786521911621,2026-05-08 21:48,False,True,False
-YPF,41.87,technical,YPF Sociedad Anónima,34.41475662313795,,Bearish (Below),True,41.506199798583985,39.01059989929199,2026-05-08 21:48,False,True,False
-LII,523.48,technical,Lennox International Inc.,20.932408767209083,,Bearish (Below),False,496.2088525390625,506.66339935302733,2026-05-08 21:48,False,True,False
-RBC,609.43,technical,RBC Bearings Incorporated,25.49406576125247,,Bearish (Below),True,571.9597985839844,537.2932000732421,2026-05-08 21:48,False,True,False
-RS,371.005,technical,"Reliance, Inc.",30.34207019102621,,Bullish (Above),True,322.7494195556641,320.18364288330076,2026-05-08 21:48,False,True,False
-ULS,98.37,technical,UL Solutions Inc.,29.226631538503753,,Bearish (Below),True,87.2156997680664,81.80976852416993,2026-05-08 21:48,False,True,False
-WSO,418.89,technical,"Watsco, Inc.",18.752510281373276,,Bearish (Below),True,398.5758544921875,387.7044387817383,2026-05-08 21:48,False,True,False
-OVV,57.78,technical,Ovintiv Inc.,33.55956856504034,,Bearish (Below),True,56.75415382385254,49.457414360046386,2026-05-08 21:48,False,True,False
-VNOM,46.9,technical,"Viper Energy, Inc.",31.578997422704916,,Bullish (Above),True,46.550144805908204,43.258351707458495,2026-05-08 21:48,False,True,False
-EWBC,122.22,technical,"East West Bancorp, Inc.",25.279395210067932,,Bullish (Above),False,112.82551361083985,113.8536026763916,2026-05-08 21:48,False,True,False
-IONQ,47.27,technical,"IonQ, Inc.",22.791572169047086,,Bullish (Above),False,37.13272605895996,40.04346307754517,2026-05-08 21:48,False,True,False
-TTMI,151.6,technical,"TTM Technologies, Inc.",22.861906286662972,,Bearish (Below),True,115.32699996948242,101.52859985351563,2026-05-08 21:48,False,True,False
-RTO,33.285,technical,Rentokil Initial plc,25.641890512846402,,Bullish (Above),True,32.2827360534668,31.53090539932251,2026-05-08 21:48,False,True,False
+HSBC,90.14,technical,HSBC Holdings plc,33.2424178798544,,Bullish (Above),True,85.94772277832031,83.82006782531738,2026-05-08 23:49,False,True,False
+CAT,895.9249,technical,Caterpillar Inc.,26.92674849373813,,Bearish (Below),True,763.2540954589844,710.234765625,2026-05-08 23:49,False,True,False
+GEV,1040.93,technical,GE Vernova Inc.,10.95432340872047,,Bearish (Below),True,944.4906433105468,831.1127142333985,2026-05-08 23:49,False,True,False
+TSM,409.27,technical,Taiwan Semiconductor Manufacturing Company Limited,33.570638917127795,,Bearish (Below),True,362.99666198730466,347.1336038208008,2026-05-08 23:49,False,True,False
+MUFG,17.98,technical,"Mitsubishi UFJ Financial Group, Inc.",16.176896352055593,,Bullish (Above),False,17.46199996948242,17.583699960708618,2026-05-08 23:49,False,True,False
+ARM,214.5099,technical,Arm Holdings plc,19.77991050068954,,Bearish (Below),True,158.61189910888672,137.2132494354248,2026-05-08 23:49,False,True,False
+TD,107.28,technical,The Toronto-Dominion Bank,27.054892052684252,,Bearish (Below),True,99.07285675048828,96.57144279479981,2026-05-08 23:49,False,True,False
+ETN,402.43,technical,Eaton Corporation plc,20.286185197720727,,Bullish (Above),True,382.8493475341797,363.91730926513674,2026-05-08 23:49,False,True,False
+TTE,88.57,technical,TotalEnergies SE,34.89654143316643,,Bearish (Below),True,87.3200390625,78.32732707977294,2026-05-08 23:49,False,True,False
+NEE,93.01,technical,"NextEra Energy, Inc.",23.4898641556194,,Bearish (Below),True,92.88100021362305,88.91418762207032,2026-05-08 23:49,False,True,False
+UNP,264.09,technical,Union Pacific Corporation,30.353708552494382,,Bearish (Below),True,252.56380157470704,246.29960296630858,2026-05-08 23:49,False,True,False
+BUD,79.9383,technical,Anheuser-Busch InBev SA/NV,17.62295456623093,,Bullish (Above),True,73.51316635131836,71.98188316345215,2026-05-08 23:49,False,True,False
+SMFG,21.435,technical,"Sumitomo Mitsui Financial Group, Inc.",14.157777049834081,,Bearish (Below),False,20.52010009765625,20.80865005493164,2026-05-08 23:49,False,True,False
+IBKR,84.38,technical,"Interactive Brokers Group, Inc.",29.3426764794376,"{'top': np.float64(84.33999633789062), 'bottom': np.float64(84.30999755859375), 'gap_size': np.float64(0.029998779296875)}",Bullish (Above),True,72.81159996032714,72.08977199554444,2026-05-08 23:49,False,True,True
+BTI,58.265,technical,British American Tobacco p.l.c.,23.40851517814761,,Bearish (Below),True,58.19532775878906,57.923605880737306,2026-05-08 23:49,False,True,False
+PWR,745.71,technical,"Quanta Services, Inc.",24.142696657103485,,Bearish (Below),True,602.7497985839843,537.6491561889649,2026-05-08 23:49,False,True,False
+TT,467.15,technical,Trane Technologies plc,11.747380402622014,,Bearish (Below),True,450.01343994140626,431.88989624023435,2026-05-08 23:49,False,True,False
+VRT,340.835,technical,Vertiv Holdings Co,25.263761726808326,,Bearish (Below),True,284.7655883789063,237.8136814880371,2026-05-08 23:49,False,True,False
+MFG,8.7,technical,"Mizuho Financial Group, Inc.",24.56147982572965,,Bullish (Above),False,8.249000034332276,8.342600049972534,2026-05-08 23:49,False,True,False
+MO,68.245,technical,"Altria Group, Inc.",16.404762475400716,,Bearish (Below),True,66.66563980102539,63.69659656524658,2026-05-08 23:49,False,True,False
+BMO,152.62,technical,Bank of Montreal,28.945134881295417,,Bearish (Below),True,142.95926940917968,139.34012886047364,2026-05-08 23:49,False,True,False
+CM,109.89,technical,Canadian Imperial Bank of Commerce,19.09815397193519,,Bearish (Below),True,102.0135415649414,97.62991500854493,2026-05-08 23:49,False,True,False
+MAR,353.7,technical,"Marriott International, Inc.",33.15247345040538,,Bearish (Below),True,342.57899963378907,334.044912109375,2026-05-08 23:49,False,True,False
+BNS,77.435,technical,The Bank of Nova Scotia,18.76954280402265,,Bearish (Below),False,72.94649963378906,73.74264976501465,2026-05-08 23:49,False,True,False
+SLB,53.4,technical,SLB N.V.,28.53685965295864,,Bearish (Below),True,51.14610000610352,48.48809875488281,2026-05-08 23:49,False,True,False
+BK,130.69,technical,The Bank of New York Mellon Corporation,25.58145429475222,,Bearish (Below),True,124.10218688964844,121.36682579040527,2026-05-08 23:49,False,True,False
+CVNA,77.67,technical,Carvana Co.,5.11005556889431,,Bearish (Below),False,68.67407997131347,76.01168003082276,2026-05-08 23:49,False,True,False
+CMI,678.71,technical,Cummins Inc.,10.817941952506601,,Bearish (Below),True,592.2732043457031,576.0124285888672,2026-05-08 23:49,False,True,False
+CSX,44.855,technical,CSX Corporation,31.253288098433913,,Bullish (Above),True,42.08829963684082,40.01776294708252,2026-05-08 23:49,False,True,False
+PNC,217.16,technical,"The PNC Financial Services Group, Inc.",25.576038189996382,,Bearish (Below),False,212.79572814941406,215.97132888793945,2026-05-08 23:49,False,True,False
+MPWR,1598.885,technical,"Monolithic Power Systems, Inc.",32.158167555054234,,Bullish (Above),True,1276.2630358886718,1168.406953125,2026-05-08 23:49,False,True,False
+BE,262.77,technical,Bloom Energy Corporation,33.72713215240587,,Bearish (Below),True,186.97140060424806,158.9553006744385,2026-05-08 23:49,False,True,False
+HLT,317.995,technical,Hilton Worldwide Holdings Inc.,34.2366433257981,,Bearish (Below),True,312.5510009765625,306.98963775634763,2026-05-08 23:49,False,True,False
+NXPI,295.46,technical,NXP Semiconductors N.V.,34.52974791648607,,Bullish (Above),False,220.35713745117187,225.55748153686523,2026-05-08 23:49,False,True,False
+NSC,313.05,technical,Norfolk Southern Corporation,31.759065329609882,,Bearish (Below),True,300.0861993408203,298.2619625854492,2026-05-08 23:49,False,True,False
+ROST,226.07,technical,"Ross Stores, Inc.",33.643779065429854,,Bullish (Above),True,218.07660827636718,203.74094375610352,2026-05-08 23:49,False,True,False
+BKR,63.67,technical,Baker Hughes Company,28.193815818955855,,Bearish (Below),True,62.1106014251709,57.70503803253174,2026-05-08 23:49,False,True,False
+DLR,195.48,technical,"Digital Realty Trust, Inc.",32.85351966004333,,Bearish (Below),True,186.83914123535158,174.46266464233398,2026-05-08 23:49,False,True,False
+ET,19.31,technical,Energy Transfer LP,32.49209382475969,,Bearish (Below),True,19.119899978637694,18.22546660423279,2026-05-08 23:49,False,True,False
+URI,936.275,technical,"United Rentals, Inc.",25.01101942328272,,Bullish (Above),False,812.5688977050781,839.1955212402344,2026-05-08 23:49,False,True,False
+CRWV,113.3,technical,"CoreWeave, Inc.",13.220175499971376,,Bearish (Below),True,95.78419982910157,91.62500007629394,2026-05-08 23:49,False,True,False
+FIX,1943.05,technical,"Comfort Systems USA, Inc.",33.593241372502476,,Bearish (Below),True,1557.1233203125,1346.2374554443359,2026-05-08 23:49,False,True,False
+TGT,125.04,technical,Target Corporation,29.116447405511792,,Bearish (Below),True,121.98860000610351,114.03458923339844,2026-05-08 23:49,False,True,False
+AME,232.36,technical,"AMETEK, Inc.",14.70060051333617,,Bearish (Below),True,225.77837799072265,222.32234756469725,2026-05-08 23:49,False,True,False
+TER,360.245,technical,"Teradyne, Inc.",31.020783089653634,,Bearish (Below),True,332.6663977050781,290.6687319946289,2026-05-08 23:49,False,True,False
+ETR,111.69,technical,Entergy Corporation,30.476125888285537,,Bullish (Above),True,109.7551805114746,102.63696098327637,2026-05-08 23:49,False,True,False
+CCJ,116.72,technical,Cameco Corporation,20.55138180072929,,Bearish (Below),True,114.99239990234375,112.54029983520508,2026-05-08 23:49,False,True,False
+MET,78.015,technical,"MetLife, Inc.",28.26973939223174,,Bearish (Below),False,73.64729949951172,75.89392967224121,2026-05-08 23:49,False,True,False
+NUE,228.15,technical,Nucor Corporation,28.97640155036632,,Bullish (Above),True,186.98650512695312,180.492433013916,2026-05-08 23:49,False,True,False
+CLS,376.85,technical,Celestica Inc.,23.189554201984464,,Bearish (Below),True,327.5208004760742,313.45009994506836,2026-05-08 23:49,False,True,False
+FITB,49.485,technical,Fifth Third Bancorp,24.478175895765474,,Bearish (Below),False,47.82531845092773,48.86005115509033,2026-05-08 23:49,False,True,False
+WAB,265.67,technical,Westinghouse Air Brake Technologies Corporation,26.39578432632615,,Bullish (Above),True,255.50940032958985,244.50383422851561,2026-05-08 23:49,False,True,False
+SLF,70.0,technical,Sun Life Financial Inc.,25.75354556336069,,Bullish (Above),True,66.41340003967285,64.71993297576904,2026-05-08 23:49,False,True,False
+EME,923.39,technical,"EMCOR Group, Inc.",27.01254140547269,,Bearish (Below),True,790.0074060058594,745.1223168945312,2026-05-08 23:49,False,True,False
+LYV,162.55,technical,"Live Nation Entertainment, Inc.",30.929402275091633,,Bearish (Below),True,157.71700103759767,152.27380111694336,2026-05-08 23:49,False,True,False
+VIK,82.5,technical,Viking Holdings Ltd,21.474333894127312,,Bearish (Below),True,76.32620040893555,74.82670036315918,2026-05-08 23:49,False,True,False
+PUK,31.26,technical,Prudential plc,7.2796498074379485,,Bullish (Above),False,29.66962261199951,30.428593139648438,2026-05-08 23:49,False,True,False
+NBIS,177.15,technical,NBIS,24.88757759228426,,Bearish (Below),True,129.59070068359375,111.63235046386718,2026-05-08 23:49,False,True,False
+JBL,354.8825,technical,Jabil Inc.,32.26397523724066,,Bearish (Below),True,291.56784912109373,267.1606622314453,2026-05-08 23:49,False,True,False
