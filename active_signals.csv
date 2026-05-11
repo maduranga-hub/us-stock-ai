@@ -1,13 +1,15 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-WMT,127.03,technical,Walmart Inc.,26.25213799909379,,Bearish (Below),True,125.92327545166016,122.78077781677246,2026-05-11 22:12,False,True,False
-BUD,79.755,technical,Anheuser-Busch InBev SA/NV,28.007812970252928,,Bearish (Below),True,72.45992767333985,71.09730598449707,2026-05-11 22:12,True,True,False
-CVNA,76.46,technical,Carvana Co.,32.97543345837262,,Bearish (Below),False,68.8720400238037,75.8831400680542,2026-05-11 22:12,False,True,False
-BNS,77.15,technical,The Bank of Nova Scotia,25.250336643181114,"{'top': np.float64(77.1500015258789), 'bottom': np.float64(77.12999725341797), 'gap_size': np.float64(0.0200042724609375)}",Bearish (Below),False,72.9763996887207,73.78499977111817,2026-05-11 22:12,True,True,False
-CP,84.85,technical,Canadian Pacific Kansas City Limited,29.800475267266492,,Bearish (Below),True,82.39998901367187,79.52136878967285,2026-05-11 22:12,False,True,False
-HLT,315.855,technical,Hilton Worldwide Holdings Inc.,27.959965869263712,"{'top': np.float64(315.7099914550781), 'bottom': np.float64(314.8800048828125), 'gap_size': np.float64(0.829986572265625)}",Bullish (Above),True,312.60930114746094,307.2794369506836,2026-05-11 22:12,False,True,True
-CNI,110.45,technical,Canadian National Railway Company,32.72720787276121,,Bearish (Below),True,107.55666763305663,104.23773406982421,2026-05-11 22:12,True,True,False
-CRWV,114.32,technical,"CoreWeave, Inc.",27.681598889102105,,Bearish (Below),True,96.49579986572266,92.05290008544922,2026-05-11 22:12,False,True,False
-GWW,1224.62,technical,"W.W. Grainger, Inc.",30.96038875464474,,Bullish (Above),True,1126.6753955078125,1102.386028442383,2026-05-11 22:12,False,True,False
-FITB,48.895,technical,Fifth Third Bancorp,31.546318450456752,"{'top': np.float64(48.849998474121094), 'bottom': np.float64(48.779998779296875), 'gap_size': np.float64(0.06999969482421875)}",Bullish (Above),False,47.81957611083985,48.877422409057615,2026-05-11 22:12,False,True,False
-PUK,31.43,technical,Prudential plc,31.976827999795958,,Bullish (Above),False,29.69026096343994,30.446807746887206,2026-05-11 22:12,True,True,False
-VIK,80.745,technical,Viking Holdings Ltd,22.240724114832176,,Bearish (Below),True,76.38410049438477,74.9265503692627,2026-05-11 22:12,False,True,False
+COST,999.47,technical,Costco Wholesale Corporation,34.855020840344466,,Bullish (Above),True,997.29908203125,968.857041015625,2026-05-12 00:09,False,True,False
+GOOG,386.77,technical,Alphabet Inc.,26.613733912744436,,Bearish (Below),True,323.5809014892578,321.94462493896486,2026-05-12 00:09,False,True,False
+GOOGL,388.64,technical,Alphabet Inc.,28.10174977617156,,Bearish (Below),True,325.2453173828125,322.501911315918,2026-05-12 00:09,False,True,False
+WMT,127.59,technical,Walmart Inc.,31.38713069449065,,Bearish (Below),True,125.93447540283204,122.7863777923584,2026-05-12 00:09,False,True,False
+BNS,77.05,technical,The Bank of Nova Scotia,25.93494427767756,,Bearish (Below),False,72.97439971923828,73.78399978637695,2026-05-12 00:09,False,True,False
+CVNA,76.24,technical,Carvana Co.,29.17308568576823,,Bearish (Below),False,68.86763999938965,75.88094005584716,2026-05-12 00:09,False,True,False
+HLT,315.63,technical,Hilton Worldwide Holdings Inc.,29.98309156330869,,Bullish (Above),True,312.6048010253906,307.2771868896484,2026-05-12 00:09,True,True,False
+CRWV,114.7,technical,"CoreWeave, Inc.",27.409633745443287,,Bearish (Below),True,96.50339981079101,92.05670005798339,2026-05-12 00:09,False,True,False
+CARR,65.87,technical,Carrier Global Corporation,34.00479096045197,,Bearish (Below),True,60.13734397888184,59.127039184570314,2026-05-12 00:09,False,True,False
+STRK,78.03,technical,Strategy Inc,25.558470399267662,"{'top': np.float64(77.98999786376953), 'bottom': np.float64(77.89409637451172), 'gap_size': np.float64(0.0959014892578125)}",Bearish (Below),False,75.91163711547851,77.86999275207519,2026-05-12 00:09,False,True,False
+DAL,71.22,technical,"Delta Air Lines, Inc.",27.075736042100473,,Bearish (Below),False,66.52580017089844,68.11520523071289,2026-05-12 00:09,False,True,False
+LYV,163.055,technical,"Live Nation Entertainment, Inc.",32.70568999453343,,Bullish (Above),True,157.7499008178711,152.49505096435547,2026-05-12 00:09,False,True,False
+PUK,31.33,technical,Prudential plc,34.21057915088922,,Bearish (Below),False,29.68826095581055,30.44580774307251,2026-05-12 00:09,False,True,False
+VIK,80.9,technical,Viking Holdings Ltd,24.60518087922486,,Bearish (Below),True,76.38720046997071,74.92810035705567,2026-05-12 00:09,False,True,False
