@@ -1,22 +1,22 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-GOOGL,387.35,technical,Alphabet Inc.,22.376126750972276,,Bullish (Above),True,326.86623046875,323.311867980957,2026-05-13 00:12,False,True,False
-GOOG,383.82,technical,Alphabet Inc.,22.106238555240907,,Bullish (Above),True,325.1344152832031,322.70769134521487,2026-05-13 00:12,False,True,False
-TSM,397.27,technical,Taiwan Semiconductor Manufacturing Company Limited,34.94192319243912,"{'top': np.float64(396.1499938964844), 'bottom': np.float64(395.67999267578125), 'gap_size': np.float64(0.470001220703125)}",Bullish (Above),True,364.2486560058594,349.4456494140625,2026-05-13 00:12,False,True,True
-AMZN,265.82,technical,"Amazon.com, Inc.",24.155050645850764,"{'top': np.float64(265.1400146484375), 'bottom': np.float64(264.75), 'gap_size': np.float64(0.3900146484375)}",Bullish (Above),True,233.56799987792968,229.93779983520508,2026-05-13 00:12,False,True,True
-ORCL,186.79,technical,Oracle Corporation,32.74881459323329,,Bullish (Above),False,161.25779998779296,166.95745162963868,2026-05-13 00:12,False,True,False
-ASML,1520.94,technical,ASML Holding N.V.,34.4251867316442,,Bullish (Above),True,1404.2385278320312,1357.541323852539,2026-05-13 00:12,False,True,False
-SAN,12.01,technical,"Banco Santander, S.A.",26.666740841170665,,Bullish (Above),False,11.532236709594727,11.821757669448852,2026-05-13 00:12,False,True,False
-DIS,106.16,technical,The Walt Disney Company,34.72811361181269,"{'top': np.float64(105.87000274658203), 'bottom': np.float64(105.79000091552734), 'gap_size': np.float64(0.0800018310546875)}",Bullish (Above),False,100.99040023803711,105.48600021362304,2026-05-13 00:12,False,True,False
-SNDK,1452.02,technical,Sandisk Corporation,33.776989460040255,,Bullish (Above),True,872.5037976074219,668.8477996826172,2026-05-13 00:12,False,True,False
-DELL,238.98,technical,Dell Technologies Inc.,33.42649854602095,,Bullish (Above),True,184.2463165283203,152.80127403259277,2026-05-13 00:12,False,True,False
-BN,45.92,technical,Brookfield Corporation,23.14801405789167,,Bearish (Below),False,42.705753860473635,44.51657585144043,2026-05-13 00:12,False,True,False
-ABNB,135.48,technical,"Airbnb, Inc.",22.50683017197933,,Bearish (Below),True,134.05759979248046,132.5540498352051,2026-05-13 00:12,False,True,False
-BAM,48.75,technical,Brookfield Asset Management Ltd.,29.713068941311462,,Bullish (Above),False,46.0276000213623,48.51542942047119,2026-05-13 00:12,False,True,False
-HLT,313.63,technical,Hilton Worldwide Holdings Inc.,33.94166971630415,,Bearish (Below),True,312.7794012451172,307.5555358886719,2026-05-13 00:12,False,True,False
-CARR,65.58,technical,Carrier Global Corporation,31.924150586665192,,Bullish (Above),True,60.176875534057615,59.252710304260255,2026-05-13 00:12,False,True,False
-FER,68.91,technical,Ferrovial N.V.,26.69748253361999,"{'top': np.float64(68.7699966430664), 'bottom': np.float64(68.75), 'gap_size': np.float64(0.01999664306640625)}",Bullish (Above),False,67.50440040588379,68.18399997711181,2026-05-13 00:12,True,True,False
-DAL,70.74,technical,"Delta Air Lines, Inc.",20.75059250061055,,Bullish (Above),False,66.65520004272462,68.11293281555176,2026-05-13 00:12,False,True,False
-XYZ,72.15,technical,"Block, Inc.",22.40324568068705,,Bearish (Below),True,65.3865998840332,63.44060005187988,2026-05-13 00:12,False,True,False
-HPE,30.225,technical,Hewlett Packard Enterprise Company,32.376393399535914,,Bullish (Above),True,25.21752384185791,23.78522903442383,2026-05-13 00:12,False,True,False
-VIK,80.614,technical,Viking Holdings Ltd,33.95764318784465,,Bullish (Above),True,76.51888046264648,75.03244033813476,2026-05-13 00:12,True,True,False
-QSR,78.26,technical,Restaurant Brands International Inc.,30.654046682576777,,Bearish (Below),True,76.14810791015626,72.13832946777343,2026-05-13 00:12,False,True,False
+AMZN,265.82,technical,"Amazon.com, Inc.",24.155050645850764,"{'top': np.float64(265.1400146484375), 'bottom': np.float64(264.75), 'gap_size': np.float64(0.3900146484375)}",Bullish (Above),True,233.56799987792968,229.93779983520508,2026-05-13 01:44,False,True,True
+GOOG,383.82,technical,Alphabet Inc.,22.073020260580464,,Bullish (Above),True,325.1344152832031,322.70769134521487,2026-05-13 01:44,False,True,False
+GOOGL,387.35,technical,Alphabet Inc.,22.376126750972276,,Bullish (Above),True,326.86623046875,323.311867980957,2026-05-13 01:44,False,True,False
+TSM,397.28,technical,Taiwan Semiconductor Manufacturing Company Limited,34.94192319243912,"{'top': np.float64(396.1499938964844), 'bottom': np.float64(395.67999267578125), 'gap_size': np.float64(0.470001220703125)}",Bullish (Above),True,364.24885620117186,349.44574951171876,2026-05-13 01:44,False,True,True
+ASML,1520.94,technical,ASML Holding N.V.,34.4251867316442,,Bullish (Above),True,1404.2385278320312,1357.5413287353515,2026-05-13 01:44,False,True,False
+ORCL,186.83,technical,Oracle Corporation,32.74881459323329,,Bullish (Above),False,161.2586001586914,166.9578515625,2026-05-13 01:44,False,True,False
+SNDK,1452.02,technical,Sandisk Corporation,33.776989460040255,,Bullish (Above),True,872.5037976074219,668.8477996826172,2026-05-13 01:44,False,True,False
+DIS,106.16,technical,The Walt Disney Company,34.8371125399634,"{'top': np.float64(105.87000274658203), 'bottom': np.float64(105.79000091552734), 'gap_size': np.float64(0.0800018310546875)}",Bullish (Above),False,100.99040023803711,105.48600021362304,2026-05-13 01:44,False,True,False
+SAN,12.02,technical,"Banco Santander, S.A.",26.666740841170665,,Bullish (Above),False,11.532436714172363,11.821857671737671,2026-05-13 01:44,False,True,False
+DELL,238.94,technical,Dell Technologies Inc.,33.41616672827044,,Bullish (Above),True,184.24551666259765,152.80087409973146,2026-05-13 01:44,False,True,False
+BN,45.9,technical,Brookfield Corporation,23.14801405789167,,Bearish (Below),False,42.70535392761231,44.516375885009765,2026-05-13 01:44,False,True,False
+ABNB,135.48,technical,"Airbnb, Inc.",22.50683017197933,,Bearish (Below),True,134.05759979248046,132.5540498352051,2026-05-13 01:44,False,True,False
+HLT,313.57,technical,Hilton Worldwide Holdings Inc.,33.695689946578455,,Bearish (Below),True,312.7782012939453,307.55493591308596,2026-05-13 01:44,True,True,False
+BAM,48.74,technical,Brookfield Asset Management Ltd.,29.713068941311462,,Bullish (Above),False,46.02740005493164,48.51532943725586,2026-05-13 01:44,False,True,False
+CARR,65.56,technical,Carrier Global Corporation,32.064368678913965,,Bullish (Above),True,60.1764754486084,59.25251026153565,2026-05-13 01:44,False,True,False
+FER,68.91,technical,Ferrovial N.V.,26.69748253361999,"{'top': np.float64(68.7699966430664), 'bottom': np.float64(68.75), 'gap_size': np.float64(0.01999664306640625)}",Bullish (Above),False,67.50440040588379,68.18399997711181,2026-05-13 01:44,True,True,False
+DAL,70.71,technical,"Delta Air Lines, Inc.",20.75059250061055,,Bullish (Above),False,66.65460006713867,68.11263282775879,2026-05-13 01:44,False,True,False
+XYZ,72.12,technical,"Block, Inc.",22.448976414242395,,Bearish (Below),True,65.38599990844726,63.44030006408691,2026-05-13 01:44,False,True,False
+HPE,30.21,technical,Hewlett Packard Enterprise Company,32.48405631420982,,Bullish (Above),True,25.21722381591797,23.785079021453857,2026-05-13 01:44,False,True,False
+QSR,78.3,technical,Restaurant Brands International Inc.,30.570730200457348,,Bearish (Below),True,76.1489079284668,72.13872955322266,2026-05-13 01:44,False,True,False
+VIK,80.6,technical,Viking Holdings Ltd,34.0685972018086,,Bullish (Above),True,76.51860046386719,75.03230033874512,2026-05-13 01:44,True,True,False
