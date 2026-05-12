@@ -1,5 +1,5 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TM,189.0,earnings,2026-05-08,0,Toyota Motor Corporation
-SONY,19.89,earnings,2026-05-08,0,Sony Group Corporation
-ENB,53.99,earnings,2026-05-08,0,Enbridge Inc.
-BAM,48.79,earnings,2026-05-08,0,Brookfield Asset Management Ltd.
+CSCO,98.72,earnings,2026-05-13,0,"Cisco Systems, Inc."
+BABA,137.3,earnings,2026-05-13,0,Alibaba Group Holding Limited
+SMFG,21.78,earnings,2026-05-13,0,"Sumitomo Mitsui Financial Group, Inc."
+Q,153.24,earnings,2026-05-12,0,"Qnity Electronics, Inc."
