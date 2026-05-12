@@ -1,15 +1,31 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-GOOG,386.77,technical,Alphabet Inc.,26.613733912744436,,Bearish (Below),True,323.5809014892578,321.94462493896486,2026-05-12 01:45,False,True,False
-GOOGL,388.64,technical,Alphabet Inc.,28.10174977617156,,Bearish (Below),True,325.2453173828125,322.501911315918,2026-05-12 01:45,False,True,False
-WMT,127.59,technical,Walmart Inc.,31.38713069449065,,Bearish (Below),True,125.93447540283204,122.7863777923584,2026-05-12 01:45,False,True,False
-COST,999.47,technical,Costco Wholesale Corporation,34.855020840344466,,Bullish (Above),True,997.29908203125,968.857041015625,2026-05-12 01:45,False,True,False
-BNS,77.04,technical,The Bank of Nova Scotia,25.93494427767756,,Bearish (Below),False,72.97419967651368,73.78389976501465,2026-05-12 01:45,False,True,False
-CVNA,76.23,technical,Carvana Co.,29.17308568576823,,Bearish (Below),False,68.86744010925293,75.8808401107788,2026-05-12 01:45,False,True,False
-HLT,315.53,technical,Hilton Worldwide Holdings Inc.,29.731960976258094,,Bullish (Above),True,312.6028009033203,307.2761868286133,2026-05-12 01:45,True,True,False
-CRWV,114.7,technical,"CoreWeave, Inc.",27.409633745443287,,Bearish (Below),True,96.50339981079101,92.05670005798339,2026-05-12 01:45,False,True,False
-CARR,65.88,technical,Carrier Global Corporation,34.16072217663026,,Bearish (Below),True,60.13754386901856,59.12713912963867,2026-05-12 01:45,False,True,False
-STRK,78.12,technical,Strategy Inc,26.259871210797485,"{'top': np.float64(77.98999786376953), 'bottom': np.float64(77.89409637451172), 'gap_size': np.float64(0.0959014892578125)}",Bearish (Below),False,75.91343719482421,77.87089279174805,2026-05-12 01:45,False,True,False
-DAL,71.2,technical,"Delta Air Lines, Inc.",27.108339599262436,,Bearish (Below),False,66.52540008544922,68.11500518798829,2026-05-12 01:45,False,True,False
-LYV,163.0,technical,"Live Nation Entertainment, Inc.",32.82932062096387,,Bullish (Above),True,157.74880096435547,152.49450103759764,2026-05-12 01:45,False,True,False
-PUK,31.32,technical,Prudential plc,34.21057915088922,,Bearish (Below),False,29.68806095123291,30.445707740783693,2026-05-12 01:45,False,True,False
-VIK,80.91,technical,Viking Holdings Ltd,24.646164088386556,,Bearish (Below),True,76.38740051269531,74.92820037841797,2026-05-12 01:45,False,True,False
+GOOG,385.2,technical,Alphabet Inc.,24.151235126437044,,Bullish (Above),True,325.1620153808594,322.72149139404297,2026-05-12 19:14,False,True,False
+GOOGL,387.63,technical,Alphabet Inc.,24.08372519166251,,Bullish (Above),True,326.87183044433596,323.31466796875,2026-05-12 19:14,False,True,False
+ORCL,184.48,technical,Oracle Corporation,23.665227210569427,,Bearish (Below),False,161.2116000366211,166.93435165405273,2026-05-12 19:14,False,True,False
+AMZN,265.11,technical,"Amazon.com, Inc.",15.161035848526126,,Bullish (Above),True,233.55379943847657,229.93069961547852,2026-05-12 19:14,True,True,False
+MS,188.33,technical,Morgan Stanley,32.34511320533058,,Bullish (Above),False,174.06957489013672,175.91031997680665,2026-05-12 19:14,False,True,False
+TSM,389.44,technical,Taiwan Semiconductor Manufacturing Company Limited,24.158860867161422,,Bearish (Below),True,364.0935565185547,349.3680996704102,2026-05-12 19:14,False,True,False
+LRCX,281.86,technical,Lam Research Corporation,33.786707701440776,,Bearish (Below),True,243.22759857177735,229.09732192993164,2026-05-12 19:14,False,True,False
+KLAC,1761.565,technical,KLA Corporation,25.13739472511567,,Bearish (Below),True,1628.1512915039064,1523.8059643554689,2026-05-12 19:14,False,True,False
+C,124.25,technical,Citigroup Inc.,27.693759906312778,,Bearish (Below),True,118.75148025512695,117.12231925964356,2026-05-12 19:14,False,True,False
+SAN,11.91,technical,"Banco Santander, S.A.",24.158063526235537,,Bullish (Above),False,11.530236701965332,11.820757665634154,2026-05-12 19:14,False,True,False
+SCCO,181.225,technical,Southern Copper Corporation,33.85037076240583,,Bearish (Below),False,179.28130004882811,179.5904113769531,2026-05-12 19:14,False,True,False
+UBS,44.42,technical,UBS Group AG,30.664048590410104,,Bullish (Above),False,39.9802091217041,42.197518005371094,2026-05-12 19:14,False,True,False
+BMO,151.41,technical,Bank of Montreal,34.92645491366446,,Bullish (Above),True,143.31313140869142,139.78309745788573,2026-05-12 19:14,False,True,False
+BNS,76.81,technical,The Bank of Nova Scotia,29.622794693445115,,Bullish (Above),False,72.99919967651367,73.82369972229004,2026-05-12 19:14,False,True,False
+BN,45.695,technical,Brookfield Corporation,22.35290949726688,,Bearish (Below),False,42.70125389099121,44.51432586669922,2026-05-12 19:14,False,True,False
+MAR,351.05,technical,"Marriott International, Inc.",33.15667653628803,,Bearish (Below),True,343.21199890136717,334.9506610107422,2026-05-12 19:14,False,True,False
+CSX,44.33,technical,CSX Corporation,30.73933888468332,,Bearish (Below),True,42.15199981689453,40.17084140777588,2026-05-12 19:14,False,True,False
+ING,29.535,technical,ING Groep N.V.,29.914511801088338,,Bullish (Above),False,26.948346366882323,27.534293041229247,2026-05-12 19:14,False,True,False
+ABNB,136.25,technical,"Airbnb, Inc.",11.299456758161881,,Bearish (Below),True,134.07299987792967,132.56174987792969,2026-05-12 19:14,False,True,False
+HLT,314.205,technical,Hilton Worldwide Holdings Inc.,20.813820511360987,,Bearish (Below),True,312.79090087890626,307.56128570556643,2026-05-12 19:14,False,True,False
+CRWV,104.292,technical,"CoreWeave, Inc.",34.76061063147648,,Bearish (Below),True,97.0263996887207,92.40370002746582,2026-05-12 19:14,False,True,False
+CARR,65.11,technical,Carrier Global Corporation,12.997302389398982,,Bearish (Below),True,60.16747550964355,59.24801029205322,2026-05-12 19:14,False,True,False
+STRK,77.85,technical,Strategy Inc,33.33485472849617,,Bullish (Above),False,75.90875946044922,77.84272087097168,2026-05-12 19:14,False,True,False
+AME,230.03,technical,"AMETEK, Inc.",34.75795742942226,,Bearish (Below),True,225.42461669921875,222.90136672973634,2026-05-12 19:14,False,True,False
+FER,68.34,technical,Ferrovial N.V.,25.835314238194982,,Bearish (Below),False,67.49300025939941,68.17829990386963,2026-05-12 19:14,False,True,False
+XYZ,72.25,technical,"Block, Inc.",31.285979714294427,,Bullish (Above),True,65.38859985351563,63.4416000366211,2026-05-12 19:14,False,True,False
+DAL,70.345,technical,"Delta Air Lines, Inc.",19.817693624490587,,Bearish (Below),False,66.64710006713867,68.10888282775879,2026-05-12 19:14,False,True,False
+PUK,30.55,technical,Prudential plc,23.809550425205487,,Bearish (Below),False,29.700586891174318,30.456115818023683,2026-05-12 19:14,False,True,False
+VIK,79.915,technical,Viking Holdings Ltd,23.362301316806807,,Bearish (Below),True,76.50490051269531,75.02545036315918,2026-05-12 19:14,False,True,False
+QSR,78.09,technical,Restaurant Brands International Inc.,22.575767734238994,,Bullish (Above),True,76.14470779418946,72.13662948608399,2026-05-12 19:14,False,True,False
