@@ -1,27 +1,16 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-AVGO,414.7099,technical,Broadcom Inc.,31.331446113549006,,Bullish (Above),True,364.8891925048828,349.550158996582,2026-05-13 19:18,False,True,False
-TSM,395.44,technical,Taiwan Semiconductor Manufacturing Company Limited,34.06414649155066,,Bullish (Above),True,365.1149011230469,350.63833190917967,2026-05-13 19:18,False,True,False
-AMZN,266.07,technical,"Amazon.com, Inc.",24.748464125640595,,Bullish (Above),True,234.7148001098633,230.38579986572265,2026-05-13 19:18,False,True,False
-KLAC,1817.24,technical,KLA Corporation,33.84321136090119,,Bullish (Above),True,1636.6647924804688,1530.7712243652343,2026-05-13 19:18,False,True,False
-QCOM,214.1899,technical,QUALCOMM Incorporated,27.148586738816093,"{'top': np.float64(211.61000061035156), 'bottom': np.float64(211.19000244140625), 'gap_size': np.float64(0.4199981689453125)}",Bullish (Above),False,146.48359802246094,151.09633743286133,2026-05-13 19:18,False,True,False
-SNDK,1443.38,technical,Sandisk Corporation,33.25119925848891,,Bearish (Below),True,890.0631982421875,681.2132997131348,2026-05-13 19:18,False,True,False
-SAN,11.905,technical,"Banco Santander, S.A.",25.806506193481496,,Bullish (Above),False,11.552623386383056,11.82671555519104,2026-05-13 19:18,False,True,False
-PLD,143.005,technical,"Prologis, Inc.",32.651926142717784,,Bearish (Below),True,136.86532684326173,134.45203155517578,2026-05-13 19:18,False,True,False
-BN,45.74,technical,Brookfield Corporation,23.931609069232124,,Bullish (Above),False,42.76169204711914,44.52937210083008,2026-05-13 19:18,False,True,False
-FDX,370.305,technical,FedEx Corporation,25.144575591573954,,Bearish (Below),True,369.4649322509766,350.6996960449219,2026-05-13 19:18,False,True,False
-SNPS,504.66,technical,"Synopsys, Inc.",34.09820588582389,,Bearish (Below),False,444.34380310058594,456.50260284423825,2026-05-13 19:18,False,True,False
-CDNS,354.845,technical,"Cadence Design Systems, Inc.",32.97475035171557,,Bearish (Below),True,307.3735015869141,306.41395080566406,2026-05-13 19:18,False,True,False
-ING,29.73,technical,ING Groep N.V.,28.0,,Bullish (Above),False,27.027007789611815,27.568192291259766,2026-05-13 19:18,False,True,False
-VLO,241.945,technical,Valero Energy Corporation,30.459209710932086,,Bearish (Below),True,238.69350189208984,212.3910870361328,2026-05-13 19:18,False,True,False
-PSX,171.32,technical,Phillips 66,29.617462098913876,,Bearish (Below),True,170.68579986572266,157.09296867370605,2026-05-13 19:18,False,True,False
-DLR,192.6129,technical,"Digital Realty Trust, Inc.",34.209079396269274,,Bullish (Above),True,187.91002838134764,175.81713165283202,2026-05-13 19:18,False,True,False
-B,44.905,technical,B,34.1584230090111,,Bearish (Below),False,41.74389991760254,44.556936225891114,2026-05-13 19:18,False,True,False
-CRWV,108.8001,technical,"CoreWeave, Inc.",33.34010429471127,,Bearish (Below),True,97.79829971313477,92.88194999694824,2026-05-13 19:18,False,True,False
-MSTR,179.03,technical,Strategy Inc,31.070778708291314,,Bearish (Below),True,150.59820037841797,149.32290031433106,2026-05-13 19:18,False,True,False
-AU,102.565,technical,AngloGold Ashanti plc,29.287380729893712,,Bullish (Above),False,99.11736526489258,99.91632202148438,2026-05-13 19:18,False,True,False
-CLS,365.285,technical,Celestica Inc.,30.22341103533863,,Bearish (Below),True,333.8704995727539,315.9637498474121,2026-05-13 19:18,False,True,False
-DAL,70.395,technical,"Delta Air Lines, Inc.",29.544771781156484,,Bearish (Below),False,66.77050003051758,68.12127197265625,2026-05-13 19:18,False,True,False
-XYZ,70.97,technical,"Block, Inc.",23.8247779647091,,Bullish (Above),True,65.54739990234376,63.51230007171631,2026-05-13 19:18,False,True,False
-CCI,88.21,technical,Crown Castle Inc.,27.432148907762908,,Bearish (Below),True,86.06083465576172,85.96152320861816,2026-05-13 19:18,False,True,False
-IRM,125.74,technical,Iron Mountain Incorporated,29.283061287163704,,Bullish (Above),True,112.0257846069336,102.80312080383301,2026-05-13 19:18,False,True,False
-VOD,15.315,technical,Vodafone Group Public Limited Company,26.35884450233634,"{'top': np.float64(15.305000305175781), 'bottom': np.float64(15.119999885559082), 'gap_size': np.float64(0.18500041961669922)}",Bearish (Below),True,15.195299949645996,14.774149942398072,2026-05-13 19:19,False,True,False
+QCOM,217.9,technical,QUALCOMM Incorporated,30.32234597197443,,Bullish (Above),False,146.55779998779298,151.13343841552734,2026-05-13 21:28,False,True,False
+SNDK,1456.7,technical,Sandisk Corporation,31.143624840072846,,Bullish (Above),True,890.3295971679687,681.3464991760254,2026-05-13 21:28,False,True,False
+WDC,495.89,technical,Western Digital Corporation,34.85769692078331,,Bullish (Above),True,349.5616989135742,294.22767974853514,2026-05-13 21:28,False,True,False
+BMO,151.09,technical,Bank of Montreal,31.85068476548298,,Bearish (Below),True,143.5043161010742,140.0313491821289,2026-05-13 21:28,False,True,False
+BN,45.385,technical,Brookfield Corporation,21.50247955773149,,Bearish (Below),False,42.75459197998047,44.52582206726074,2026-05-13 21:28,False,True,False
+CDNS,351.545,technical,"Cadence Design Systems, Inc.",19.48917501905889,,Bearish (Below),True,307.3075018310547,306.3809509277344,2026-05-13 21:28,False,True,False
+SNPS,502.815,technical,"Synopsys, Inc.",27.213563500731922,,Bearish (Below),False,444.30690307617186,456.48415283203127,2026-05-13 21:28,False,True,False
+FDX,370.745,technical,FedEx Corporation,19.532957181867502,,Bearish (Below),True,369.4737322998047,350.70409606933595,2026-05-13 21:28,False,True,False
+ABNB,134.41,technical,"Airbnb, Inc.",21.280475777548702,,Bullish (Above),True,134.085,132.5603498840332,2026-05-13 21:28,False,True,False
+ING,29.82,technical,ING Groep N.V.,34.42620131575656,,Bullish (Above),False,27.028807792663574,27.569092292785644,2026-05-13 21:28,False,True,False
+MSTR,179.97,technical,Strategy Inc,22.655636436631667,,Bullish (Above),True,150.6158004760742,149.33170036315917,2026-05-13 21:28,False,True,False
+CARR,65.17,technical,Carrier Global Corporation,29.442413770186747,,Bearish (Below),True,60.26081756591797,59.38430019378662,2026-05-13 21:28,False,True,False
+COIN,201.21,technical,"Coinbase Global, Inc.",32.19586702605571,,Bearish (Below),False,191.86160064697265,198.9824998474121,2026-05-13 21:28,False,True,False
+XYZ,70.33,technical,"Block, Inc.",16.425488582661018,,Bearish (Below),True,65.53459991455078,63.505900077819824,2026-05-13 21:28,False,True,False
+IRM,126.545,technical,Iron Mountain Incorporated,32.21559368124959,"{'top': np.float64(125.97000122070312), 'bottom': np.float64(125.84500122070312), 'gap_size': np.float64(0.125)}",Bullish (Above),True,112.04188461303711,102.81117080688476,2026-05-13 21:28,False,True,True
