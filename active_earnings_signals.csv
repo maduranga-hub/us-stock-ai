@@ -1,5 +1,9 @@
 symbol,price,type,earnings_date,mkt_cap,name
-CSCO,98.72,earnings,2026-05-13,0,"Cisco Systems, Inc."
-BABA,137.3,earnings,2026-05-13,0,Alibaba Group Holding Limited
-SMFG,21.78,earnings,2026-05-13,0,"Sumitomo Mitsui Financial Group, Inc."
-Q,153.24,earnings,2026-05-12,0,"Qnity Electronics, Inc."
+CSCO,99.8775,earnings,2026-05-13,0,"Cisco Systems, Inc."
+AMAT,428.6,earnings,2026-05-14,0,"Applied Materials, Inc."
+BABA,134.85,earnings,2026-05-13,0,Alibaba Group Holding Limited
+SMFG,22.24,earnings,2026-05-13,0,"Sumitomo Mitsui Financial Group, Inc."
+BN,45.31,earnings,2026-05-14,0,Brookfield Corporation
+NGG,86.57,earnings,2026-05-14,0,National Grid plc
+NU,12.925,earnings,2026-05-14,0,Nu Holdings Ltd.
+MFC,40.005,earnings,2026-05-13,0,Manulife Financial Corporation
