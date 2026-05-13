@@ -1,16 +1,24 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-QCOM,217.9,technical,QUALCOMM Incorporated,30.32234597197443,,Bullish (Above),False,146.55779998779298,151.13343841552734,2026-05-13 21:28,False,True,False
-SNDK,1456.7,technical,Sandisk Corporation,31.143624840072846,,Bullish (Above),True,890.3295971679687,681.3464991760254,2026-05-13 21:28,False,True,False
-WDC,495.89,technical,Western Digital Corporation,34.85769692078331,,Bullish (Above),True,349.5616989135742,294.22767974853514,2026-05-13 21:28,False,True,False
-BMO,151.09,technical,Bank of Montreal,31.85068476548298,,Bearish (Below),True,143.5043161010742,140.0313491821289,2026-05-13 21:28,False,True,False
-BN,45.385,technical,Brookfield Corporation,21.50247955773149,,Bearish (Below),False,42.75459197998047,44.52582206726074,2026-05-13 21:28,False,True,False
-CDNS,351.545,technical,"Cadence Design Systems, Inc.",19.48917501905889,,Bearish (Below),True,307.3075018310547,306.3809509277344,2026-05-13 21:28,False,True,False
-SNPS,502.815,technical,"Synopsys, Inc.",27.213563500731922,,Bearish (Below),False,444.30690307617186,456.48415283203127,2026-05-13 21:28,False,True,False
-FDX,370.745,technical,FedEx Corporation,19.532957181867502,,Bearish (Below),True,369.4737322998047,350.70409606933595,2026-05-13 21:28,False,True,False
-ABNB,134.41,technical,"Airbnb, Inc.",21.280475777548702,,Bullish (Above),True,134.085,132.5603498840332,2026-05-13 21:28,False,True,False
-ING,29.82,technical,ING Groep N.V.,34.42620131575656,,Bullish (Above),False,27.028807792663574,27.569092292785644,2026-05-13 21:28,False,True,False
-MSTR,179.97,technical,Strategy Inc,22.655636436631667,,Bullish (Above),True,150.6158004760742,149.33170036315917,2026-05-13 21:28,False,True,False
-CARR,65.17,technical,Carrier Global Corporation,29.442413770186747,,Bearish (Below),True,60.26081756591797,59.38430019378662,2026-05-13 21:28,False,True,False
-COIN,201.21,technical,"Coinbase Global, Inc.",32.19586702605571,,Bearish (Below),False,191.86160064697265,198.9824998474121,2026-05-13 21:28,False,True,False
-XYZ,70.33,technical,"Block, Inc.",16.425488582661018,,Bearish (Below),True,65.53459991455078,63.505900077819824,2026-05-13 21:28,False,True,False
-IRM,126.545,technical,Iron Mountain Incorporated,32.21559368124959,"{'top': np.float64(125.97000122070312), 'bottom': np.float64(125.84500122070312), 'gap_size': np.float64(0.125)}",Bullish (Above),True,112.04188461303711,102.81117080688476,2026-05-13 21:28,False,True,True
+INTC,120.29,technical,Intel Corporation,31.92028280909632,,Bearish (Below),True,66.83640014648438,55.67930015563965,2026-05-14 00:14,False,True,False
+CAT,902.255,technical,Caterpillar Inc.,32.37592876482276,,Bearish (Below),True,773.8459631347656,720.3296923828125,2026-05-14 00:14,False,True,False
+QCOM,213.17,technical,QUALCOMM Incorporated,26.369888104632622,,Bearish (Below),False,146.46320007324218,151.08613845825195,2026-05-14 00:14,False,True,False
+SNDK,1447.23,technical,Sandisk Corporation,32.63135528145531,,Bearish (Below),True,890.1401977539062,681.2517994689941,2026-05-14 00:14,False,True,False
+PLD,141.99,technical,"Prologis, Inc.",30.59788379368554,,Bearish (Below),True,136.84502685546875,134.4418815612793,2026-05-14 00:14,True,True,False
+BMO,150.24,technical,Bank of Montreal,32.44748069545405,,Bearish (Below),True,143.48731628417968,140.02284927368163,2026-05-14 00:14,False,True,False
+BN,45.11,technical,Brookfield Corporation,19.298208713210556,,Bearish (Below),False,42.74909202575684,44.52307209014893,2026-05-14 00:14,False,True,False
+FDX,369.7,technical,FedEx Corporation,27.701223362505985,,Bearish (Below),True,369.45283264160156,350.6936462402344,2026-05-14 00:14,True,True,False
+CDNS,354.55,technical,"Cadence Design Systems, Inc.",29.287904527420807,,Bullish (Above),True,307.3676013183594,306.4110006713867,2026-05-14 00:14,False,True,False
+ING,29.695,technical,ING Groep N.V.,34.60074060214174,,Bearish (Below),False,27.026307792663573,27.567842292785645,2026-05-14 00:14,False,True,False
+PSX,171.88,technical,Phillips 66,34.34666238349946,,Bearish (Below),True,170.69699981689453,157.098568649292,2026-05-14 00:14,True,True,False
+B,44.85,technical,B,31.42124065024825,,Bearish (Below),False,41.74279991149902,44.55638622283936,2026-05-14 00:14,False,True,False
+MSTR,178.03,technical,Strategy Inc,14.930278149098086,,Bearish (Below),True,150.5770004272461,149.3123003387451,2026-05-14 00:14,False,True,False
+STRF,100.465,technical,Strategy Inc,30.11121147385073,,Bearish (Below),False,98.82264831542969,98.93217872619628,2026-05-14 00:14,False,True,False
+CCJ,115.42,technical,Cameco Corporation,34.61637432759066,,Bullish (Above),True,114.80419982910156,113.44869979858399,2026-05-14 00:14,False,True,False
+PSA,303.7,technical,Public Storage,30.0889190821256,,Bearish (Below),True,293.677939453125,286.6971325683594,2026-05-14 00:14,False,True,False
+COIN,201.8,technical,"Coinbase Global, Inc.",21.074771062462105,,Bullish (Above),False,191.8756005859375,198.98949981689452,2026-05-14 00:14,False,True,False
+AU,102.39,technical,AngloGold Ashanti plc,32.723587321559904,,Bearish (Below),False,99.11386520385742,99.91457199096679,2026-05-14 00:14,False,True,False
+XYZ,69.795,technical,"Block, Inc.",22.430610266233046,,Bearish (Below),True,65.52389984130859,63.50055004119873,2026-05-14 00:14,True,True,False
+MSCI,570.863,technical,MSCI Inc.,34.931323742021476,"{'top': np.float64(568.2999877929688), 'bottom': np.float64(568.25), 'gap_size': np.float64(0.04998779296875)}",Bullish (Above),False,563.3750622558593,566.975248413086,2026-05-14 00:14,True,True,False
+IRM,126.15,technical,Iron Mountain Incorporated,32.99048358002625,,Bullish (Above),True,112.03398468017578,102.80722084045411,2026-05-14 00:14,False,True,False
+QSR,76.43,technical,Restaurant Brands International Inc.,31.5573642344348,,Bearish (Below),True,76.24733673095703,72.21330848693847,2026-05-14 00:14,True,True,False
+VOD,15.51,technical,Vodafone Group Public Limited Company,34.31570464523983,,Bullish (Above),True,15.199199962615968,14.776099948883056,2026-05-14 00:14,False,True,False
