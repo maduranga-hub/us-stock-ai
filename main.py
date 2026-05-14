@@ -27,6 +27,20 @@ EARNINGS_CHANNEL_ID = os.getenv("EARNINGS_CHANNEL_ID") or "-1003737032970"
 DASHBOARD_URL = os.getenv("DASHBOARD_URL") or "https://us-stock-ai-maduranga.streamlit.app"
 DUBAI_TZ = pytz.timezone('Asia/Dubai')
 
+SECTOR_ETF_MAP = {
+    "Technology": "XLK",
+    "Financial Services": "XLF",
+    "Healthcare": "XLV",
+    "Consumer Cyclical": "XLY",
+    "Industrials": "XLI",
+    "Communication Services": "XLC",
+    "Consumer Defensive": "XLP",
+    "Energy": "XLE",
+    "Utilities": "XLU",
+    "Real Estate": "XLRE",
+    "Basic Materials": "XLB"
+}
+
 def get_dubai_time():
     return datetime.now(DUBAI_TZ)
 
@@ -475,6 +489,38 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             except Exception as e:
                 print(f"Error fetching events for {symbol}: {e}")
 
+            # Sector Analysis
+            sector_analysis = None
+            try:
+                sector_name = ticker.info.get('sector')
+                etf_symbol = SECTOR_ETF_MAP.get(sector_name) if sector_name else None
+                if etf_symbol:
+                    etf_ticker = yf.Ticker(etf_symbol)
+                    etf_hist = etf_ticker.history(period="60d")
+                    spy_hist = yf.Ticker("SPY").history(period="60d")
+                    if not etf_hist.empty and not spy_hist.empty and len(etf_hist) >= 30 and len(spy_hist) >= 30:
+                        etf_close = etf_hist['Close'].iloc[-1]
+                        etf_sma50 = etf_hist['Close'].rolling(window=50).mean().iloc[-1]
+                        sector_uptrend = etf_close > etf_sma50
+                        
+                        etf_30d = etf_hist['Close'].iloc[-21]
+                        etf_ret = ((etf_close - etf_30d) / etf_30d) * 100
+                        
+                        spy_close = spy_hist['Close'].iloc[-1]
+                        spy_30d = spy_hist['Close'].iloc[-21]
+                        spy_ret = ((spy_close - spy_30d) / spy_30d) * 100
+                        
+                        sector_analysis = {
+                            "name": sector_name,
+                            "etf": etf_symbol,
+                            "uptrend": sector_uptrend,
+                            "etf_ret": etf_ret,
+                            "spy_ret": spy_ret,
+                            "outperforming": etf_ret > spy_ret
+                        }
+            except Exception as e:
+                print(f"Error checking sector for {symbol}: {e}")
+
         base_res.update({
             "type": "technical", 
             "name": ticker.info.get('longName', symbol),
@@ -482,7 +528,8 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
             "golden_cross": sma50 > sma100, "sma50_daily": sma50, "sma100_daily": sma100, 
             "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'), 
             "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction,
-            "upcoming_events": upcoming_events
+            "upcoming_events": upcoming_events,
+            "sector_analysis": sector_analysis if is_signal else None
         })
         return base_res
     except: return None
@@ -582,7 +629,14 @@ def run_scanner(mode="technical", force_ticker=None):
                         else:
                             events_text += "• ❌ No major events (Earnings/Dividends) scheduled"
 
-                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}{events_text}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                        sector_text = ""
+                        sa = res.get('sector_analysis')
+                        if sa:
+                            uptrend_s = "✅ Uptrend (Price > SMA 50)" if sa['uptrend'] else "❌ Downtrend"
+                            perf_s = "🔥 Outperforming SPY" if sa['outperforming'] else "⚠️ Underperforming SPY"
+                            sector_text = f"\n\n🏢 *Sector Analysis ({sa['name']} - {sa['etf']}):*\n• Trend: {uptrend_s}\n• Strength: {perf_s} (Sector: {sa['etf_ret']:.1f}% | SPY: {sa['spy_ret']:.1f}%)"
+
+                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}{sector_text}{events_text}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                         send_telegram(msg, channel="signal")
                         
                         gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
