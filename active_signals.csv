@@ -1,10 +1,10 @@
 symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-V,321.72,technical,Visa Inc.,32.80863232374227,,Bearish (Below),False,311.11158447265626,321.11126098632815,2026-05-14 18:47,False,True,False
-VLO,242.1,technical,Valero Energy Corporation,34.22784045363184,,Bearish (Below),True,239.0666018676758,213.22408096313475,2026-05-14 18:47,False,True,False
-MPC,247.9401,technical,Marathon Petroleum Corporation,31.52022215496993,,Bearish (Below),True,234.57720123291017,209.033203125,2026-05-14 18:47,False,True,False
-PSX,171.42,technical,Phillips 66,31.16828522016762,,Bearish (Below),True,170.8297998046875,157.53139793395997,2026-05-14 18:47,False,True,False
-MFC,37.535,technical,Manulife Financial Corporation,22.872917091692642,,Bullish (Above),True,36.563500289916995,36.53635314941406,2026-05-14 18:48,False,True,False
-SPG,201.39,technical,"Simon Property Group, Inc.",31.00732339863235,"{'top': np.float64(201.20010375976562), 'bottom': np.float64(201.1699981689453), 'gap_size': np.float64(0.0301055908203125)}",Bullish (Above),True,195.40687347412108,192.26355239868164,2026-05-14 18:48,False,True,True
-MSCI,569.465,technical,MSCI Inc.,33.104459367456826,,Bullish (Above),False,563.3179028320312,567.0684460449219,2026-05-14 18:48,False,True,False
-QSR,76.55,technical,Restaurant Brands International Inc.,31.522919022919027,,Bullish (Above),True,76.36382904052735,72.29203674316406,2026-05-14 18:48,False,True,False
-HBANM,22.48,technical,Huntington Bancshares Incorporated,34.090968202454675,,Bearish (Below),False,22.18414005279541,22.292189655303954,2026-05-14 18:48,False,True,False
+C,124.23,technical,Citigroup Inc.,33.268845099853465,,Bearish (Below),True,119.34119186401367,117.4067546081543,2026-05-14 21:15,False,True,False
+DE,581.565,technical,Deere & Company,34.27106314781669,,Bearish (Below),True,580.7610278320312,561.3676861572266,2026-05-14 21:15,False,True,False
+PSX,172.1,technical,Phillips 66,26.173563369744997,,Bullish (Above),True,170.84469970703125,157.53884788513184,2026-05-14 21:15,False,True,False
+VLO,243.72,technical,Valero Energy Corporation,32.91522191716891,,Bullish (Above),True,239.09900177001953,213.24028091430665,2026-05-14 21:15,False,True,False
+MPC,249.875,technical,Marathon Petroleum Corporation,31.175797787001486,,Bullish (Above),True,234.61219940185546,209.05070220947266,2026-05-14 21:15,False,True,False
+MFC,37.275,technical,Manulife Financial Corporation,19.957816818972447,,Bearish (Below),True,36.55830032348633,36.53375316619873,2026-05-14 21:15,False,True,False
+PSA,303.95,technical,Public Storage,30.340447182270267,,Bearish (Below),True,293.60436767578125,287.14927001953123,2026-05-14 21:15,False,True,False
+CCI,87.91,technical,Crown Castle Inc.,31.698198830914848,,Bearish (Below),True,86.04673904418945,85.99645080566407,2026-05-14 21:15,False,True,False
+QSR,77.175,technical,Restaurant Brands International Inc.,32.343698928489374,"{'top': np.float64(76.94999694824219), 'bottom': np.float64(76.8550033569336), 'gap_size': np.float64(0.09499359130859375)}",Bullish (Above),True,76.37632904052734,72.29828674316406,2026-05-14 21:15,False,True,True
