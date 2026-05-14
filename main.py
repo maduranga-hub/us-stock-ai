@@ -569,14 +569,18 @@ def run_scanner(mode="technical", force_ticker=None):
                             fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})"
                             if res.get('fvg_has_volume'):
                                 fvg_s += " 📊 (Backed by Volume Profile)"
+                            else:
+                                fvg_s += " ⚠️ (No Volume Support)"
                         else:
                             fvg_s = "❌ No FVG"
                         
                         analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
                         
-                        events_text = ""
+                        events_text = "\n\n📅 *Upcoming Events (Next 7 Days):*\n"
                         if res.get('upcoming_events'):
-                            events_text = "\n\n📅 *Upcoming Events (Next 7 Days):*\n" + "\n".join([f"• {e}" for e in res['upcoming_events']])
+                            events_text += "\n".join([f"• {e}" for e in res['upcoming_events']])
+                        else:
+                            events_text += "• ❌ No major events (Earnings/Dividends) scheduled"
 
                         msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}{events_text}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                         send_telegram(msg, channel="signal")
