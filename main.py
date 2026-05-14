@@ -391,13 +391,66 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         # High Conviction requires all conditions to be met, but still obeys the is_signal filter
         high_conviction = rsi < 35 and fvg is not None and price > vwap and sma50 > sma100
         
+        upcoming_events = []
+        if is_signal:
+            try:
+                today = get_dubai_time().date()
+                next_week = today + timedelta(days=7)
+                
+                # Check Earnings
+                e_dates = []
+                try:
+                    cal = ticker.calendar
+                    if cal is not None and not cal.empty and 'Earnings Date' in cal.index:
+                        e_dates = list(cal.loc['Earnings Date'].values)
+                except: pass
+                
+                if not e_dates:
+                    try:
+                        edf = ticker.earnings_dates
+                        if edf is not None and not edf.empty:
+                            e_dates = list(edf.index)
+                    except: pass
+                
+                for ed in e_dates:
+                    try:
+                        if hasattr(ed, 'date'): ed_date = ed.date()
+                        elif isinstance(ed, str): ed_date = datetime.strptime(ed[:10], '%Y-%m-%d').date()
+                        else: ed_date = pd.to_datetime(ed).date()
+                        
+                        if today <= ed_date <= next_week:
+                            upcoming_events.append(f"Earnings on {ed_date.strftime('%Y-%m-%d')}")
+                            break # Just need the next one
+                    except: continue
+
+                # Check Dividends
+                try:
+                    cal = ticker.calendar
+                    if cal is not None and not cal.empty and 'Ex-Dividend Date' in cal.index:
+                        d_dates = list(cal.loc['Ex-Dividend Date'].values)
+                        for dd in d_dates:
+                            try:
+                                if hasattr(dd, 'date'): d_date = dd.date()
+                                elif isinstance(dd, str): d_date = datetime.strptime(dd[:10], '%Y-%m-%d').date()
+                                else: d_date = pd.to_datetime(dd).date()
+                                
+                                if today <= d_date <= next_week:
+                                    upcoming_events.append(f"Ex-Dividend on {d_date.strftime('%Y-%m-%d')}")
+                                    break
+                            except: continue
+                except: pass
+
+            except Exception as e:
+                print(f"Error fetching events for {symbol}: {e}")
+
         base_res.update({
             "type": "technical", 
             "name": ticker.info.get('longName', symbol),
             "rsi": rsi, "fvg": fvg, "vwap_status": vwap_status, 
             "golden_cross": sma50 > sma100, "sma50_daily": sma50, "sma100_daily": sma100, 
             "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'), 
-            "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction
+            "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction,
+            "upcoming_events": upcoming_events
         })
         return base_res
     except: return None
@@ -482,7 +535,12 @@ def run_scanner(mode="technical", force_ticker=None):
                             
                         fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
                         analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
-                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                        
+                        events_text = ""
+                        if res.get('upcoming_events'):
+                            events_text = "\n\n📅 *Upcoming Events (Next 7 Days):*\n" + "\n".join([f"• {e}" for e in res['upcoming_events']])
+
+                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}{events_text}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                         send_telegram(msg, channel="signal")
                         
                         gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
