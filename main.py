@@ -327,7 +327,7 @@ def check_volume_profile_fvg(df, fvg, bins=50):
     except:
         return False
 
-def analyze_ticker(symbol, scan_type="technical", target_date=None):
+def analyze_ticker(symbol, scan_type="technical", target_date=None, force_signal=False):
     try:
         ticker = yf.Ticker(symbol)
         # Use fast_info for basic metrics to avoid slow .info call
@@ -433,7 +433,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         vwap = df['vwap'].iloc[-1]; vwap_status = "Bullish (Above)" if price > vwap else "Bearish (Below)"
         avg_vol_20 = df['volume'].rolling(window=20).mean().iloc[-1]; high_volume = df['volume'].iloc[-1] >= (1.5 * avg_vol_20)
         
-        is_signal = rsi < 35
+        is_signal = (rsi < 35) or force_signal
         # High Conviction requires all conditions to be met, but still obeys the is_signal filter
         high_conviction = rsi < 35 and fvg is not None and fvg_has_volume and price > vwap and sma50 > sma100
         
@@ -600,8 +600,9 @@ def run_scanner(mode="technical", force_ticker=None):
     collected_sectors = set()
     
     try:
+        force_flag = bool(force_ticker)
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-            future_to_ticker = {executor.submit(analyze_ticker, s, mode): s for s in universe}
+            future_to_ticker = {executor.submit(analyze_ticker, s, mode, None, force_flag): s for s in universe}
             for future in concurrent.futures.as_completed(future_to_ticker):
                 res = future.result()
                 if res:
