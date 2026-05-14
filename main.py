@@ -282,6 +282,37 @@ def detect_fvg(df):
     if c3_l > c1_h: return {"top": c3_l, "bottom": c1_h, "gap_size": c3_l - c1_h}
     return None
 
+def check_volume_profile_fvg(df, fvg, bins=50):
+    if fvg is None: return False
+    try:
+        min_p = df['low'].min()
+        max_p = df['high'].max()
+        if min_p == max_p: return False
+        
+        price_bins = np.linspace(min_p, max_p, bins + 1)
+        tp = (df['high'] + df['low'] + df['close']) / 3
+        
+        df_vp = df.copy()
+        df_vp['bin'] = pd.cut(tp, bins=price_bins, labels=False, include_lowest=True)
+        vol_profile = df_vp.groupby('bin')['volume'].sum()
+        
+        if vol_profile.empty: return False
+        
+        mean_vol = vol_profile.mean()
+        hvn_threshold = mean_vol * 1.5
+        
+        for bin_idx, vol in vol_profile.items():
+            if vol >= hvn_threshold:
+                bin_low = price_bins[int(bin_idx)]
+                bin_high = price_bins[int(bin_idx) + 1]
+                
+                overlap = max(0, min(bin_high, fvg['top']) - max(bin_low, fvg['bottom']))
+                if overlap > 0:
+                    return True
+        return False
+    except:
+        return False
+
 def analyze_ticker(symbol, scan_type="technical", target_date=None):
     try:
         ticker = yf.Ticker(symbol)
@@ -379,6 +410,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         
         df['rsi'] = calculate_rsi(df['close']); rsi = df['rsi'].iloc[-1]
         fvg = detect_fvg(df)
+        fvg_has_volume = check_volume_profile_fvg(df, fvg)
         
         df['tp'] = (df['high'] + df['low'] + df['close']) / 3
         df['tpv'] = df['tp'] * df['volume']; df['date'] = df.index.date
@@ -389,7 +421,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         
         is_signal = rsi < 35
         # High Conviction requires all conditions to be met, but still obeys the is_signal filter
-        high_conviction = rsi < 35 and fvg is not None and price > vwap and sma50 > sma100
+        high_conviction = rsi < 35 and fvg is not None and fvg_has_volume and price > vwap and sma50 > sma100
         
         upcoming_events = []
         if is_signal:
@@ -446,7 +478,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         base_res.update({
             "type": "technical", 
             "name": ticker.info.get('longName', symbol),
-            "rsi": rsi, "fvg": fvg, "vwap_status": vwap_status, 
+            "rsi": rsi, "fvg": fvg, "fvg_has_volume": fvg_has_volume, "vwap_status": vwap_status, 
             "golden_cross": sma50 > sma100, "sma50_daily": sma50, "sma100_daily": sma100, 
             "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'), 
             "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction,
@@ -533,7 +565,13 @@ def run_scanner(mode="technical", force_ticker=None):
                             found_count -= 1
                             continue
                             
-                        fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})" if res.get('fvg') else "❌ No FVG"
+                        if res.get('fvg'):
+                            fvg_s = f"✅ Bullish FVG Found (${res['fvg']['bottom']:.2f} - ${res['fvg']['top']:.2f})"
+                            if res.get('fvg_has_volume'):
+                                fvg_s += " 📊 (Backed by Volume Profile)"
+                        else:
+                            fvg_s = "❌ No FVG"
+                        
                         analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
                         
                         events_text = ""
