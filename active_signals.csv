@@ -1,10 +1,40 @@
-symbol,price,type,name,rsi,fvg,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction
-C,124.23,technical,Citigroup Inc.,33.268845099853465,,Bearish (Below),True,119.34119186401367,117.4067546081543,2026-05-14 21:15,False,True,False
-DE,581.565,technical,Deere & Company,34.27106314781669,,Bearish (Below),True,580.7610278320312,561.3676861572266,2026-05-14 21:15,False,True,False
-PSX,172.1,technical,Phillips 66,26.173563369744997,,Bullish (Above),True,170.84469970703125,157.53884788513184,2026-05-14 21:15,False,True,False
-VLO,243.72,technical,Valero Energy Corporation,32.91522191716891,,Bullish (Above),True,239.09900177001953,213.24028091430665,2026-05-14 21:15,False,True,False
-MPC,249.875,technical,Marathon Petroleum Corporation,31.175797787001486,,Bullish (Above),True,234.61219940185546,209.05070220947266,2026-05-14 21:15,False,True,False
-MFC,37.275,technical,Manulife Financial Corporation,19.957816818972447,,Bearish (Below),True,36.55830032348633,36.53375316619873,2026-05-14 21:15,False,True,False
-PSA,303.95,technical,Public Storage,30.340447182270267,,Bearish (Below),True,293.60436767578125,287.14927001953123,2026-05-14 21:15,False,True,False
-CCI,87.91,technical,Crown Castle Inc.,31.698198830914848,,Bearish (Below),True,86.04673904418945,85.99645080566407,2026-05-14 21:15,False,True,False
-QSR,77.175,technical,Restaurant Brands International Inc.,32.343698928489374,"{'top': np.float64(76.94999694824219), 'bottom': np.float64(76.8550033569336), 'gap_size': np.float64(0.09499359130859375)}",Bullish (Above),True,76.37632904052734,72.29828674316406,2026-05-14 21:15,False,True,True
+symbol,price,type,name,rsi,fvg,fvg_has_volume,vwap_status,golden_cross,sma50_daily,sma100_daily,timestamp,high_volume,is_signal,high_conviction,upcoming_events
+V,321.76,technical,Visa Inc.,33.57325292916579,,False,Bearish (Below),False,311.11238464355466,321.11166107177735,2026-05-14 23:13,False,True,False,[]
+NVO,45.835,technical,Novo Nordisk A/S,26.442264279226407,,False,Bearish (Below),False,39.414201202392576,44.62417095184326,2026-05-14 23:13,False,True,False,[]
+NEM,116.81,technical,Newmont Corporation,33.16394242001515,,False,Bullish (Above),False,111.89080032348633,113.9592064666748,2026-05-14 23:13,False,True,False,[]
+MDLZ,61.005,technical,"Mondelez International, Inc.",32.883636010701906,,False,Bearish (Below),True,58.12360290527344,57.63198741912842,2026-05-14 23:13,False,True,False,[]
+MPC,249.025,technical,Marathon Petroleum Corporation,33.651443900009866,,False,Bearish (Below),True,234.59889923095704,209.04405212402344,2026-05-14 23:13,False,True,False,[]
+PSX,171.445,technical,Phillips 66,26.523755603929928,,False,Bearish (Below),True,170.83029998779296,157.5316480255127,2026-05-14 23:13,False,True,False,[]
+MFC,37.45,technical,Manulife Financial Corporation,24.294377554826625,"{'top': np.float64(37.40290069580078), 'bottom': np.float64(37.34000015258789), 'gap_size': np.float64(0.06290054321289062)}",True,Bullish (Above),True,36.56180030822754,36.535503158569334,2026-05-14 23:13,False,True,True,[]
+VALE,16.615,technical,Vale S.A.,31.782958344360978,,False,Bearish (Below),True,16.134300060272217,15.77795002937317,2026-05-14 23:13,False,True,False,[]
+PSA,304.51,technical,Public Storage,31.99707441192075,,False,Bearish (Below),True,293.6155676269531,287.15486999511717,2026-05-14 23:13,False,True,False,[]
+WPM,139.12,technical,Wheaton Precious Metals Corp.,30.510511426458137,,False,Bearish (Below),False,136.28055740356444,137.21112174987792,2026-05-14 23:13,False,True,False,[]
+CCI,87.8,technical,Crown Castle Inc.,25.960498238300815,,False,Bearish (Below),True,86.04453903198242,85.99535079956054,2026-05-14 23:13,False,True,False,[]
+FOX,58.61,technical,Fox Corporation,32.692316156890016,,False,Bearish (Below),False,55.200500106811525,57.81771518707276,2026-05-14 23:13,False,True,False,[]
+EXR,141.94,technical,Extra Space Storage Inc.,28.39424220688673,,False,Bearish (Below),False,139.08548522949218,139.148660736084,2026-05-14 23:13,True,True,False,[]
+QSR,76.675,technical,Restaurant Brands International Inc.,31.83817723175754,,False,Bearish (Below),True,76.36632904052735,72.293286819458,2026-05-14 23:13,False,True,False,[]
+BIIB,191.4,technical,Biogen Inc.,30.230672565989153,,False,Bearish (Below),True,185.29179992675782,183.86660018920898,2026-05-14 23:13,False,True,False,[]
+DOW,38.635,technical,Dow Inc.,21.299690694106673,,False,Bearish (Below),True,38.35129997253418,33.168054733276364,2026-05-14 23:13,False,True,False,[]
+ZM,98.095,technical,"Zoom Communications, Inc.",25.638992302354794,,False,Bearish (Below),True,87.00509979248046,86.98770004272461,2026-05-14 23:13,False,True,False,['Earnings on 2026-05-21']
+AER,142.65,technical,AerCap Holdings N.V.,29.809528829188338,,False,Bearish (Below),False,140.08076385498046,142.6428579711914,2026-05-14 23:13,False,True,False,[]
+ALB,191.72,technical,Albemarle Corporation,24.804347871036057,"{'top': np.float64(191.52000427246094), 'bottom': np.float64(191.24000549316406), 'gap_size': np.float64(0.279998779296875)}",False,Bullish (Above),True,182.53636291503906,174.8177062988281,2026-05-14 23:13,False,True,False,[]
+ITT,203.41,technical,ITT Inc.,33.149580385058414,,False,Bullish (Above),True,202.11747985839844,195.4449035644531,2026-05-14 23:13,False,True,False,[]
+CPAY,330.6,technical,"Corpay, Inc.",33.276843247774565,,False,Bearish (Below),False,311.3063983154297,318.04399963378904,2026-05-14 23:13,False,True,False,[]
+AVB,184.11,technical,"AvalonBay Communities, Inc.",29.751374744849585,,False,Bearish (Below),False,172.5819891357422,174.44934829711914,2026-05-14 23:13,False,True,False,[]
+SQM,87.12,technical,Sociedad Química y Minera de Chile S.A.,15.553426570270219,"{'top': np.float64(87.12000274658203), 'bottom': np.float64(86.8499984741211), 'gap_size': np.float64(0.2700042724609375)}",False,Bearish (Below),True,82.88856903076172,78.5860929107666,2026-05-14 23:13,False,True,False,[]
+SBAC,202.04,technical,SBA Communications Corporation,22.768132552524975,,False,Bearish (Below),True,201.6956643676758,195.552138671875,2026-05-14 23:13,False,True,False,[]
+EVRG,82.47,technical,"Evergy, Inc.",33.752076677316296,,False,Bullish (Above),True,81.88589965820313,79.16381500244141,2026-05-14 23:13,False,True,False,[]
+UTHR,575.125,technical,United Therapeutics Corporation,33.72751623523102,,False,Bullish (Above),True,558.4220989990234,522.2059484863281,2026-05-14 23:13,False,True,False,[]
+PAAS,61.75,technical,Pan American Silver Corp.,34.68494286343004,,False,Bullish (Above),False,55.8084001159668,56.90442031860351,2026-05-14 23:13,False,True,False,[]
+WST,298.71,technical,"West Pharmaceutical Services, Inc.",11.25120553481976,,False,Bullish (Above),True,269.3263842773438,262.3764573669434,2026-05-14 23:13,False,True,False,[]
+IFF,76.73,technical,International Flavors & Fragrances Inc.,20.161447448568367,,False,Bearish (Below),False,72.2408561706543,72.63408630371094,2026-05-14 23:13,False,True,False,[]
+FTV,58.58,technical,Fortive Corporation,29.289529445288352,,False,Bearish (Below),True,58.073793487548826,57.145537757873534,2026-05-14 23:13,False,True,False,[]
+AGNCP,24.945,technical,AGNC Investment Corp.,31.3780855975848,,False,Bearish (Below),True,24.441649169921874,24.402946643829345,2026-05-14 23:13,False,True,False,[]
+WPC,73.78,technical,W. P. Carey Inc.,32.10788876065671,,False,Bearish (Below),True,71.22654418945312,69.74920013427734,2026-05-14 23:13,False,True,False,[]
+IEX,210.34,technical,IDEX Corporation,23.819794017873903,,False,Bearish (Below),True,200.57679992675781,198.64424758911133,2026-05-14 23:13,False,True,False,[]
+NWSA,26.185,technical,News Corporation,34.121575470458,,False,Bearish (Below),True,25.195987739562987,25.168662700653076,2026-05-14 23:13,False,True,False,[]
+NWS,29.97,technical,News Corporation,32.110063916585304,,False,Bearish (Below),True,28.855549087524412,28.753949146270752,2026-05-14 23:13,False,True,False,[]
+WMG,32.46,technical,Warner Music Group Corp.,33.74558041918452,,False,Bearish (Below),False,27.909199905395507,28.701415996551514,2026-05-14 23:13,False,True,False,[]
+MAS,68.13,technical,Masco Corporation,32.25663988694143,,False,Bearish (Below),False,65.29239974975586,67.27228019714356,2026-05-14 23:13,False,True,False,[]
+NLY,22.1601,technical,"Annaly Capital Management, Inc.",31.542941736930004,,False,Bearish (Below),False,21.840992317199706,22.0888214302063,2026-05-14 23:13,False,True,False,[]
+LOGI,101.065,technical,Logitech International S.A.,34.59170016190821,,False,Bullish (Above),True,95.77089996337891,94.9488500213623,2026-05-14 23:13,False,True,False,[]
