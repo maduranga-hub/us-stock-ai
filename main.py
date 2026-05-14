@@ -427,7 +427,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
         if is_signal:
             try:
                 today = get_dubai_time().date()
-                next_week = today + timedelta(days=7)
+                target_date = today + timedelta(days=14)
                 
                 # Check Earnings
                 e_dates = []
@@ -450,7 +450,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                         elif isinstance(ed, str): ed_date = datetime.strptime(ed[:10], '%Y-%m-%d').date()
                         else: ed_date = pd.to_datetime(ed).date()
                         
-                        if today <= ed_date <= next_week:
+                        if today <= ed_date <= target_date:
                             upcoming_events.append(f"Earnings on {ed_date.strftime('%Y-%m-%d')}")
                             break # Just need the next one
                     except: continue
@@ -466,7 +466,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None):
                                 elif isinstance(dd, str): d_date = datetime.strptime(dd[:10], '%Y-%m-%d').date()
                                 else: d_date = pd.to_datetime(dd).date()
                                 
-                                if today <= d_date <= next_week:
+                                if today <= d_date <= target_date:
                                     upcoming_events.append(f"Ex-Dividend on {d_date.strftime('%Y-%m-%d')}")
                                     break
                             except: continue
@@ -576,7 +576,7 @@ def run_scanner(mode="technical", force_ticker=None):
                         
                         analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
                         
-                        events_text = "\n\n📅 *Upcoming Events (Next 7 Days):*\n"
+                        events_text = "\n\n📅 *Upcoming Events (Next 14 Days):*\n"
                         if res.get('upcoming_events'):
                             events_text += "\n".join([f"• {e}" for e in res['upcoming_events']])
                         else:
