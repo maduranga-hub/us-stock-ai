@@ -492,9 +492,12 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None, force_signal
 
             # Sector Analysis
             sector_analysis = None
+            sector_name = "N/A"
             try:
-                sector_name = ticker.info.get('sector')
-                etf_symbol = SECTOR_ETF_MAP.get(sector_name) if sector_name else None
+                info = ticker.info
+                sector_name = info.get('sector', 'N/A')
+                base_res['sector'] = sector_name
+                etf_symbol = SECTOR_ETF_MAP.get(sector_name) if sector_name != 'N/A' else None
                 if etf_symbol:
                     etf_ticker = yf.Ticker(etf_symbol)
                     etf_hist = etf_ticker.history(period="60d")
@@ -631,10 +634,13 @@ def run_scanner(mode="technical", force_ticker=None):
 
                         sector_text = ""
                         sa = res.get('sector_analysis')
+                        sector_name = res.get('sector', 'N/A')
                         if sa:
                             uptrend_s = "✅ Uptrend (Price > SMA 50)" if sa['uptrend'] else "❌ Downtrend"
                             perf_s = "🔥 Outperforming SPY" if sa['outperforming'] else "⚠️ Underperforming SPY"
                             sector_text = f"\n\n🏢 *Sector Analysis ({sa['name']} - {sa['etf']}):*\n• Trend: {uptrend_s}\n• Strength: {perf_s} (Sector: {sa['etf_ret']:.1f}% | SPY: {sa['spy_ret']:.1f}%)"
+                        elif sector_name != "N/A":
+                            sector_text = f"\n\n🏢 *Sector:* {sector_name} (Detailed Analysis N/A)"
 
                         pullback_s = "✅ Price < SMA 20" if res['price'] < res['sma20_daily'] else "❌ Price > SMA 20"
                         analysis_note = (f"• *Trend:* Price > SMA 50 (${res['sma50_daily']:.2f})\n"
