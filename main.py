@@ -412,6 +412,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None, force_signal
         df_daily.columns = [c.lower() for c in df_daily.columns]
         
         # SMAs
+        sma20 = df_daily['close'].rolling(window=20).mean().iloc[-1]
         sma50 = df_daily['close'].rolling(window=50).mean().iloc[-1]
         sma100 = df_daily['close'].rolling(window=100).mean().iloc[-1]
         
@@ -525,7 +526,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None, force_signal
             "type": "technical", 
             "name": ticker.info.get('longName', symbol),
             "rsi": rsi, "fvg": fvg, "fvg_has_volume": fvg_has_volume, "vwap_status": vwap_status, 
-            "golden_cross": sma50 > sma100, "sma50_daily": sma50, "sma100_daily": sma100, 
+            "golden_cross": sma50 > sma100, "sma20_daily": sma20, "sma50_daily": sma50, "sma100_daily": sma100, 
             "timestamp": get_dubai_time().strftime('%Y-%m-%d %H:%M'), 
             "high_volume": high_volume, "is_signal": is_signal, "high_conviction": high_conviction,
             "upcoming_events": upcoming_events,
@@ -622,8 +623,6 @@ def run_scanner(mode="technical", force_ticker=None):
                         else:
                             fvg_s = "❌ No FVG"
                         
-                        analysis_note = (f"• *Trend:* Price > SMA 50 (${res['sma50_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
-                        
                         events_text = "\n\n📅 *Upcoming Events (Next 14 Days):*\n"
                         if res.get('upcoming_events'):
                             events_text += "\n".join([f"• {e}" for e in res['upcoming_events']])
@@ -637,7 +636,8 @@ def run_scanner(mode="technical", force_ticker=None):
                             perf_s = "🔥 Outperforming SPY" if sa['outperforming'] else "⚠️ Underperforming SPY"
                             sector_text = f"\n\n🏢 *Sector Analysis ({sa['name']} - {sa['etf']}):*\n• Trend: {uptrend_s}\n• Strength: {perf_s} (Sector: {sa['etf_ret']:.1f}% | SPY: {sa['spy_ret']:.1f}%)"
 
-                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 50:* ${res['sma50_daily']:.2f}\n📉 *SMA 100:* ${res['sma100_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}{sector_text}{events_text}\n\n📝 *AI Analysis Note:*\n{analysis_note}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
+                        pullback_s = "✅ Price < SMA 20" if res['price'] < res['sma20_daily'] else "❌ Price > SMA 20"
+                        msg = (f"{'🔥 HIGH CONVICTION' if res.get('high_conviction') else '🚀 NEW BUY SIGNAL'}: *{res['symbol']}*\n\n💰 *Price:* ${res['price']:.2f}\n📈 *SMA 20:* ${res['sma20_daily']:.2f} ({'✅' if res['price'] < res['sma20_daily'] else '❌'})\n📉 *SMA 50:* ${res['sma50_daily']:.2f}\n📊 *RSI:* {res['rsi']:.2f}\n⚡ *VWAP:* {res['vwap_status']}\n🧬 *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}{sector_text}{events_text}\n\n📝 *AI Analysis Note:*\n• *Trend:* Price > SMA 50 (${res['sma50_daily']:.2f})\n• *Pullback:* {pullback_s}\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}\n\n🔗 [Open Quant Terminal]({DASHBOARD_URL})")
                         send_telegram(msg, channel="signal")
                         
                         gs_row = [dubai_now.strftime('%Y-%m-%d'), dubai_now.strftime('%H:%M'), res['symbol'], f"{res['price']:.2f}", f"{res['rsi']:.2f}", res['vwap_status'], f"FVG: {fvg_s}", "YES" if res.get('golden_cross') else "NO", "Normal" if not res.get('high_volume') else "🔥 High Spike", "ACTIVE", "", "", "", "", analysis_note.replace('\n', ' ')]
