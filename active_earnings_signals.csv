@@ -1,5 +1,3 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMAT,436.61,earnings,2026-05-14,0,"Applied Materials, Inc."
-MUFG,18.61,earnings,2026-05-15,0,"Mitsubishi UFJ Financial Group, Inc."
-MFG,8.89,earnings,2026-05-15,0,"Mizuho Financial Group, Inc."
-NU,12.82,earnings,2026-05-14,0,Nu Holdings Ltd.
+MUFG,18.48,earnings,2026-05-15,0,"Mitsubishi UFJ Financial Group, Inc."
+MFG,8.86,earnings,2026-05-15,0,"Mizuho Financial Group, Inc."
