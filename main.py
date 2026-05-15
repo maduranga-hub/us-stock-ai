@@ -592,8 +592,10 @@ def run_scanner(mode="technical", force_ticker=None):
     found_count = 0
     results_for_csv = []
     
-    # Use fewer workers for earnings to avoid rate limiting on .calendar
-    max_workers = 30 if mode == "earnings" else 50
+    # Use fewer workers to avoid Yahoo Finance rate limiting
+    max_workers = 20 if mode == "technical" else 15
+    if mode == "earnings":
+        max_workers = 10 # Earnings is very heavy on API calls
     if mode == "news":
         sent_items = load_sent_items("sent_news.txt")
     elif mode == "earnings":
