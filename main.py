@@ -229,12 +229,12 @@ def update_sheet_lifecycle(sheet):
                             curr_p = hist['close'].iloc[-1]
                             hist_d = ticker.history(period="150d", interval="1d")
                             hist_d.columns = [c.lower() for c in hist_d.columns]
-                            sma100 = hist_d['close'].rolling(window=100).mean().iloc[-1]
+                            sma50 = hist_d['close'].rolling(window=50).mean().iloc[-1]
                             delta = hist['close'].diff()
                             gain = (delta.where(delta > 0, 0)).rolling(window=14).mean().iloc[-1]
                             loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean().iloc[-1]
                             rsi = 100 - (100 / (1 + (gain/loss))) if loss != 0 else 50
-                            if curr_p < sma100 or rsi > 55:
+                            if curr_p < sma50 or rsi > 55:
                                 sheet.update_cell(i + 1, 11, "DEACTIVATED"); updated_count += 1
                     except: pass
             price_7d = row[11] if len(row) > 11 else ""
@@ -415,7 +415,7 @@ def analyze_ticker(symbol, scan_type="technical", target_date=None, force_signal
         sma50 = df_daily['close'].rolling(window=50).mean().iloc[-1]
         sma100 = df_daily['close'].rolling(window=100).mean().iloc[-1]
         
-        if price < sma100 or price < sma50: return None
+        if price < sma50: return None
         
         df = ticker.history(period="15d", interval="1h")
         if df.empty or len(df) < 50: return None
@@ -622,7 +622,7 @@ def run_scanner(mode="technical", force_ticker=None):
                         else:
                             fvg_s = "❌ No FVG"
                         
-                        analysis_note = (f"• *Trend:* Price > SMA 100 (${res['sma100_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
+                        analysis_note = (f"• *Trend:* Price > SMA 50 (${res['sma50_daily']:.2f}).\n• *RSI:* {res['rsi']:.2f}\n• *FVG:* {fvg_s}\n• *Golden Cross:* {'✅ ACTIVE' if res.get('golden_cross') else '❌ INACTIVE'}")
                         
                         events_text = "\n\n📅 *Upcoming Events (Next 14 Days):*\n"
                         if res.get('upcoming_events'):
