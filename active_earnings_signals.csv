@@ -1,2 +1,7 @@
 symbol,price,type,earnings_date,mkt_cap,name
-HD,301.9609,earnings,2026-05-19,0,"The Home Depot, Inc."
+NVDA,218.9,earnings,2026-05-20,0,NVIDIA Corporation
+HD,297.5,earnings,2026-05-19,0,"The Home Depot, Inc."
+TJX,150.7,earnings,2026-05-20,0,"The TJX Companies, Inc."
+ADI,409.97,earnings,2026-05-20,0,"Analog Devices, Inc."
+LOW,216.645,earnings,2026-05-20,0,"Lowe's Companies, Inc."
+INTU,416.39,earnings,2026-05-20,0,Intuit Inc.
