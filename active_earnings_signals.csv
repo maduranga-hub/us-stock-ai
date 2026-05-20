@@ -1,7 +1,9 @@
 symbol,price,type,earnings_date,mkt_cap,name
-NVDA,218.9,earnings,2026-05-20,0,NVIDIA Corporation
-HD,297.5,earnings,2026-05-19,0,"The Home Depot, Inc."
-TJX,150.7,earnings,2026-05-20,0,"The TJX Companies, Inc."
-ADI,409.97,earnings,2026-05-20,0,"Analog Devices, Inc."
-LOW,216.645,earnings,2026-05-20,0,"Lowe's Companies, Inc."
-INTU,416.39,earnings,2026-05-20,0,Intuit Inc.
+WMT,131.015,earnings,2026-05-21,0,Walmart Inc.
+NVDA,221.92,earnings,2026-05-20,0,NVIDIA Corporation
+DE,557.44,earnings,2026-05-21,0,Deere & Company
+ADI,395.95,earnings,2026-05-20,0,"Analog Devices, Inc."
+LOW,211.3,earnings,2026-05-20,0,"Lowe's Companies, Inc."
+INTU,387.78,earnings,2026-05-20,0,Intuit Inc.
+ROST,216.805,earnings,2026-05-21,0,"Ross Stores, Inc."
+NTES,115.45,earnings,2026-05-21,0,"NetEase, Inc."
