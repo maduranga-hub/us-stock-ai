@@ -1,9 +1,4 @@
 symbol,price,type,earnings_date,mkt_cap,name
-WMT,131.015,earnings,2026-05-21,0,Walmart Inc.
-NVDA,221.92,earnings,2026-05-20,0,NVIDIA Corporation
-DE,557.44,earnings,2026-05-21,0,Deere & Company
-ADI,395.95,earnings,2026-05-20,0,"Analog Devices, Inc."
-LOW,211.3,earnings,2026-05-20,0,"Lowe's Companies, Inc."
-INTU,387.78,earnings,2026-05-20,0,Intuit Inc.
-ROST,216.805,earnings,2026-05-21,0,"Ross Stores, Inc."
-NTES,115.45,earnings,2026-05-21,0,"NetEase, Inc."
+DE,524.515,earnings,2026-05-21,0,Deere & Company
+ROST,217.1,earnings,2026-05-21,0,"Ross Stores, Inc."
+NTES,110.18,earnings,2026-05-21,0,"NetEase, Inc."
