@@ -28,8 +28,8 @@ tf.get_logger().setLevel("ERROR")
 # =============================================================================
 # CONFIG
 # =============================================================================
-ALPACA_API_KEY    = "YOUR_ALPACA_API_KEY"
-ALPACA_SECRET_KEY = "YOUR_ALPACA_SECRET_KEY"
+ALPACA_API_KEY    = "PKHJPE2YU6BFOQQXIY7L33JI4P"
+ALPACA_SECRET_KEY = "E3zKp3YWqym9rdVjTniP8myqb1tWDQSVDd32GZ1Ec3HG"
 ALPACA_BASE_URL   = "https://data.alpaca.markets/v2"
 ALPACA_TRADE_URL  = "https://api.alpaca.markets/v2"   # for latest quote
 
