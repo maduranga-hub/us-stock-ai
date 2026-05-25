@@ -392,13 +392,13 @@ def process_stock(symbol: str, headers: dict) -> dict | None:
         signal     = "WAIT"
         confidence = p_wait
     elif p_call >= CONFIDENCE:
-        signal     = "CALL 🟢"
+        signal     = "CALL [UP]"
         confidence = p_call
     elif p_put >= CONFIDENCE:
-        signal     = "PUT 🔴"
+        signal     = "PUT [DOWN]"
         confidence = p_put
     else:
-        signal     = "WAIT ⚪"
+        signal     = "WAIT [NO_EDGE]"
         confidence = p_wait
 
     # Real-time price
@@ -477,17 +477,17 @@ def print_table(results: list[dict]) -> None:
               f"{r['price_src']:<6}")
 
     if not calls.empty:
-        section_header("🟢  CALL SIGNALS")
+        section_header("[UP] CALL SIGNALS")
         for _, r in calls.iterrows():
             print_row(r)
 
     if not puts.empty:
-        section_header("🔴  PUT SIGNALS")
+        section_header("[DOWN] PUT SIGNALS")
         for _, r in puts.iterrows():
             print_row(r)
 
     if not waits.empty:
-        section_header("⚪  WAIT / NO EDGE")
+        section_header("[NO_EDGE] WAIT")
         for _, r in waits.iterrows():
             print_row(r)
 
