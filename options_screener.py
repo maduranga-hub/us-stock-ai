@@ -15,15 +15,9 @@ import pandas as pd
 from datetime import datetime, timedelta
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.utils.class_weight import compute_class_weight
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import (LSTM, Dense, Dropout,
-                                      BatchNormalization, Bidirectional)
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tensorflow.keras.optimizers import Adam
+from sklearn.ensemble import RandomForestClassifier
 import warnings
 warnings.filterwarnings("ignore")
-tf.get_logger().setLevel("ERROR")
 
 # =============================================================================
 # CONFIG
@@ -283,7 +277,8 @@ def build_targets_and_lag(p: pd.DataFrame) -> pd.DataFrame:
 def make_seq(X, y, seq_len=SEQ_LEN):
     Xs, ys = [], []
     for i in range(seq_len, len(X)):
-        Xs.append(X[i-seq_len:i])
+        # Flatten the 2D window (time_steps, features) into a 1D array for scikit-learn
+        Xs.append(X[i-seq_len:i].flatten())
         ys.append(y[i])
     return np.array(Xs), np.array(ys)
 
@@ -293,21 +288,13 @@ def make_seq(X, y, seq_len=SEQ_LEN):
 # =============================================================================
 
 def build_model(n_features):
-    m = Sequential([
-        Bidirectional(LSTM(64, return_sequences=True,
-                           recurrent_dropout=0.1),
-                      input_shape=(SEQ_LEN, n_features)),
-        BatchNormalization(), Dropout(0.4),
-        Bidirectional(LSTM(32, return_sequences=False,
-                           recurrent_dropout=0.1)),
-        BatchNormalization(), Dropout(0.4),
-        Dense(32, activation="relu"), Dropout(0.2),
-        Dense(3,  activation="softmax"),
-    ])
-    m.compile(optimizer=Adam(5e-4),
-              loss="sparse_categorical_crossentropy",
-              metrics=["accuracy"])
-    return m
+    # Random Forest works well on tabular/flattened data out of the box
+    return RandomForestClassifier(
+        n_estimators=100, 
+        max_depth=10, 
+        random_state=42, 
+        n_jobs=-1
+    )
 
 
 def train(model, X_tr, y_tr, X_vl, y_vl):
@@ -321,17 +308,8 @@ def train(model, X_tr, y_tr, X_vl, y_vl):
         # Always boost WAIT — it's the hardest class
         cw[WAIT] = max(cw.get(WAIT, 1.0), 2.0)
 
-    cb = [
-        EarlyStopping(monitor="val_accuracy", patience=15,
-                      restore_best_weights=True, mode="max", verbose=0),
-        ReduceLROnPlateau(monitor="val_accuracy", factor=0.5,
-                          patience=7, mode="max", verbose=0),
-    ]
-    model.fit(X_tr, y_tr,
-              validation_data=(X_vl, y_vl),
-              epochs=100, batch_size=32,
-              class_weight=cw,
-              callbacks=cb, verbose=0)
+    model.set_params(class_weight=cw)
+    model.fit(X_tr, y_tr)
     return model
 
 
@@ -395,12 +373,18 @@ def process_stock(symbol: str, headers: dict) -> dict | None:
     if len(recent) < SEQ_LEN:
         return None
 
-    X_live = scaler.transform(recent).reshape(1, SEQ_LEN, len(lag_cols))
-    probs  = model.predict(X_live, verbose=0)[0]
+    # Flatten for Random Forest
+    X_live = scaler.transform(recent).flatten().reshape(1, -1)
+    
+    # Predict probabilities
+    probs  = model.predict_proba(X_live)[0]
 
-    p_put  = float(probs[PUT])
-    p_wait = float(probs[WAIT])
-    p_call = float(probs[CALL])
+    # Map probabilities to classes safely (since not all classes may be present in model)
+    p_put, p_wait, p_call = 0.0, 0.0, 0.0
+    for idx, cls in enumerate(model.classes_):
+        if cls == PUT:   p_put  = float(probs[idx])
+        elif cls == WAIT: p_wait = float(probs[idx])
+        elif cls == CALL: p_call = float(probs[idx])
 
     # Determine signal
     max_p = max(p_put, p_wait, p_call)
@@ -426,8 +410,6 @@ def process_stock(symbol: str, headers: dict) -> dict | None:
     # Strike suggestions
     strike_call = round(price * 1.018, 2)
     strike_put  = round(price * 0.982, 2)
-
-    tf.keras.backend.clear_session()   # free memory between stocks
 
     return {
         "symbol":      symbol,
