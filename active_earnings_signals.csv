@@ -1,2 +1,21 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AZO,3406.5,earnings,2026-05-26,0,"AutoZone, Inc."
+MRVL,208.44,earnings,2026-05-27,0,"Marvell Technology, Inc."
+CRM,181.59,earnings,2026-05-27,0,"Salesforce, Inc."
+PDD,97.205,earnings,2026-05-27,0,PDD Holdings Inc.
+BMO,161.82,earnings,2026-05-27,0,Bank of Montreal
+BNS,79.91,earnings,2026-05-27,0,The Bank of Nova Scotia
+SNPS,534.81,earnings,2026-05-27,0,"Synopsys, Inc."
+SNOW,177.83,earnings,2026-05-27,0,Snowflake Inc.
+ESLT,842.61,earnings,2026-05-26,0,Elbit Systems Ltd.
+TCOM,47.7,earnings,2026-05-27,0,Trip.com Group Limited
+A,114.91,earnings,2026-05-27,0,A
+HEI,309.715,earnings,2026-05-27,0,HEICO Corporation
+SQM,81.3,earnings,2026-05-26,0,Sociedad Química y Minera de Chile S.A.
+P,89.225,earnings,2026-05-27,0,"Everpure, Inc."
+ZS,186.12,earnings,2026-05-26,0,"Zscaler, Inc."
+DKS,233.2,earnings,2026-05-27,0,"DICK'S Sporting Goods, Inc."
+HPQ,24.555,earnings,2026-05-27,0,HP Inc.
+ARXS,36.59,earnings,2026-05-27,0,"Arxis, Inc."
+MOD,308.59,earnings,2026-05-26,0,Modine Manufacturing Company
+DY,419.42,earnings,2026-05-27,0,"Dycom Industries, Inc."
+NTNX,46.65,earnings,2026-05-27,0,"Nutanix, Inc."
