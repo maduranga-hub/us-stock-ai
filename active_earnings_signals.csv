@@ -1,33 +1,6 @@
 symbol,price,type,earnings_date,mkt_cap,name
-COST,1003.83,earnings,2026-05-28,0,Costco Wholesale Corporation
-RY,189.7,earnings,2026-05-28,0,Royal Bank of Canada
-TD,112.28,earnings,2026-05-28,0,The Toronto-Dominion Bank
-MRVL,202.285,earnings,2026-05-27,0,"Marvell Technology, Inc."
-DELL,310.115,earnings,2026-05-28,0,Dell Technologies Inc.
-CRM,183.8,earnings,2026-05-27,0,"Salesforce, Inc."
-PDD,85.465,earnings,2026-05-27,0,PDD Holdings Inc.
-BMO,162.535,earnings,2026-05-27,0,Bank of Montreal
-CM,115.7,earnings,2026-05-28,0,Canadian Imperial Bank of Commerce
-BNS,81.37,earnings,2026-05-27,0,The Bank of Nova Scotia
-SNPS,531.09,earnings,2026-05-27,0,"Synopsys, Inc."
-ADSK,242.98,earnings,2026-05-28,0,"Autodesk, Inc."
-SNOW,178.585,earnings,2026-05-27,0,Snowflake Inc.
-A,115.715,earnings,2026-05-27,0,A
-HEI,311.2625,earnings,2026-05-27,0,HEICO Corporation
-P,86.88,earnings,2026-05-27,0,"Everpure, Inc."
-NTAP,142.47,earnings,2026-05-28,0,"NetApp, Inc."
-FUTU,108.85,earnings,2026-05-28,0,Futu Holdings Limited
-DKS,221.685,earnings,2026-05-27,0,"DICK'S Sporting Goods, Inc."
-MDB,300.83,earnings,2026-05-28,0,"MongoDB, Inc."
-BURL,325.935,earnings,2026-05-28,0,"Burlington Stores, Inc."
-DLTR,94.77,earnings,2026-05-28,0,"Dollar Tree, Inc."
-HPQ,24.89,earnings,2026-05-27,0,HP Inc.
-LI,15.65,earnings,2026-05-28,0,Li Auto Inc.
-XPEV,16.372,earnings,2026-05-28,0,XPeng Inc.
-ARXS,39.265,earnings,2026-05-27,0,"Arxis, Inc."
-OKTA,90.939,earnings,2026-05-28,0,"Okta, Inc."
-BBY,64.21,earnings,2026-05-28,0,"Best Buy Co., Inc."
-DY,545.0,earnings,2026-05-27,0,"Dycom Industries, Inc."
-HRL,21.055,earnings,2026-05-28,0,Hormel Foods Corporation
-NTNX,46.2,earnings,2026-05-27,0,"Nutanix, Inc."
-UHAL,51.46,earnings,2026-05-27,0,U-Haul Holding Company
+COST,1002.15,earnings,2026-05-28,0,Costco Wholesale Corporation
+RY,188.02,earnings,2026-05-28,0,Royal Bank of Canada
+TD,112.24,earnings,2026-05-28,0,The Toronto-Dominion Bank
+DELL,316.38,earnings,2026-05-28,0,Dell Technologies Inc.
+CM,110.28,earnings,2026-05-28,0,Canadian Imperial Bank of Commerce
