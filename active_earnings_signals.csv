@@ -1,6 +1,2 @@
 symbol,price,type,earnings_date,mkt_cap,name
-COST,1002.15,earnings,2026-05-28,0,Costco Wholesale Corporation
-RY,188.02,earnings,2026-05-28,0,Royal Bank of Canada
-TD,112.24,earnings,2026-05-28,0,The Toronto-Dominion Bank
-DELL,316.38,earnings,2026-05-28,0,Dell Technologies Inc.
-CM,110.28,earnings,2026-05-28,0,Canadian Imperial Bank of Commerce
+PANW,293.95,earnings,2026-06-02,0,"Palo Alto Networks, Inc."
