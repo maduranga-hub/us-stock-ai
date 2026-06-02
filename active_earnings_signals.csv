@@ -1,2 +1,5 @@
 symbol,price,type,earnings_date,mkt_cap,name
-PANW,293.95,earnings,2026-06-02,0,"Palo Alto Networks, Inc."
+AVGO,481.19,earnings,2026-06-03,0,Broadcom Inc.
+PANW,293.71,earnings,2026-06-02,0,"Palo Alto Networks, Inc."
+CRWD,755.76,earnings,2026-06-03,0,"CrowdStrike Holdings, Inc."
+MDT,74.05,earnings,2026-06-03,0,Medtronic plc
