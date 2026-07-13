@@ -1,2 +1,8 @@
 symbol,price,type,earnings_date,mkt_cap,name
-PEP,135.34,earnings,2026-07-09,0,"PepsiCo, Inc."
+JPM,336.94,earnings,2026-07-14,0,JPMorgan Chase & Co.
+BAC,59.68,earnings,2026-07-14,0,Bank of America Corporation
+GS,1056.27,earnings,2026-07-14,0,"The Goldman Sachs Group, Inc."
+WFC,87.79,earnings,2026-07-14,0,Wells Fargo & Company
+C,141.315,earnings,2026-07-14,0,Citigroup Inc.
+FAST,47.4,earnings,2026-07-14,0,Fastenal Company
+ERIC,11.55,earnings,2026-07-14,0,Telefonaktiebolaget LM Ericsson (publ)
