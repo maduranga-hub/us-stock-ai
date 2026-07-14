@@ -1,8 +1,16 @@
 symbol,price,type,earnings_date,mkt_cap,name
-JPM,336.94,earnings,2026-07-14,0,JPMorgan Chase & Co.
-BAC,59.68,earnings,2026-07-14,0,Bank of America Corporation
-GS,1056.27,earnings,2026-07-14,0,"The Goldman Sachs Group, Inc."
-WFC,87.79,earnings,2026-07-14,0,Wells Fargo & Company
-C,141.315,earnings,2026-07-14,0,Citigroup Inc.
-FAST,47.4,earnings,2026-07-14,0,Fastenal Company
-ERIC,11.55,earnings,2026-07-14,0,Telefonaktiebolaget LM Ericsson (publ)
+JPM,334.53,earnings,2026-07-14,0,JPMorgan Chase & Co.
+JNJ,257.77,earnings,2026-07-15,0,Johnson & Johnson
+ASML,1726.04,earnings,2026-07-15,0,ASML Holding N.V.
+BAC,59.5,earnings,2026-07-14,0,Bank of America Corporation
+MS,221.09,earnings,2026-07-15,0,Morgan Stanley
+GS,1045.91,earnings,2026-07-14,0,"The Goldman Sachs Group, Inc."
+WFC,87.67,earnings,2026-07-14,0,Wells Fargo & Company
+C,140.71,earnings,2026-07-14,0,Citigroup Inc.
+BLK,1031.56,earnings,2026-07-15,0,"BlackRock, Inc."
+PGR,234.48,earnings,2026-07-15,0,The Progressive Corporation
+BK,137.16,earnings,2026-07-15,0,Bank of New York Mellon Corp
+PNC,252.85,earnings,2026-07-15,0,"The PNC Financial Services Group, Inc."
+ELV,425.17,earnings,2026-07-15,0,"Elevance Health, Inc."
+KMI,32.24,earnings,2026-07-15,0,"Kinder Morgan, Inc."
+CTAS,183.75,earnings,2026-07-15,0,Cintas Corporation
