@@ -1,11 +1,3 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TSM,419.48,earnings,2026-07-16,0,Taiwan Semiconductor Manufacturing Company Limited
-NFLX,73.68,earnings,2026-07-16,0,"Netflix, Inc."
-UNH,418.52,earnings,2026-07-16,0,UnitedHealth Group Incorporated
-GE,360.35,earnings,2026-07-16,0,GE Aerospace
-ISRG,388.97,earnings,2026-07-16,0,"Intuitive Surgical, Inc."
-ABT,89.27,earnings,2026-07-16,0,Abbott Laboratories
-PLD,143.42,earnings,2026-07-16,0,"Prologis, Inc."
-USB,63.01,earnings,2026-07-16,0,U.S. Bancorp
-TRV,329.19,earnings,2026-07-17,0,"The Travelers Companies, Inc."
-TFC,52.8,earnings,2026-07-17,0,Truist Financial Corporation
+HDB,26.31,earnings,2026-07-18,0,HDFC Bank Limited
+IBN,29.57,earnings,2026-07-18,0,ICICI Bank Limited
