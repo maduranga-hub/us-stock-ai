@@ -1,3 +1,10 @@
 symbol,price,type,earnings_date,mkt_cap,name
-HDB,26.31,earnings,2026-07-18,0,HDFC Bank Limited
-IBN,29.57,earnings,2026-07-18,0,ICICI Bank Limited
+NVS,153.76,earnings,2026-07-21,0,Novartis AG
+SCHW,101.56,earnings,2026-07-21,0,The Charles Schwab Corporation
+IBKR,90.53,earnings,2026-07-21,0,"Interactive Brokers Group, Inc."
+CB,352.16,earnings,2026-07-21,0,Chubb Limited
+DHR,203.83,earnings,2026-07-21,0,Danaher Corporation
+COF,208.03,earnings,2026-07-21,0,Capital One Financial Corporation
+MRSH,182.18,earnings,2026-07-21,0,"Marsh & McLennan Companies, Inc."
+AMX,26.27,earnings,2026-07-21,0,"América Móvil, S.A.B. de C.V."
+MMM,159.84,earnings,2026-07-21,0,3M Company
