@@ -1,10 +1,27 @@
 symbol,price,type,earnings_date,mkt_cap,name
-NVS,153.76,earnings,2026-07-21,0,Novartis AG
-SCHW,101.56,earnings,2026-07-21,0,The Charles Schwab Corporation
-IBKR,90.53,earnings,2026-07-21,0,"Interactive Brokers Group, Inc."
-CB,352.16,earnings,2026-07-21,0,Chubb Limited
-DHR,203.83,earnings,2026-07-21,0,Danaher Corporation
-COF,208.03,earnings,2026-07-21,0,Capital One Financial Corporation
-MRSH,182.18,earnings,2026-07-21,0,"Marsh & McLennan Companies, Inc."
-AMX,26.27,earnings,2026-07-21,0,"América Móvil, S.A.B. de C.V."
-MMM,159.84,earnings,2026-07-21,0,3M Company
+TSLA,369.57,earnings,2026-07-22,0,"Tesla, Inc."
+GOOGL,351.99,earnings,2026-07-22,0,Alphabet Inc.
+GOOG,351.37,earnings,2026-07-22,0,Alphabet Inc.
+GEV,1079.18,earnings,2026-07-22,0,GE Vernova Inc.
+PM,192.72,earnings,2026-07-22,0,PM
+TXN,284.07,earnings,2026-07-22,0,Texas Instruments Incorporated
+NVS,149.56,earnings,2026-07-21,0,Novartis AG
+IBM,213.0,earnings,2026-07-22,0,International Business Machines Corporation
+T,21.95,earnings,2026-07-22,0,AT&T Inc.
+SAN,13.32,earnings,2026-07-22,0,SAN
+SCHW,102.54,earnings,2026-07-21,0,The Charles Schwab Corporation
+IBKR,91.68,earnings,2026-07-21,0,"Interactive Brokers Group, Inc."
+DHR,201.11,earnings,2026-07-21,0,Danaher Corporation
+CB,352.53,earnings,2026-07-21,0,Chubb Limited
+COF,206.77,earnings,2026-07-21,0,Capital One Financial Corporation
+CME,245.11,earnings,2026-07-22,0,CME Group Inc.
+EQNR,37.35,earnings,2026-07-22,0,Equinor ASA
+NOW,104.7,earnings,2026-07-22,0,"ServiceNow, Inc."
+CSX,50.11,earnings,2026-07-22,0,CSX Corporation
+NOC,523.96,earnings,2026-07-21,0,NOC
+MRSH,182.1,earnings,2026-07-21,0,"Marsh & McLennan Companies, Inc."
+AMX,26.1,earnings,2026-07-21,0,"América Móvil, S.A.B. de C.V."
+MMM,159.11,earnings,2026-07-21,0,3M Company
+KMI,32.58,earnings,2026-07-22,0,KMI
+GM,75.8,earnings,2026-07-21,0,GM
+TEL,203.14,earnings,2026-07-22,0,TEL
