@@ -1,27 +1,37 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TSLA,369.57,earnings,2026-07-22,0,"Tesla, Inc."
-GOOGL,351.99,earnings,2026-07-22,0,Alphabet Inc.
-GOOG,351.37,earnings,2026-07-22,0,Alphabet Inc.
-GEV,1079.18,earnings,2026-07-22,0,GE Vernova Inc.
-PM,192.72,earnings,2026-07-22,0,PM
-TXN,284.07,earnings,2026-07-22,0,Texas Instruments Incorporated
-NVS,149.56,earnings,2026-07-21,0,Novartis AG
-IBM,213.0,earnings,2026-07-22,0,International Business Machines Corporation
-T,21.95,earnings,2026-07-22,0,AT&T Inc.
-SAN,13.32,earnings,2026-07-22,0,SAN
-SCHW,102.54,earnings,2026-07-21,0,The Charles Schwab Corporation
-IBKR,91.68,earnings,2026-07-21,0,"Interactive Brokers Group, Inc."
-DHR,201.11,earnings,2026-07-21,0,Danaher Corporation
-CB,352.53,earnings,2026-07-21,0,Chubb Limited
-COF,206.77,earnings,2026-07-21,0,Capital One Financial Corporation
-CME,245.11,earnings,2026-07-22,0,CME Group Inc.
-EQNR,37.35,earnings,2026-07-22,0,Equinor ASA
-NOW,104.7,earnings,2026-07-22,0,"ServiceNow, Inc."
-CSX,50.11,earnings,2026-07-22,0,CSX Corporation
-NOC,523.96,earnings,2026-07-21,0,NOC
-MRSH,182.1,earnings,2026-07-21,0,"Marsh & McLennan Companies, Inc."
-AMX,26.1,earnings,2026-07-21,0,"América Móvil, S.A.B. de C.V."
-MMM,159.11,earnings,2026-07-21,0,3M Company
-KMI,32.58,earnings,2026-07-22,0,KMI
-GM,75.8,earnings,2026-07-21,0,GM
-TEL,203.14,earnings,2026-07-22,0,TEL
+GOOG,346.19,earnings,2026-07-22,0,Alphabet Inc.
+GOOGL,347.15,earnings,2026-07-22,0,Alphabet Inc.
+TSLA,378.93,earnings,2026-07-22,0,"Tesla, Inc."
+INTC,105.45,earnings,2026-07-23,0,Intel Corporation
+GEV,1078.81,earnings,2026-07-22,0,GE Vernova Inc.
+TXN,291.3,earnings,2026-07-22,0,Texas Instruments Incorporated
+RTX,193.67,earnings,2026-07-23,0,RTX Corporation
+PM,188.04,earnings,2026-07-22,0,Philip Morris International Inc.
+IBM,210.5,earnings,2026-07-22,0,International Business Machines Corporation
+TMUS,190.77,earnings,2026-07-23,0,"T-Mobile US, Inc."
+T,22.26,earnings,2026-07-22,0,AT&T Inc.
+SAP,154.34,earnings,2026-07-23,0,SAP SE
+TTE,83.53,earnings,2026-07-23,0,TotalEnergies SE
+SAN,13.65,earnings,2026-07-22,0,"Banco Santander, S.A."
+TMO,523.46,earnings,2026-07-23,0,Thermo Fisher Scientific Inc.
+UNP,293.13,earnings,2026-07-23,0,Union Pacific Corporation
+BX,124.15,earnings,2026-07-23,0,Blackstone Inc.
+HON,229.86,earnings,2026-07-23,0,Honeywell International Inc.
+NEM,92.49,earnings,2026-07-23,0,Newmont Corporation
+LMT,507.09,earnings,2026-07-23,0,Lockheed Martin Corporation
+CME,237.38,earnings,2026-07-22,0,CME Group Inc.
+EQNR,37.59,earnings,2026-07-22,0,Equinor ASA
+CMCSA,23.81,earnings,2026-07-23,0,Comcast Corporation
+NOW,102.06,earnings,2026-07-22,0,"ServiceNow, Inc."
+CSX,49.89,earnings,2026-07-22,0,CSX Corporation
+FCX,62.56,earnings,2026-07-23,0,Freeport-McMoRan Inc.
+MCO,490.77,earnings,2026-07-22,0,Moody's Corporation
+KMI,32.38,earnings,2026-07-22,0,"Kinder Morgan, Inc."
+NSC,331.3,earnings,2026-07-23,0,Norfolk Southern Corporation
+DLR,179.31,earnings,2026-07-23,0,"Digital Realty Trust, Inc."
+NOK,10.63,earnings,2026-07-23,0,Nokia Oyj
+TEL,209.01,earnings,2026-07-22,0,TE Connectivity plc
+KB,120.09,earnings,2026-07-23,0,KB Financial Group Inc.
+ROP,350.69,earnings,2026-07-23,0,"Roper Technologies, Inc."
+PKG,228.21,earnings,2026-07-22,0,Packaging Corporation of America
+CX,12.7,earnings,2026-07-23,0,"CEMEX, S.A.B. de C.V."
