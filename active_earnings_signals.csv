@@ -1,37 +1,37 @@
 symbol,price,type,earnings_date,mkt_cap,name
-GOOG,346.19,earnings,2026-07-22,0,Alphabet Inc.
-GOOGL,347.15,earnings,2026-07-22,0,Alphabet Inc.
-TSLA,378.93,earnings,2026-07-22,0,"Tesla, Inc."
-INTC,105.45,earnings,2026-07-23,0,Intel Corporation
-GEV,1078.81,earnings,2026-07-22,0,GE Vernova Inc.
-TXN,291.3,earnings,2026-07-22,0,Texas Instruments Incorporated
-RTX,193.67,earnings,2026-07-23,0,RTX Corporation
-PM,188.04,earnings,2026-07-22,0,Philip Morris International Inc.
-IBM,210.5,earnings,2026-07-22,0,International Business Machines Corporation
-TMUS,190.77,earnings,2026-07-23,0,"T-Mobile US, Inc."
-T,22.26,earnings,2026-07-22,0,AT&T Inc.
-SAP,154.34,earnings,2026-07-23,0,SAP SE
-TTE,83.53,earnings,2026-07-23,0,TotalEnergies SE
-SAN,13.65,earnings,2026-07-22,0,"Banco Santander, S.A."
-TMO,523.46,earnings,2026-07-23,0,Thermo Fisher Scientific Inc.
-UNP,293.13,earnings,2026-07-23,0,Union Pacific Corporation
-BX,124.15,earnings,2026-07-23,0,Blackstone Inc.
-HON,229.86,earnings,2026-07-23,0,Honeywell International Inc.
-NEM,92.49,earnings,2026-07-23,0,Newmont Corporation
-LMT,507.09,earnings,2026-07-23,0,Lockheed Martin Corporation
-CME,237.38,earnings,2026-07-22,0,CME Group Inc.
-EQNR,37.59,earnings,2026-07-22,0,Equinor ASA
-CMCSA,23.81,earnings,2026-07-23,0,Comcast Corporation
-NOW,102.06,earnings,2026-07-22,0,"ServiceNow, Inc."
-CSX,49.89,earnings,2026-07-22,0,CSX Corporation
-FCX,62.56,earnings,2026-07-23,0,Freeport-McMoRan Inc.
-MCO,490.77,earnings,2026-07-22,0,Moody's Corporation
-KMI,32.38,earnings,2026-07-22,0,"Kinder Morgan, Inc."
-NSC,331.3,earnings,2026-07-23,0,Norfolk Southern Corporation
-DLR,179.31,earnings,2026-07-23,0,"Digital Realty Trust, Inc."
-NOK,10.63,earnings,2026-07-23,0,Nokia Oyj
-TEL,209.01,earnings,2026-07-22,0,TE Connectivity plc
-KB,120.09,earnings,2026-07-23,0,KB Financial Group Inc.
-ROP,350.69,earnings,2026-07-23,0,"Roper Technologies, Inc."
-PKG,228.21,earnings,2026-07-22,0,Packaging Corporation of America
-CX,12.7,earnings,2026-07-23,0,"CEMEX, S.A.B. de C.V."
+INTC,102.62,earnings,2026-07-23,0,Intel Corporation
+RTX,194.88,earnings,2026-07-23,0,RTX Corporation
+AXP,348.74,earnings,2026-07-24,0,American Express Company
+NEE,89.41,earnings,2026-07-24,0,"NextEra Energy, Inc."
+TMUS,190.94,earnings,2026-07-23,0,"T-Mobile US, Inc."
+VZ,44.29,earnings,2026-07-24,0,Verizon Communications Inc.
+SAP,148.75,earnings,2026-07-23,0,SAP SE
+TTE,84.91,earnings,2026-07-23,0,TotalEnergies SE
+TMO,526.46,earnings,2026-07-23,0,Thermo Fisher Scientific Inc.
+UNP,292.56,earnings,2026-07-23,0,Union Pacific Corporation
+BX,122.82,earnings,2026-07-23,0,Blackstone Inc.
+HON,232.99,earnings,2026-07-23,0,Honeywell International Inc.
+NEM,95.75,earnings,2026-07-23,0,Newmont Corporation
+LMT,514.36,earnings,2026-07-23,0,Lockheed Martin Corporation
+CMCSA,23.52,earnings,2026-07-23,0,Comcast Corporation
+HCA,371.87,earnings,2026-07-24,0,"HCA Healthcare, Inc."
+SLB,47.67,earnings,2026-07-24,0,SLB N.V.
+FCX,65.0,earnings,2026-07-23,0,Freeport-McMoRan Inc.
+NSC,330.94,earnings,2026-07-23,0,Norfolk Southern Corporation
+DLR,178.41,earnings,2026-07-23,0,"Digital Realty Trust, Inc."
+CNI,127.91,earnings,2026-07-24,0,Canadian National Railway Company
+NOK,10.28,earnings,2026-07-23,0,Nokia Oyj
+FIX,1791.06,earnings,2026-07-23,0,"Comfort Systems USA, Inc."
+RELX,32.74,earnings,2026-07-23,0,RELX PLC
+NDAQ,90.9,earnings,2026-07-23,0,"Nasdaq, Inc."
+INFY,10.93,earnings,2026-07-23,0,Infosys Limited
+ARGX,851.72,earnings,2026-07-23,0,argenx SE
+EW,84.37,earnings,2026-07-23,0,Edwards Lifesciences Corporation
+STM,65.77,earnings,2026-07-23,0,STMicroelectronics N.V.
+AMP,526.82,earnings,2026-07-23,0,"Ameriprise Financial, Inc."
+KB,118.94,earnings,2026-07-23,0,KB Financial Group Inc.
+HIG,140.84,earnings,2026-07-23,0,"The Hartford Insurance Group, Inc."
+PCG,18.11,earnings,2026-07-23,0,PG&E Corporation
+ROP,336.71,earnings,2026-07-23,0,"Roper Technologies, Inc."
+HBAN,18.27,earnings,2026-07-23,0,Huntington Bancshares Incorporated
+TECK,57.21,earnings,2026-07-23,0,Teck Resources Limited
