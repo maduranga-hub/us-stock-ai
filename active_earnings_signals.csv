@@ -1,4 +1,36 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AXP,340.84,earnings,2026-07-24,0,American Express Company
-NEE,89.79,earnings,2026-07-24,0,"NextEra Energy, Inc."
-VZ,43.82,earnings,2026-07-24,0,Verizon Communications Inc.
+V,360.91,earnings,2026-07-28,0,Visa Inc.
+KO,82.885,earnings,2026-07-28,0,The Coca-Cola Company
+AZN,170.825,earnings,2026-07-27,0,AstraZeneca PLC
+KLAC,208.84,earnings,2026-07-28,0,KLA Corporation
+BA,214.16,earnings,2026-07-28,0,The Boeing Company
+RIO,91.66,earnings,2026-07-28,0,Rio Tinto Group
+WELL,249.425,earnings,2026-07-27,0,Welltower Inc.
+STX,850.4784,earnings,2026-07-28,0,Seagate Technology Holdings plc
+GLW,145.85,earnings,2026-07-28,0,Corning Incorporated
+SPGI,435.1,earnings,2026-07-28,0,S&P Global Inc.
+UL,61.28,earnings,2026-07-28,0,Unilever PLC
+GSK,52.1107,earnings,2026-07-28,0,GSK plc
+WM,239.32,earnings,2026-07-28,0,"Waste Management, Inc."
+UPS,114.25,earnings,2026-07-28,0,"United Parcel Service, Inc."
+CDNS,339.94,earnings,2026-07-27,0,"Cadence Design Systems, Inc."
+AMT,166.79,earnings,2026-07-28,0,American Tower Corporation
+BE,190.0,earnings,2026-07-28,0,Bloom Energy Corporation
+BCS,28.59,earnings,2026-07-28,0,Barclays PLC
+SHW,326.415,earnings,2026-07-28,0,The Sherwin-Williams Company
+MDLZ,60.29,earnings,2026-07-28,0,"Mondelez International, Inc."
+ITW,286.14,earnings,2026-07-28,0,Illinois Tool Works Inc.
+ECL,270.89,earnings,2026-07-28,0,Ecolab Inc.
+NXPI,273.87,earnings,2026-07-28,0,NXP Semiconductors N.V.
+HLT,327.965,earnings,2026-07-28,0,Hilton Worldwide Holdings Inc.
+RCL,299.2395,earnings,2026-07-28,0,Royal Caribbean Cruises Ltd.
+PCAR,133.7475,earnings,2026-07-28,0,PACCAR Inc
+CARR,69.215,earnings,2026-07-28,0,Carrier Global Corporation
+TER,344.08,earnings,2026-07-28,0,"Teradyne, Inc."
+EA,209.065,earnings,2026-07-28,0,Electronic Arts Inc.
+NUE,249.92,earnings,2026-07-27,0,Nucor Corporation
+FER,63.22,earnings,2026-07-28,0,Ferrovial N.V.
+F,14.73,earnings,2026-07-28,0,Ford Motor Company
+CLS,306.71,earnings,2026-07-27,0,Celestica Inc.
+PYPL,55.79,earnings,2026-07-28,0,"PayPal Holdings, Inc."
+ACGL,103.7,earnings,2026-07-28,0,Arch Capital Group Ltd.
