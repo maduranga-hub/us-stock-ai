@@ -1,72 +1,49 @@
 symbol,price,type,earnings_date,mkt_cap,name
-MSFT,389.1,earnings,2026-07-29,0,Microsoft Corporation
-META,593.87,earnings,2026-07-29,0,"Meta Platforms, Inc."
-V,362.53,earnings,2026-07-28,0,V
-PG,148.63,earnings,2026-07-29,0,PG
-LRCX,291.61,earnings,2026-07-29,0,Lam Research Corporation
-KLAC,203.36,earnings,2026-07-28,0,KLA Corporation
-ARM,266.33,earnings,2026-07-29,0,Arm Holdings plc
-QCOM,170.04,earnings,2026-07-29,0,QUALCOMM Incorporated
-APH,149.28,earnings,2026-07-29,0,APH
-RIO,91.95,earnings,2026-07-28,0,Rio Tinto Group
-STX,816.99,earnings,2026-07-28,0,STX
-UBS,52.54,earnings,2026-07-29,0,UBS Group AG
-VRT,287.6,earnings,2026-07-29,0,Vertiv Holdings Co
-SBUX,103.65,earnings,2026-07-29,0,Starbucks Corporation
-EQIX,1046.79,earnings,2026-07-29,0,"Equinix, Inc."
-WM,237.9,earnings,2026-07-28,0,"Waste Management, Inc."
-GD,389.14,earnings,2026-07-29,0,General Dynamics Corporation
-AEM,145.96,earnings,2026-07-29,0,Agnico Eagle Mines Limited
-UPS,112.95,earnings,2026-07-28,0,UPS
-JCI,143.39,earnings,2026-07-29,0,JCI
-ADP,254.98,earnings,2026-07-29,0,"Automatic Data Processing, Inc."
-CVNA,64.04,earnings,2026-07-29,0,Carvana Co.
-AMT,166.74,earnings,2026-07-28,0,American Tower Corporation
-BSX,45.51,earnings,2026-07-29,0,Boston Scientific Corporation
-ORLY,90.59,earnings,2026-07-29,0,"O'Reilly Automotive, Inc."
-E,50.63,earnings,2026-07-29,0,Eni S.p.A.
-BE,188.18,earnings,2026-07-28,0,Bloom Energy Corporation
-BCS,28.56,earnings,2026-07-28,0,Barclays PLC
-MDLZ,60.67,earnings,2026-07-28,0,"Mondelez International, Inc."
-CP,91.4,earnings,2026-07-29,0,Canadian Pacific Kansas City Limited
-NXPI,267.67,earnings,2026-07-28,0,NXP Semiconductors N.V.
-ITW,284.82,earnings,2026-07-28,0,Illinois Tool Works Inc.
-HLT,330.85,earnings,2026-07-28,0,Hilton Worldwide Holdings Inc.
-ECL,271.38,earnings,2026-07-28,0,Ecolab Inc.
-RCL,305.04,earnings,2026-07-28,0,RCL
-HOOD,95.65,earnings,2026-07-29,0,"Robinhood Markets, Inc."
-AON,367.17,earnings,2026-07-29,0,Aon plc
-FTNT,152.38,earnings,2026-07-29,0,"Fortinet, Inc."
-LHX,303.48,earnings,2026-07-29,0,"L3Harris Technologies, Inc."
-CARR,69.33,earnings,2026-07-28,0,Carrier Global Corporation
-DB,35.5,earnings,2026-07-29,0,Deutsche Bank Aktiengesellschaft
-CVE,28.04,earnings,2026-07-29,0,CVE
-ETR,113.76,earnings,2026-07-29,0,Entergy Corporation
-TER,334.77,earnings,2026-07-28,0,TER
-PSA,324.02,earnings,2026-07-29,0,Public Storage
-FER,62.86,earnings,2026-07-28,0,Ferrovial N.V.
-GRMN,242.47,earnings,2026-07-29,0,Garmin Ltd.
-EA,209.07,earnings,2026-07-28,0,EA
-F,14.68,earnings,2026-07-28,0,F
-CMG,33.2,earnings,2026-07-29,0,CMG
-VTR,100.11,earnings,2026-07-29,0,VTR
-ODFL,226.77,earnings,2026-07-29,0,"Old Dominion Freight Line, Inc."
-CBRE,143.88,earnings,2026-07-29,0,"CBRE Group, Inc."
-TEVA,31.08,earnings,2026-07-29,0,Teva Pharmaceutical Industries Limited
-VMC,284.49,earnings,2026-07-29,0,Vulcan Materials Company
-WEC,113.82,earnings,2026-07-29,0,WEC
-KGC,23.92,earnings,2026-07-29,0,Kinross Gold Corporation
-FLEX,116.07,earnings,2026-07-29,0,Flex Ltd.
-ACGL,103.88,earnings,2026-07-28,0,Arch Capital Group Ltd.
-DTE,147.23,earnings,2026-07-28,0,DTE
-VICI,26.75,earnings,2026-07-29,0,VICI Properties Inc.
-EXR,148.29,earnings,2026-07-28,0,Extra Space Storage Inc.
-UMC,19.08,earnings,2026-07-29,0,United Microelectronics Corporation
-CNP,44.01,earnings,2026-07-28,0,"CenterPoint Energy, Inc."
-GEHC,61.12,earnings,2026-07-29,0,GE HealthCare Technologies Inc.
-BIIB,200.14,earnings,2026-07-29,0,Biogen Inc.
-HUM,381.15,earnings,2026-07-29,0,HUM
-FE,49.32,earnings,2026-07-28,0,FirstEnergy Corp.
-HUBB,497.96,earnings,2026-07-28,0,Hubbell Incorporated
-IQV,213.22,earnings,2026-07-28,0,IQVIA Holdings Inc.
-CNC,64.08,earnings,2026-07-28,0,Centene Corporation
+AMZN,230.86,earnings,2026-07-30,0,"Amazon.com, Inc."
+AAPL,340.08,earnings,2026-07-30,0,Apple Inc.
+META,593.41,earnings,2026-07-29,0,"Meta Platforms, Inc."
+MSFT,393.35,earnings,2026-07-29,0,Microsoft Corporation
+MA,562.75,earnings,2026-07-30,0,Mastercard Incorporated
+LRCX,269.61,earnings,2026-07-29,0,Lam Research Corporation
+SHEL,86.2,earnings,2026-07-30,0,Shell plc
+ARM,244.74,earnings,2026-07-29,0,Arm Holdings plc
+QCOM,162.88,earnings,2026-07-29,0,QUALCOMM Incorporated
+BUD,83.2,earnings,2026-07-30,0,Anheuser-Busch InBev SA/NV
+UBS,52.03,earnings,2026-07-29,0,UBS Group AG
+VRT,269.56,earnings,2026-07-29,0,Vertiv Holdings Co
+BMY,63.6,earnings,2026-07-30,0,Bristol-Myers Squibb Company
+BTI,62.3,earnings,2026-07-30,0,British American Tobacco p.l.c.
+MO,74.82,earnings,2026-07-30,0,"Altria Group, Inc."
+BBVA,26.52,earnings,2026-07-30,0,"Banco Bilbao Vizcaya Argentaria, S.A."
+SYK,346.6,earnings,2026-07-30,0,Stryker Corporation
+SBUX,103.1,earnings,2026-07-29,0,Starbucks Corporation
+SNY,45.54,earnings,2026-07-30,0,Sanofi
+PWR,588.36,earnings,2026-07-30,0,"Quanta Services, Inc."
+TT,470.03,earnings,2026-07-30,0,Trane Technologies plc
+EQIX,1034.86,earnings,2026-07-29,0,"Equinix, Inc."
+SO,96.78,earnings,2026-07-30,0,The Southern Company
+MFG,10.09,earnings,2026-07-30,0,"Mizuho Financial Group, Inc."
+AEM,143.71,earnings,2026-07-29,0,Agnico Eagle Mines Limited
+KKR,102.66,earnings,2026-07-30,0,KKR & Co. Inc.
+GD,393.19,earnings,2026-07-29,0,General Dynamics Corporation
+CVNA,66.07,earnings,2026-07-29,0,Carvana Co.
+ICE,152.72,earnings,2026-07-30,0,"Intercontinental Exchange, Inc."
+BSX,46.06,earnings,2026-07-29,0,Boston Scientific Corporation
+EPD,38.63,earnings,2026-07-30,0,Enterprise Products Partners L.P.
+ORLY,91.17,earnings,2026-07-29,0,"O'Reilly Automotive, Inc."
+RACE,390.14,earnings,2026-07-30,0,Ferrari N.V.
+E,50.23,earnings,2026-07-29,0,Eni S.p.A.
+CRH,103.4,earnings,2026-07-30,0,CRH plc
+MPWR,1282.01,earnings,2026-07-30,0,"Monolithic Power Systems, Inc."
+ING,33.28,earnings,2026-07-30,0,ING Groep N.V.
+CP,91.7,earnings,2026-07-29,0,Canadian Pacific Kansas City Limited
+CI,301.06,earnings,2026-07-30,0,The Cigna Group
+LYG,6.01,earnings,2026-07-30,0,Lloyds Banking Group plc
+VLO,298.88,earnings,2026-07-30,0,Valero Energy Corporation
+REGN,695.18,earnings,2026-07-30,0,"Regeneron Pharmaceuticals, Inc."
+AEP,133.02,earnings,2026-07-30,0,"American Electric Power Company, Inc."
+TRP,67.69,earnings,2026-07-30,0,TC Energy Corporation
+ASX,33.93,earnings,2026-07-30,0,"ASE Technology Holding Co., Ltd."
+VALE,14.7,earnings,2026-07-30,0,Vale S.A.
+AON,381.26,earnings,2026-07-29,0,Aon plc
+APD,292.85,earnings,2026-07-30,0,"Air Products and Chemicals, Inc."
