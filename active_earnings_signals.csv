@@ -1,49 +1,29 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMZN,230.86,earnings,2026-07-30,0,"Amazon.com, Inc."
-AAPL,340.08,earnings,2026-07-30,0,Apple Inc.
-META,593.41,earnings,2026-07-29,0,"Meta Platforms, Inc."
-MSFT,393.35,earnings,2026-07-29,0,Microsoft Corporation
-MA,562.75,earnings,2026-07-30,0,Mastercard Incorporated
-LRCX,269.61,earnings,2026-07-29,0,Lam Research Corporation
-SHEL,86.2,earnings,2026-07-30,0,Shell plc
-ARM,244.74,earnings,2026-07-29,0,Arm Holdings plc
-QCOM,162.88,earnings,2026-07-29,0,QUALCOMM Incorporated
-BUD,83.2,earnings,2026-07-30,0,Anheuser-Busch InBev SA/NV
-UBS,52.03,earnings,2026-07-29,0,UBS Group AG
-VRT,269.56,earnings,2026-07-29,0,Vertiv Holdings Co
-BMY,63.6,earnings,2026-07-30,0,Bristol-Myers Squibb Company
-BTI,62.3,earnings,2026-07-30,0,British American Tobacco p.l.c.
-MO,74.82,earnings,2026-07-30,0,"Altria Group, Inc."
-BBVA,26.52,earnings,2026-07-30,0,"Banco Bilbao Vizcaya Argentaria, S.A."
-SYK,346.6,earnings,2026-07-30,0,Stryker Corporation
-SBUX,103.1,earnings,2026-07-29,0,Starbucks Corporation
-SNY,45.54,earnings,2026-07-30,0,Sanofi
-PWR,588.36,earnings,2026-07-30,0,"Quanta Services, Inc."
-TT,470.03,earnings,2026-07-30,0,Trane Technologies plc
-EQIX,1034.86,earnings,2026-07-29,0,"Equinix, Inc."
-SO,96.78,earnings,2026-07-30,0,The Southern Company
-MFG,10.09,earnings,2026-07-30,0,"Mizuho Financial Group, Inc."
-AEM,143.71,earnings,2026-07-29,0,Agnico Eagle Mines Limited
-KKR,102.66,earnings,2026-07-30,0,KKR & Co. Inc.
-GD,393.19,earnings,2026-07-29,0,General Dynamics Corporation
-CVNA,66.07,earnings,2026-07-29,0,Carvana Co.
-ICE,152.72,earnings,2026-07-30,0,"Intercontinental Exchange, Inc."
-BSX,46.06,earnings,2026-07-29,0,Boston Scientific Corporation
-EPD,38.63,earnings,2026-07-30,0,Enterprise Products Partners L.P.
-ORLY,91.17,earnings,2026-07-29,0,"O'Reilly Automotive, Inc."
-RACE,390.14,earnings,2026-07-30,0,Ferrari N.V.
-E,50.23,earnings,2026-07-29,0,Eni S.p.A.
-CRH,103.4,earnings,2026-07-30,0,CRH plc
-MPWR,1282.01,earnings,2026-07-30,0,"Monolithic Power Systems, Inc."
-ING,33.28,earnings,2026-07-30,0,ING Groep N.V.
-CP,91.7,earnings,2026-07-29,0,Canadian Pacific Kansas City Limited
-CI,301.06,earnings,2026-07-30,0,The Cigna Group
-LYG,6.01,earnings,2026-07-30,0,Lloyds Banking Group plc
-VLO,298.88,earnings,2026-07-30,0,Valero Energy Corporation
-REGN,695.18,earnings,2026-07-30,0,"Regeneron Pharmaceuticals, Inc."
-AEP,133.02,earnings,2026-07-30,0,"American Electric Power Company, Inc."
-TRP,67.69,earnings,2026-07-30,0,TC Energy Corporation
-ASX,33.93,earnings,2026-07-30,0,"ASE Technology Holding Co., Ltd."
-VALE,14.7,earnings,2026-07-30,0,Vale S.A.
-AON,381.26,earnings,2026-07-29,0,Aon plc
-APD,292.85,earnings,2026-07-30,0,"Air Products and Chemicals, Inc."
+AMZN,226.65,earnings,2026-07-30,0,"Amazon.com, Inc."
+AAPL,338.19,earnings,2026-07-30,0,Apple Inc.
+XOM,156.75,earnings,2026-07-31,0,ExxonMobil Holdings Corporation
+ABBV,263.3,earnings,2026-07-31,0,AbbVie Inc.
+MA,563.32,earnings,2026-07-30,0,Mastercard Incorporated
+CVX,191.86,earnings,2026-07-31,0,Chevron Corporation
+SHEL,88.34,earnings,2026-07-30,0,Shell plc
+LIN,511.17,earnings,2026-07-31,0,Linde plc
+ETN,361.88,earnings,2026-07-31,0,Eaton Corporation plc
+BUD,84.87,earnings,2026-07-30,0,Anheuser-Busch InBev SA/NV
+SMFG,24.96,earnings,2026-07-31,0,"Sumitomo Mitsui Financial Group, Inc."
+BMY,63.1,earnings,2026-07-30,0,Bristol-Myers Squibb Company
+SONY,23.27,earnings,2026-07-31,0,Sony Group Corporation
+BBVA,25.66,earnings,2026-07-30,0,"Banco Bilbao Vizcaya Argentaria, S.A."
+ENB,55.14,earnings,2026-07-31,0,Enbridge Inc.
+MO,74.92,earnings,2026-07-30,0,"Altria Group, Inc."
+SYK,352.25,earnings,2026-07-30,0,Stryker Corporation
+TT,446.8,earnings,2026-07-30,0,Trane Technologies plc
+KKR,99.28,earnings,2026-07-30,0,KKR & Co. Inc.
+ICE,154.28,earnings,2026-07-30,0,"Intercontinental Exchange, Inc."
+MPWR,1248.76,earnings,2026-07-30,0,"Monolithic Power Systems, Inc."
+ING,32.51,earnings,2026-07-30,0,ING Groep N.V.
+TRP,67.28,earnings,2026-07-30,0,TC Energy Corporation
+CL,93.49,earnings,2026-07-31,0,Colgate-Palmolive Company
+ASX,31.12,earnings,2026-07-30,0,"ASE Technology Holding Co., Ltd."
+VALE,14.65,earnings,2026-07-30,0,Vale S.A.
+MSTR,93.33,earnings,2026-07-30,0,Strategy Inc
+BCH,40.79,earnings,2026-07-31,0,Banco de Chile
