@@ -1,29 +1,13 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMZN,226.65,earnings,2026-07-30,0,"Amazon.com, Inc."
-AAPL,338.19,earnings,2026-07-30,0,Apple Inc.
-XOM,156.75,earnings,2026-07-31,0,ExxonMobil Holdings Corporation
-ABBV,263.3,earnings,2026-07-31,0,AbbVie Inc.
-MA,563.32,earnings,2026-07-30,0,Mastercard Incorporated
-CVX,191.86,earnings,2026-07-31,0,Chevron Corporation
-SHEL,88.34,earnings,2026-07-30,0,Shell plc
-LIN,511.17,earnings,2026-07-31,0,Linde plc
-ETN,361.88,earnings,2026-07-31,0,Eaton Corporation plc
-BUD,84.87,earnings,2026-07-30,0,Anheuser-Busch InBev SA/NV
-SMFG,24.96,earnings,2026-07-31,0,"Sumitomo Mitsui Financial Group, Inc."
-BMY,63.1,earnings,2026-07-30,0,Bristol-Myers Squibb Company
-SONY,23.27,earnings,2026-07-31,0,Sony Group Corporation
-BBVA,25.66,earnings,2026-07-30,0,"Banco Bilbao Vizcaya Argentaria, S.A."
-ENB,55.14,earnings,2026-07-31,0,Enbridge Inc.
-MO,74.92,earnings,2026-07-30,0,"Altria Group, Inc."
-SYK,352.25,earnings,2026-07-30,0,Stryker Corporation
-TT,446.8,earnings,2026-07-30,0,Trane Technologies plc
-KKR,99.28,earnings,2026-07-30,0,KKR & Co. Inc.
-ICE,154.28,earnings,2026-07-30,0,"Intercontinental Exchange, Inc."
-MPWR,1248.76,earnings,2026-07-30,0,"Monolithic Power Systems, Inc."
-ING,32.51,earnings,2026-07-30,0,ING Groep N.V.
-TRP,67.28,earnings,2026-07-30,0,TC Energy Corporation
-CL,93.49,earnings,2026-07-31,0,Colgate-Palmolive Company
-ASX,31.12,earnings,2026-07-30,0,"ASE Technology Holding Co., Ltd."
-VALE,14.65,earnings,2026-07-30,0,Vale S.A.
-MSTR,93.33,earnings,2026-07-30,0,Strategy Inc
-BCH,40.79,earnings,2026-07-31,0,Banco de Chile
+CVX,192.31,earnings,2026-07-31,0,Chevron Corporation
+LIN,508.64,earnings,2026-07-31,0,Linde plc
+ETN,386.89,earnings,2026-07-31,0,Eaton Corporation plc
+SMFG,25.78,earnings,2026-07-31,0,"Sumitomo Mitsui Financial Group, Inc."
+ENB,55.43,earnings,2026-07-31,0,Enbridge Inc.
+CL,91.6,earnings,2026-07-31,0,Colgate-Palmolive Company
+VALE,14.99,earnings,2026-07-31,0,Vale S.A.
+AU,82.33,earnings,2026-07-31,0,AngloGold Ashanti plc
+ARES,124.12,earnings,2026-07-31,0,Ares Management Corporation
+LYB,60.44,earnings,2026-07-31,0,LyondellBasell Industries N.V.
+NVT,144.8,earnings,2026-07-31,0,nVent Electric plc
+BCH,42.25,earnings,2026-07-31,0,Banco de Chile
