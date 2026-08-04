@@ -1,43 +1,46 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMD,467.19,earnings,2026-08-04,0,AMD
-CAT,818.17,earnings,2026-08-04,0,CAT
-PLTR,126.635,earnings,2026-08-03,0,Palantir Technologies Inc.
-HSBC,107.26,earnings,2026-08-04,0,HSBC Holdings plc
-MRK,128.03,earnings,2026-08-04,0,MRK
-TM,188.405,earnings,2026-08-04,0,Toyota Motor Corporation
-ANET,176.35,earnings,2026-08-04,0,"Arista Networks, Inc."
-MCD,273.78,earnings,2026-08-04,0,MCD
-AMGN,382.2,earnings,2026-08-04,0,Amgen Inc.
-GILD,129.54,earnings,2026-08-04,0,"Gilead Sciences, Inc."
-PFE,25.04,earnings,2026-08-04,0,PFE
-BKNG,194.07,earnings,2026-08-04,0,Booking Holdings Inc.
-BP,43.8898,earnings,2026-08-04,0,BP p.l.c.
-VRTX,471.425,earnings,2026-08-03,0,Vertex Pharmaceuticals Incorporated
-DUK,125.38,earnings,2026-08-04,0,Duke Energy Corporation
-WMB,70.36,earnings,2026-08-03,0,"The Williams Companies, Inc."
-ITUB,8.5003,earnings,2026-08-04,0,Itaú Unibanco Holding S.A.
-CMI,636.62,earnings,2026-08-04,0,Cummins Inc.
-SPOT,504.04,earnings,2026-08-04,0,Spotify Technology S.A.
-SU,65.87,earnings,2026-08-04,0,SU
-EMR,151.135,earnings,2026-08-04,0,Emerson Electric Co.
-EOG,145.51,earnings,2026-08-04,0,"EOG Resources, Inc."
-APO,128.561,earnings,2026-08-04,0,"Apollo Global Management, Inc."
-MPC,309.38,earnings,2026-08-04,0,Marathon Petroleum Corporation
-ET,20.285,earnings,2026-08-04,0,Energy Transfer LP
-TDG,1280.59,earnings,2026-08-04,0,TDG
-OKE,88.12,earnings,2026-08-03,0,"ONEOK, Inc."
-FANG,198.06,earnings,2026-08-03,0,"Diamondback Energy, Inc."
-MPLX,58.4798,earnings,2026-08-04,0,MPLX LP
-AME,242.495,earnings,2026-08-04,0,"AMETEK, Inc."
-GWW,1374.715,earnings,2026-08-04,0,GWW
-EA,209.93,earnings,2026-08-04,0,EA
-ROK,481.15,earnings,2026-08-04,0,"Rockwell Automation, Inc."
-IDXX,574.98,earnings,2026-08-04,0,"IDEXX Laboratories, Inc."
-CCEP,109.07,earnings,2026-08-04,0,Coca-Cola Europacific Partners PLC
-ON,80.23,earnings,2026-08-03,0,ON Semiconductor Corporation
-PEG,76.745,earnings,2026-08-04,0,Public Service Enterprise Group Incorporated
-CPNG,16.595,earnings,2026-08-04,0,"Coupang, Inc."
-TKO,187.055,earnings,2026-08-03,0,"TKO Group Holdings, Inc."
-ADM,77.77,earnings,2026-08-04,0,ADM
-SYY,85.49,earnings,2026-08-04,0,SYY
-PRU,122.915,earnings,2026-08-04,0,PRU
+AMD,484.64,earnings,2026-08-04,0,"Advanced Micro Devices, Inc."
+LLY,1121.36,earnings,2026-08-05,0,Eli Lilly and Company
+ANET,184.89,earnings,2026-08-04,0,"Arista Networks, Inc."
+AMGN,378.87,earnings,2026-08-04,0,Amgen Inc.
+DIS,98.14,earnings,2026-08-05,0,The Walt Disney Company
+GILD,131.15,earnings,2026-08-04,0,"Gilead Sciences, Inc."
+NVO,47.09,earnings,2026-08-05,0,Novo Nordisk A/S
+SNDK,1288.03,earnings,2026-08-05,0,Sandisk Corporation
+SHOP,117.01,earnings,2026-08-05,0,Shopify Inc.
+UBER,71.61,earnings,2026-08-05,0,"Uber Technologies, Inc."
+APP,406.16,earnings,2026-08-05,0,AppLovin Corporation
+WDC,527.22,earnings,2026-08-05,0,Western Digital Corporation
+BKNG,192.71,earnings,2026-08-04,0,Booking Holdings Inc.
+CVS,105.37,earnings,2026-08-05,0,CVS Health Corporation
+MCK,827.14,earnings,2026-08-05,0,McKesson Corporation
+ITUB,8.49,earnings,2026-08-04,0,Itaú Unibanco Holding S.A.
+MELI,1898.79,earnings,2026-08-05,0,"MercadoLibre, Inc."
+SU,65.98,earnings,2026-08-04,0,Suncor Energy Inc.
+EMR,154.85,earnings,2026-08-04,0,Emerson Electric Co.
+BAM,50.69,earnings,2026-08-05,0,Brookfield Asset Management Ltd.
+EOG,145.68,earnings,2026-08-04,0,"EOG Resources, Inc."
+DASH,200.5,earnings,2026-08-05,0,"DoorDash, Inc."
+PSX,206.19,earnings,2026-08-05,0,Phillips 66
+MSI,437.19,earnings,2026-08-05,0,"Motorola Solutions, Inc."
+MFC,44.51,earnings,2026-08-05,0,Manulife Financial Corporation
+OXY,55.47,earnings,2026-08-05,0,Occidental Petroleum Corporation
+O,63.48,earnings,2026-08-05,0,Realty Income Corporation
+COR,308.37,earnings,2026-08-05,0,"Cencora, Inc."
+MDLN,40.47,earnings,2026-08-05,0,Medline Inc.
+ALL,262.68,earnings,2026-08-05,0,The Allstate Corporation
+MET,96.31,earnings,2026-08-05,0,"MetLife, Inc."
+EBAY,107.13,earnings,2026-08-05,0,eBay Inc.
+XYZ,82.09,earnings,2026-08-05,0,"Block, Inc."
+TRI,101.61,earnings,2026-08-05,0,Thomson Reuters Corporation
+IRM,124.08,earnings,2026-08-05,0,Iron Mountain Incorporated
+NTR,65.96,earnings,2026-08-05,0,Nutrien Ltd.
+CPNG,16.42,earnings,2026-08-04,0,"Coupang, Inc."
+SYY,84.98,earnings,2026-08-04,0,Sysco Corporation
+GFS,50.01,earnings,2026-08-05,0,GLOBALFOUNDRIES Inc.
+SYM,45.85,earnings,2026-08-05,0,Symbotic Inc.
+PRU,122.98,earnings,2026-08-04,0,"Prudential Financial, Inc."
+FLUT,105.96,earnings,2026-08-05,0,Flutter Entertainment plc
+PR,20.9,earnings,2026-08-05,0,Permian Resources Corporation
+CDE,15.56,earnings,2026-08-05,0,"Coeur Mining, Inc."
+CG,48.91,earnings,2026-08-04,0,The Carlyle Group Inc.
