@@ -1,46 +1,108 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMD,484.64,earnings,2026-08-04,0,"Advanced Micro Devices, Inc."
-LLY,1121.36,earnings,2026-08-05,0,Eli Lilly and Company
-ANET,184.89,earnings,2026-08-04,0,"Arista Networks, Inc."
-AMGN,378.87,earnings,2026-08-04,0,Amgen Inc.
-DIS,98.14,earnings,2026-08-05,0,The Walt Disney Company
-GILD,131.15,earnings,2026-08-04,0,"Gilead Sciences, Inc."
-NVO,47.09,earnings,2026-08-05,0,Novo Nordisk A/S
-SNDK,1288.03,earnings,2026-08-05,0,Sandisk Corporation
-SHOP,117.01,earnings,2026-08-05,0,Shopify Inc.
-UBER,71.61,earnings,2026-08-05,0,"Uber Technologies, Inc."
-APP,406.16,earnings,2026-08-05,0,AppLovin Corporation
-WDC,527.22,earnings,2026-08-05,0,Western Digital Corporation
-BKNG,192.71,earnings,2026-08-04,0,Booking Holdings Inc.
-CVS,105.37,earnings,2026-08-05,0,CVS Health Corporation
-MCK,827.14,earnings,2026-08-05,0,McKesson Corporation
-ITUB,8.49,earnings,2026-08-04,0,Itaú Unibanco Holding S.A.
-MELI,1898.79,earnings,2026-08-05,0,"MercadoLibre, Inc."
-SU,65.98,earnings,2026-08-04,0,Suncor Energy Inc.
-EMR,154.85,earnings,2026-08-04,0,Emerson Electric Co.
-BAM,50.69,earnings,2026-08-05,0,Brookfield Asset Management Ltd.
-EOG,145.68,earnings,2026-08-04,0,"EOG Resources, Inc."
-DASH,200.5,earnings,2026-08-05,0,"DoorDash, Inc."
-PSX,206.19,earnings,2026-08-05,0,Phillips 66
-MSI,437.19,earnings,2026-08-05,0,"Motorola Solutions, Inc."
-MFC,44.51,earnings,2026-08-05,0,Manulife Financial Corporation
-OXY,55.47,earnings,2026-08-05,0,Occidental Petroleum Corporation
-O,63.48,earnings,2026-08-05,0,Realty Income Corporation
-COR,308.37,earnings,2026-08-05,0,"Cencora, Inc."
-MDLN,40.47,earnings,2026-08-05,0,Medline Inc.
-ALL,262.68,earnings,2026-08-05,0,The Allstate Corporation
-MET,96.31,earnings,2026-08-05,0,"MetLife, Inc."
-EBAY,107.13,earnings,2026-08-05,0,eBay Inc.
-XYZ,82.09,earnings,2026-08-05,0,"Block, Inc."
-TRI,101.61,earnings,2026-08-05,0,Thomson Reuters Corporation
-IRM,124.08,earnings,2026-08-05,0,Iron Mountain Incorporated
-NTR,65.96,earnings,2026-08-05,0,Nutrien Ltd.
-CPNG,16.42,earnings,2026-08-04,0,"Coupang, Inc."
-SYY,84.98,earnings,2026-08-04,0,Sysco Corporation
-GFS,50.01,earnings,2026-08-05,0,GLOBALFOUNDRIES Inc.
-SYM,45.85,earnings,2026-08-05,0,Symbotic Inc.
-PRU,122.98,earnings,2026-08-04,0,"Prudential Financial, Inc."
-FLUT,105.96,earnings,2026-08-05,0,Flutter Entertainment plc
-PR,20.9,earnings,2026-08-05,0,Permian Resources Corporation
-CDE,15.56,earnings,2026-08-05,0,"Coeur Mining, Inc."
-CG,48.91,earnings,2026-08-04,0,The Carlyle Group Inc.
+SNDK,1427.62,earnings,2026-08-05,0,Sandisk Corporation
+SHOP,123.3,earnings,2026-08-05,0,Shopify Inc.
+COP,117.94,earnings,2026-08-06,0,ConocoPhillips
+APP,419.7,earnings,2026-08-05,0,AppLovin Corporation
+WDC,548.56,earnings,2026-08-05,0,WDC
+PBR,18.72,earnings,2026-08-06,0,Petróleo Brasileiro S.A. - Petrobras
+PH,992.65,earnings,2026-08-06,0,Parker-Hannifin Corporation
+CEG,267.25,earnings,2026-08-06,0,Constellation Energy Corporation
+MCK,830.43,earnings,2026-08-05,0,MCK
+HWM,288.2,earnings,2026-08-06,0,Howmet Aerospace Inc.
+CNQ,46.18,earnings,2026-08-06,0,Canadian Natural Resources Limited
+MELI,1888.5,earnings,2026-08-05,0,"MercadoLibre, Inc."
+ABNB,149.92,earnings,2026-08-06,0,"Airbnb, Inc."
+BAM,51.94,earnings,2026-08-05,0,Brookfield Asset Management Ltd.
+MNST,94.18,earnings,2026-08-06,0,Monster Beverage Corporation
+DASH,202.37,earnings,2026-08-05,0,"DoorDash, Inc."
+MSI,442.85,earnings,2026-08-05,0,"Motorola Solutions, Inc."
+NET,301.33,earnings,2026-08-06,0,"Cloudflare, Inc."
+WBD,25.79,earnings,2026-08-06,0,"Warner Bros. Discovery, Inc."
+MFC,44.77,earnings,2026-08-05,0,Manulife Financial Corporation
+RSG,207.66,earnings,2026-08-06,0,RSG
+SRE,86.65,earnings,2026-08-06,0,SRE
+OXY,55.09,earnings,2026-08-05,0,Occidental Petroleum Corporation
+AFL,125.15,earnings,2026-08-06,0,AFL
+O,62.9,earnings,2026-08-05,0,O
+LNG,257.29,earnings,2026-08-06,0,LNG
+WPM,115.41,earnings,2026-08-06,0,Wheaton Precious Metals Corp.
+ALL,262.56,earnings,2026-08-05,0,The Allstate Corporation
+TRGP,262.98,earnings,2026-08-06,0,Targa Resources Corp.
+MET,96.13,earnings,2026-08-05,0,"MetLife, Inc."
+MCHP,80.67,earnings,2026-08-06,0,Microchip Technology Incorporated
+ZTS,76.04,earnings,2026-08-06,0,ZTS
+DDOG,288.15,earnings,2026-08-06,0,"Datadog, Inc."
+EBAY,109.61,earnings,2026-08-05,0,eBay Inc.
+DEO,87.83,earnings,2026-08-06,0,Diageo plc
+BDX,170.12,earnings,2026-08-06,0,BDX
+XYZ,84.64,earnings,2026-08-05,0,"Block, Inc."
+RKT,14.11,earnings,2026-08-06,0,RKT
+ED,108.41,earnings,2026-08-06,0,ED
+AIG,79.32,earnings,2026-08-06,0,AIG
+KDP,31.1,earnings,2026-08-06,0,Keurig Dr Pepper Inc.
+SLF,82.27,earnings,2026-08-06,0,Sun Life Financial Inc.
+NTR,66.92,earnings,2026-08-05,0,Nutrien Ltd.
+QSR,73.88,earnings,2026-08-06,0,QSR
+SYM,47.46,earnings,2026-08-05,0,Symbotic Inc.
+IX,40.24,earnings,2026-08-06,0,IX
+KVUE,19.55,earnings,2026-08-06,0,Kenvue Inc.
+TS,57.96,earnings,2026-08-05,0,TS
+FISV,55.78,earnings,2026-08-06,0,"Fiserv, Inc."
+AXON,607.2,earnings,2026-08-05,0,"Axon Enterprise, Inc."
+CQP,66.0,earnings,2026-08-06,0,CQP
+ATO,172.65,earnings,2026-08-05,0,Atmos Energy Corporation
+RMD,223.14,earnings,2026-08-06,0,ResMed Inc.
+RVMD,193.46,earnings,2026-08-05,0,"Revolution Medicines, Inc."
+TPL,395.52,earnings,2026-08-05,0,Texas Pacific Land Corporation
+EXPE,312.06,earnings,2026-08-05,0,"Expedia Group, Inc."
+AMRZ,51.85,earnings,2026-08-06,0,AMRZ
+INSM,98.75,earnings,2026-08-06,0,Insmed Incorporated
+NTRA,275.19,earnings,2026-08-06,0,"Natera, Inc."
+AXIA,10.5,earnings,2026-08-05,0,AXIA Energia SA
+CW,757.31,earnings,2026-08-05,0,CW
+FOXA,59.08,earnings,2026-08-06,0,Fox Corporation
+FOX,52.82,earnings,2026-08-06,0,Fox Corporation
+ALB,120.82,earnings,2026-08-05,0,Albemarle Corporation
+TWLO,194.05,earnings,2026-08-06,0,Twilio Inc.
+BCE,22.0,earnings,2026-08-06,0,BCE Inc.
+RL,377.92,earnings,2026-08-06,0,Ralph Lauren Corporation
+FWONA,88.52,earnings,2026-08-06,0,Formula One Group
+FWONK,96.43,earnings,2026-08-06,0,Formula One Group
+ATI,200.15,earnings,2026-08-06,0,ATI Inc.
+MTSI,273.31,earnings,2026-08-06,0,"MACOM Technology Solutions Holdings, Inc."
+STE,232.85,earnings,2026-08-05,0,STERIS plc
+USFD,99.04,earnings,2026-08-06,0,US Foods Holding Corp.
+ROIV,34.59,earnings,2026-08-06,0,Roivant Sciences Ltd.
+CPAY,396.52,earnings,2026-08-05,0,"Corpay, Inc."
+ITT,204.65,earnings,2026-08-06,0,ITT
+RGLD,206.03,earnings,2026-08-05,0,"Royal Gold, Inc."
+CF,118.11,earnings,2026-08-05,0,"CF Industries Holdings, Inc."
+MKSI,320.76,earnings,2026-08-05,0,MKS Inc.
+EVRG,83.84,earnings,2026-08-06,0,"Evergy, Inc."
+CDE,16.21,earnings,2026-08-05,0,"Coeur Mining, Inc."
+PR,20.5,earnings,2026-08-05,0,Permian Resources Corporation
+TEAM,110.31,earnings,2026-08-06,0,Atlassian Corporation
+CG,50.64,earnings,2026-08-05,0,CG
+ROKU,147.33,earnings,2026-08-06,0,"Roku, Inc."
+WES,46.67,earnings,2026-08-05,0,"Western Midstream Partners, LP"
+VTRS,17.7,earnings,2026-08-06,0,Viatris Inc.
+TLN,340.0,earnings,2026-08-05,0,Talen Energy Corporation
+IONQ,41.72,earnings,2026-08-05,0,"IonQ, Inc."
+TTMI,132.79,earnings,2026-08-05,0,"TTM Technologies, Inc."
+SGI,69.69,earnings,2026-08-06,0,Somnigroup International Inc.
+NVMI,413.5,earnings,2026-08-06,0,Nova Ltd.
+AKAM,123.35,earnings,2026-08-06,0,"Akamai Technologies, Inc."
+GMAB,29.02,earnings,2026-08-06,0,Genmab A/S
+NWS,32.72,earnings,2026-08-05,0,News Corporation
+NWSA,28.59,earnings,2026-08-05,0,News Corporation
+WMG,25.8,earnings,2026-08-05,0,Warner Music Group Corp.
+SITM,583.06,earnings,2026-08-05,0,SiTime Corporation
+ONTO,287.6,earnings,2026-08-06,0,Onto Innovation Inc.
+HST,24.98,earnings,2026-08-05,0,HST
+APA,35.8,earnings,2026-08-05,0,APA
+TIGO,92.86,earnings,2026-08-06,0,Millicom International Cellular S.A.
+FNF,51.51,earnings,2026-08-05,0,"Fidelity National Financial, Inc."
+LAMR,158.91,earnings,2026-08-06,0,Lamar Advertising Company
+RGA,236.19,earnings,2026-08-06,0,"Reinsurance Group of America, Incorporated"
+COKE,181.0,earnings,2026-08-05,0,"Coca-Cola Consolidated, Inc."
+AAOI,131.63,earnings,2026-08-06,0,"Applied Optoelectronics, Inc."
