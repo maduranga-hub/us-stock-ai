@@ -1,16 +1,12 @@
 symbol,price,type,earnings_date,mkt_cap,name
-B,43.68,earnings,2026-08-10,0,B
-SPG,222.91,earnings,2026-08-10,0,"Simon Property Group, Inc."
-LITE,890.17,earnings,2026-08-11,0,Lumentum Holdings Inc.
-CRWV,90.67,earnings,2026-08-11,0,"CoreWeave, Inc."
-FERG,256.69,earnings,2026-08-10,0,Ferguson Enterprises Inc.
-SE,113.43,earnings,2026-08-11,0,Sea Limited
-RKLB,82.83,earnings,2026-08-10,0,Rocket Lab Corporation
-CAH,236.4,earnings,2026-08-11,0,"Cardinal Health, Inc."
-FNV,238.65,earnings,2026-08-11,0,Franco-Nevada Corporation
-ESLT,859.14,earnings,2026-08-11,0,Elbit Systems Ltd.
-ALC,71.81,earnings,2026-08-10,0,Alcon Inc.
-ASTS,71.94,earnings,2026-08-10,0,"AST SpaceMobile, Inc."
-IHG,157.51,earnings,2026-08-11,0,InterContinental Hotels Group PLC
-YPF,49.16,earnings,2026-08-10,0,YPF Sociedad Anónima
-CIB,88.85,earnings,2026-08-10,0,Grupo Cibest S.A.
+CSCO,122.57,earnings,2026-08-12,0,"Cisco Systems, Inc."
+LITE,813.51,earnings,2026-08-11,0,Lumentum Holdings Inc.
+COHR,325.15,earnings,2026-08-12,0,Coherent Corp.
+CRWV,88.19,earnings,2026-08-11,0,"CoreWeave, Inc."
+SE,114.8,earnings,2026-08-11,0,SE
+CAH,237.18,earnings,2026-08-11,0,"Cardinal Health, Inc."
+FNV,240.9,earnings,2026-08-11,0,FNV
+ESLT,846.04,earnings,2026-08-11,0,Elbit Systems Ltd.
+NBIS,184.11,earnings,2026-08-12,0,NBIS
+VG,14.26,earnings,2026-08-11,0,VG
+SBS,5.21,earnings,2026-08-12,0,Companhia de Saneamento Básico do Estado de São Paulo - SABESP
