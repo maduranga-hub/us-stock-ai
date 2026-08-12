@@ -1,12 +1,9 @@
 symbol,price,type,earnings_date,mkt_cap,name
-CSCO,122.57,earnings,2026-08-12,0,"Cisco Systems, Inc."
-LITE,813.51,earnings,2026-08-11,0,Lumentum Holdings Inc.
-COHR,325.15,earnings,2026-08-12,0,Coherent Corp.
-CRWV,88.19,earnings,2026-08-11,0,"CoreWeave, Inc."
-SE,114.8,earnings,2026-08-11,0,SE
-CAH,237.18,earnings,2026-08-11,0,"Cardinal Health, Inc."
-FNV,240.9,earnings,2026-08-11,0,FNV
-ESLT,846.04,earnings,2026-08-11,0,Elbit Systems Ltd.
-NBIS,184.11,earnings,2026-08-12,0,NBIS
-VG,14.26,earnings,2026-08-11,0,VG
-SBS,5.21,earnings,2026-08-12,0,Companhia de Saneamento Básico do Estado de São Paulo - SABESP
+CSCO,120.43,earnings,2026-08-12,0,"Cisco Systems, Inc."
+AMAT,525.61,earnings,2026-08-13,0,"Applied Materials, Inc."
+BN,44.8,earnings,2026-08-13,0,Brookfield Corporation
+NU,13.65,earnings,2026-08-13,0,Nu Holdings Ltd.
+COHR,328.57,earnings,2026-08-12,0,Coherent Corp.
+JD,31.92,earnings,2026-08-13,0,JD
+NBIS,193.23,earnings,2026-08-12,0,NBIS
+TPR,160.54,earnings,2026-08-13,0,"Tapestry, Inc."
