@@ -1,9 +1,6 @@
 symbol,price,type,earnings_date,mkt_cap,name
-CSCO,120.43,earnings,2026-08-12,0,"Cisco Systems, Inc."
-AMAT,525.61,earnings,2026-08-13,0,"Applied Materials, Inc."
-BN,44.8,earnings,2026-08-13,0,Brookfield Corporation
-NU,13.65,earnings,2026-08-13,0,Nu Holdings Ltd.
-COHR,328.57,earnings,2026-08-12,0,Coherent Corp.
-JD,31.92,earnings,2026-08-13,0,JD
-NBIS,193.23,earnings,2026-08-12,0,NBIS
-TPR,160.54,earnings,2026-08-13,0,"Tapestry, Inc."
+AMAT,548.15,earnings,2026-08-13,0,"Applied Materials, Inc."
+BN,44.69,earnings,2026-08-13,0,Brookfield Corporation
+NU,13.56,earnings,2026-08-13,0,Nu Holdings Ltd.
+JD,31.61,earnings,2026-08-13,0,"JD.com, Inc."
+TPR,153.74,earnings,2026-08-13,0,"Tapestry, Inc."
