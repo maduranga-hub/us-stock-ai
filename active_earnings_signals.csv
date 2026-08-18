@@ -1,6 +1,11 @@
 symbol,price,type,earnings_date,mkt_cap,name
-HD,338.86,earnings,2026-08-18,0,"The Home Depot, Inc."
-BHP,86.78,earnings,2026-08-17,0,BHP Group Limited
-KEYS,357.82,earnings,2026-08-18,0,"Keysight Technologies, Inc."
-HTHT,41.88,earnings,2026-08-17,0,H World Group Limited
-XP,15.82,earnings,2026-08-17,0,XP Inc.
+HD,337.88,earnings,2026-08-18,0,"The Home Depot, Inc."
+ADI,390.28,earnings,2026-08-19,0,"Analog Devices, Inc."
+TJX,150.85,earnings,2026-08-19,0,"The TJX Companies, Inc."
+LOW,215.81,earnings,2026-08-19,0,"Lowe's Companies, Inc."
+KEYS,361.15,earnings,2026-08-18,0,"Keysight Technologies, Inc."
+TGT,151.01,earnings,2026-08-19,0,Target Corporation
+BIDU,104.12,earnings,2026-08-18,0,"Baidu, Inc."
+VIK,99.86,earnings,2026-08-19,0,Viking Holdings Ltd
+EL,84.34,earnings,2026-08-19,0,The Estée Lauder Companies Inc.
+SQM,75.1,earnings,2026-08-18,0,Sociedad Química y Minera de Chile S.A.
