@@ -1,5 +1,14 @@
 symbol,price,type,earnings_date,mkt_cap,name
-PDD,88.38,earnings,2026-08-24,0,PDD Holdings Inc.
-INTU,367.0,earnings,2026-08-25,0,Intuit Inc.
-BMO,174.43,earnings,2026-08-25,0,Bank of Montreal
-BNS,87.57,earnings,2026-08-25,0,BNS
+NVDA,208.48,earnings,2026-08-26,0,NVIDIA Corporation
+CRM,209.06,earnings,2026-08-26,0,"Salesforce, Inc."
+CRWD,190.68,earnings,2026-08-26,0,"CrowdStrike Holdings, Inc."
+INTU,369.92,earnings,2026-08-25,0,Intuit Inc.
+BMO,172.35,earnings,2026-08-25,0,Bank of Montreal
+BNS,86.86,earnings,2026-08-25,0,The Bank of Nova Scotia
+SNPS,394.51,earnings,2026-08-26,0,"Synopsys, Inc."
+GFI,47.33,earnings,2026-08-25,0,Gold Fields Limited
+TCOM,46.02,earnings,2026-08-26,0,Trip.com Group Limited
+A,153.43,earnings,2026-08-26,0,"Agilent Technologies, Inc."
+HEI,352.67,earnings,2026-08-25,0,HEICO Corporation
+ZM,104.83,earnings,2026-08-25,0,"Zoom Communications, Inc."
+VEEV,248.46,earnings,2026-08-26,0,Veeva Systems Inc.
