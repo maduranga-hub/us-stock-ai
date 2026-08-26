@@ -1,14 +1,20 @@
 symbol,price,type,earnings_date,mkt_cap,name
-NVDA,208.48,earnings,2026-08-26,0,NVIDIA Corporation
-CRM,209.06,earnings,2026-08-26,0,"Salesforce, Inc."
-CRWD,190.68,earnings,2026-08-26,0,"CrowdStrike Holdings, Inc."
-INTU,369.92,earnings,2026-08-25,0,Intuit Inc.
-BMO,172.35,earnings,2026-08-25,0,Bank of Montreal
-BNS,86.86,earnings,2026-08-25,0,The Bank of Nova Scotia
-SNPS,394.51,earnings,2026-08-26,0,"Synopsys, Inc."
-GFI,47.33,earnings,2026-08-25,0,Gold Fields Limited
-TCOM,46.02,earnings,2026-08-26,0,Trip.com Group Limited
-A,153.43,earnings,2026-08-26,0,"Agilent Technologies, Inc."
-HEI,352.67,earnings,2026-08-25,0,HEICO Corporation
-ZM,104.83,earnings,2026-08-25,0,"Zoom Communications, Inc."
-VEEV,248.46,earnings,2026-08-26,0,Veeva Systems Inc.
+NVDA,213.05,earnings,2026-08-26,0,NVIDIA Corporation
+RY,207.09,earnings,2026-08-27,0,Royal Bank of Canada
+TD,119.07,earnings,2026-08-27,0,The Toronto-Dominion Bank
+MRVL,240.38,earnings,2026-08-27,0,"Marvell Technology, Inc."
+CRM,205.69,earnings,2026-08-26,0,"Salesforce, Inc."
+CRWD,185.38,earnings,2026-08-26,0,"CrowdStrike Holdings, Inc."
+CM,118.33,earnings,2026-08-27,0,Canadian Imperial Bank of Commerce
+SNPS,408.79,earnings,2026-08-26,0,"Synopsys, Inc."
+ADSK,251.21,earnings,2026-08-27,0,"Autodesk, Inc."
+PUK,28.43,earnings,2026-08-27,0,Prudential plc
+TCOM,45.98,earnings,2026-08-26,0,Trip.com Group Limited
+A,154.77,earnings,2026-08-26,0,"Agilent Technologies, Inc."
+WDAY,194.42,earnings,2026-08-27,0,"Workday, Inc."
+DG,122.58,earnings,2026-08-27,0,Dollar General Corporation
+VEEV,246.78,earnings,2026-08-26,0,Veeva Systems Inc.
+ULTA,537.22,earnings,2026-08-27,0,"Ulta Beauty, Inc."
+P,102.81,earnings,2026-08-26,0,"Everpure, Inc."
+WSM,234.74,earnings,2026-08-26,0,"Williams-Sonoma, Inc."
+AFRM,77.945,earnings,2026-08-27,0,"Affirm Holdings, Inc."
