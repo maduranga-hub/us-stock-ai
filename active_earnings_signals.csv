@@ -1,8 +1,10 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AVGO,368.9965,earnings,2026-09-02,0,Broadcom Inc.
-PANW,360.4,earnings,2026-09-01,0,"Palo Alto Networks, Inc."
-DELL,438.75,earnings,2026-09-01,0,Dell Technologies Inc.
-MDT,92.33,earnings,2026-09-01,0,Medtronic plc
-SNOW,322.9775,earnings,2026-09-02,0,Snowflake Inc.
-HPE,51.2206,earnings,2026-09-02,0,Hewlett Packard Enterprise Company
-CRDO,217.43,earnings,2026-09-01,0,Credo Technology Group Holding Ltd
+AVGO,369.7425,earnings,2026-09-02,0,Broadcom Inc.
+CIEN,350.305,earnings,2026-09-03,0,Ciena Corporation
+SNOW,313.65,earnings,2026-09-02,0,Snowflake Inc.
+HPE,50.19,earnings,2026-09-02,0,Hewlett Packard Enterprise Company
+NTAP,181.575,earnings,2026-09-02,0,"NetApp, Inc."
+ZS,175.2,earnings,2026-09-03,0,"Zscaler, Inc."
+LULU,120.84,earnings,2026-09-03,0,lululemon athletica inc.
+IOT,37.705,earnings,2026-09-03,0,Samsara Inc.
+FIVE,243.97,earnings,2026-09-02,0,"Five Below, Inc."
