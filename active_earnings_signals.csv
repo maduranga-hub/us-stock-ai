@@ -1,3 +1,5 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TCOM,40.78,earnings,2026-09-09,0,Trip.com Group Limited
-CASY,739.47,earnings,2026-09-08,0,"Casey's General Stores, Inc."
+ORCL,161.28,earnings,2026-09-10,0,Oracle Corporation
+ADBE,255.855,earnings,2026-09-10,0,Adobe Inc.
+SUNB,76.795,earnings,2026-09-09,0,"Sunbelt Rentals Holdings, Inc."
+CPRT,32.07,earnings,2026-09-10,0,"Copart, Inc."
