@@ -1,4 +1,5 @@
 symbol,price,type,earnings_date,mkt_cap,name
-MU,1067.16,earnings,2026-09-30,0,"Micron Technology, Inc."
-CCL,24.895,earnings,2026-09-29,0,Carnival Corporation Ltd.
-JBL,315.885,earnings,2026-09-30,0,Jabil Inc.
+MU,1072.45,earnings,2026-09-30,0,"Micron Technology, Inc."
+ACN,182.27,earnings,2026-10-01,0,Accenture plc
+NKE,35.615,earnings,2026-10-01,0,"NIKE, Inc."
+JBL,293.695,earnings,2026-09-30,0,Jabil Inc.
