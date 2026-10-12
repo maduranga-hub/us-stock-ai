@@ -1,2 +1,14 @@
 symbol,price,type,earnings_date,mkt_cap,name
-DAL,80.92,earnings,2026-10-09,0,"Delta Air Lines, Inc."
+JPM,334.3,earnings,2026-10-13,0,JPMorgan Chase & Co.
+JNJ,263.73,earnings,2026-10-13,0,Johnson & Johnson
+ASML,1750.24,earnings,2026-10-14,0,ASML Holding N.V.
+BAC,54.58,earnings,2026-10-14,0,Bank of America Corporation
+UNH,378.52,earnings,2026-10-13,0,UnitedHealth Group Incorporated
+MS,190.02,earnings,2026-10-14,0,Morgan Stanley
+GS,893.95,earnings,2026-10-13,0,"The Goldman Sachs Group, Inc."
+WFC,83.32,earnings,2026-10-13,0,Wells Fargo & Company
+C,131.92,earnings,2026-10-13,0,Citigroup Inc.
+BLK,1083.92,earnings,2026-10-14,0,"BlackRock, Inc."
+PGR,220.28,earnings,2026-10-14,0,The Progressive Corporation
+FAST,51.49,earnings,2026-10-14,0,Fastenal Company
+STT,174.93,earnings,2026-10-14,0,State Street Corporation
