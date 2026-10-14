@@ -1,14 +1,15 @@
 symbol,price,type,earnings_date,mkt_cap,name
-ASML,1707.09,earnings,2026-10-14,0,ASML Holding N.V.
-JNJ,248.18,earnings,2026-10-13,0,Johnson & Johnson
-JPM,333.76,earnings,2026-10-13,0,JPMorgan Chase & Co.
-BAC,53.94,earnings,2026-10-14,0,Bank of America Corporation
-MS,187.3503,earnings,2026-10-14,0,Morgan Stanley
-UNH,379.2712,earnings,2026-10-13,0,UnitedHealth Group Incorporated
-WFC,81.38,earnings,2026-10-13,0,Wells Fargo & Company
-GS,899.475,earnings,2026-10-13,0,"The Goldman Sachs Group, Inc."
-C,126.61,earnings,2026-10-13,0,Citigroup Inc.
-BLK,1067.905,earnings,2026-10-14,0,"BlackRock, Inc."
-PGR,223.17,earnings,2026-10-14,0,The Progressive Corporation
-FAST,51.195,earnings,2026-10-14,0,Fastenal Company
-STT,173.485,earnings,2026-10-14,0,State Street Corporation
+TSM,434.18,earnings,2026-10-15,0,Taiwan Semiconductor Manufacturing Company Limited
+ASML,1705.2,earnings,2026-10-14,0,ASML Holding N.V.
+BAC,50.7401,earnings,2026-10-14,0,Bank of America Corporation
+MS,181.215,earnings,2026-10-14,0,Morgan Stanley
+BLK,1080.51,earnings,2026-10-14,0,"BlackRock, Inc."
+SCHW,96.12,earnings,2026-10-15,0,The Charles Schwab Corporation
+IBKR,84.465,earnings,2026-10-15,0,"Interactive Brokers Group, Inc."
+PLD,132.65,earnings,2026-10-15,0,"Prologis, Inc."
+PNC,215.24,earnings,2026-10-15,0,"The PNC Financial Services Group, Inc."
+USB,56.255,earnings,2026-10-15,0,U.S. Bancorp
+MRSH,178.175,earnings,2026-10-15,0,"Marsh & McLennan Companies, Inc."
+STT,163.415,earnings,2026-10-14,0,State Street Corporation
+ERIC,9.66,earnings,2026-10-15,0,Telefonaktiebolaget LM Ericsson (publ)
+JBHT,229.835,earnings,2026-10-15,0,"J.B. Hunt Transport Services, Inc."
