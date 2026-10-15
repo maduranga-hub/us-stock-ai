@@ -1,15 +1,15 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TSM,434.18,earnings,2026-10-15,0,Taiwan Semiconductor Manufacturing Company Limited
-ASML,1705.2,earnings,2026-10-14,0,ASML Holding N.V.
-BAC,50.7401,earnings,2026-10-14,0,Bank of America Corporation
-MS,181.215,earnings,2026-10-14,0,Morgan Stanley
-BLK,1080.51,earnings,2026-10-14,0,"BlackRock, Inc."
-SCHW,96.12,earnings,2026-10-15,0,The Charles Schwab Corporation
-IBKR,84.465,earnings,2026-10-15,0,"Interactive Brokers Group, Inc."
-PLD,132.65,earnings,2026-10-15,0,"Prologis, Inc."
-PNC,215.24,earnings,2026-10-15,0,"The PNC Financial Services Group, Inc."
-USB,56.255,earnings,2026-10-15,0,U.S. Bancorp
-MRSH,178.175,earnings,2026-10-15,0,"Marsh & McLennan Companies, Inc."
-STT,163.415,earnings,2026-10-14,0,State Street Corporation
-ERIC,9.66,earnings,2026-10-15,0,Telefonaktiebolaget LM Ericsson (publ)
-JBHT,229.835,earnings,2026-10-15,0,"J.B. Hunt Transport Services, Inc."
+TSM,419.155,earnings,2026-10-15,0,Taiwan Semiconductor Manufacturing Company Limited
+SCHW,93.065,earnings,2026-10-15,0,The Charles Schwab Corporation
+PLD,128.555,earnings,2026-10-15,0,"Prologis, Inc."
+IBKR,83.81,earnings,2026-10-15,0,"Interactive Brokers Group, Inc."
+PNC,215.54,earnings,2026-10-15,0,"The PNC Financial Services Group, Inc."
+USB,57.255,earnings,2026-10-15,0,U.S. Bancorp
+MRSH,188.94,earnings,2026-10-15,0,"Marsh & McLennan Companies, Inc."
+TRV,378.335,earnings,2026-10-16,0,"The Travelers Companies, Inc."
+TFC,46.375,earnings,2026-10-16,0,Truist Financial Corporation
+ERIC,10.4234,earnings,2026-10-15,0,Telefonaktiebolaget LM Ericsson (publ)
+MTB,218.51,earnings,2026-10-16,0,M&T Bank Corporation
+CFG,63.29,earnings,2026-10-16,0,"Citizens Financial Group, Inc."
+RF,27.305,earnings,2026-10-16,0,Regions Financial Corporation
+JBHT,234.84,earnings,2026-10-15,0,"J.B. Hunt Transport Services, Inc."
