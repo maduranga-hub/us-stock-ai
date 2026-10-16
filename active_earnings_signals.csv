@@ -1,15 +1,7 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TSM,419.155,earnings,2026-10-15,0,Taiwan Semiconductor Manufacturing Company Limited
-SCHW,93.065,earnings,2026-10-15,0,The Charles Schwab Corporation
-PLD,128.555,earnings,2026-10-15,0,"Prologis, Inc."
-IBKR,83.81,earnings,2026-10-15,0,"Interactive Brokers Group, Inc."
-PNC,215.54,earnings,2026-10-15,0,"The PNC Financial Services Group, Inc."
-USB,57.255,earnings,2026-10-15,0,U.S. Bancorp
-MRSH,188.94,earnings,2026-10-15,0,"Marsh & McLennan Companies, Inc."
-TRV,378.335,earnings,2026-10-16,0,"The Travelers Companies, Inc."
-TFC,46.375,earnings,2026-10-16,0,Truist Financial Corporation
-ERIC,10.4234,earnings,2026-10-15,0,Telefonaktiebolaget LM Ericsson (publ)
-MTB,218.51,earnings,2026-10-16,0,M&T Bank Corporation
-CFG,63.29,earnings,2026-10-16,0,"Citizens Financial Group, Inc."
-RF,27.305,earnings,2026-10-16,0,Regions Financial Corporation
-JBHT,234.84,earnings,2026-10-15,0,"J.B. Hunt Transport Services, Inc."
+HDB,23.955,earnings,2026-10-17,0,HDFC Bank Limited
+IBN,30.215,earnings,2026-10-17,0,ICICI Bank Limited
+TRV,387.765,earnings,2026-10-16,0,"The Travelers Companies, Inc."
+MTB,215.995,earnings,2026-10-16,0,M&T Bank Corporation
+CFG,63.99,earnings,2026-10-16,0,"Citizens Financial Group, Inc."
+RF,27.8061,earnings,2026-10-16,0,Regions Financial Corporation
