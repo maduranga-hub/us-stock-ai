@@ -1,7 +1,18 @@
 symbol,price,type,earnings_date,mkt_cap,name
-HDB,23.955,earnings,2026-10-17,0,HDFC Bank Limited
-IBN,30.215,earnings,2026-10-17,0,ICICI Bank Limited
-TRV,387.765,earnings,2026-10-16,0,"The Travelers Companies, Inc."
-MTB,215.995,earnings,2026-10-16,0,M&T Bank Corporation
-CFG,63.99,earnings,2026-10-16,0,"Citizens Financial Group, Inc."
-RF,27.8061,earnings,2026-10-16,0,Regions Financial Corporation
+NFLX,69.585,earnings,2026-10-20,0,"Netflix, Inc."
+GE,312.64,earnings,2026-10-20,0,GE Aerospace
+RTX,192.915,earnings,2026-10-20,0,RTX Corporation
+ISRG,432.94,earnings,2026-10-20,0,"Intuitive Surgical, Inc."
+CB,356.78,earnings,2026-10-20,0,Chubb Limited
+COF,199.46,earnings,2026-10-20,0,Capital One Financial Corporation
+NOC,514.52,earnings,2026-10-20,0,Northrop Grumman Corporation
+AMX,22.765,earnings,2026-10-20,0,"América Móvil, S.A.B. de C.V."
+MMM,162.455,earnings,2026-10-20,0,3M Company
+GM,82.46,earnings,2026-10-20,0,General Motors Company
+MSCI,559.415,earnings,2026-10-20,0,MSCI Inc.
+HAL,32.675,earnings,2026-10-20,0,Halliburton Company
+STLD,243.4925,earnings,2026-10-19,0,"Steel Dynamics, Inc."
+UAL,96.005,earnings,2026-10-20,0,"United Airlines Holdings, Inc."
+WRB,74.14,earnings,2026-10-19,0,W. R. Berkley Corporation
+SYF,74.075,earnings,2026-10-20,0,Synchrony Financial
+KEY,19.855,earnings,2026-10-20,0,KeyCorp
