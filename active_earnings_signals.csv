@@ -1,18 +1,38 @@
 symbol,price,type,earnings_date,mkt_cap,name
-NFLX,69.585,earnings,2026-10-20,0,"Netflix, Inc."
-GE,312.64,earnings,2026-10-20,0,GE Aerospace
-RTX,192.915,earnings,2026-10-20,0,RTX Corporation
-ISRG,432.94,earnings,2026-10-20,0,"Intuitive Surgical, Inc."
-CB,356.78,earnings,2026-10-20,0,Chubb Limited
-COF,199.46,earnings,2026-10-20,0,Capital One Financial Corporation
-NOC,514.52,earnings,2026-10-20,0,Northrop Grumman Corporation
-AMX,22.765,earnings,2026-10-20,0,"América Móvil, S.A.B. de C.V."
-MMM,162.455,earnings,2026-10-20,0,3M Company
-GM,82.46,earnings,2026-10-20,0,General Motors Company
-MSCI,559.415,earnings,2026-10-20,0,MSCI Inc.
-HAL,32.675,earnings,2026-10-20,0,Halliburton Company
-STLD,243.4925,earnings,2026-10-19,0,"Steel Dynamics, Inc."
-UAL,96.005,earnings,2026-10-20,0,"United Airlines Holdings, Inc."
-WRB,74.14,earnings,2026-10-19,0,W. R. Berkley Corporation
-SYF,74.075,earnings,2026-10-20,0,Synchrony Financial
-KEY,19.855,earnings,2026-10-20,0,KeyCorp
+META,693.625,earnings,2026-10-21,0,"Meta Platforms, Inc."
+TSLA,374.395,earnings,2026-10-21,0,"Tesla, Inc."
+NFLX,69.859,earnings,2026-10-20,0,"Netflix, Inc."
+GE,298.38,earnings,2026-10-20,0,GE Aerospace
+LRCX,264.456,earnings,2026-10-21,0,Lam Research Corporation
+PM,201.13,earnings,2026-10-21,0,Philip Morris International Inc.
+TXN,281.5,earnings,2026-10-21,0,Texas Instruments Incorporated
+RTX,190.54,earnings,2026-10-20,0,RTX Corporation
+IBM,239.27,earnings,2026-10-21,0,International Business Machines Corporation
+NEE,79.025,earnings,2026-10-21,0,"NextEra Energy, Inc."
+SAP,226.785,earnings,2026-10-21,0,SAP SE
+T,23.4998,earnings,2026-10-21,0,AT&T Inc.
+TMO,684.19,earnings,2026-10-21,0,Thermo Fisher Scientific Inc.
+ISRG,435.18,earnings,2026-10-20,0,"Intuitive Surgical, Inc."
+ABT,103.23,earnings,2026-10-21,0,Abbott Laboratories
+DHR,224.94,earnings,2026-10-21,0,Danaher Corporation
+CB,356.665,earnings,2026-10-20,0,Chubb Limited
+COF,202.27,earnings,2026-10-20,0,Capital One Financial Corporation
+CME,296.09,earnings,2026-10-21,0,CME Group Inc.
+CSX,48.195,earnings,2026-10-21,0,CSX Corporation
+NOC,537.03,earnings,2026-10-20,0,Northrop Grumman Corporation
+ELV,438.1883,earnings,2026-10-21,0,"Elevance Health, Inc."
+AMX,22.885,earnings,2026-10-20,0,"América Móvil, S.A.B. de C.V."
+MCO,480.9,earnings,2026-10-21,0,Moody's Corporation
+KMI,33.515,earnings,2026-10-21,0,"Kinder Morgan, Inc."
+GM,77.41,earnings,2026-10-20,0,General Motors Company
+URI,1044.77,earnings,2026-10-21,0,"United Rentals, Inc."
+WAB,283.495,earnings,2026-10-21,0,Westinghouse Air Brake Technologies Corporation
+MSCI,595.0,earnings,2026-10-20,0,MSCI Inc.
+WCN,168.35,earnings,2026-10-21,0,"Waste Connections, Inc."
+CCI,82.3,earnings,2026-10-21,0,Crown Castle Inc.
+LVS,38.15,earnings,2026-10-21,0,Las Vegas Sands Corp.
+HAL,33.39,earnings,2026-10-20,0,Halliburton Company
+NTRS,165.79,earnings,2026-10-21,0,Northern Trust Corporation
+TDY,622.19,earnings,2026-10-21,0,Teledyne Technologies Incorporated
+UAL,98.51,earnings,2026-10-20,0,"United Airlines Holdings, Inc."
+ROL,33.155,earnings,2026-10-21,0,"Rollins, Inc."
