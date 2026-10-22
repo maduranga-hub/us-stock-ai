@@ -1,59 +1,26 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TSLA,386.89,earnings,2026-10-21,0,"Tesla, Inc."
-META,710.54,earnings,2026-10-21,0,"Meta Platforms, Inc."
-PG,157.975,earnings,2026-10-22,0,The Procter & Gamble Company
-LRCX,266.645,earnings,2026-10-21,0,Lam Research Corporation
-TXN,287.62,earnings,2026-10-21,0,Texas Instruments Incorporated
-PM,196.92,earnings,2026-10-21,0,Philip Morris International Inc.
-IBM,244.435,earnings,2026-10-21,0,International Business Machines Corporation
-NEE,78.38,earnings,2026-10-21,0,"NextEra Energy, Inc."
-SAP,233.96,earnings,2026-10-21,0,SAP SE
-T,21.915,earnings,2026-10-21,0,AT&T Inc.
-TMO,704.865,earnings,2026-10-21,0,Thermo Fisher Scientific Inc.
-UNP,289.97,earnings,2026-10-22,0,Union Pacific Corporation
-ABT,98.66,earnings,2026-10-21,0,Abbott Laboratories
-BX,110.065,earnings,2026-10-22,0,Blackstone Inc.
-WDC,376.249,earnings,2026-10-22,0,Western Digital Corporation
-HON,213.98,earnings,2026-10-22,0,Honeywell International Inc.
-DHR,232.515,earnings,2026-10-21,0,Danaher Corporation
-LMT,550.61,earnings,2026-10-22,0,Lockheed Martin Corporation
-NEM,116.32,earnings,2026-10-22,0,Newmont Corporation
-CME,296.345,earnings,2026-10-21,0,CME Group Inc.
-CMCSA,21.875,earnings,2026-10-22,0,Comcast Corporation
-SPOT,528.295,earnings,2026-10-22,0,Spotify Technology S.A.
-CSX,48.34,earnings,2026-10-21,0,CSX Corporation
-BE,238.07,earnings,2026-10-22,0,Bloom Energy Corporation
-MCO,483.68,earnings,2026-10-21,0,Moody's Corporation
-ELV,440.99,earnings,2026-10-21,0,"Elevance Health, Inc."
-BCS,22.515,earnings,2026-10-22,0,Barclays PLC
-VLO,432.735,earnings,2026-10-22,0,Valero Energy Corporation
-KMI,33.955,earnings,2026-10-21,0,"Kinder Morgan, Inc."
-NSC,327.81,earnings,2026-10-22,0,Norfolk Southern Corporation
-NOK,9.195,earnings,2026-10-22,0,Nokia Oyj
-FIX,1404.86,earnings,2026-10-22,0,"Comfort Systems USA, Inc."
-URI,1071.365,earnings,2026-10-21,0,"United Rentals, Inc."
-NDAQ,96.42,earnings,2026-10-22,0,"Nasdaq, Inc."
-ARGX,879.21,earnings,2026-10-22,0,argenx SE
-WAB,284.46,earnings,2026-10-21,0,Westinghouse Air Brake Technologies Corporation
-WCN,167.725,earnings,2026-10-21,0,"Waste Connections, Inc."
-CBRE,134.49,earnings,2026-10-22,0,"CBRE Group, Inc."
-CCI,79.56,earnings,2026-10-21,0,Crown Castle Inc.
-PCG,13.228,earnings,2026-10-22,0,PG&E Corporation
-ROP,397.935,earnings,2026-10-22,0,"Roper Technologies, Inc."
-LVS,37.55,earnings,2026-10-21,0,Las Vegas Sands Corp.
-HBAN,15.67,earnings,2026-10-22,0,Huntington Bancshares Incorporated
-NTRS,166.52,earnings,2026-10-21,0,Northern Trust Corporation
-DOV,198.01,earnings,2026-10-22,0,Dover Corporation
-TDY,641.09,earnings,2026-10-21,0,Teledyne Technologies Incorporated
-DOW,30.035,earnings,2026-10-22,0,Dow Inc.
-ROL,33.56,earnings,2026-10-21,0,"Rollins, Inc."
-VRSN,307.1875,earnings,2026-10-22,0,"VeriSign, Inc."
-PHM,114.8,earnings,2026-10-22,0,"PulteGroup, Inc."
-OMC,81.615,earnings,2026-10-22,0,Omnicom Group Inc.
-DGX,238.51,earnings,2026-10-22,0,Quest Diagnostics Incorporated
-CRS,363.72,earnings,2026-10-22,0,Carpenter Technology Corporation
-SNA,368.5,earnings,2026-10-22,0,Snap-on Incorporated
-PKG,238.705,earnings,2026-10-21,0,Packaging Corporation of America
-LUV,40.29,earnings,2026-10-21,0,Southwest Airlines Co.
-RS,417.01,earnings,2026-10-21,0,"Reliance, Inc."
-TSCO,32.865,earnings,2026-10-22,0,Tractor Supply Company
+PG,166.415,earnings,2026-10-22,0,The Procter & Gamble Company
+AXP,324.32,earnings,2026-10-23,0,American Express Company
+UNP,296.06,earnings,2026-10-22,0,Union Pacific Corporation
+BX,116.2735,earnings,2026-10-22,0,Blackstone Inc.
+WDC,352.28,earnings,2026-10-22,0,Western Digital Corporation
+HON,215.3092,earnings,2026-10-22,0,Honeywell International Inc.
+LMT,585.91,earnings,2026-10-22,0,Lockheed Martin Corporation
+NEM,112.215,earnings,2026-10-22,0,Newmont Corporation
+CMCSA,23.045,earnings,2026-10-22,0,Comcast Corporation
+SPOT,570.93,earnings,2026-10-22,0,Spotify Technology S.A.
+SLB,49.095,earnings,2026-10-23,0,SLB N.V.
+E,58.7,earnings,2026-10-23,0,Eni S.p.A.
+BE,217.9,earnings,2026-10-22,0,Bloom Energy Corporation
+BCS,22.025,earnings,2026-10-22,0,Barclays PLC
+VLO,418.46,earnings,2026-10-22,0,Valero Energy Corporation
+NSC,335.44,earnings,2026-10-22,0,Norfolk Southern Corporation
+FIX,1280.44,earnings,2026-10-22,0,"Comfort Systems USA, Inc."
+NDAQ,102.695,earnings,2026-10-22,0,"Nasdaq, Inc."
+INFY,13.04,earnings,2026-10-23,0,Infosys Limited
+ARGX,878.07,earnings,2026-10-22,0,argenx SE
+CBRE,131.3,earnings,2026-10-22,0,"CBRE Group, Inc."
+PCG,12.93,earnings,2026-10-22,0,PG&E Corporation
+ROP,426.155,earnings,2026-10-22,0,"Roper Technologies, Inc."
+HBAN,15.76,earnings,2026-10-22,0,Huntington Bancshares Incorporated
+DOV,193.935,earnings,2026-10-22,0,Dover Corporation
