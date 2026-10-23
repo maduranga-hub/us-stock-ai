@@ -1,26 +1,4 @@
 symbol,price,type,earnings_date,mkt_cap,name
-PG,166.415,earnings,2026-10-22,0,The Procter & Gamble Company
-AXP,324.32,earnings,2026-10-23,0,American Express Company
-UNP,296.06,earnings,2026-10-22,0,Union Pacific Corporation
-BX,116.2735,earnings,2026-10-22,0,Blackstone Inc.
-WDC,352.28,earnings,2026-10-22,0,Western Digital Corporation
-HON,215.3092,earnings,2026-10-22,0,Honeywell International Inc.
-LMT,585.91,earnings,2026-10-22,0,Lockheed Martin Corporation
-NEM,112.215,earnings,2026-10-22,0,Newmont Corporation
-CMCSA,23.045,earnings,2026-10-22,0,Comcast Corporation
-SPOT,570.93,earnings,2026-10-22,0,Spotify Technology S.A.
-SLB,49.095,earnings,2026-10-23,0,SLB N.V.
-E,58.7,earnings,2026-10-23,0,Eni S.p.A.
-BE,217.9,earnings,2026-10-22,0,Bloom Energy Corporation
-BCS,22.025,earnings,2026-10-22,0,Barclays PLC
-VLO,418.46,earnings,2026-10-22,0,Valero Energy Corporation
-NSC,335.44,earnings,2026-10-22,0,Norfolk Southern Corporation
-FIX,1280.44,earnings,2026-10-22,0,"Comfort Systems USA, Inc."
-NDAQ,102.695,earnings,2026-10-22,0,"Nasdaq, Inc."
-INFY,13.04,earnings,2026-10-23,0,Infosys Limited
-ARGX,878.07,earnings,2026-10-22,0,argenx SE
-CBRE,131.3,earnings,2026-10-22,0,"CBRE Group, Inc."
-PCG,12.93,earnings,2026-10-22,0,PG&E Corporation
-ROP,426.155,earnings,2026-10-22,0,"Roper Technologies, Inc."
-HBAN,15.76,earnings,2026-10-22,0,Huntington Bancshares Incorporated
-DOV,193.935,earnings,2026-10-22,0,Dover Corporation
+AXP,313.35,earnings,2026-10-23,0,American Express Company
+SLB,52.88,earnings,2026-10-23,0,SLB N.V.
+E,61.9344,earnings,2026-10-23,0,Eni S.p.A.
