@@ -1,4 +1,41 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AXP,313.35,earnings,2026-10-23,0,American Express Company
-SLB,52.88,earnings,2026-10-23,0,SLB N.V.
-E,61.9344,earnings,2026-10-23,0,Eni S.p.A.
+V,403.535,earnings,2026-10-27,0,Visa Inc.
+KO,92.67,earnings,2026-10-27,0,The Coca-Cola Company
+HSBC,91.54,earnings,2026-10-27,0,HSBC Holdings plc
+NVS,153.59,earnings,2026-10-27,0,Novartis AG
+VZ,43.4047,earnings,2026-10-26,0,Verizon Communications Inc.
+BA,188.965,earnings,2026-10-27,0,The Boeing Company
+WELL,238.72,earnings,2026-10-26,0,Welltower Inc.
+STX,661.92,earnings,2026-10-27,0,Seagate Technology Holdings plc
+GLW,127.755,earnings,2026-10-27,0,Corning Incorporated
+SPGI,448.66,earnings,2026-10-27,0,S&P Global Inc.
+HCA,465.59,earnings,2026-10-27,0,"HCA Healthcare, Inc."
+WM,240.255,earnings,2026-10-27,0,"Waste Management, Inc."
+UPS,100.08,earnings,2026-10-27,0,"United Parcel Service, Inc."
+CDNS,324.46,earnings,2026-10-26,0,"Cadence Design Systems, Inc."
+JCI,148.17,earnings,2026-10-27,0,Johnson Controls International plc
+AMT,189.665,earnings,2026-10-27,0,American Tower Corporation
+FCX,65.24,earnings,2026-10-27,0,Freeport-McMoRan Inc.
+SHW,337.2751,earnings,2026-10-27,0,The Sherwin-Williams Company
+ITW,276.88,earnings,2026-10-27,0,Illinois Tool Works Inc.
+NXPI,248.45,earnings,2026-10-27,0,NXP Semiconductors N.V.
+ECL,289.375,earnings,2026-10-27,0,Ecolab Inc.
+HLT,351.39,earnings,2026-10-27,0,Hilton Worldwide Holdings Inc.
+RCL,283.55,earnings,2026-10-27,0,Royal Caribbean Cruises Ltd.
+BKR,56.13,earnings,2026-10-27,0,Baker Hughes Company
+HOOD,93.795,earnings,2026-10-27,0,"Robinhood Markets, Inc."
+PCAR,106.52,earnings,2026-10-27,0,PACCAR Inc
+OKE,96.0,earnings,2026-10-27,0,"ONEOK, Inc."
+TER,316.04,earnings,2026-10-27,0,"Teradyne, Inc."
+PSA,306.275,earnings,2026-10-26,0,Public Storage
+NUE,258.12,earnings,2026-10-26,0,Nucor Corporation
+FER,50.39,earnings,2026-10-27,0,Ferrovial N.V.
+CLS,269.5,earnings,2026-10-26,0,Celestica Inc.
+PYPL,54.76,earnings,2026-10-27,0,"PayPal Holdings, Inc."
+VTR,87.17,earnings,2026-10-27,0,"Ventas, Inc."
+EQT,54.515,earnings,2026-10-27,0,EQT Corporation
+HIG,136.74,earnings,2026-10-26,0,"The Hartford Insurance Group, Inc."
+ACGL,102.39,earnings,2026-10-27,0,Arch Capital Group Ltd.
+SHG,65.415,earnings,2026-10-27,0,"Shinhan Financial Group Co., Ltd."
+EXR,143.23,earnings,2026-10-27,0,Extra Space Storage Inc.
+CNP,41.075,earnings,2026-10-27,0,"CenterPoint Energy, Inc."
