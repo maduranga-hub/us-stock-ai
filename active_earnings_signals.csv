@@ -1,66 +1,108 @@
 symbol,price,type,earnings_date,mkt_cap,name
-MSFT,532.485,earnings,2026-10-28,0,Microsoft Corporation
-GOOGL,321.33,earnings,2026-10-28,0,Alphabet Inc.
-GOOG,317.655,earnings,2026-10-28,0,Alphabet Inc.
-V,399.935,earnings,2026-10-27,0,Visa Inc.
-KO,91.98,earnings,2026-10-27,0,The Coca-Cola Company
-HSBC,86.435,earnings,2026-10-27,0,HSBC Holdings plc
-GEV,878.41,earnings,2026-10-28,0,GE Vernova Inc.
-NVS,155.575,earnings,2026-10-27,0,Novartis AG
-KLAC,152.66,earnings,2026-10-28,0,KLA Corporation
-TMUS,147.01,earnings,2026-10-28,0,"T-Mobile US, Inc."
-APH,77.7,earnings,2026-10-28,0,Amphenol Corporation
-SAN,12.475,earnings,2026-10-28,0,"Banco Santander, S.A."
-BA,170.255,earnings,2026-10-27,0,The Boeing Company
-STX,676.77,earnings,2026-10-27,0,Seagate Technology Holdings plc
-GLW,127.14,earnings,2026-10-27,0,Corning Incorporated
-UBS,46.84,earnings,2026-10-28,0,UBS Group AG
-SPGI,447.63,earnings,2026-10-27,0,S&P Global Inc.
-VRT,208.88,earnings,2026-10-28,0,Vertiv Holdings Co
-GSK,51.11,earnings,2026-10-28,0,GSK plc
-EQIX,995.89,earnings,2026-10-28,0,"Equinix, Inc."
-EQNR,47.21,earnings,2026-10-28,0,Equinor ASA
-HCA,442.865,earnings,2026-10-27,0,"HCA Healthcare, Inc."
-AEM,177.9,earnings,2026-10-28,0,Agnico Eagle Mines Limited
-UPS,104.115,earnings,2026-10-27,0,"United Parcel Service, Inc."
-WM,234.815,earnings,2026-10-27,0,"Waste Management, Inc."
-CVNA,58.595,earnings,2026-10-28,0,Carvana Co.
-NOW,156.03,earnings,2026-10-28,0,"ServiceNow, Inc."
-JCI,152.095,earnings,2026-10-27,0,Johnson Controls International plc
-BSX,44.865,earnings,2026-10-28,0,Boston Scientific Corporation
-AMT,184.71,earnings,2026-10-27,0,American Tower Corporation
-FCX,65.81,earnings,2026-10-27,0,Freeport-McMoRan Inc.
-ORLY,89.78,earnings,2026-10-28,0,"O'Reilly Automotive, Inc."
-ADP,292.315,earnings,2026-10-28,0,"Automatic Data Processing, Inc."
-SHW,326.39,earnings,2026-10-27,0,The Sherwin-Williams Company
-CP,90.77,earnings,2026-10-28,0,Canadian Pacific Kansas City Limited
-HLT,338.43,earnings,2026-10-27,0,Hilton Worldwide Holdings Inc.
-AEP,128.94,earnings,2026-10-28,0,"American Electric Power Company, Inc."
-NXPI,249.73,earnings,2026-10-27,0,NXP Semiconductors N.V.
-ECL,291.97,earnings,2026-10-27,0,Ecolab Inc.
-ITW,274.675,earnings,2026-10-27,0,Illinois Tool Works Inc.
-RCL,303.48,earnings,2026-10-27,0,Royal Caribbean Cruises Ltd.
-PSX,269.135,earnings,2026-10-28,0,Phillips 66
-BKR,57.49,earnings,2026-10-27,0,Baker Hughes Company
-AON,296.11,earnings,2026-10-28,0,Aon plc
-HOOD,96.1329,earnings,2026-10-27,0,"Robinhood Markets, Inc."
-TEL,217.65,earnings,2026-10-28,0,TE Connectivity plc
-PCAR,102.0,earnings,2026-10-27,0,PACCAR Inc
-FTNT,185.84,earnings,2026-10-28,0,"Fortinet, Inc."
-DB,32.13,earnings,2026-10-28,0,Deutsche Bank Aktiengesellschaft
-OKE,95.65,earnings,2026-10-27,0,"ONEOK, Inc."
-TER,324.815,earnings,2026-10-27,0,"Teradyne, Inc."
-FER,54.18,earnings,2026-10-27,0,Ferrovial N.V.
-GRMN,287.76,earnings,2026-10-28,0,Garmin Ltd.
-F,11.67,earnings,2026-10-28,0,Ford Motor Company
-PYPL,55.75,earnings,2026-10-27,0,"PayPal Holdings, Inc."
-EBAY,117.52,earnings,2026-10-28,0,eBay Inc.
-CMG,27.95,earnings,2026-10-28,0,"Chipotle Mexican Grill, Inc."
-ODFL,184.55,earnings,2026-10-28,0,"Old Dominion Freight Line, Inc."
-VTR,83.96,earnings,2026-10-27,0,"Ventas, Inc."
-EQT,54.855,earnings,2026-10-27,0,EQT Corporation
-KGC,22.805,earnings,2026-10-28,0,Kinross Gold Corporation
-FLEX,80.985,earnings,2026-10-28,0,Flex Ltd.
-ACGL,100.19,earnings,2026-10-27,0,Arch Capital Group Ltd.
-VICI,23.785,earnings,2026-10-28,0,VICI Properties Inc.
-RJF,158.63,earnings,2026-10-28,0,"Raymond James Financial, Inc."
+AMZN,253.0501,earnings,2026-10-29,0,"Amazon.com, Inc."
+GOOGL,324.56,earnings,2026-10-28,0,Alphabet Inc.
+GOOG,321.47,earnings,2026-10-28,0,Alphabet Inc.
+MSFT,527.12,earnings,2026-10-28,0,Microsoft Corporation
+LLY,1288.13,earnings,2026-10-29,0,Eli Lilly and Company
+INTC,93.91,earnings,2026-10-29,0,Intel Corporation
+CAT,715.97,earnings,2026-10-29,0,Caterpillar Inc.
+MA,612.825,earnings,2026-10-29,0,Mastercard Incorporated
+GEV,884.615,earnings,2026-10-28,0,GE Vernova Inc.
+SHEL,105.785,earnings,2026-10-29,0,Shell plc
+MRK,140.785,earnings,2026-10-29,0,"Merck & Co., Inc."
+LIN,508.1,earnings,2026-10-29,0,Linde plc
+KLAC,159.48,earnings,2026-10-28,0,KLA Corporation
+TMUS,146.9775,earnings,2026-10-28,0,"T-Mobile US, Inc."
+TTE,93.285,earnings,2026-10-29,0,TotalEnergies SE
+APH,81.62,earnings,2026-10-28,0,Amphenol Corporation
+GILD,159.32,earnings,2026-10-29,0,"Gilead Sciences, Inc."
+SNDK,1382.815,earnings,2026-10-29,0,Sandisk Corporation
+BUD,81.35,earnings,2026-10-29,0,Anheuser-Busch InBev SA/NV
+UBS,46.54,earnings,2026-10-28,0,UBS Group AG
+VRT,237.305,earnings,2026-10-28,0,Vertiv Holdings Co
+BBVA,24.97,earnings,2026-10-29,0,"Banco Bilbao Vizcaya Argentaria, S.A."
+BMY,60.535,earnings,2026-10-29,0,Bristol-Myers Squibb Company
+MO,73.4254,earnings,2026-10-29,0,"Altria Group, Inc."
+SYK,303.665,earnings,2026-10-29,0,Stryker Corporation
+SBUX,104.15,earnings,2026-10-29,0,Starbucks Corporation
+PWR,602.3,earnings,2026-10-29,0,"Quanta Services, Inc."
+TT,463.98,earnings,2026-10-29,0,Trane Technologies plc
+EQIX,1002.965,earnings,2026-10-28,0,"Equinix, Inc."
+EQNR,47.8,earnings,2026-10-28,0,Equinor ASA
+HWM,198.1499,earnings,2026-10-29,0,Howmet Aerospace Inc.
+AEM,179.465,earnings,2026-10-28,0,Agnico Eagle Mines Limited
+NOW,149.94,earnings,2026-10-28,0,"ServiceNow, Inc."
+ICE,154.425,earnings,2026-10-29,0,"Intercontinental Exchange, Inc."
+CVNA,59.055,earnings,2026-10-28,0,Carvana Co.
+ADP,283.57,earnings,2026-10-28,0,"Automatic Data Processing, Inc."
+BSX,43.045,earnings,2026-10-28,0,Boston Scientific Corporation
+EPD,37.76,earnings,2026-10-29,0,Enterprise Products Partners L.P.
+ORLY,89.32,earnings,2026-10-28,0,"O'Reilly Automotive, Inc."
+CRH,86.605,earnings,2026-10-29,0,CRH plc
+ING,32.7761,earnings,2026-10-29,0,ING Groep N.V.
+CP,91.0,earnings,2026-10-28,0,Canadian Pacific Kansas City Limited
+MDLZ,61.835,earnings,2026-10-29,0,"Mondelez International, Inc."
+MPWR,1210.79,earnings,2026-10-29,0,"Monolithic Power Systems, Inc."
+LYG,5.505,earnings,2026-10-29,0,Lloyds Banking Group plc
+AEP,129.16,earnings,2026-10-28,0,"American Electric Power Company, Inc."
+PSX,272.33,earnings,2026-10-28,0,Phillips 66
+DLR,179.045,earnings,2026-10-29,0,"Digital Realty Trust, Inc."
+VALE,11.4321,earnings,2026-10-29,0,Vale S.A.
+AON,316.02,earnings,2026-10-28,0,Aon plc
+ASX,43.585,earnings,2026-10-29,0,"ASE Technology Holding Co., Ltd."
+RSG,234.57,earnings,2026-10-29,0,"Republic Services, Inc."
+FTNT,178.41,earnings,2026-10-28,0,"Fortinet, Inc."
+TEL,223.21,earnings,2026-10-28,0,TE Connectivity plc
+LHX,259.715,earnings,2026-10-29,0,"L3Harris Technologies, Inc."
+LNG,299.375,earnings,2026-10-29,0,"Cheniere Energy, Inc."
+MSTR,139.2942,earnings,2026-10-29,0,Strategy Inc
+CVE,32.26,earnings,2026-10-29,0,Cenovus Energy Inc.
+CARR,56.74,earnings,2026-10-29,0,Carrier Global Corporation
+TAK,20.1103,earnings,2026-10-29,0,Takeda Pharmaceutical Company Limited
+AJG,260.9,earnings,2026-10-29,0,Arthur J. Gallagher & Co.
+XEL,77.56,earnings,2026-10-29,0,Xcel Energy Inc.
+COIN,158.26,earnings,2026-10-29,0,"Coinbase Global, Inc."
+GRMN,275.134,earnings,2026-10-28,0,Garmin Ltd.
+F,11.8892,earnings,2026-10-28,0,Ford Motor Company
+EBAY,116.48,earnings,2026-10-28,0,eBay Inc.
+STM,48.525,earnings,2026-10-29,0,STMicroelectronics N.V.
+CMG,28.985,earnings,2026-10-28,0,"Chipotle Mexican Grill, Inc."
+DHI,144.04,earnings,2026-10-29,0,"D.R. Horton, Inc."
+ODFL,176.665,earnings,2026-10-28,0,"Old Dominion Freight Line, Inc."
+AMP,488.485,earnings,2026-10-29,0,"Ameriprise Financial, Inc."
+ALNY,225.215,earnings,2026-10-29,0,"Alnylam Pharmaceuticals, Inc."
+RKT,11.6301,earnings,2026-10-29,0,"Rocket Companies, Inc."
+EME,679.075,earnings,2026-10-29,0,"EMCOR Group, Inc."
+KB,114.76,earnings,2026-10-29,0,KB Financial Group Inc.
+WEC,111.04,earnings,2026-10-29,0,"WEC Energy Group, Inc."
+VMC,263.42,earnings,2026-10-29,0,Vulcan Materials Company
+HSY,162.93,earnings,2026-10-29,0,The Hershey Company
+RBLX,52.51,earnings,2026-10-29,0,Roblox Corporation
+QSR,74.755,earnings,2026-10-29,0,Restaurant Brands International Inc.
+KGC,22.57,earnings,2026-10-28,0,Kinross Gold Corporation
+FLEX,91.29,earnings,2026-10-28,0,Flex Ltd.
+CQP,65.25,earnings,2026-10-29,0,"Cheniere Energy Partners, L.P."
+MTZ,181.88,earnings,2026-10-29,0,"MasTec, Inc."
+RMD,250.87,earnings,2026-10-29,0,ResMed Inc.
+VICI,23.51,earnings,2026-10-28,0,VICI Properties Inc.
+IR,76.095,earnings,2026-10-29,0,Ingersoll Rand Inc.
+RJF,157.485,earnings,2026-10-28,0,"Raymond James Financial, Inc."
+FTI,71.845,earnings,2026-10-29,0,TechnipFMC plc
+AMRZ,39.97,earnings,2026-10-28,0,AMRZ
+OTIS,73.34,earnings,2026-10-28,0,Otis Worldwide Corporation
+INSM,96.77,earnings,2026-10-29,0,Insmed Incorporated
+RDDT,136.23,earnings,2026-10-29,0,"Reddit, Inc."
+TECK,62.03,earnings,2026-10-29,0,Teck Resources Limited
+GEHC,75.97,earnings,2026-10-28,0,GE HealthCare Technologies Inc.
+BIIB,249.745,earnings,2026-10-28,0,Biogen Inc.
+TW,118.45,earnings,2026-10-29,0,Tradeweb Markets Inc.
+ARES,123.27,earnings,2026-10-29,0,Ares Management Corporation
+EIX,58.66,earnings,2026-10-29,0,Edison International
+XPO,184.005,earnings,2026-10-29,0,"XPO, Inc."
+AVB,184.06,earnings,2026-10-28,0,AvalonBay Communities Inc
+FTAI,163.395,earnings,2026-10-29,0,FTAI Aviation Ltd.
+AWK,140.58,earnings,2026-10-28,0,"American Water Works Company, Inc."
+CTSH,66.28,earnings,2026-10-29,0,Cognizant Technology Solutions Corporation
+BG,101.07,earnings,2026-10-29,0,Bunge Global SA
+AER,158.1675,earnings,2026-10-28,0,AerCap Holdings N.V.
+WTW,320.515,earnings,2026-10-29,0,Willis Towers Watson Public Limited Company
