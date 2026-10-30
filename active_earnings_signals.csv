@@ -1,76 +1,15 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMZN,246.15,earnings,2026-10-29,0,"Amazon.com, Inc."
-LLY,1367.45,earnings,2026-10-29,0,Eli Lilly and Company
-XOM,181.97,earnings,2026-10-30,0,ExxonMobil Holdings Corporation
-INTC,91.98,earnings,2026-10-29,0,Intel Corporation
-CVX,230.035,earnings,2026-10-30,0,Chevron Corporation
-CAT,656.48,earnings,2026-10-29,0,Caterpillar Inc.
-ABBV,288.455,earnings,2026-10-30,0,AbbVie Inc.
-MA,636.1,earnings,2026-10-29,0,Mastercard Incorporated
-AZN,174.04,earnings,2026-10-30,0,AstraZeneca PLC
-MRK,147.925,earnings,2026-10-29,0,"Merck & Co., Inc."
-SHEL,107.68,earnings,2026-10-29,0,Shell plc
-LIN,501.94,earnings,2026-10-29,0,Linde plc
-SNDK,1349.615,earnings,2026-10-29,0,Sandisk Corporation
-GILD,161.05,earnings,2026-10-29,0,"Gilead Sciences, Inc."
-BUD,79.17,earnings,2026-10-29,0,Anheuser-Busch InBev SA/NV
-BMY,60.51,earnings,2026-10-29,0,Bristol-Myers Squibb Company
-MO,75.55,earnings,2026-10-29,0,"Altria Group, Inc."
-SBUX,104.49,earnings,2026-10-29,0,Starbucks Corporation
-BP,50.155,earnings,2026-10-30,0,BP p.l.c.
-SYK,311.39,earnings,2026-10-29,0,Stryker Corporation
-SNY,42.41,earnings,2026-10-30,0,Sanofi
-PWR,643.14,earnings,2026-10-29,0,"Quanta Services, Inc."
-TT,429.14,earnings,2026-10-29,0,Trane Technologies plc
-HWM,206.26,earnings,2026-10-29,0,Howmet Aerospace Inc.
-GD,370.485,earnings,2026-10-30,0,General Dynamics Corporation
-ICE,165.26,earnings,2026-10-29,0,"Intercontinental Exchange, Inc."
-MPWR,1193.01,earnings,2026-10-29,0,"Monolithic Power Systems, Inc."
-CRH,90.455,earnings,2026-10-29,0,CRH plc
-ING,32.185,earnings,2026-10-29,0,ING Groep N.V.
-MDLZ,62.225,earnings,2026-10-29,0,"Mondelez International, Inc."
-LYG,5.225,earnings,2026-10-29,0,Lloyds Banking Group plc
-REGN,813.55,earnings,2026-10-30,0,"Regeneron Pharmaceuticals, Inc."
-DASH,179.1,earnings,2026-10-29,0,"DoorDash, Inc."
-DLR,184.06,earnings,2026-10-29,0,"Digital Realty Trust, Inc."
-CNI,123.225,earnings,2026-10-30,0,Canadian National Railway Company
-CL,92.435,earnings,2026-10-30,0,Colgate-Palmolive Company
-VALE,11.195,earnings,2026-10-29,0,Vale S.A.
-IMO,129.65,earnings,2026-10-30,0,Imperial Oil Limited
-RSG,234.475,earnings,2026-10-29,0,"Republic Services, Inc."
-NWG,16.955,earnings,2026-10-30,0,NatWest Group plc
-LHX,280.96,earnings,2026-10-29,0,"L3Harris Technologies, Inc."
-LNG,316.05,earnings,2026-10-29,0,"Cheniere Energy, Inc."
-MSTR,142.67,earnings,2026-10-29,0,Strategy Inc
-D,65.07,earnings,2026-10-30,0,"Dominion Energy, Inc."
-CARR,54.53,earnings,2026-10-29,0,Carrier Global Corporation
-CCJ,83.83,earnings,2026-10-30,0,Cameco Corporation
-AJG,267.22,earnings,2026-10-29,0,Arthur J. Gallagher & Co.
-XEL,78.93,earnings,2026-10-29,0,Xcel Energy Inc.
-COIN,161.2,earnings,2026-10-29,0,"Coinbase Global, Inc."
-EXC,45.815,earnings,2026-10-30,0,Exelon Corporation
-STM,49.14,earnings,2026-10-29,0,STMicroelectronics N.V.
-AMP,493.77,earnings,2026-10-29,0,"Ameriprise Financial, Inc."
-DHI,143.32,earnings,2026-10-29,0,"D.R. Horton, Inc."
-RKT,11.99,earnings,2026-10-29,0,"Rocket Companies, Inc."
-ALNY,173.985,earnings,2026-10-29,0,"Alnylam Pharmaceuticals, Inc."
-RBLX,52.2,earnings,2026-10-29,0,Roblox Corporation
-EME,702.4,earnings,2026-10-29,0,"EMCOR Group, Inc."
-VMC,284.94,earnings,2026-10-29,0,Vulcan Materials Company
-HSY,162.455,earnings,2026-10-29,0,The Hershey Company
-WEC,115.335,earnings,2026-10-29,0,"WEC Energy Group, Inc."
-QSR,72.85,earnings,2026-10-29,0,Restaurant Brands International Inc.
-TW,119.775,earnings,2026-10-29,0,Tradeweb Markets Inc.
-EIX,59.21,earnings,2026-10-29,0,Edison International
-XPO,174.015,earnings,2026-10-29,0,"XPO, Inc."
-ARES,126.605,earnings,2026-10-29,0,Ares Management Corporation
-FTAI,192.605,earnings,2026-10-29,0,FTAI Aviation Ltd.
-CTSH,62.35,earnings,2026-10-29,0,Cognizant Technology Solutions Corporation
-BG,97.72,earnings,2026-10-29,0,Bunge Global SA
-WTW,317.285,earnings,2026-10-29,0,Willis Towers Watson Public Limited Company
-LYB,65.105,earnings,2026-10-30,0,LyondellBasell Industries N.V.
-NVT,138.545,earnings,2026-10-30,0,nVent Electric plc
-CHD,105.25,earnings,2026-10-30,0,"Church & Dwight Co., Inc."
-DXCM,79.07,earnings,2026-10-29,0,"DexCom, Inc."
-TROW,105.36,earnings,2026-10-29,0,"T. Rowe Price Group, Inc."
-TWLO,236.6534,earnings,2026-10-29,0,Twilio Inc.
+XOM,186.875,earnings,2026-10-30,0,ExxonMobil Holdings Corporation
+ABBV,296.2,earnings,2026-10-30,0,AbbVie Inc.
+CVX,235.415,earnings,2026-10-30,0,Chevron Corporation
+AZN,187.41,earnings,2026-10-30,0,AstraZeneca PLC
+BP,50.695,earnings,2026-10-30,0,BP p.l.c.
+SNY,44.6,earnings,2026-10-30,0,Sanofi
+GD,375.43,earnings,2026-10-30,0,General Dynamics Corporation
+REGN,910.03,earnings,2026-10-30,0,"Regeneron Pharmaceuticals, Inc."
+CL,96.55,earnings,2026-10-30,0,Colgate-Palmolive Company
+CNI,124.32,earnings,2026-10-30,0,Canadian National Railway Company
+NWG,15.48,earnings,2026-10-30,0,NatWest Group plc
+D,66.74,earnings,2026-10-30,0,"Dominion Energy, Inc."
+CCJ,75.21,earnings,2026-10-30,0,Cameco Corporation
+EXC,46.37,earnings,2026-10-30,0,Exelon Corporation
