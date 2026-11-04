@@ -1,73 +1,85 @@
 symbol,price,type,earnings_date,mkt_cap,name
-AMD,494.345,earnings,2026-11-03,0,"Advanced Micro Devices, Inc."
-ARM,203.4,earnings,2026-11-04,0,Arm Holdings plc
-ANET,168.33,earnings,2026-11-03,0,"Arista Networks, Inc."
-MCD,262.79,earnings,2026-11-04,0,McDonald's Corporation
-AMGN,463.445,earnings,2026-11-03,0,Amgen Inc.
-QCOM,163.565,earnings,2026-11-04,0,QUALCOMM Incorporated
-ETN,392.11,earnings,2026-11-03,0,Eaton Corporation plc
-NVO,40.345,earnings,2026-11-04,0,Novo Nordisk A/S
-SHOP,148.91,earnings,2026-11-03,0,Shopify Inc.
-UBER,66.62,earnings,2026-11-04,0,"Uber Technologies, Inc."
-APP,243.7025,earnings,2026-11-04,0,AppLovin Corporation
-PFE,30.48,earnings,2026-11-03,0,Pfizer Inc.
-BKNG,151.83,earnings,2026-11-03,0,Booking Holdings Inc.
-CVS,90.89,earnings,2026-11-04,0,CVS Health Corporation
-MCK,1003.6175,earnings,2026-11-04,0,McKesson Corporation
-ITUB,7.04,earnings,2026-11-03,0,Itaú Unibanco Holding S.A.
-MELI,1677.885,earnings,2026-11-04,0,"MercadoLibre, Inc."
-SU,75.54,earnings,2026-11-03,0,Suncor Energy Inc.
-EMR,166.27,earnings,2026-11-04,0,Emerson Electric Co.
-APO,114.5,earnings,2026-11-03,0,"Apollo Global Management, Inc."
-MPC,430.8,earnings,2026-11-03,0,Marathon Petroleum Corporation
-MSI,489.96,earnings,2026-11-04,0,"Motorola Solutions, Inc."
-ET,20.2501,earnings,2026-11-03,0,Energy Transfer LP
-MFC,44.91,earnings,2026-11-04,0,Manulife Financial Corporation
-COHR,209.0025,earnings,2026-11-04,0,Coherent Corp.
-COR,339.39,earnings,2026-11-04,0,"Cencora, Inc."
-MDLN,33.93,earnings,2026-11-04,0,Medline Inc.
-MPLX,57.675,earnings,2026-11-03,0,MPLX LP
-AFL,124.4,earnings,2026-11-04,0,Aflac Incorporated
-CVE,30.815,earnings,2026-11-04,0,Cenovus Energy Inc.
-GWW,1378.91,earnings,2026-11-04,0,"W.W. Grainger, Inc."
-ALL,262.62,earnings,2026-11-04,0,The Allstate Corporation
-AME,251.51,earnings,2026-11-03,0,"AMETEK, Inc."
-MET,100.9,earnings,2026-11-04,0,"MetLife, Inc."
-EA,209.7,earnings,2026-11-03,0,Electronic Arts Inc
-DDOG,220.24,earnings,2026-11-04,0,"Datadog, Inc."
-EW,95.63,earnings,2026-11-04,0,Edwards Lifesciences Corporation
-TRI,113.49,earnings,2026-11-03,0,Thomson Reuters Corporation
-XYZ,76.375,earnings,2026-11-03,0,"Block, Inc."
-AIG,81.31,earnings,2026-11-03,0,"American International Group, Inc."
-KDP,35.025,earnings,2026-11-03,0,Keurig Dr Pepper Inc.
-TEVA,42.14,earnings,2026-11-03,0,Teva Pharmaceutical Industries Limited
-SLF,80.57,earnings,2026-11-04,0,Sun Life Financial Inc.
-MLM,547.55,earnings,2026-11-04,0,"Martin Marietta Materials, Inc."
-NTR,69.9,earnings,2026-11-04,0,Nutrien Ltd.
-CPNG,15.265,earnings,2026-11-03,0,"Coupang, Inc."
-TKO,187.655,earnings,2026-11-04,0,"TKO Group Holdings, Inc."
-GFS,43.77,earnings,2026-11-04,0,GLOBALFOUNDRIES Inc.
-ADM,71.595,earnings,2026-11-03,0,Archer-Daniels-Midland Company
-SYY,74.245,earnings,2026-11-03,0,Sysco Corporation
-PRU,118.26,earnings,2026-11-03,0,"Prudential Financial, Inc."
-TS,57.71,earnings,2026-11-04,0,Tenaris S.A.
-FISV,58.7356,earnings,2026-11-03,0,"Fiserv, Inc."
-CHT,48.775,earnings,2026-11-04,0,"Chunghwa Telecom Co., Ltd."
-ALAB,238.36,earnings,2026-11-03,0,"Astera Labs, Inc."
-ATO,174.82,earnings,2026-11-04,0,Atmos Energy Corporation
-TPL,333.31,earnings,2026-11-04,0,Texas Pacific Land Corporation
-RVMD,195.3,earnings,2026-11-04,0,"Revolution Medicines, Inc."
-EXPE,287.785,earnings,2026-11-04,0,"Expedia Group, Inc."
-WAT,466.54,earnings,2026-11-03,0,Waters Corporation
-Q,120.24,earnings,2026-11-04,0,"Qnity Electronics, Inc."
-FTS,60.08,earnings,2026-11-03,0,Fortis Inc.
-RPRX,67.1651,earnings,2026-11-04,0,Royalty Pharma plc
+TM,199.33,earnings,2026-11-05,0,Toyota Motor Corporation
+MCD,279.075,earnings,2026-11-04,0,McDonald's Corporation
+ARM,191.0,earnings,2026-11-04,0,Arm Holdings plc
+QCOM,167.345,earnings,2026-11-04,0,QUALCOMM Incorporated
+NVO,42.71,earnings,2026-11-04,0,Novo Nordisk A/S
+COP,136.15,earnings,2026-11-05,0,ConocoPhillips
+UBER,71.465,earnings,2026-11-04,0,"Uber Technologies, Inc."
+APP,273.49,earnings,2026-11-04,0,AppLovin Corporation
+SONY,26.06,earnings,2026-11-05,0,Sony Group Corporation
+PH,912.66,earnings,2026-11-05,0,Parker-Hannifin Corporation
+CVS,80.085,earnings,2026-11-04,0,CVS Health Corporation
+SO,93.42,earnings,2026-11-05,0,The Southern Company
+DUK,129.975,earnings,2026-11-05,0,Duke Energy Corporation
+CNQ,50.225,earnings,2026-11-05,0,Canadian Natural Resources Limited
+MCK,1036.54,earnings,2026-11-04,0,McKesson Corporation
+CMI,474.235,earnings,2026-11-05,0,Cummins Inc.
+MELI,1756.42,earnings,2026-11-04,0,"MercadoLibre, Inc."
+NGG,84.97,earnings,2026-11-05,0,National Grid plc
+ABNB,178.59,earnings,2026-11-05,0,"Airbnb, Inc."
+CI,301.42,earnings,2026-11-05,0,The Cigna Group
+EMR,170.97,earnings,2026-11-04,0,Emerson Electric Co.
+EOG,147.59,earnings,2026-11-05,0,"EOG Resources, Inc."
+MNST,49.0299,earnings,2026-11-05,0,Monster Beverage Corporation
+NET,264.42,earnings,2026-11-05,0,"Cloudflare, Inc."
+MSI,489.46,earnings,2026-11-04,0,"Motorola Solutions, Inc."
+TRP,62.355,earnings,2026-11-05,0,TC Energy Corporation
+WBD,30.95,earnings,2026-11-05,0,Warner Bros. Discovery Inc
+MFC,45.745,earnings,2026-11-04,0,Manulife Financial Corporation
+APD,317.87,earnings,2026-11-05,0,"Air Products and Chemicals, Inc."
+SPG,228.405,earnings,2026-11-05,0,"Simon Property Group, Inc."
+COHR,189.86,earnings,2026-11-04,0,Coherent Corp.
+SRE,82.9917,earnings,2026-11-05,0,Sempra
+COR,349.16,earnings,2026-11-04,0,"Cencora, Inc."
+AFL,125.875,earnings,2026-11-04,0,Aflac Incorporated
+WPM,130.47,earnings,2026-11-05,0,Wheaton Precious Metals Corp.
+ALL,269.1,earnings,2026-11-04,0,The Allstate Corporation
+TRGP,285.645,earnings,2026-11-05,0,Targa Resources Corp.
+CVE,28.225,earnings,2026-11-04,0,Cenovus Energy Inc.
+GWW,1511.28,earnings,2026-11-04,0,"W.W. Grainger, Inc."
+MET,102.66,earnings,2026-11-04,0,"MetLife, Inc."
+MCHP,74.805,earnings,2026-11-05,0,Microchip Technology Incorporated
+ZTS,87.6,earnings,2026-11-05,0,Zoetis Inc.
+AU,87.995,earnings,2026-11-05,0,AngloGold Ashanti plc
+EW,100.065,earnings,2026-11-04,0,Edwards Lifesciences Corporation
+DDOG,187.26,earnings,2026-11-04,0,"Datadog, Inc."
+CAH,258.625,earnings,2026-11-05,0,"Cardinal Health, Inc."
+ROK,441.065,earnings,2026-11-05,0,"Rockwell Automation, Inc."
+MT,62.73,earnings,2026-11-05,0,ArcelorMittal S.A.
+BDX,208.07,earnings,2026-11-05,0,"Becton, Dickinson and Company"
+SLF,81.815,earnings,2026-11-04,0,Sun Life Financial Inc.
+ED,120.695,earnings,2026-11-05,0,"Consolidated Edison, Inc."
+IRM,117.34,earnings,2026-11-05,0,Iron Mountain Incorporated
+MLM,555.83,earnings,2026-11-04,0,"Martin Marietta Materials, Inc."
+LYV,184.925,earnings,2026-11-05,0,"Live Nation Entertainment, Inc."
+TKO,193.315,earnings,2026-11-04,0,"TKO Group Holdings, Inc."
+NTR,71.78,earnings,2026-11-04,0,Nutrien Ltd.
+GFS,40.185,earnings,2026-11-04,0,GLOBALFOUNDRIES Inc.
+SATS,95.06,earnings,2026-11-05,0,"Strive, Inc."
+ONC,378.13,earnings,2026-11-05,0,BeOne Medicines AG
+TS,55.69,earnings,2026-11-04,0,Tenaris S.A.
+KMB,109.89,earnings,2026-11-05,0,Kimberly-Clark Corporation
+AXON,426.94,earnings,2026-11-05,0,"Axon Enterprise, Inc."
+DVN,44.68,earnings,2026-11-05,0,Devon Energy Corporation
+DTE,136.305,earnings,2026-11-05,0,DTE Energy Company
+AEE,113.435,earnings,2026-11-05,0,Ameren Corporation
+ATO,174.91,earnings,2026-11-04,0,Atmos Energy Corporation
+RVMD,198.89,earnings,2026-11-04,0,"Revolution Medicines, Inc."
+TPL,287.36,earnings,2026-11-04,0,Texas Pacific Land Corporation
+EXPE,321.52,earnings,2026-11-04,0,"Expedia Group, Inc."
+NTRA,387.11,earnings,2026-11-05,0,"Natera, Inc."
+TPR,124.79,earnings,2026-11-05,0,"Tapestry, Inc."
+RPRX,66.34,earnings,2026-11-04,0,Royalty Pharma plc
 AXIA,10.22,earnings,2026-11-04,0,AXIA Energia
-KHC,24.42,earnings,2026-11-04,0,The Kraft Heinz Company
-CW,501.805,earnings,2026-11-04,0,Curtiss-Wright Corporation
-ES,69.16,earnings,2026-11-04,0,Eversource Energy
-BNTX,88.01,earnings,2026-11-03,0,BioNTech SE
-UTHR,600.51,earnings,2026-11-04,0,United Therapeutics Corporation
+PBA,48.55,earnings,2026-11-05,0,Pembina Pipeline Corporation
+KHC,25.945,earnings,2026-11-04,0,The Kraft Heinz Company
+CW,461.095,earnings,2026-11-04,0,Curtiss-Wright Corporation
+ES,71.34,earnings,2026-11-04,0,Eversource Energy
+MTD,1734.31,earnings,2026-11-05,0,Mettler-Toledo International Inc.
+UTHR,610.12,earnings,2026-11-04,0,United Therapeutics Corporation
 EQR,63.66,earnings,2026-11-04,0,Equity Residential
-FIS,39.64,earnings,2026-11-04,0,"Fidelity National Information Services, Inc."
-FICO,728.885,earnings,2026-11-04,0,Fair Isaac Corporation
+FICO,713.34,earnings,2026-11-04,0,Fair Isaac Corporation
+VRSK,202.34,earnings,2026-11-05,0,"Verisk Analytics, Inc."
+FIS,29.44,earnings,2026-11-04,0,"Fidelity National Information Services, Inc."
+ALB,94.575,earnings,2026-11-04,0,Albemarle Corporation
