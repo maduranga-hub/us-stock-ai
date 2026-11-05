@@ -1,85 +1,41 @@
 symbol,price,type,earnings_date,mkt_cap,name
-TM,199.33,earnings,2026-11-05,0,Toyota Motor Corporation
-MCD,279.075,earnings,2026-11-04,0,McDonald's Corporation
-ARM,191.0,earnings,2026-11-04,0,Arm Holdings plc
-QCOM,167.345,earnings,2026-11-04,0,QUALCOMM Incorporated
-NVO,42.71,earnings,2026-11-04,0,Novo Nordisk A/S
-COP,136.15,earnings,2026-11-05,0,ConocoPhillips
-UBER,71.465,earnings,2026-11-04,0,"Uber Technologies, Inc."
-APP,273.49,earnings,2026-11-04,0,AppLovin Corporation
-SONY,26.06,earnings,2026-11-05,0,Sony Group Corporation
-PH,912.66,earnings,2026-11-05,0,Parker-Hannifin Corporation
-CVS,80.085,earnings,2026-11-04,0,CVS Health Corporation
-SO,93.42,earnings,2026-11-05,0,The Southern Company
-DUK,129.975,earnings,2026-11-05,0,Duke Energy Corporation
-CNQ,50.225,earnings,2026-11-05,0,Canadian Natural Resources Limited
-MCK,1036.54,earnings,2026-11-04,0,McKesson Corporation
-CMI,474.235,earnings,2026-11-05,0,Cummins Inc.
-MELI,1756.42,earnings,2026-11-04,0,"MercadoLibre, Inc."
-NGG,84.97,earnings,2026-11-05,0,National Grid plc
-ABNB,178.59,earnings,2026-11-05,0,"Airbnb, Inc."
-CI,301.42,earnings,2026-11-05,0,The Cigna Group
-EMR,170.97,earnings,2026-11-04,0,Emerson Electric Co.
-EOG,147.59,earnings,2026-11-05,0,"EOG Resources, Inc."
-MNST,49.0299,earnings,2026-11-05,0,Monster Beverage Corporation
-NET,264.42,earnings,2026-11-05,0,"Cloudflare, Inc."
-MSI,489.46,earnings,2026-11-04,0,"Motorola Solutions, Inc."
-TRP,62.355,earnings,2026-11-05,0,TC Energy Corporation
+COP,137.565,earnings,2026-11-05,0,ConocoPhillips
+ENB,48.195,earnings,2026-11-06,0,Enbridge Inc.
+SONY,27.5798,earnings,2026-11-05,0,Sony Group Corporation
+PH,905.655,earnings,2026-11-05,0,Parker-Hannifin Corporation
+SO,93.64,earnings,2026-11-05,0,The Southern Company
+DUK,130.24,earnings,2026-11-05,0,Duke Energy Corporation
+CMI,449.845,earnings,2026-11-05,0,Cummins Inc.
+ABNB,168.575,earnings,2026-11-05,0,"Airbnb, Inc."
+BAM,52.06,earnings,2026-11-06,0,Brookfield Asset Management Ltd.
+CI,302.03,earnings,2026-11-05,0,The Cigna Group
+MNST,47.92,earnings,2026-11-05,0,Monster Beverage Corporation
+EOG,146.78,earnings,2026-11-05,0,"EOG Resources, Inc."
+NET,240.095,earnings,2026-11-05,0,"Cloudflare, Inc."
 WBD,30.95,earnings,2026-11-05,0,Warner Bros. Discovery Inc
-MFC,45.745,earnings,2026-11-04,0,Manulife Financial Corporation
-APD,317.87,earnings,2026-11-05,0,"Air Products and Chemicals, Inc."
-SPG,228.405,earnings,2026-11-05,0,"Simon Property Group, Inc."
-COHR,189.86,earnings,2026-11-04,0,Coherent Corp.
-SRE,82.9917,earnings,2026-11-05,0,Sempra
-COR,349.16,earnings,2026-11-04,0,"Cencora, Inc."
-AFL,125.875,earnings,2026-11-04,0,Aflac Incorporated
-WPM,130.47,earnings,2026-11-05,0,Wheaton Precious Metals Corp.
-ALL,269.1,earnings,2026-11-04,0,The Allstate Corporation
-TRGP,285.645,earnings,2026-11-05,0,Targa Resources Corp.
-CVE,28.225,earnings,2026-11-04,0,Cenovus Energy Inc.
-GWW,1511.28,earnings,2026-11-04,0,"W.W. Grainger, Inc."
-MET,102.66,earnings,2026-11-04,0,"MetLife, Inc."
-MCHP,74.805,earnings,2026-11-05,0,Microchip Technology Incorporated
-ZTS,87.6,earnings,2026-11-05,0,Zoetis Inc.
-AU,87.995,earnings,2026-11-05,0,AngloGold Ashanti plc
-EW,100.065,earnings,2026-11-04,0,Edwards Lifesciences Corporation
-DDOG,187.26,earnings,2026-11-04,0,"Datadog, Inc."
-CAH,258.625,earnings,2026-11-05,0,"Cardinal Health, Inc."
-ROK,441.065,earnings,2026-11-05,0,"Rockwell Automation, Inc."
-MT,62.73,earnings,2026-11-05,0,ArcelorMittal S.A.
-BDX,208.07,earnings,2026-11-05,0,"Becton, Dickinson and Company"
-SLF,81.815,earnings,2026-11-04,0,Sun Life Financial Inc.
-ED,120.695,earnings,2026-11-05,0,"Consolidated Edison, Inc."
-IRM,117.34,earnings,2026-11-05,0,Iron Mountain Incorporated
-MLM,555.83,earnings,2026-11-04,0,"Martin Marietta Materials, Inc."
-LYV,184.925,earnings,2026-11-05,0,"Live Nation Entertainment, Inc."
-TKO,193.315,earnings,2026-11-04,0,"TKO Group Holdings, Inc."
-NTR,71.78,earnings,2026-11-04,0,Nutrien Ltd.
-GFS,40.185,earnings,2026-11-04,0,GLOBALFOUNDRIES Inc.
-SATS,95.06,earnings,2026-11-05,0,"Strive, Inc."
-ONC,378.13,earnings,2026-11-05,0,BeOne Medicines AG
-TS,55.69,earnings,2026-11-04,0,Tenaris S.A.
-KMB,109.89,earnings,2026-11-05,0,Kimberly-Clark Corporation
-AXON,426.94,earnings,2026-11-05,0,"Axon Enterprise, Inc."
-DVN,44.68,earnings,2026-11-05,0,Devon Energy Corporation
-DTE,136.305,earnings,2026-11-05,0,DTE Energy Company
-AEE,113.435,earnings,2026-11-05,0,Ameren Corporation
-ATO,174.91,earnings,2026-11-04,0,Atmos Energy Corporation
-RVMD,198.89,earnings,2026-11-04,0,"Revolution Medicines, Inc."
-TPL,287.36,earnings,2026-11-04,0,Texas Pacific Land Corporation
-EXPE,321.52,earnings,2026-11-04,0,"Expedia Group, Inc."
-NTRA,387.11,earnings,2026-11-05,0,"Natera, Inc."
-TPR,124.79,earnings,2026-11-05,0,"Tapestry, Inc."
-RPRX,66.34,earnings,2026-11-04,0,Royalty Pharma plc
-AXIA,10.22,earnings,2026-11-04,0,AXIA Energia
-PBA,48.55,earnings,2026-11-05,0,Pembina Pipeline Corporation
-KHC,25.945,earnings,2026-11-04,0,The Kraft Heinz Company
-CW,461.095,earnings,2026-11-04,0,Curtiss-Wright Corporation
-ES,71.34,earnings,2026-11-04,0,Eversource Energy
-MTD,1734.31,earnings,2026-11-05,0,Mettler-Toledo International Inc.
-UTHR,610.12,earnings,2026-11-04,0,United Therapeutics Corporation
-EQR,63.66,earnings,2026-11-04,0,Equity Residential
-FICO,713.34,earnings,2026-11-04,0,Fair Isaac Corporation
-VRSK,202.34,earnings,2026-11-05,0,"Verisk Analytics, Inc."
-FIS,29.44,earnings,2026-11-04,0,"Fidelity National Information Services, Inc."
-ALB,94.575,earnings,2026-11-04,0,Albemarle Corporation
+APD,308.21,earnings,2026-11-05,0,"Air Products and Chemicals, Inc."
+SPG,226.915,earnings,2026-11-05,0,"Simon Property Group, Inc."
+SRE,80.24,earnings,2026-11-05,0,Sempra
+UI,509.365,earnings,2026-11-06,0,Ubiquiti Inc.
+WPM,132.03,earnings,2026-11-05,0,Wheaton Precious Metals Corp.
+VST,112.78,earnings,2026-11-06,0,Vistra Corp.
+MCHP,67.19,earnings,2026-11-05,0,Microchip Technology Incorporated
+ZTS,82.69,earnings,2026-11-05,0,Zoetis Inc.
+ROK,381.65,earnings,2026-11-05,0,"Rockwell Automation, Inc."
+CAH,270.83,earnings,2026-11-05,0,"Cardinal Health, Inc."
+BDX,210.735,earnings,2026-11-05,0,"Becton, Dickinson and Company"
+MT,60.61,earnings,2026-11-05,0,ArcelorMittal S.A.
+ED,120.74,earnings,2026-11-05,0,"Consolidated Edison, Inc."
+IRM,106.96,earnings,2026-11-05,0,Iron Mountain Incorporated
+LYV,180.515,earnings,2026-11-05,0,"Live Nation Entertainment, Inc."
+SATS,94.11,earnings,2026-11-05,0,"Strive, Inc."
+ONC,388.63,earnings,2026-11-05,0,BeOne Medicines AG
+KMB,110.2254,earnings,2026-11-05,0,Kimberly-Clark Corporation
+DVN,43.705,earnings,2026-11-05,0,Devon Energy Corporation
+AXON,376.66,earnings,2026-11-05,0,"Axon Enterprise, Inc."
+AEE,112.39,earnings,2026-11-05,0,Ameren Corporation
+DTE,134.66,earnings,2026-11-05,0,DTE Energy Company
+NTRA,356.275,earnings,2026-11-05,0,"Natera, Inc."
+TPR,133.455,earnings,2026-11-05,0,"Tapestry, Inc."
+PPL,35.62,earnings,2026-11-06,0,PPL Corporation
+HUM,407.5,earnings,2026-11-06,0,Humana Inc.
