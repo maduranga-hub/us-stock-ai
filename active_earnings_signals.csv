@@ -1,41 +1,6 @@
 symbol,price,type,earnings_date,mkt_cap,name
-COP,137.565,earnings,2026-11-05,0,ConocoPhillips
-ENB,48.195,earnings,2026-11-06,0,Enbridge Inc.
-SONY,27.5798,earnings,2026-11-05,0,Sony Group Corporation
-PH,905.655,earnings,2026-11-05,0,Parker-Hannifin Corporation
-SO,93.64,earnings,2026-11-05,0,The Southern Company
-DUK,130.24,earnings,2026-11-05,0,Duke Energy Corporation
-CMI,449.845,earnings,2026-11-05,0,Cummins Inc.
-ABNB,168.575,earnings,2026-11-05,0,"Airbnb, Inc."
-BAM,52.06,earnings,2026-11-06,0,Brookfield Asset Management Ltd.
-CI,302.03,earnings,2026-11-05,0,The Cigna Group
-MNST,47.92,earnings,2026-11-05,0,Monster Beverage Corporation
-EOG,146.78,earnings,2026-11-05,0,"EOG Resources, Inc."
-NET,240.095,earnings,2026-11-05,0,"Cloudflare, Inc."
-WBD,30.95,earnings,2026-11-05,0,Warner Bros. Discovery Inc
-APD,308.21,earnings,2026-11-05,0,"Air Products and Chemicals, Inc."
-SPG,226.915,earnings,2026-11-05,0,"Simon Property Group, Inc."
-SRE,80.24,earnings,2026-11-05,0,Sempra
-UI,509.365,earnings,2026-11-06,0,Ubiquiti Inc.
-WPM,132.03,earnings,2026-11-05,0,Wheaton Precious Metals Corp.
-VST,112.78,earnings,2026-11-06,0,Vistra Corp.
-MCHP,67.19,earnings,2026-11-05,0,Microchip Technology Incorporated
-ZTS,82.69,earnings,2026-11-05,0,Zoetis Inc.
-ROK,381.65,earnings,2026-11-05,0,"Rockwell Automation, Inc."
-CAH,270.83,earnings,2026-11-05,0,"Cardinal Health, Inc."
-BDX,210.735,earnings,2026-11-05,0,"Becton, Dickinson and Company"
-MT,60.61,earnings,2026-11-05,0,ArcelorMittal S.A.
-ED,120.74,earnings,2026-11-05,0,"Consolidated Edison, Inc."
-IRM,106.96,earnings,2026-11-05,0,Iron Mountain Incorporated
-LYV,180.515,earnings,2026-11-05,0,"Live Nation Entertainment, Inc."
-SATS,94.11,earnings,2026-11-05,0,"Strive, Inc."
-ONC,388.63,earnings,2026-11-05,0,BeOne Medicines AG
-KMB,110.2254,earnings,2026-11-05,0,Kimberly-Clark Corporation
-DVN,43.705,earnings,2026-11-05,0,Devon Energy Corporation
-AXON,376.66,earnings,2026-11-05,0,"Axon Enterprise, Inc."
-AEE,112.39,earnings,2026-11-05,0,Ameren Corporation
-DTE,134.66,earnings,2026-11-05,0,DTE Energy Company
-NTRA,356.275,earnings,2026-11-05,0,"Natera, Inc."
-TPR,133.455,earnings,2026-11-05,0,"Tapestry, Inc."
-PPL,35.62,earnings,2026-11-06,0,PPL Corporation
-HUM,407.5,earnings,2026-11-06,0,Humana Inc.
+ENB,46.6701,earnings,2026-11-06,0,Enbridge Inc.
+BAM,52.395,earnings,2026-11-06,0,Brookfield Asset Management Ltd.
+UI,585.1642,earnings,2026-11-06,0,Ubiquiti Inc.
+HUM,432.78,earnings,2026-11-06,0,Humana Inc.
+PPL,36.1895,earnings,2026-11-06,0,PPL Corporation
