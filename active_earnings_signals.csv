@@ -1,6 +1,11 @@
 symbol,price,type,earnings_date,mkt_cap,name
-ENB,46.6701,earnings,2026-11-06,0,Enbridge Inc.
-BAM,52.395,earnings,2026-11-06,0,Brookfield Asset Management Ltd.
-UI,585.1642,earnings,2026-11-06,0,Ubiquiti Inc.
-HUM,432.78,earnings,2026-11-06,0,Humana Inc.
-PPL,36.1895,earnings,2026-11-06,0,PPL Corporation
+PBR,18.35,earnings,2026-11-10,0,Petróleo Brasileiro S.A. - Petrobras
+TDG,1218.85,earnings,2026-11-10,0,TransDigm Group Incorporated
+CRWV,48.98,earnings,2026-11-10,0,"CoreWeave, Inc."
+CTVA,12.11,earnings,2026-11-11,0,"Corteva, Inc."
+SE,77.96,earnings,2026-11-10,0,Sea Limited
+FNV,263.46,earnings,2026-11-11,0,Franco-Nevada Corporation
+ALC,75.14,earnings,2026-11-10,0,Alcon Inc.
+VOD,15.69,earnings,2026-11-10,0,Vodafone Group Public Limited Company
+VG,11.8,earnings,2026-11-10,0,"Venture Global, Inc."
+HMC,35.84,earnings,2026-11-10,0,"Honda Motor Co., Ltd."
