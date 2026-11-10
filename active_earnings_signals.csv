@@ -1,11 +1,10 @@
 symbol,price,type,earnings_date,mkt_cap,name
-PBR,18.35,earnings,2026-11-10,0,Petróleo Brasileiro S.A. - Petrobras
-TDG,1218.85,earnings,2026-11-10,0,TransDigm Group Incorporated
-CRWV,48.98,earnings,2026-11-10,0,"CoreWeave, Inc."
-CTVA,12.11,earnings,2026-11-11,0,"Corteva, Inc."
-SE,77.96,earnings,2026-11-10,0,Sea Limited
-FNV,263.46,earnings,2026-11-11,0,Franco-Nevada Corporation
-ALC,75.14,earnings,2026-11-10,0,Alcon Inc.
-VOD,15.69,earnings,2026-11-10,0,Vodafone Group Public Limited Company
-VG,11.8,earnings,2026-11-10,0,"Venture Global, Inc."
-HMC,35.84,earnings,2026-11-10,0,"Honda Motor Co., Ltd."
+PBR,18.195,earnings,2026-11-10,0,Petróleo Brasileiro S.A. - Petrobras
+TDG,1237.6,earnings,2026-11-10,0,TransDigm Group Incorporated
+CRWV,47.52,earnings,2026-11-10,0,"CoreWeave, Inc."
+CTVA,12.165,earnings,2026-11-11,0,"Corteva, Inc."
+SE,77.83,earnings,2026-11-10,0,Sea Limited
+FNV,255.79,earnings,2026-11-11,0,Franco-Nevada Corporation
+ALC,73.005,earnings,2026-11-10,0,Alcon Inc.
+VG,11.89,earnings,2026-11-10,0,"Venture Global, Inc."
+VIV,11.5459,earnings,2026-11-10,0,Telefônica Brasil S.A.
