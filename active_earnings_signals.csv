@@ -1,10 +1,8 @@
 symbol,price,type,earnings_date,mkt_cap,name
-PBR,18.195,earnings,2026-11-10,0,Petróleo Brasileiro S.A. - Petrobras
-TDG,1237.6,earnings,2026-11-10,0,TransDigm Group Incorporated
-CRWV,47.52,earnings,2026-11-10,0,"CoreWeave, Inc."
-CTVA,12.165,earnings,2026-11-11,0,"Corteva, Inc."
-SE,77.83,earnings,2026-11-10,0,Sea Limited
-FNV,255.79,earnings,2026-11-11,0,Franco-Nevada Corporation
-ALC,73.005,earnings,2026-11-10,0,Alcon Inc.
-VG,11.89,earnings,2026-11-10,0,"Venture Global, Inc."
-VIV,11.5459,earnings,2026-11-10,0,Telefônica Brasil S.A.
+CSCO,102.18,earnings,2026-11-12,0,"Cisco Systems, Inc."
+AMAT,402.625,earnings,2026-11-12,0,"Applied Materials, Inc."
+BN,42.19,earnings,2026-11-12,0,Brookfield Corporation
+NU,12.125,earnings,2026-11-12,0,Nu Holdings Ltd.
+CTVA,12.025,earnings,2026-11-11,0,"Corteva, Inc."
+FNV,253.72,earnings,2026-11-11,0,Franco-Nevada Corporation
+NBIS,159.21,earnings,2026-11-12,0,NBIS
