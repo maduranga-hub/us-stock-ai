@@ -1,8 +1,3 @@
 symbol,price,type,earnings_date,mkt_cap,name
-CSCO,101.6965,earnings,2026-11-12,0,"Cisco Systems, Inc."
-AMAT,385.513,earnings,2026-11-12,0,"Applied Materials, Inc."
-MUFG,21.795,earnings,2026-11-13,0,"Mitsubishi UFJ Financial Group, Inc."
-SMFG,24.385,earnings,2026-11-13,0,"Sumitomo Mitsui Financial Group, Inc."
-MFG,10.16,earnings,2026-11-13,0,"Mizuho Financial Group, Inc."
-NU,11.995,earnings,2026-11-12,0,Nu Holdings Ltd.
-NBIS,127.07,earnings,2026-11-12,0,NBIS
+MUFG,21.835,earnings,2026-11-13,0,"Mitsubishi UFJ Financial Group, Inc."
+MFG,10.2914,earnings,2026-11-13,0,"Mizuho Financial Group, Inc."
