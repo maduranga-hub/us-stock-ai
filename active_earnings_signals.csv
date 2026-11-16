@@ -1,3 +1,13 @@
 symbol,price,type,earnings_date,mkt_cap,name
-MUFG,21.835,earnings,2026-11-13,0,"Mitsubishi UFJ Financial Group, Inc."
-MFG,10.2914,earnings,2026-11-13,0,"Mizuho Financial Group, Inc."
+NVDA,156.14,earnings,2026-11-17,0,NVIDIA Corporation
+HD,347.73,earnings,2026-11-17,0,"The Home Depot, Inc."
+DIS,118.71,earnings,2026-11-17,0,The Walt Disney Company
+TJX,131.07,earnings,2026-11-18,0,"The TJX Companies, Inc."
+PANW,316.09,earnings,2026-11-18,0,"Palo Alto Networks, Inc."
+LOW,224.94,earnings,2026-11-18,0,"Lowe's Companies, Inc."
+TGT,160.32,earnings,2026-11-18,0,Target Corporation
+ESLT,680.74,earnings,2026-11-17,0,Elbit Systems Ltd.
+VIK,90.35,earnings,2026-11-17,0,Viking Holdings Ltd
+JD,27.54,earnings,2026-11-17,0,"JD.com, Inc."
+SQM,51.14,earnings,2026-11-17,0,Sociedad Química y Minera de Chile S.A.
+P,103.71,earnings,2026-11-18,0,"Everpure, Inc."
