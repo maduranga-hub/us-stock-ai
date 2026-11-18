@@ -1,11 +1,14 @@
 symbol,price,type,earnings_date,mkt_cap,name
-NVDA,152.61,earnings,2026-11-17,0,NVIDIA Corporation
-HD,338.67,earnings,2026-11-17,0,"The Home Depot, Inc."
-DIS,117.5001,earnings,2026-11-17,0,The Walt Disney Company
-TJX,130.575,earnings,2026-11-18,0,"The TJX Companies, Inc."
-PANW,308.54,earnings,2026-11-18,0,"Palo Alto Networks, Inc."
-LOW,221.11,earnings,2026-11-18,0,"Lowe's Companies, Inc."
-TGT,157.27,earnings,2026-11-18,0,Target Corporation
-ESLT,715.51,earnings,2026-11-17,0,Elbit Systems Ltd.
-VIK,94.111,earnings,2026-11-17,0,Viking Holdings Ltd
-JD,25.7,earnings,2026-11-17,0,"JD.com, Inc."
+WMT,127.298,earnings,2026-11-19,0,Walmart Inc.
+BABA,85.5701,earnings,2026-11-19,0,Alibaba Group Holding Limited
+TJX,142.45,earnings,2026-11-18,0,"The TJX Companies, Inc."
+PANW,335.08,earnings,2026-11-18,0,"Palo Alto Networks, Inc."
+PDD,77.55,earnings,2026-11-19,0,PDD Holdings Inc.
+LOW,221.27,earnings,2026-11-18,0,"Lowe's Companies, Inc."
+INTU,313.715,earnings,2026-11-19,0,Intuit Inc.
+ROST,229.76,earnings,2026-11-19,0,"Ross Stores, Inc."
+NTES,118.92,earnings,2026-11-19,0,"NetEase, Inc."
+TGT,169.065,earnings,2026-11-18,0,Target Corporation
+KEYS,285.16,earnings,2026-11-19,0,"Keysight Technologies, Inc."
+SQM,48.745,earnings,2026-11-18,0,Sociedad Química y Minera de Chile S.A.
+P,98.4701,earnings,2026-11-18,0,"Everpure, Inc."
