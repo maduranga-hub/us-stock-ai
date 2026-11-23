@@ -1,10 +1,7 @@
 symbol,price,type,earnings_date,mkt_cap,name
-WMT,126.46,earnings,2026-11-19,0,Walmart Inc.
-BABA,84.73,earnings,2026-11-19,0,Alibaba Group Holding Limited
-PDD,86.02,earnings,2026-11-19,0,PDD Holdings Inc.
-INTU,306.79,earnings,2026-11-19,0,Intuit Inc.
-ROST,222.6,earnings,2026-11-19,0,"Ross Stores, Inc."
-NTES,106.83,earnings,2026-11-19,0,"NetEase, Inc."
-KEYS,286.39,earnings,2026-11-19,0,"Keysight Technologies, Inc."
-WSM,218.09,earnings,2026-11-19,0,"Williams-Sonoma, Inc."
-FUTU,88.015,earnings,2026-11-19,0,Futu Holdings Limited
+ADI,378.75,earnings,2026-11-24,0,"Analog Devices, Inc."
+DE,633.03,earnings,2026-11-25,0,Deere & Company
+DELL,334.91,earnings,2026-11-24,0,Dell Technologies Inc.
+MDT,100.72,earnings,2026-11-24,0,Medtronic plc
+ADSK,255.33,earnings,2026-11-24,0,"Autodesk, Inc."
+WDAY,176.08,earnings,2026-11-24,0,"Workday, Inc."
