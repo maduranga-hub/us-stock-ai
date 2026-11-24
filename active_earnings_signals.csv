@@ -1,7 +1,3 @@
 symbol,price,type,earnings_date,mkt_cap,name
-ADI,378.75,earnings,2026-11-24,0,"Analog Devices, Inc."
-DE,633.03,earnings,2026-11-25,0,Deere & Company
-DELL,334.91,earnings,2026-11-24,0,Dell Technologies Inc.
-MDT,100.72,earnings,2026-11-24,0,Medtronic plc
-ADSK,255.33,earnings,2026-11-24,0,"Autodesk, Inc."
-WDAY,176.08,earnings,2026-11-24,0,"Workday, Inc."
+DE,613.76,earnings,2026-11-25,0,Deere & Company
+LI,10.7,earnings,2026-11-25,0,Li Auto Inc.
